@@ -1,0 +1,3 @@
+[submodule "clingo-fast-api"]
+	path = clingo-fast-api
+	url = https://github.com/ryuk4real/clingo-fast-api.git
