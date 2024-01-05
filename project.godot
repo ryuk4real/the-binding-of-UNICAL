@@ -22,3 +22,7 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="The Binding Of Unical"
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=false

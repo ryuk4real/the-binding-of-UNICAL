@@ -1,26 +1,59 @@
-[gd_scene format=3 uid="uid://cll76c0c4ul38"]
+[gd_scene load_steps=4 format=3 uid="uid://cll76c0c4ul38"]
 
-[node name="Main Menu" type="Control"]
+[ext_resource type="Texture2D" uid="uid://dl03hieay7qb4" path="res://scenes/menu/logo.png" id="1_qfc4r"]
+[ext_resource type="Script" path="res://scenes/menu/MainMenu.gd" id="1_tllgt"]
+[ext_resource type="Script" path="res://scenes/menu/Exit.gd" id="3_bcy77"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tllgt")
 
-[node name="Button" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -25.0
-offset_right = 75.0
-offset_bottom = 25.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-auto_translate = false
-localize_numeral_system = false
-text = "PLAY"
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_qfc4r")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Settings")
+button_mask = 0
+text = "Play"
+flat = true
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Exit")
+disabled = true
+button_mask = 0
+text = "Settings
+"
+flat = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Play")
+button_mask = 0
+text = "Exit"
+flat = true
+script = ExtResource("3_bcy77")
