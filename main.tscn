@@ -1,11 +1,45 @@
-[gd_scene format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=4 format=3 uid="uid://be4pejwt01gf2"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
+[ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="2_s1ouj"]
+
+[sub_resource type="Theme" id="Theme_7yvvf"]
+default_font = ExtResource("2_s1ouj")
+default_font_size = 25
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_a0qgy")
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="UI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_7yvvf")
