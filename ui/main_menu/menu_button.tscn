@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lpymuoux3yr"]
+
+[ext_resource type="Texture2D" uid="uid://bmbwa4lkbje2o" path="res://ui/main_menu/main_menu.png" id="1_blesj"]
+[ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="2_ldwb3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scjw3"]
+atlas = ExtResource("1_blesj")
+region = Rect2(0, 0, 48, 16)
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(0, 96.9)
+texture_normal = SubResource("AtlasTexture_scjw3")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.162
+anchor_top = 0.155
+anchor_right = 0.162
+anchor_bottom = 0.155
+offset_left = -0.0240021
+offset_top = -0.0195007
+offset_right = 236.976
+offset_bottom = 42.9805
+theme_override_fonts/font = ExtResource("2_ldwb3")
+theme_override_font_sizes/font_size = 39
+text = "EXAMPLE"
+horizontal_alignment = 1
+vertical_alignment = 1

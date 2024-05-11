@@ -1,45 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=6 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
-[ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="2_s1ouj"]
-
-[sub_resource type="Theme" id="Theme_7yvvf"]
-default_font = ExtResource("2_s1ouj")
-default_font_size = 25
+[ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="3_5bsul"]
+[ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_76djf"]
+[ext_resource type="Script" path="res://ui/main_menu/play_button.gd" id="4_e8dhy"]
+[ext_resource type="Script" path="res://ui/main_menu/quit_button.gd" id="4_syu7q"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
+theme_override_constants/margin_left = 400
 theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_right = 400
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_constants/separation = 115
 
-[node name="Button" type="TextureButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5bsul")
+theme_override_font_sizes/font_size = 81
+text = "THE BINDING of UNICAL"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
+layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_7yvvf")
+
+[node name="Play" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
+theme = ExtResource("3_76djf")
+text = "PLAY"
+language = "en"
+script = ExtResource("4_e8dhy")
+
+[node name="Settings" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("3_76djf")
+text = "SETTINGS"
+language = "en"
+
+[node name="Quit" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Play")
+theme = ExtResource("3_76djf")
+text = "Quit"
+language = "en"
+script = ExtResource("4_syu7q")
