@@ -78,3 +78,11 @@ theme = ExtResource("3_76djf")
 text = "Quit"
 language = "en"
 script = ExtResource("4_syu7q")
+
+[node name="GUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" method="_on_pressed"]
