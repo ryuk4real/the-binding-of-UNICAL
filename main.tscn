@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=7 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
+[ext_resource type="Script" path="res://FloorGenerator.gd" id="2_bcxe2"]
 [ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="3_5bsul"]
 [ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_76djf"]
 [ext_resource type="Script" path="res://ui/main_menu/play_button.gd" id="4_e8dhy"]
@@ -8,6 +9,9 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
+
+[node name="FloorGenerator" type="Node2D" parent="."]
+script = ExtResource("2_bcxe2")
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -85,4 +89,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="server_shut" from="FloorGenerator" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" method="_on_floor_generator_server_shut"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="FloorGenerator" method="_on_quit_pressed"]

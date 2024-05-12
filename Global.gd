@@ -12,3 +12,5 @@ var main_scene
 var current_room
 
 var player
+
+var pid: int = -1
