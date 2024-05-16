@@ -1,5 +1,6 @@
 extends Node2D
 
+signal server_started
 signal server_shut
 
 func _ready():
@@ -12,8 +13,11 @@ func start_server():
 func shutdown_server():
 	OS.kill(Global.pid)
 	print("Server is shut down")
+	emit_signal("server_shut")
+
+func generate_floor(num_floor):
+	pass
 
 
 func _on_quit_pressed():
 	shutdown_server()
-	emit_signal("server_shut")
