@@ -1,18 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhlx4nhu2kyji"]
+[gd_scene load_steps=6 format=3 uid="uid://jyokeamaxqja"]
 
-[ext_resource type="PackedScene" uid="uid://bdpu6si7ymyft" path="res://rooms/hallway/hallway.tscn" id="1_a8m4a"]
-[ext_resource type="PackedScene" uid="uid://bqacsrbi6ofhu" path="res://rooms/doors/bathroom_door.tscn" id="3_ijb2s"]
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://rooms/room.tscn" id="1_bxp53"]
+[ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://rooms/hallway/h_walls.tres" id="2_itwfa"]
+[ext_resource type="PackedScene" uid="uid://bqacsrbi6ofhu" path="res://rooms/doors/bathroom_door.tscn" id="3_jwccq"]
+[ext_resource type="PackedScene" uid="uid://b0gbhfconbug" path="res://rooms/doors/inner_hallway_door.tscn" id="4_56mx6"]
+[ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://rooms/hallway/vending_machine.tscn" id="5_3ktki"]
 
-[node name="Hallway1" instance=ExtResource("1_a8m4a")]
-script = null
+[node name="InnerHallway0" instance=ExtResource("1_bxp53")]
 
-[node name="TileMap" parent="." index="0"]
-layer_0/name = "Walls"
-layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 65536, 0, -65535, 131072, 0, 1, 196608, 2, 3, 65536, 0, 4, 131072, 0, 65540, 262144, 196612, 65539, 65536, 1, 65538, 65536, 1, 65537, 65536, 1, 65536, 65536, 1, 0, 65536, 1, 131076, 131072, 2, 131075, 65536, 2, 131074, 65536, 2, 131073, 65536, 2, 131072, 65536, 2, 196607, 0, 2, 65535, 0, 1, 131071, 0, 1, 2, 65536, 0)
-layer_1/tile_data = PackedInt32Array()
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_itwfa")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 262144, 131076, 131072, 0, 2, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 2, 3, 65536, 0, 65539, 65536, 1, 131075, 65536, 2, 4, 0, 3, 65540, 65536, 1, 131076, 65536, 2, 5, 65536, 0, 65541, 65536, 1, 131077, 65536, 2, 6, 65536, 0, 65542, 65536, 1, 131078, 65536, 2, 7, 65536, 0, 65543, 65536, 1, 131079, 65536, 2, 8, 131072, 0, 65544, 262144, 196612, 131080, 131072, 2)
 
-[node name="PickupSpawner" parent="." index="1"]
-position = Vector2(40, 46)
+[node name="BathroomDoor" parent="Doors" index="0" instance=ExtResource("3_jwccq")]
+position = Vector2(240, 17)
 
-[node name="BathroomDoor" parent="Doors" index="0" instance=ExtResource("3_ijb2s")]
-position = Vector2(116, 17)
+[node name="InnerHallwayDoor" parent="Doors" index="1" instance=ExtResource("4_56mx6")]
+position = Vector2(48, 79)
+rotation = 3.14159
+
+[node name="VendingMachine" parent="." index="3" instance=ExtResource("5_3ktki")]
+position = Vector2(48, 26)

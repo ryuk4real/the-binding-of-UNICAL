@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ia6yn72u77n"]
+
+[ext_resource type="Texture2D" uid="uid://c4anr1pycg5s4" path="res://rooms/hallway/hallway.png" id="1_r2068"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jciuw"]
+atlas = ExtResource("1_r2068")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bau7e"]
+
+[node name="VendingMachine" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_jciuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bau7e")
