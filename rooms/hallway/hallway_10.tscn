@@ -16,18 +16,18 @@ layer_0/tile_data = PackedInt32Array(0, 0, 1, 65536, 262144, 131076, 131072, 0, 
 [node name="Doors" parent="." index="1"]
 position = Vector2(0, 96)
 
-[node name="InnerHallwayDoor" parent="Doors" index="0" instance=ExtResource("3_54dpt")]
+[node name="InnerHallwayDoor0" parent="Doors" index="0" instance=ExtResource("3_54dpt")]
 position = Vector2(48, 79)
 rotation = 3.14159
 
-[node name="InnerHallwayDoor2" parent="Doors" index="1" instance=ExtResource("3_54dpt")]
+[node name="InnerHallwayDoor1" parent="Doors" index="1" instance=ExtResource("3_54dpt")]
 position = Vector2(240, 79)
 rotation = 3.14159
 
-[node name="BathroomDoor" parent="Doors" index="2" instance=ExtResource("4_7xey8")]
+[node name="BathroomDoor0" parent="Doors" index="2" instance=ExtResource("4_7xey8")]
 position = Vector2(48, -79)
 
-[node name="BathroomDoor2" parent="Doors" index="3" instance=ExtResource("4_7xey8")]
+[node name="BathroomDoor1" parent="Doors" index="3" instance=ExtResource("4_7xey8")]
 position = Vector2(271, -48)
 rotation = 1.5708
 
