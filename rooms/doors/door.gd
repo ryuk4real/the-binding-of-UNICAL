@@ -2,17 +2,13 @@ extends Area2D
 
 var opened: bool = false
 
-# The direction of the room the door is connected with
-const UP: int = 0
-const RIGHT: int = 1
-const DOWN: int = 2
-const LEFT: int = 3
-
-@export var goes_to: int
+var direction: int
 
 func _ready():
 	if Global.current_room.type == Global.ROOM_TYPE_HALLWAY:
 		open()
+	
+	set_door_direction(transform.get_rotation())
 
 func open():
 	$Sprite2D.frame = 0
@@ -25,3 +21,11 @@ func close():
 	$ClosedDoorCollider.visible = true
 	$OpenDoorCollider.visible = false
 	opened = false
+
+func set_door_direction(door_rotation: float) -> void:
+	match door_rotation:
+		0: direction = Global.DIRECTION_UP
+		90: direction = Global.DIRECTION_RIGHT
+		-90: direction = Global.DIRECTION_LEFT
+		180: direction = Global.DIRECTION_DOWN
+		
