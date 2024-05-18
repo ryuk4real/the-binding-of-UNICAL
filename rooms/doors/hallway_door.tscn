@@ -11,3 +11,4 @@ region = Rect2(32, 96, 64, 32)
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_4hl35")
+hframes = 2

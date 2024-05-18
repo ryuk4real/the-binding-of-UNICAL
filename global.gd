@@ -14,7 +14,6 @@ const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
 var main_scene
-
 var current_room
 
 var player
