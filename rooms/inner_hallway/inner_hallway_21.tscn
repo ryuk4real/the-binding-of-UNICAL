@@ -33,3 +33,6 @@ position = Vector2(48, 17)
 [node name="HallwayDoor0" parent="Doors" index="5" instance=ExtResource("4_21sgk")]
 position = Vector2(48, 272)
 rotation = 3.14159
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(48, 144)
