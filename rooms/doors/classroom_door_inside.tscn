@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjyautslvt88u"]
+
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://rooms/doors/door.tscn" id="1_iid61"]
+[ext_resource type="Texture2D" uid="uid://ojk3s4n7tpnm" path="res://rooms/classroom/standard_classroom/standard_classroom.png" id="2_hmjde"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lutf"]
+atlas = ExtResource("2_hmjde")
+region = Rect2(0, 96, 64, 32)
+
+[node name="Door" instance=ExtResource("1_iid61")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_3lutf")
+hframes = 2
