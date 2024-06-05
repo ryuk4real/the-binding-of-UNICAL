@@ -54,20 +54,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Play" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="New Game" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Settings")
 theme = ExtResource("3_76djf")
-text = "PLAY"
+text = "NEW GAME"
+language = "en"
+script = ExtResource("4_e8dhy")
+
+[node name="Continue" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
+theme = ExtResource("3_76djf")
+disabled = true
+text = "CONTiNUE"
 language = "en"
 script = ExtResource("4_e8dhy")
 
 [node name="Settings" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Play")
+focus_neighbor_top = NodePath("../New Game")
 focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("3_76djf")
 text = "SETTINGS"
@@ -77,7 +88,7 @@ language = "en"
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../New Game")
 theme = ExtResource("3_76djf")
 text = "Quit"
 language = "en"
@@ -90,5 +101,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="server_shut" from="FloorGenerator" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" method="_on_floor_generator_server_shut"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="FloorGenerator" method="_on_quit_pressed"]

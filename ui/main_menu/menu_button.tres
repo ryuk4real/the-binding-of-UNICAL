@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://x80ndnxvvpsj"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://x80ndnxvvpsj"]
 
 [ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="1_6jjpo"]
 [ext_resource type="Texture2D" uid="uid://bmbwa4lkbje2o" path="res://ui/main_menu/main_menu.png" id="1_rukh1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cya1u"]
+atlas = ExtResource("1_rukh1")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4uwk"]
+content_margin_bottom = 19.0
+texture = SubResource("AtlasTexture_cya1u")
+texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfob2"]
 
@@ -22,13 +31,13 @@ script = SubResource("GDScript_th5wl")
 [resource]
 default_font = ExtResource("1_6jjpo")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_disabled_color = Color(0.525101, 0.525102, 0.525101, 1)
 Button/colors/font_focus_color = Color(0.94902, 0.803922, 0.188235, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(0.717055, 0.601319, 0.0804879, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_disabled_color = Color(0.87451, 0.87451, 0.87451, 0.160784)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
@@ -39,6 +48,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 51
 Button/fonts/font = ExtResource("1_6jjpo")
+Button/styles/disabled = SubResource("StyleBoxTexture_x4uwk")
 Button/styles/focus = SubResource("StyleBoxEmpty_cfob2")
 Button/styles/normal = SubResource("StyleBoxTexture_xnpsl")
 Button/styles/pressed = SubResource("StyleBoxTexture_5c6re")
