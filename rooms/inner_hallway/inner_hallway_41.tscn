@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b46odsa2xio86"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://rooms/room.tscn" id="1_is6ym"]
+[ext_resource type="TileSet" uid="uid://2p8pukkhxk7y" path="res://rooms/inner_hallway/ih_walls.tres" id="2_02he6"]
+[ext_resource type="PackedScene" uid="uid://bbyc8dvnc8b83" path="res://rooms/doors/hallway_door.tscn" id="4_g8kus"]
+[ext_resource type="PackedScene" uid="uid://cbcdf03ik7e2y" path="res://rooms/doors/classroom_door.tscn" id="4_ibtnm"]
+
+[node name="InnerHallway0" instance=ExtResource("1_is6ym")]
+
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_02he6")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 65537, 65536, 1, 2, 131072, 0, 65538, 131072, 1, 131072, 0, 1, 131073, 65536, 1, 131074, 131072, 1, 196608, 0, 1, 196609, 65536, 1, 196610, 131072, 1, 262144, 0, 1, 262145, 65536, 1, 262146, 131072, 1, 327680, 0, 2, 327681, 65536, 2, 327682, 131072, 2)
+
+[node name="HallwayDoor0" parent="Doors" index="0" instance=ExtResource("4_g8kus")]
+position = Vector2(48, 176)
+rotation = 3.14159
+
+[node name="ClassroomDoor0" parent="Doors" index="1" instance=ExtResource("4_ibtnm")]
+position = Vector2(48, 17)
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(48, 96)
