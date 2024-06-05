@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm7c16thu6cwr"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://rooms/room.tscn" id="1_ecnb5"]
+[ext_resource type="TileSet" uid="uid://bdes5x0s6xlsw" path="res://rooms/classroom/standard_classroom/sc_walls.tres" id="2_hycd0"]
+[ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://rooms/classroom/standard_classroom/sc_obstacles.tres" id="3_0i4fe"]
+[ext_resource type="PackedScene" uid="uid://cjyautslvt88u" path="res://rooms/doors/classroom_door_inside.tscn" id="4_rtam6"]
+
+[node name="Room" instance=ExtResource("1_ecnb5")]
+
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_hycd0")
+layer_0/tile_data = PackedInt32Array(0, 327680, 0, 1, 327680, 3, 2, 327680, 3, 3, 327680, 3, 4, 327680, 3, 5, 458752, 0, 65536, 327680, 262148, 131072, 0, 1, 65537, 393216, 131073, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 65541, 327680, 327684, 131077, 131072, 1, 196608, 0, 1, 327681, 65536, 2, 327682, 65536, 2, 327683, 65536, 2, 327684, 65536, 2, 262145, 262144, 0, 262146, 196608, 0, 262147, 262144, 0, 262148, 196608, 0, 327680, 0, 2, 327685, 131072, 2, 262144, 0, 1, 262149, 131072, 1, 196609, 262144, 0, 196610, 262144, 0, 196612, 262144, 0, 65539, 393216, 131073, 65540, 393216, 131073, 196611, 196608, 0, 65538, 393216, 131073, 131073, 196608, 0, 196613, 131072, 1)
+
+[node name="Obstacles" parent="." index="1"]
+tile_set = ExtResource("3_0i4fe")
+layer_0/tile_data = PackedInt32Array(131076, 262144, 6, 131077, 262144, 7, 131078, 262144, 7, 131079, 327680, 6, 65540, 393216, 7, 65542, 393216, 7, 327683, 131072, 8, 327684, 196608, 8, 327688, 131072, 9, 327685, 196608, 8, 327686, 196608, 8, 327687, 196608, 8, 393219, 131072, 8, 393220, 196608, 8, 393221, 196608, 8, 393222, 196608, 8, 393223, 196608, 8, 393224, 131072, 9, 458755, 131072, 8, 458756, 196608, 8, 458757, 196608, 8, 458758, 196608, 8, 458759, 196608, 8, 458760, 131072, 9, 524291, 131072, 8, 524292, 196608, 8, 524293, 196608, 8, 524294, 196608, 8, 524295, 196608, 8, 524296, 131072, 9)
+
+[node name="ClassroomDoorInside0" parent="Doors" index="0" instance=ExtResource("4_rtam6")]
+position = Vector2(14, 144)
+rotation = -1.5708
