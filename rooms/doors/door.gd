@@ -5,21 +5,17 @@ var opened: bool = false
 var direction: int
 
 func _ready():
-	if Global.current_room.type == Global.ROOM_TYPE_HALLWAY:
-		open()
+	#if Global.current_room.type == Global.ROOM_TYPE_HALLWAY:
+	#	open()
 	
 	set_door_direction(transform.get_rotation())
 
 func open():
 	$Sprite2D.frame = 0
-	$OpenDoorCollider.visible = true
-	$ClosedDoorCollider.visible = false
 	opened = true
 	
 func close():
 	$Sprite2D.frame = 1
-	$ClosedDoorCollider.visible = true
-	$OpenDoorCollider.visible = false
 	opened = false
 
 func set_door_direction(door_rotation: float) -> void:
