@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvhlbaqxoi8c"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://rooms/room.tscn" id="1_8vb5l"]
+[ext_resource type="TileSet" uid="uid://boxb8fij78k12" path="res://rooms/lab/lab_wall.tres" id="2_uan5h"]
+[ext_resource type="TileSet" uid="uid://b3ck0gqamlcb7" path="res://rooms/lab/lab_obstacles.tres" id="3_i1j0b"]
+[ext_resource type="PackedScene" uid="uid://cjyautslvt88u" path="res://rooms/doors/classroom_door_inside.tscn" id="4_qgo8a"]
+[ext_resource type="TileSet" uid="uid://dwabg6wx8i6lt" path="res://rooms/lab/lab_decorations.tres" id="5_sj40r"]
+
+[node name="Room" instance=ExtResource("1_8vb5l")]
+
+[node name="Walls" parent="." index="0"]
+position = Vector2(192, 192)
+scale = Vector2(-1, -1)
+tile_set = ExtResource("2_uan5h")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 327680, 0, 3, 327680, 0, 4, 65536, 0, 5, 131072, 0, 65536, 0, 1, 65537, 65536, 1, 131072, 0, 1, 131073, 65536, 1, 196608, 0, 1, 196609, 65536, 1, 262144, 393216, 1073741824, 262145, 458752, 3, 327680, 196608, 4, 327681, 262144, 4, 262146, 458752, 3, 327682, 262144, 4, 262147, 458752, 3, 327683, 262144, 4, 262148, 458752, 3, 327684, 262144, 4, 262149, 458752, 1610612736, 327685, 327680, 4, 65541, 131072, 1, 131077, 131072, 1, 196613, 131072, 1, 65538, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, 196611, 65536, 1, 131075, 65536, 1, 65539, 65536, 1, 65540, 65536, 1, 131076, 65536, 1, 196612, 65536, 1)
+
+[node name="Obstacles" parent="." index="1"]
+position = Vector2(192, 192)
+scale = Vector2(-1, -1)
+tile_set = ExtResource("3_i1j0b")
+layer_0/tile_data = PackedInt32Array(393219, 1114112, 805306376, 393220, 1048576, 805306376, 393223, 1114112, 805306376, 393224, 1048576, 805306376, 262151, 1114112, 805306376, 262152, 1048576, 805306376, 262147, 786432, 8, 262148, 851968, 8, 131079, 1114112, 805306376, 131080, 1048576, 805306376, 131075, 1114112, 805306376, 131076, 1048576, 805306376, 65543, 1048576, 3, 65544, 1048576, 1, 196615, 1048576, 3, 196616, 1048576, 3, 196612, 1114112, 805306369, 196611, 1048576, 3, 65539, 1048576, 1, 65540, 1048576, 1, 327683, 1048576, 1, 327688, 1048576, 1, 327684, 1048576, 3, 327687, 1114112, 805306369, 589828, 65536, 805306374, 589829, 0, 805306375, 589830, 0, 805306375, 589831, 0, 805306374)
+
+[node name="LabDoor0" parent="Doors" index="0" instance=ExtResource("4_qgo8a")]
+position = Vector2(178, 144)
+rotation = 1.5708
+
+[node name="Decorations" type="TileMap" parent="." index="4"]
+position = Vector2(192, 192)
+scale = Vector2(-1, -1)
+tile_set = ExtResource("5_sj40r")
+format = 2
+layer_0/tile_data = PackedInt32Array(393224, 917504, 805306376, 393223, 917504, 805306376, 262151, 917504, 805306376, 262152, 917504, 536870921, 131080, 917504, 805306376, 131079, 917504, 805306376, 131076, 917504, 805306376, 131075, 917504, 805306377, 262147, 917504, 805306376, 262148, 917504, 805306376, 393219, 917504, 805306376, 393220, 917504, 536870921)
