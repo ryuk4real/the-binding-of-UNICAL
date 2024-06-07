@@ -20,7 +20,7 @@ rotation = -1.5708
 position = Vector2(79, 48)
 rotation = 1.5708
 
-[node name="HallwayDoor" parent="Doors" index="2" instance=ExtResource("4_x0we8")]
+[node name="HallwayDoor0" parent="Doors" index="2" instance=ExtResource("4_x0we8")]
 position = Vector2(48, 16)
 
 [node name="InnerHallwayDoor0" parent="Doors" index="3" instance=ExtResource("5_j6wbn")]
