@@ -1,7 +1,7 @@
 % room(id,type,x_relative,y_relative)
 % door(id,room,door_type,direction)
 
-#const map_size = 15.
+#const map_size = 30.
 #const n_rooms = 10.
 
 #const hallway_configurations = 28.
@@ -707,7 +707,7 @@ place(room(0, "hallway", 0, 0), map_size / 2, map_size / 2). % debug only
 
 
 % Choose a possible connection between a placed room and a non placed room based on DOOR_TYPE
-{ connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2):
+{ connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2):
         door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, DIRECTION1),
         door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, DIRECTION2),
         opposite(DIRECTION1, DIRECTION2),
@@ -716,16 +716,9 @@ place(room(0, "hallway", 0, 0), map_size / 2, map_size / 2). % debug only
         DOOR_TYPE2 == ROOM_TYPE1
     }.
 
-
-% Two rooms can't be connected to the same door
-:- connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2),
-    connected(ID_ROOM3, ROOM_TYPE3, ID_DOOR3, ID_ROOM4, ROOM_TYPE4, ID_DOOR4),
-    ID_ROOM1 == ID_ROOM3,
-    ROOM_TYPE1 == ROOM_TYPE3,
-    ID_DOOR1 == ID_DOOR3,
-    ID_ROOM2 != ID_ROOM4,
-    ROOM_TYPE2 == ROOM_TYPE4.
-
+% connected rooms must be simmetric
+connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2) :-
+    connected(ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2, ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1).
 
 % count the doors of a placed room
 n_doors(ID_ROOM, ROOM_TYPE, N) :- 
@@ -737,13 +730,13 @@ n_doors(ID_ROOM, ROOM_TYPE, N) :-
 % count the connections of a placed room
 n_connections(ID_ROOM, ROOM_TYPE, N) :- 
     place(room(ID_ROOM, ROOM_TYPE, _, _), _, _),
-    N = #count{ ID_DOOR1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2 : connected(ID_ROOM, ROOM_TYPE, ID_DOOR1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2) }.
+    N = #count{ ID_DOOR1, ID_ROOM2, ROOM_TYPE2, DOOR_TYPE1, ID_DOOR2, DOOR_TYPE2 : connected(ID_ROOM, ROOM_TYPE, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2) }.
 
 
 % it's impossible that if a placed room has a door, the door is not connected to any other room
 :- door(ID_DOOR, room(ID_ROOM, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION),
     place(room(ID_ROOM, ROOM_TYPE, X, Y), _, _),
-    not connected(ID_ROOM, ROOM_TYPE, ID_DOOR, _, _, _).
+    not connected(ID_ROOM, ROOM_TYPE, ID_DOOR, DOOR_TYPE, _, _, _, _).
 
 
 % it's impossible that the number of doors of a placed room is not equal the number of connections of that room
@@ -751,8 +744,26 @@ n_connections(ID_ROOM, ROOM_TYPE, N) :-
     n_connections(ID_ROOM, ROOM_TYPE, N_CONNECTIONS),
     N_DOORS != N_CONNECTIONS.
 
+% Place room based on the connection and doors direction
+% Door already placed facing up, door to place facing down
+%room(room(ID_ROOM2, ROOM_TYPE2, X2, Y2), X_r2, Y_r2) :-
+%    connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2),
+%    door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, up),
+%    door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, down),
+%    place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1),
+%    room(ID_ROOM2, ROOM_TYPE2, X2, Y2),
+%    X_r2 = X_r1 - 1,
+%    Y_r2 = Y_r1.
 
-% TODO: place a connected room tile based on the direction of the door of the already placed room
+% Door already placed facing down, door to place facing up
+%place(room(ID_ROOM2, ROOM_TYPE2, X2, Y2), X_r2, Y_r2) :-
+%    connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2),
+%    door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, down),
+%    door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, up),
+%    place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1),
+%    room(ID_ROOM2, ROOM_TYPE2, X2, Y2),
+%    X_r2 = X_r1 + 1,
+%    Y_r2 = Y_r1.
 
 % Place all the tiles if a tile of the same room is already placed
 place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1) :-
@@ -762,6 +773,5 @@ place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1) :-
     Y_r1 = Y_r2 + Y1 - Y2.
 
 #show place/3.
-#show connected/6.
-
+#show connected/8.
 
