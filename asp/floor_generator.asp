@@ -23,8 +23,8 @@ door(0, room(0, "hallway", 0, 1), "inner_hallway", down).
 door(0, room(0, "hallway", 0, 2), "bathroom", up).
 
 room(1, "hallway", 0, 0..2).
-door(0, room(0, "hallway", 0, 0), "inner_hallway", down).
-door(0, room(0, "hallway", 0, 2), "bathroom", up).
+door(0, room(1, "hallway", 0, 0), "inner_hallway", down).
+door(0, room(1, "hallway", 0, 2), "bathroom", up).
 
 room(2, "hallway", 0, 0..2).
 door(0, room(2, "hallway", 0, 0), "bathroom", up).
@@ -224,20 +224,20 @@ door(1, room(3, "inner_hallway", 0, 0), "office", right).
 
 room(4, "inner_hallway", 0..1, 0).
 door(0, room(4, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(4, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(4, "inner_hallway", 1, 0), "inner_hallway", down).
 door(0, room(4, "inner_hallway", 1, 0), "office", left).
 door(1, room(4, "inner_hallway", 0, 0), "office", right).
 
 room(5, "inner_hallway", 0..1, 0).
 door(0, room(5, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(5, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(5, "inner_hallway", 1, 0), "inner_hallway", down).
 door(0, room(5, "inner_hallway", 0, 0), "office", left).
 door(1, room(5, "inner_hallway", 1, 0), "office", right).
 
 room(6, "inner_hallway", 0..1, 0).
 room(6, "inner_hallway", 1, 0).
 door(0, room(6, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(6, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(6, "inner_hallway", 1, 0), "inner_hallway", down).
 door(0, room(6, "inner_hallway", 1, 0), "office", right).
 door(1, room(6, "inner_hallway", 1, 0), "office", left).
 
@@ -284,27 +284,27 @@ door(3, room(14, "inner_hallway", 2, 0), "office", right).
 door(4, room(14, "inner_hallway", 2, 0), "office", down).
 
 room(15, "inner_hallway", 0..2, 0).
-door(0, room(14, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(14, "inner_hallway", 0, 0), "office", left).
-door(1, room(14, "inner_hallway", 2, 0), "office", left).
-door(2, room(14, "inner_hallway", 2, 0), "office", right).
+door(0, room(15, "inner_hallway", 0, 0), "hallway", up).
+door(0, room(15, "inner_hallway", 0, 0), "office", left).
+door(1, room(15, "inner_hallway", 2, 0), "office", left).
+door(2, room(15, "inner_hallway", 2, 0), "office", right).
 
 room(16, "inner_hallway", 0..2, 0).
-door(0, room(14, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(14, "inner_hallway", 0, 0), "office", right).
-door(1, room(14, "inner_hallway", 2, 0), "office", left).
-door(2, room(14, "inner_hallway", 2, 0), "office", right).
+door(0, room(16, "inner_hallway", 0, 0), "hallway", up).
+door(0, room(16, "inner_hallway", 0, 0), "office", right).
+door(1, room(16, "inner_hallway", 2, 0), "office", left).
+door(2, room(16, "inner_hallway", 2, 0), "office", right).
 
 room(17, "inner_hallway", 0..2, 0).
-door(0, room(14, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(14, "inner_hallway", 1, 0), "office", left).
-door(1, room(14, "inner_hallway", 1, 0), "office", rigth).
+door(0, room(17, "inner_hallway", 0, 0), "hallway", up).
+door(0, room(17, "inner_hallway", 1, 0), "office", left).
+door(1, room(17, "inner_hallway", 1, 0), "office", rigth).
 
 room(18, "inner_hallway", 0..2, 0).
-door(0, room(14, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(14, "inner_hallway", 0, 0), "office", right).
-door(1, room(14, "inner_hallway", 1, 0), "office", left).
-door(2, room(14, "inner_hallway", 2, 0), "office", right).
+door(0, room(18, "inner_hallway", 0, 0), "hallway", up).
+door(0, room(18, "inner_hallway", 0, 0), "office", right).
+door(1, room(18, "inner_hallway", 1, 0), "office", left).
+door(2, room(18, "inner_hallway", 2, 0), "office", right).
 
 room(19, "inner_hallway", 0..2, 0).
 door(0, room(19, "inner_hallway", 0, 0), "hallway", up).
@@ -389,17 +389,17 @@ room(32, "inner_hallway", 0..1, 0).
 door(0, room(32, "inner_hallway", 0, 0), "hallway", up).
 door(0, room(32, "inner_hallway", 1, 0), "classroom", left).
 door(1, room(32, "inner_hallway", 0, 0), "classroom", right).
-door(0, room(32, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(32, "inner_hallway", 1, 0), "inner_hallway", down).
 
 room(33, "inner_hallway", 0..1, 0).
 door(0, room(33, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(33, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(33, "inner_hallway", 1, 0), "inner_hallway", down).
 door(0, room(33, "inner_hallway", 0, 0), "classroom", left).
 door(1, room(33, "inner_hallway", 1, 0), "classroom", right).
 
 room(34, "inner_hallway", 0..1, 0).
 door(0, room(34, "inner_hallway", 0, 0), "hallway", up).
-door(0, room(34, "inner_hallway", 1, 0), "inner_hallway", down).
+%door(0, room(34, "inner_hallway", 1, 0), "inner_hallway", down).
 door(0, room(34, "inner_hallway", 1, 0), "classroom", left).
 door(1, room(34, "inner_hallway", 1, 0), "classroom", right).
 
@@ -555,7 +555,7 @@ room(7, "bathroom", 0..1, 0..1).
 door(0, room(7, "bathroom", 1, 0), "hallway", down).
 
 room(8, "bathroom", 0, 0..1).
-door(0, room(4, "bathroom", 0, 0), "hallway", left).
+door(0, room(8, "bathroom", 0, 0), "hallway", left).
 
 
 
@@ -595,13 +595,13 @@ room(0, "classroom", 0..9, 0..7).
 door(0, room(0, "classroom", 1, 0), "inner_hallway", left).
 
 room(1, "classroom", 0..9, 0..7).
-door(0, room(0, "classroom", 8, 7 ), "inner_hallway", right).
+door(0, room(1, "classroom", 8, 7 ), "inner_hallway", right).
 
 room(2, "classroom", 0..9, 0..7).
-door(0, room(0, "classroom", 1, 7), "inner_hallway", right).
+door(0, room(2, "classroom", 1, 7), "inner_hallway", right).
 
 room(3, "classroom", 0..9, 0..7).
-door(0, room(0, "classroom", 8, 0), "inner_hallway", left).
+door(0, room(3, "classroom", 8, 0), "inner_hallway", left).
 
 
 
@@ -625,16 +625,16 @@ room(4, "classroom", 0..1, 0..2).
 door(0, room(4, "classroom", 0, 1), "inner_hallway", up).
 
 room(5, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 1, 1), "inner_hallway", down).
+door(0, room(5, "classroom", 1, 1), "inner_hallway", down).
 
 room(6, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 1, 1), "inner_hallway", down).
+door(0, room(6, "classroom", 1, 1), "inner_hallway", down).
 
 room(7, "classroom", 0..1, 0..1).
 door(0, room(7, "classroom", 1, 1), "inner_hallway", right).
 
 room(8, "classroom", 0..1, 0..1).
-door(0, room(7, "classroom", 1, 0), "inner_hallway", left).
+door(0, room(8, "classroom", 1, 0), "inner_hallway", left).
 
 room(9, "classroom", 0..1, 0..1).
 door(0, room(9, "classroom", 0, 1), "inner_hallway", up).
@@ -649,16 +649,16 @@ room(12, "classroom", 0..1, 0..1).
 door(0, room(12, "classroom", 1, 0), "inner_hallway", down).
 
 room(13, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 0, 2), "inner_hallway", up).
+door(0, room(13, "classroom", 0, 2), "inner_hallway", up).
 
 room(14, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 1, 2), "inner_hallway", down).
+door(0, room(14, "classroom", 1, 2), "inner_hallway", down).
 
 room(15, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 0, 0), "inner_hallway", up).
+door(0, room(15, "classroom", 0, 0), "inner_hallway", up).
 
 room(16, "classroom", 0..1, 0..2).
-door(0, room(4, "classroom", 1, 0), "inner_hallway", down).
+door(0, room(16, "classroom", 1, 0), "inner_hallway", down).
 
 room(17, "classroom", 0..2, 0..1).
 door(0, room(17, "classroom", 0, 1), "inner_hallway", left).
@@ -694,84 +694,89 @@ opposite(left, right).
 opposite(right, left).
 opposite(down, up).
 
+x_pos_room(ROOM_ID, ROOM_TYPE, X) :- room(ROOM_ID, ROOM_TYPE, X, Y).
+y_pos_room(ROOM_ID, ROOM_TYPE, Y) :- room(ROOM_ID, ROOM_TYPE, X, Y).
 
-% generate starting hallway room at the center of the map
-% place(room(@delta(randint(0, hallway_configurations - 1)), "hallway", 0, 0), map_size / 2, map_size / 2).
-place(room(0, "hallway", 0, 0), map_size / 2, map_size / 2). % debug only
-
-% A room can't be placed outside the map
-:- place(room(ID, ROOM_TYPE, X, Y), X_r, Y_r), not map(X_r, Y_r).
-
-% Two rooms can't be placed in the same map coordinates
-:- map(X_r, Y_r), 2 { place(room(ID, ROOM_TYPE, X, Y), X_r, Y_r) : room(ID, ROOM_TYPE, X, Y) }.
+x_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, X) :- door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION).
+y_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Y) :- door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION).
 
 
-% Choose a possible connection between a placed room and a non placed room based on DOOR_TYPE
-{ connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2):
-        door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, DIRECTION1),
-        door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, DIRECTION2),
-        opposite(DIRECTION1, DIRECTION2),
-        place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1),
-        DOOR_TYPE1 == ROOM_TYPE2,
-        DOOR_TYPE2 == ROOM_TYPE1
-    }.
-
-% connected rooms must be simmetric
-connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2) :-
-    connected(ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2, ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1).
-
-% count the doors of a placed room
-n_doors(ID_ROOM, ROOM_TYPE, N) :- 
-    door(_, room(ID_ROOM, ROOM_TYPE, _, _), _, _),
-    place(room(ID_ROOM, ROOM_TYPE, _, _), _, _),
-    N = #count{ ID_DOOR, DOOR_TYPE : door(ID_DOOR, room(ID_ROOM, ROOM_TYPE, _, _), DOOR_TYPE, _) }.
-
-
-% count the connections of a placed room
-n_connections(ID_ROOM, ROOM_TYPE, N) :- 
-    place(room(ID_ROOM, ROOM_TYPE, _, _), _, _),
-    N = #count{ ID_DOOR1, ID_ROOM2, ROOM_TYPE2, DOOR_TYPE1, ID_DOOR2, DOOR_TYPE2 : connected(ID_ROOM, ROOM_TYPE, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2) }.
-
-
-% it's impossible that if a placed room has a door, the door is not connected to any other room
-:- door(ID_DOOR, room(ID_ROOM, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION),
-    place(room(ID_ROOM, ROOM_TYPE, X, Y), _, _),
-    not connected(ID_ROOM, ROOM_TYPE, ID_DOOR, DOOR_TYPE, _, _, _, _).
-
-
-% it's impossible that the number of doors of a placed room is not equal the number of connections of that room
-:- n_doors(ID_ROOM, ROOM_TYPE, N_DOORS),
-    n_connections(ID_ROOM, ROOM_TYPE, N_CONNECTIONS),
-    N_DOORS != N_CONNECTIONS.
-
-% Place room based on the connection and doors direction
-% Door already placed facing up, door to place facing down
-%room(room(ID_ROOM2, ROOM_TYPE2, X2, Y2), X_r2, Y_r2) :-
-%    connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2),
-%    door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, up),
-%    door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, down),
-%    place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1),
-%    room(ID_ROOM2, ROOM_TYPE2, X2, Y2),
-%    X_r2 = X_r1 - 1,
-%    Y_r2 = Y_r1.
-
-% Door already placed facing down, door to place facing up
-%place(room(ID_ROOM2, ROOM_TYPE2, X2, Y2), X_r2, Y_r2) :-
-%    connected(ID_ROOM1, ROOM_TYPE1, ID_DOOR1, DOOR_TYPE1, ID_ROOM2, ROOM_TYPE2, ID_DOOR2, DOOR_TYPE2),
-%    door(ID_DOOR1, room(ID_ROOM1, ROOM_TYPE1, X1, Y1), DOOR_TYPE1, down),
-%    door(ID_DOOR2, room(ID_ROOM2, ROOM_TYPE2, X2, Y2), DOOR_TYPE2, up),
-%    place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1),
-%    room(ID_ROOM2, ROOM_TYPE2, X2, Y2),
-%    X_r2 = X_r1 + 1,
-%    Y_r2 = Y_r1.
+placed(0, "hallway", 0, 0, map_size/2, map_size/2).
 
 % Place all the tiles if a tile of the same room is already placed
-place(room(ID_ROOM1, ROOM_TYPE1, X1, Y1), X_r1, Y_r1) :-
-    place(room(ID_ROOM1, ROOM_TYPE1, X2, Y2), X_r2, Y_r2),
-    room(ID_ROOM1, ROOM_TYPE1, X1, Y1),
-    X_r1 = X_r2 + X1 - X2,
-    Y_r1 = Y_r2 + Y1 - Y2.
+placed(ROOM_ID1, ROOM_TYPE1, X1, Y1, Xr1, Yr1) :-
+    placed(ROOM_ID1, ROOM_TYPE1, X2, Y2, Xr2, Yr2),
+    x_pos_room(ROOM_ID1, ROOM_TYPE1, X2),
+    y_pos_room(ROOM_ID1, ROOM_TYPE1, Y2),
+    x_pos_room(ROOM_ID1, ROOM_TYPE1, X1),
+    y_pos_room(ROOM_ID1, ROOM_TYPE1, Y1),
+    Xr1 = Xr2 + X1 - X2,
+    Yr1 = Yr2 + Y1 - Y2.
 
-#show place/3.
+x_placed_room(ROOM_ID, ROOM_TYPE, Xr) :- placed(ROOM_ID, ROOM_TYPE, _, _, Xr, _).
+y_placed_room(ROOM_ID, ROOM_TYPE, Yr) :- placed(ROOM_ID, ROOM_TYPE, _, _, _, Yr).
+
+% from placed room derive placed door with map coordinateas
+placed_door(ROOM_ID, ROOM_TYPE, DOOR_ID, DOOR_TYPE, DIRECTION, Xr, Yr) :-
+    placed(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr),
+    x_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, X),
+    y_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Y).
+
+x_placed_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr) :- placed_door(ROOM_ID, ROOM_TYPE, DOOR_ID, DOOR_TYPE, DIRECTION, Xr, _).
+y_placed_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr) :- placed_door(ROOM_ID, ROOM_TYPE, DOOR_ID, DOOR_TYPE, DIRECTION, _, Yr).
+
+%% A room can't be placed outside the map
+:- placed(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr), not map(Xr, Yr).
+
+% Two rooms can't be placed in the same map coordinates
+:- placed(ROOM_ID, ROOM_TYPE, _, _, Xr, Yr),
+    placed(ROOM_ID2, ROOM_TYPE2, _, _, Xr, Yr),
+    ROOM_ID != ROOM_ID2.
+
+% Choose a possible connection between a placed room and a non placed room based on DOOR_TYPE
+{ connected(ROOM_ID1, ROOM_TYPE1, DOOR_ID1, DOOR_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2) :
+    x_placed_door(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, _),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, _),
+    opposite(DIRECTION1, DIRECTION2),
+    DOOR_TYPE1 == ROOM_TYPE2,
+    DOOR_TYPE2 == ROOM_TYPE1
+}.
+
+% connected rooms must be simmetric
+connected(ROOM_ID1, ROOM_TYPE1, DOOR_ID1, DOOR_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2) :-
+    connected(ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2, ROOM_ID1, ROOM_TYPE1, DOOR_ID1, DOOR_TYPE1).
+
+% count the doors of a placed room
+n_doors(ROOM_ID, ROOM_TYPE, N) :-
+    placed(ROOM_ID, ROOM_TYPE, _, _, _, _),
+    N = #count { DOOR_ID, DOOR_TYPE, DIRECTION : door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, _, _), DOOR_TYPE, DIRECTION) }.
+
+% count the connections of a placed room
+n_connections(ROOM_ID, ROOM_TYPE, N) :-
+    placed(ROOM_ID, ROOM_TYPE, _, _, _, _),
+    N = #count { ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DOOR_ID2, DOOR_TYPE2 : connected(ROOM_ID, ROOM_TYPE, DOOR_ID1, DOOR_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2) }.
+
+% it's impossible that if a placed room has a door, the door is not connected to any other room
+:- placed(ROOM_ID, ROOM_TYPE, _, _, _, _),
+    door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, _, _), DOOR_TYPE, DIRECTION),
+    not connected(ROOM_ID, ROOM_TYPE, DOOR_ID, DOOR_TYPE, _, _, _, _).
+
+% it's impossible that the number of doors of a placed room is not equal the number of connections of that room
+:- n_doors(ROOM_ID, ROOM_TYPE, N1),
+    n_connections(ROOM_ID, ROOM_TYPE, N2),
+    N1 != N2.
+
+%placed(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
+%    connected(ROOM_ID, ROOM_TYPE, DOOR_ID, DOOR_TYPE, ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2),
+%    x_placed_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, up, Xr),
+%    y_placed_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, up, Yr),
+%    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, down, X2),
+%    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, down, Y2),
+%    Xr2 = Xr - 1,
+%    Yr2 = Yr.
+
+
+
 #show connected/8.
-
+#show placed/6.
+#show placed_door/7.
