@@ -15,3 +15,5 @@ sprite_frames = ExtResource("2_gmudp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_gog65")
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
