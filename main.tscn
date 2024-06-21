@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=17 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
-[ext_resource type="Script" path="res://floor_generator.gd" id="2_bcxe2"]
+[ext_resource type="Script" path="res://floor_generator/floor_generator.gd" id="2_bcxe2"]
 [ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="3_5bsul"]
 [ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_76djf"]
+[ext_resource type="Script" path="res://floor_generator/worker.gd" id="3_sfckc"]
 [ext_resource type="Script" path="res://ui_manager.gd" id="3_yyapg"]
 [ext_resource type="Texture2D" uid="uid://dr2xl8fauv6jg" path="res://ui/loading_screen/loading_sheet.png" id="6_o03x6"]
 
@@ -76,6 +77,9 @@ script = ExtResource("1_a0qgy")
 
 [node name="FloorGenerator" type="Node2D" parent="."]
 script = ExtResource("2_bcxe2")
+
+[node name="Worker" type="HTTPRequest" parent="FloorGenerator"]
+script = ExtResource("3_sfckc")
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -237,7 +241,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="floor_generated" from="FloorGenerator" to="." method="_on_floor_generator_floor_generated"]
-[connection signal="server_shut" from="FloorGenerator" to="." method="_on_floor_generator_server_shut"]
+[connection signal="response_ready" from="FloorGenerator/Worker" to="FloorGenerator" method="_on_worker_response_ready"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="FloorGenerator" method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="FloorGenerator/Worker" method="_on_quit_pressed"]
