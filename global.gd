@@ -13,9 +13,14 @@ const DIRECTION_DOWN: int = -1
 const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
-var main_scene
-var current_room
+const ROOM_GENERATOR_PROGRAM_PATH = "res://asp/room_generator.asp"
 
-var player
+const SERVER_PATH = "./gdatalog/gdatalog_cli.py"
+const SERVER_URL = "http://127.0.0.1:8000/"
+var PID: int = -1
 
-var pid: int = -1
+var hallways = {}
+var bathrooms = {}
+var standard_classrooms = {}
+var lecture_halls = {}
+var offices = {}
