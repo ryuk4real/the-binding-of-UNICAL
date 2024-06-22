@@ -1,3 +1,4 @@
+class_name UIManager
 extends CanvasLayer
 
 @onready var new_game_button = $"MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game"

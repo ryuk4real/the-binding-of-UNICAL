@@ -15,8 +15,9 @@ const DIRECTION_RIGHT: int = -2
 
 const ROOM_GENERATOR_PROGRAM_PATH = "res://asp/room_generator.asp"
 
+const SERVER_ROOT = "./gdatalog"
 const SERVER_PATH = "./gdatalog/gdatalog_cli.py"
-const SERVER_URL = "http://127.0.0.1:8000/"
+const SERVER_URL = "http://127.0.0.1:8000/run/"
 var PID: int = -1
 
 var hallways = {}

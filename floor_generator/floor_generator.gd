@@ -8,13 +8,14 @@ signal floor_generated
 func generate_floor():
 	print("Generating floor...")
 	
-	# Generate floor
-	#TODO: get correct program string without escape
-	var room_generator_program = Utils.read_file(Global.ROOM_GENERATOR_PROGRAM_PATH, true)
+	var room_generator_program = Utils.read_file(Global.ROOM_GENERATOR_PROGRAM_PATH)
 	
+	# TODO: Loop until floor completed using worker.response
 	worker.post(room_generator_program)
 	await worker.response_ready
-	print(worker.response)
+	
+	#print(worker.response)
+	
 	
 	emit_signal("floor_generated")
 	print("Floor generated")
