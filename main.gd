@@ -28,6 +28,8 @@ func _on_new_game_pressed():
 	ui.show_loading_screen()
 	load_data()
 	floor_generator.generate_floor()
-
-func _on_floor_generator_floor_generated():
+	await floor_generator.floor_generated
+	
+	# TODO: setup start
 	ui.show_gui()
+

@@ -75,6 +75,27 @@ animations = [{
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
 
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.104294, 0.0897874, 0.0747913, 1)
+
 [node name="FloorGenerator" type="Node2D" parent="."]
 script = ExtResource("2_bcxe2")
 
@@ -85,14 +106,6 @@ script = ExtResource("3_sfckc")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_yyapg")
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.104294, 0.0897874, 0.0747913, 1)
 
 [node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 3
@@ -240,7 +253,6 @@ text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="floor_generated" from="FloorGenerator" to="." method="_on_floor_generator_floor_generated"]
 [connection signal="response_ready" from="FloorGenerator/Worker" to="FloorGenerator" method="_on_worker_response_ready"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]

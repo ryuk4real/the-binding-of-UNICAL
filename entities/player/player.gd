@@ -1,3 +1,4 @@
+class_name Player
 extends Entity
 
 @export var speed: float = 300.0
