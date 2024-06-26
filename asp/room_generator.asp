@@ -1,7 +1,7 @@
 % room(id,type,x_relative,y_relative)
 % door(id,room,door_type,direction)
 
-#const map_size = 30.
+#const map_size = 100.
 #const n_rooms = 10.
 
 #const hallway_configurations = 28.
@@ -695,38 +695,99 @@ opposite(right, left).
 opposite(down, up).
 
 % atoms to single coordinates
-x_pos(ROOM_ID, ROOM_TYPE, X) :- room(ROOM_ID, ROOM_TYPE, X, Y).
-y_pos(ROOM_ID, ROOM_TYPE, Y) :- room(ROOM_ID, ROOM_TYPE, X, Y).
+x_pos_room(ROOM_ID, ROOM_TYPE, X) :- room(ROOM_ID, ROOM_TYPE, X, Y).
+y_pos_room(ROOM_ID, ROOM_TYPE, Y) :- room(ROOM_ID, ROOM_TYPE, X, Y).
 
 x_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, X) :- door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION).
 y_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Y) :- door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, X, Y), DOOR_TYPE, DIRECTION).
 
-x_placed_room(ROOM_ID, ROOM_TYPE, Xr) :- placed(ROOM_ID, ROOM_TYPE, _, _, Xr, _).
-y_placed_room(ROOM_ID, ROOM_TYPE, Yr) :- placed(ROOM_ID, ROOM_TYPE, _, _, _, Yr).
 % ----------------------------------------------------------------------------------
 
+% Count the number of old rooms
+n_old_rooms(N) :- N = #count { ROOM_ID, ROOM_TYPE : placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _) }.
+
 % Randomly choose hallway room if no other room is already placed
-placed(@delta(randint(0, hallway_configurations)), "hallway", 0, 0, map_size/2, map_size/2).
+placed_new(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr) :-
+    n_old_rooms(0),
+    ROOM_ID = @delta(randint(0, hallway_configurations)),
+    ROOM_TYPE = "hallway",
+    X = 0,
+    Y = 0,
+    Xr = map_size/2,
+    Yr = map_size/2.
+
 
 % Place all the tiles if a tile of the same room is already placed
-placed(ROOM_ID1, ROOM_TYPE1, X1, Y1, Xr1, Yr1) :-
-    placed(ROOM_ID1, ROOM_TYPE1, X2, Y2, Xr2, Yr2),
-    x_pos(ROOM_ID1, ROOM_TYPE1, X2),
-    y_pos(ROOM_ID1, ROOM_TYPE1, Y2),
-    x_pos(ROOM_ID1, ROOM_TYPE1, X1),
-    y_pos(ROOM_ID1, ROOM_TYPE1, Y1),
+placed_new(ROOM_ID1, ROOM_TYPE1, X1, Y1, Xr1, Yr1) :-
+    x_placed_new(ROOM_ID1, ROOM_TYPE1, X2, Xr2),
+    y_placed_new(ROOM_ID1, ROOM_TYPE1, Y2, Yr2),
+    x_pos_room(ROOM_ID1, ROOM_TYPE1, X2),
+    y_pos_room(ROOM_ID1, ROOM_TYPE1, Y2),
+    x_pos_room(ROOM_ID1, ROOM_TYPE1, X1),
+    y_pos_room(ROOM_ID1, ROOM_TYPE1, Y1),
     Xr1 = Xr2 + X1 - X2,
     Yr1 = Yr2 + Y1 - Y2.
 
-%% A room can't be placed outside the map
-:- placed(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr), not map(Xr, Yr).
+
+% A room can't be placed outside the map
+:- placed_new(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr), not map(Xr, Yr).
 
 % Two rooms can't be placed in the same map coordinates
-:- placed(ROOM_ID, ROOM_TYPE, _, _, Xr, Yr),
-    placed(ROOM_ID2, ROOM_TYPE2, _, _, Xr, Yr),
+:- placed_new(ROOM_ID, ROOM_TYPE, _, _, Xr, Yr),
+    placed_new(ROOM_ID2, ROOM_TYPE2, _, _, Xr, Yr),
     ROOM_ID != ROOM_ID2.
 
-% Guess connection
+% atoms to single coordinates
+x_placed_new(ROOM_ID, ROOM_TYPE, X, Xr) :- placed_new(ROOM_ID, ROOM_TYPE, X, _, Xr, _).
+y_placed_new(ROOM_ID, ROOM_TYPE, Y, Yr) :- placed_new(ROOM_ID, ROOM_TYPE, _, Y, _, Yr).
+x_placed_old(ROOM_ID, ROOM_TYPE, X, Xr) :- placed_old(ROOM_ID, ROOM_TYPE, X, _, Xr, _).
+y_placed_old(ROOM_ID, ROOM_TYPE, Y, Yr) :- placed_old(ROOM_ID, ROOM_TYPE, _, Y, _, Yr).
+
+% A new room can't be placed on top of an old room
+:- placed_old(ROOM_ID, ROOM_TYPE, _, _, Xr, Yr),
+    placed_new(ROOM_ID2, ROOM_TYPE2, _, _, Xr, Yr),
+    ROOM_ID != ROOM_ID2.
 
 
-#show placed/6.
+placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, Yr):-
+    x_placed_old(ROOM_ID, ROOM_TYPE, X, Xr),
+    y_placed_old(ROOM_ID, ROOM_TYPE, Y, Yr),
+    x_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, X),
+    y_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Y).
+
+x_placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr):-
+    placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, _).
+
+y_placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr):-
+    placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, _, Yr).
+
+% Guess connections
+{ connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) :
+    x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
+    y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Xr2),
+    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Yr2),
+    opposite(DIRECTION1, DIRECTION2),
+    DOOR_TYPE1 = ROOM_TYPE2,
+    DOOR_TYPE2 = ROOM_TYPE1
+}.
+
+% A door can't be connected to two different doors
+:- connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID3, ROOM_TYPE3, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID3, DOOR_TYPE3, DIRECTION3),
+    ROOM_ID2 != ROOM_ID3.
+
+% A door must have a connection
+:- placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, Yr),
+    not connected(ROOM_ID, ROOM_TYPE, _, _, DOOR_ID, DOOR_TYPE, DIRECTION, _, _, _).
+
+placed_old(26,"hallway",0,0,50,50).
+placed_old(26,"hallway",0,1,50,51).
+placed_old(26,"hallway",0,2,50,52).
+placed_old(26,"hallway",0,3,50,53).
+placed_old(26,"hallway",0,4,50,54).
+
+
+#show placed_old/6.
+#show placed_door_old/7.
+#show connected/10.
