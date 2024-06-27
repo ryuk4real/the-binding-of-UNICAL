@@ -772,22 +772,82 @@ y_placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr):-
     DOOR_TYPE2 = ROOM_TYPE1
 }.
 
+% Place a new room if exist a valid connection based on door direction
+placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
+    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
+    y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
+    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Y2),
+    not placed_old(ROOM_ID2, ROOM_TYPE2, _, _, _, _),
+    DIRECTION1 = up,
+    DIRECTION2 = down,
+    Xr2 = Xr1 - 1,
+    Yr2 = Yr1.
+
+placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
+    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
+    y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
+    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Y2),
+    not placed_old(ROOM_ID2, ROOM_TYPE2, _, _, _, _),
+    DIRECTION1 = down,
+    DIRECTION2 = up,
+    Xr2 = Xr1 + 1,
+    Yr2 = Yr1.
+
+placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
+    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
+    y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
+    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Y2),
+    not placed_old(ROOM_ID2, ROOM_TYPE2, _, _, _, _),
+    DIRECTION1 = left,
+    DIRECTION2 = right,
+    Xr2 = Xr1,
+    Yr2 = Yr1 - 1.
+
+placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
+    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
+    y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
+    x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
+    y_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Y2),
+    not placed_old(ROOM_ID2, ROOM_TYPE2, _, _, _, _),
+    DIRECTION1 = right,
+    DIRECTION2 = left,
+    Xr2 = Xr1,
+    Yr2 = Yr1 + 1.
+
+placed_door_new(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, Yr):-
+    x_placed_new(ROOM_ID, ROOM_TYPE, X, Xr),
+    y_placed_new(ROOM_ID, ROOM_TYPE, Y, Yr),
+    x_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, X),
+    y_pos_room_door(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Y).
+
+x_placed_door_new(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr):-
+    placed_door_new(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, _).
+
+y_placed_door_new(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr):-
+    placed_door_new(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, _, Yr).
+
 % A door can't be connected to two different doors
 :- connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID3, ROOM_TYPE3, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID3, DOOR_TYPE3, DIRECTION3),
     ROOM_ID2 != ROOM_ID3.
 
-% A door must have a connection
+% A door of an already placed room must have a connection
 :- placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Xr, Yr),
     not connected(ROOM_ID, ROOM_TYPE, _, _, DOOR_ID, DOOR_TYPE, DIRECTION, _, _, _).
 
-placed_old(26,"hallway",0,0,50,50).
-placed_old(26,"hallway",0,1,50,51).
-placed_old(26,"hallway",0,2,50,52).
-placed_old(26,"hallway",0,3,50,53).
-placed_old(26,"hallway",0,4,50,54).
-
+% Connections must be simmetric
+connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) :-
+    connected(ROOM_ID2, ROOM_TYPE2, ROOM_ID1, ROOM_TYPE1, DOOR_ID2, DOOR_TYPE2, DIRECTION2, DOOR_ID1, DOOR_TYPE1, DIRECTION1).
 
 #show placed_old/6.
 #show placed_door_old/7.
+#show placed_door_new/7.
 #show connected/10.
+#show placed_new/6.
