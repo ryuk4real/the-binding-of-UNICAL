@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtd5nqo1d6lt1"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_35yww"]
+[ext_resource type="TileSet" uid="uid://di8s75ct03blo" path="res://floor/rooms/bathroom/b_walls.tres" id="2_nug7y"]
+[ext_resource type="PackedScene" uid="uid://bqacsrbi6ofhu" path="res://floor/rooms/doors/bathroom_door.tscn" id="3_opdbr"]
+
+[node name="Bathroom" instance=ExtResource("1_35yww")]
+id = 3
+type = 4
+
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_nug7y")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 262144, 4, 131072, 0, 2, 1, 327680, 3, 65537, 327680, 4, 131073, 327680, 5, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 2, 3, 65536, 0, 65539, 65536, 1, 131075, 65536, 2, 4, 65536, 0, 65540, 65536, 1, 131076, 65536, 2, 5, 131072, 0, 65541, 131072, 1, 131077, 131072, 2)
+
+[node name="BathroomDoor" parent="Doors" index="0" instance=ExtResource("3_opdbr")]
+position = Vector2(144, 79)
+rotation = -3.14159

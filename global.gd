@@ -15,6 +15,14 @@ const TOTAL_OFFICES = 8
 const TOTAL_BATHROOMS = 9
 const TOTAL_LABS = 8
 
+const HALLWAYS_PATH = "res://floor/rooms/hallway/"
+const INNER_HALLWAYS_PATH = "res://floor/rooms/inner_hallway/"
+const LECTURE_HALLS_PATH = "res://floor/rooms/classroom/lecture_hall/"
+const STANDARD_CLASSROOMS_PATH = "res://floor/rooms/classroom/standard_classroom/"
+const OFFICES_PATH = "res://floor/rooms/office/"
+const BATHROOMS_PATH = "res://floor/rooms/bathroom/"
+const LABS_PATH = "res://floor/rooms/labs/"
+
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
 const DIRECTION_DOWN: int = -1

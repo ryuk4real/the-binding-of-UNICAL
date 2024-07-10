@@ -14,11 +14,10 @@ func start_server() -> void:
 	# Global.PID = OS.create_process("poetry", ["-C", Global.SERVER_ROOT, "run", "python", Global.SERVER_PATH, "server"], true)
 	Global.PID = OS.create_process("python", [Global.SERVER_PATH, "server"], true)
 	
-	post("{}")
+	post("")
 	await SignalBus.response_ready
 	
 	SignalBus.server_started.emit()
-	print("server started signal emitted")
 	
 func shutdown_server() -> void:
 	OS.kill(Global.PID)

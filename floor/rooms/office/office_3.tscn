@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://q4n1df0x5u5u"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_4won6"]
+[ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_0h1rg"]
+[ext_resource type="TileSet" uid="uid://b1rqh4khc4aje" path="res://floor/rooms/office/o_obstacles.tres" id="3_pxp4u"]
+[ext_resource type="PackedScene" uid="uid://daawvvjlscgxw" path="res://floor/rooms/doors/office_door.tscn" id="4_8det4"]
+
+[node name="Room" instance=ExtResource("1_4won6")]
+id = 3
+type = 3
+
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_0h1rg")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 131072, 0, 65537, 65536, 1, 65538, 65536, 1, 65539, 65536, 1, 65540, 65536, 1, 65541, 131072, 1, 131072, 0, 1, 131077, 131072, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 196608, 0, 1, 196613, 131072, 1, 262144, 0, 1, 262149, 131072, 1, 196609, 65536, 1, 196610, 65536, 1, 196611, 65536, 1, 196612, 65536, 1, 262145, 65536, 1, 262146, 65536, 1, 262147, 65536, 1, 262148, 65536, 1, 327680, 0, 2, 327685, 131072, 2, 327681, 65536, 2, 327682, 65536, 2, 327683, 65536, 2, 327684, 65536, 2)
+
+[node name="Obstacles" parent="." index="1"]
+tile_set = ExtResource("3_pxp4u")
+layer_0/tile_data = PackedInt32Array(196612, 196609, 805306374, 196613, 131073, 805306375, 196614, 131073, 805306375, 196615, 131073, 805306374, 131077, 589825, 7, 196609, 1, 1610612744, 524298, 458753, 1342177285, 458762, 393217, 1342177285, 524299, 458753, 1342177284, 458763, 393217, 1342177284, 327690, 458753, 1342177285, 262154, 393217, 1342177285, 327691, 458753, 1342177284, 262155, 393217, 1342177284, 327680, 524289, 1610612738, 327681, 524289, 1610612739, 458753, 65537, 1610612745, 524289, 65537, 1610612745, 655367, 262145, 805306374)
+
+[node name="OfficeDoor" parent="Doors" index="0" instance=ExtResource("4_8det4")]
+position = Vector2(144, 175)
+rotation = 3.14159
+
+[node name="Decorations" type="TileMap" parent="." index="4"]
+tile_set = ExtResource("3_pxp4u")
+format = 2
+layer_0/tile_data = PackedInt32Array(196614, 589825, 5, 196612, 589825, 6, 196613, 589825, 4, 196615, 458753, 805306375)

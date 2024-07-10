@@ -28,25 +28,25 @@ func _save_data() -> void:
 func _load_data() -> void:
 	
 	for i: int in range(0, Global.TOTAL_HALLWAYS - 1):
-		hallways_preloader.add_resource(str(i), load("res://rooms/hallway/hallway_"+ str(i) +".tscn"))
+		hallways_preloader.add_resource(str(i), load(Global.HALLWAYS_PATH + "hallway_" + str(i) + ".tscn"))
 
 	for i: int in range(0, Global.TOTAL_INNER_HALLWAYS - 1):
-		inner_hallways_preloader.add_resource(str(i), load("res://rooms/inner_hallway/inner_hallway_"+ str(i) +".tscn"))
+		inner_hallways_preloader.add_resource(str(i), load(Global.INNER_HALLWAYS_PATH + "inner_hallway_" + str(i) + ".tscn"))
 	
 	for i: int in range(0, Global.TOTAL_LECTURE_HALLS - 1):
-		classrooms_preloader.add_resource(str(i), load("res://rooms/classroom/lecture_hall/classroom_"+ str(i) +".tscn"))
+		classrooms_preloader.add_resource(str(i), load(Global.LECTURE_HALLS_PATH + "classroom_" + str(i) + ".tscn"))
 	
 	for i: int in range(Global.TOTAL_LECTURE_HALLS, Global.TOTAL_CLASSROOMS):
-		classrooms_preloader.add_resource(str(i), load("res://rooms/classroom/standard_classroom/classroom_"+ str(i) +".tscn"))
+		classrooms_preloader.add_resource(str(i), load(Global.STANDARD_CLASSROOMS_PATH + "classroom_"+ str(i) +".tscn"))
 	
 	for i: int in range(0, Global.TOTAL_OFFICES - 1):
-		offices_preloader.add_resource(str(i), load("res://rooms/office/office_"+ str(i) +".tscn"))
+		offices_preloader.add_resource(str(i), load(Global.OFFICES_PATH + "office_" + str(i) + ".tscn"))
 	
 	for i: int in range(0, Global.TOTAL_BATHROOMS - 1):
-		bathrooms_preloader.add_resource(str(i), load("res://rooms/bathroom/bathroom_"+ str(i) +".tscn"))
+		bathrooms_preloader.add_resource(str(i), load(Global.BATHROOMS_PATH + "bathroom_" + str(i) + ".tscn"))
 
 	for i: int in range(0, Global.TOTAL_LABS - 1):
-		labs_preloader.add_resource(str(i), load("res://rooms/lab/lab_"+ str(i) +".tscn"))
+		labs_preloader.add_resource(str(i), load(Global.LABS_PATH + "lab_" + str(i) + ".tscn"))
 	
 	emit_signal("loaded_data")
 

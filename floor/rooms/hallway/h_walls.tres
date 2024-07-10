@@ -1,0 +1,41 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dhy06gr4be123"]
+
+[ext_resource type="Texture2D" uid="uid://c4anr1pycg5s4" path="res://floor/rooms/hallway/hallway.png" id="1_ddts5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcxlb"]
+texture = ExtResource("1_ddts5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+4:4/next_alternative_id = 4
+4:4/0 = 0
+4:4/2 = 2
+4:4/2/transpose = true
+4:4/3 = 3
+4:4/3/flip_h = true
+4:4/3/transpose = true
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_xcxlb")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://daawvvjlscgxw"]
+
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="1_cnv5v"]
+[ext_resource type="Texture2D" uid="uid://ten4j3kcmhu" path="res://floor/rooms/inner_hallway/inner_hallway.png" id="2_0xtul"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erp5p"]
+atlas = ExtResource("2_0xtul")
+region = Rect2(96, 96, 64, 32)
+
+[node name="OfficeDoor" instance=ExtResource("1_cnv5v")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_erp5p")
+hframes = 2

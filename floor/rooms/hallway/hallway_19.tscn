@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0pp1hhra064l"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_wlymn"]
+[ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_h5p5o"]
+[ext_resource type="PackedScene" uid="uid://b0gbhfconbug" path="res://floor/rooms/doors/inner_hallway_door.tscn" id="3_0bq5i"]
+[ext_resource type="PackedScene" uid="uid://bqacsrbi6ofhu" path="res://floor/rooms/doors/bathroom_door.tscn" id="4_tkd34"]
+[ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="5_kfckp"]
+
+[node name="InnerHallway" instance=ExtResource("1_wlymn")]
+id = 19
+
+[node name="Walls" parent="." index="0"]
+tile_set = ExtResource("2_h5p5o")
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 2, 3, 65536, 0, 65539, 65536, 1, 131075, 65536, 2, 4, 0, 3, 65540, 65536, 1, 131076, 65536, 2, 5, 65536, 0, 65541, 65536, 1, 131077, 65536, 2, 6, 65536, 0, 65542, 65536, 1, 131078, 65536, 2, 7, 65536, 0, 65543, 65536, 1, 131079, 65536, 2, 8, 65536, 0, 65544, 65536, 1, 131080, 65536, 2, 10, 65536, 0, 65546, 65536, 1, 131082, 65536, 2, 11, 131072, 0, 65547, 131072, 1, 131083, 131072, 2, 9, 65536, 0, 131081, 65536, 2, 65545, 65536, 1)
+
+[node name="InnerHallwayDoor0" parent="Doors" index="0" instance=ExtResource("3_0bq5i")]
+position = Vector2(48, 79)
+rotation = 3.14159
+
+[node name="InnerHallwayDoor1" parent="Doors" index="1" instance=ExtResource("3_0bq5i")]
+position = Vector2(240, 79)
+rotation = 3.14159
+
+[node name="BathroomDoor0" parent="Doors" index="2" instance=ExtResource("4_tkd34")]
+position = Vector2(336, 17)
+
+[node name="VendingMachine" parent="." index="3" instance=ExtResource("5_kfckp")]
+position = Vector2(48, 26)
