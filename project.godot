@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://global.gd"
+SignalBus="*res://signal_bus.gd"
 
 [display]
 

@@ -75,6 +75,38 @@ animations = [{
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
 
+[node name="Resources" type="Node2D" parent="."]
+
+[node name="HallwaysPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
+[node name="InnerHallwaysPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
+[node name="ClassroomsPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
+[node name="OfficesPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
+[node name="BathroomsPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
+[node name="LabsPreloader" type="ResourcePreloader" parent="Resources"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -138,7 +170,7 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 theme_override_constants/separation = 115
 
-[node name="Label" type="Label" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_5bsul")
 theme_override_font_sizes/font_size = 81
@@ -253,7 +285,6 @@ text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="response_ready" from="FloorGenerator/Worker" to="FloorGenerator" method="_on_worker_response_ready"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="FloorGenerator/Worker" method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
