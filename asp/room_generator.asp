@@ -1,8 +1,4 @@
-% room(id,type,x_relative,y_relative)
-% door(id,room,door_type,direction)
-
 #const map_size = 100.
-#const n_rooms = 4.
 
 #const hallway_configurations = 28.
 #const inner_hallway_configurations = 56.
@@ -145,20 +141,20 @@ room(16, type_hallway, 1, 2).
 door(0, room(16, type_hallway, 1, 1), type_inner_hallway, down).
 door(0, room(16, type_hallway, 1, 2), type_bathroom, right).
 
+room(17, type_hallway, 0, 0).
+room(17, type_hallway, 0, 1).
 room(17, type_hallway, 0, 2).
-room(17, type_hallway, 1, 0).
-room(17, type_hallway, 1, 1).
-room(17, type_hallway, 1, 2).
-door(0, room(17, type_hallway, 1, 1), type_inner_hallway, down).
-door(0, room(17, type_hallway, 1, 0), type_bathroom, up).
+room(17, type_hallway, -1, 2).
+door(0, room(17, type_hallway, 0, 1), type_inner_hallway, down).
+door(0, room(17, type_hallway, 0, 0), type_bathroom, up).
 
+room(18, type_hallway, 0, 0).
+room(18, type_hallway, 0, 1).
 room(18, type_hallway, 0, 2).
-room(18, type_hallway, 1, 0).
-room(18, type_hallway, 1, 1).
-room(18, type_hallway, 1, 2).
-door(0, room(18, type_hallway, 1, 0), type_inner_hallway, down).
-door(1, room(18, type_hallway, 1, 2), type_bathroom, down).
-door(0, room(18, type_hallway, 1, 0), type_bathroom, up).
+room(18, type_hallway, -1, 2).
+door(0, room(18, type_hallway, 0, 0), type_inner_hallway, down).
+door(1, room(18, type_hallway, 0, 2), type_bathroom, down).
+door(0, room(18, type_hallway, 0, 0), type_bathroom, up).
 
 room(19, type_hallway, 0, 0..3).
 door(0, room(19, type_hallway, 0, 0), type_inner_hallway, down).
@@ -247,7 +243,6 @@ door(0, room(5, type_inner_hallway, 0, 0), type_office, left).
 door(1, room(5, type_inner_hallway, 1, 0), type_office, right).
 
 room(6, type_inner_hallway, 0..1, 0).
-room(6, type_inner_hallway, 1, 0).
 door(0, room(6, type_inner_hallway, 0, 0), type_hallway, up).
 door(0, room(6, type_inner_hallway, 1, 0), type_inner_hallway, down).
 door(0, room(6, type_inner_hallway, 1, 0), type_office, right).
@@ -293,7 +288,6 @@ door(0, room(13, type_inner_hallway, 1, 0), type_hallway, down).
 door(0, room(13, type_inner_hallway, 0, 0), type_office, up).
 empty_wall(13, type_inner_hallway, left).
 empty_wall(13, type_inner_hallway, right).
-
 
 room(14, type_inner_hallway, 0..2, 0).
 door(0, room(14, type_inner_hallway, 0, 0), type_hallway, up).
@@ -584,13 +578,220 @@ empty_wall(61, type_inner_hallway, left).
 
 room(62, type_inner_hallway, 0..2, 0).
 door(0, room(62, type_inner_hallway, 0, 0), type_hallway, up).
-door(0, room(62, type_inner_hallway, 1, 0), type_classroom, right).
+door(0, room(62, type_inner_hallway, 1, 0), type_office, right).
 empty_wall(62, type_inner_hallway, left).
 
 room(63, type_inner_hallway, 0..2, 0).
 door(0, room(63, type_inner_hallway, 0, 0), type_hallway, up).
-door(0, room(63, type_inner_hallway, 1, 0), type_classroom, left).
+door(0, room(63, type_inner_hallway, 1, 0), type_office, left).
 empty_wall(63, type_inner_hallway, right).
+
+room(64, type_inner_hallway, 0..2, 0).
+door(0, room(64, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(64, type_inner_hallway, 0, 0), type_classroom, left).
+door(1, room(64, type_inner_hallway, 2, 0), type_classroom, left).
+empty_wall(64, type_inner_hallway, right).
+
+room(65, type_inner_hallway, 0..2, 0).
+door(0, room(65, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(65, type_inner_hallway, 0, 0), type_classroom, right).
+door(1, room(65, type_inner_hallway, 2, 0), type_classroom, right).
+empty_wall(65, type_inner_hallway, left).
+
+room(66, type_inner_hallway, 0..2, 0).
+door(0, room(66, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(66, type_inner_hallway, 0, 0), type_classroom, left).
+door(1, room(66, type_inner_hallway, 2, 0), type_classroom, left).
+empty_wall(66, type_inner_hallway, right).
+
+room(67, type_inner_hallway, 0..2, 0).
+door(0, room(67, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(67, type_inner_hallway, 0, 0), type_classroom, right).
+door(1, room(67, type_inner_hallway, 2, 0), type_classroom, right).
+empty_wall(67, type_inner_hallway, left).
+
+room(68, type_inner_hallway, 0..2, 0).
+door(0, room(68, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(68, type_inner_hallway, 1, 0), type_classroom, left).
+door(1, room(68, type_inner_hallway, 2, 0), type_classroom, left).
+empty_wall(68, type_inner_hallway, right).
+
+room(69, type_inner_hallway, 0..2, 0).
+door(0, room(69, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(69, type_inner_hallway, 1, 0), type_classroom, right).
+door(1, room(69, type_inner_hallway, 2, 0), type_classroom, right).
+empty_wall(69, type_inner_hallway, left).
+
+room(70, type_inner_hallway, 0..2, 0).
+door(0, room(70, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(70, type_inner_hallway, 0, 0), type_office, left).
+door(1, room(70, type_inner_hallway, 2, 0), type_office, left).
+empty_wall(70, type_inner_hallway, right).
+
+room(71, type_inner_hallway, 0..2, 0).
+door(0, room(71, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(71, type_inner_hallway, 0, 0), type_office, right).
+door(1, room(71, type_inner_hallway, 2, 0), type_office, right).
+empty_wall(71, type_inner_hallway, left).
+
+room(72, type_inner_hallway, 0..2, 0).
+door(0, room(72, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(72, type_inner_hallway, 0, 0), type_office, left).
+door(1, room(72, type_inner_hallway, 2, 0), type_office, left).
+empty_wall(72, type_inner_hallway, right).
+
+room(73, type_inner_hallway, 0..2, 0).
+door(0, room(73, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(73, type_inner_hallway, 0, 0), type_office, right).
+door(1, room(73, type_inner_hallway, 2, 0), type_office, right).
+empty_wall(73, type_inner_hallway, left).
+
+room(74, type_inner_hallway, 0..2, 0).
+door(0, room(74, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(74, type_inner_hallway, 0, 0), type_office, up).
+door(1, room(74, type_inner_hallway, 2, 0), type_office, left).
+empty_wall(74, type_inner_hallway, right).
+
+room(75, type_inner_hallway, 0..2, 0).
+door(0, room(75, type_inner_hallway, 2, 0), type_hallway, down).
+door(0, room(75, type_inner_hallway, 0, 0), type_office, up).
+door(1, room(75, type_inner_hallway, 2, 0), type_office, right).
+empty_wall(75, type_inner_hallway, left).
+
+room(76, type_inner_hallway, 0..2, 0).
+door(0, room(76, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(76, type_inner_hallway, 0, 0), type_office, left).
+door(1, room(76, type_inner_hallway, 2, 0), type_office, down).
+empty_wall(76, type_inner_hallway, right).
+
+room(77, type_inner_hallway, 0..2, 0).
+door(0, room(77, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(77, type_inner_hallway, 0, 0), type_office, right).
+door(1, room(77, type_inner_hallway, 2, 0), type_office, down).
+empty_wall(77, type_inner_hallway, left).
+
+room(78, type_inner_hallway, 0..2, 0).
+door(0, room(78, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(78, type_inner_hallway, 0, 0), type_classroom, left).
+door(1, room(78, type_inner_hallway, 2, 0), type_classroom, down).
+empty_wall(78, type_inner_hallway, right).
+
+room(79, type_inner_hallway, 0..2, 0).
+door(0, room(79, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(79, type_inner_hallway, 0, 0), type_classroom, right).
+door(1, room(79, type_inner_hallway, 2, 0), type_classroom, down).
+empty_wall(79, type_inner_hallway, left).
+
+room(80, type_inner_hallway, 0..1, 0).
+door(0, room(80, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(80, type_inner_hallway, 1, 0), type_office, left).
+door(0, room(80, type_inner_hallway, 1, 0), type_type_inner_hallway, down).
+empty_wall(80, type_inner_hallway, right).
+
+room(81, type_inner_hallway, 0..1, 0).
+door(0, room(81, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(81, type_inner_hallway, 0, 0), type_office, right).
+door(0, room(81, type_inner_hallway, 1, 0), type_type_inner_hallway, down).
+empty_wall(81, type_inner_hallway, left).
+
+room(82, type_inner_hallway, 0..1, 0).
+door(0, room(82, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(82, type_inner_hallway, 1, 0), type_office, right).
+door(0, room(82, type_inner_hallway, 1, 0), type_type_inner_hallway, down).
+empty_wall(82, type_inner_hallway, left).
+
+room(83, type_inner_hallway, 0..1, 0).
+door(0, room(83, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(83, type_inner_hallway, 0, 0), type_office, left).
+door(0, room(83, type_inner_hallway, 1, 0), type_type_inner_hallway, down).
+empty_wall(83, type_inner_hallway, right).
+
+room(84, type_inner_hallway, 0..1, 0).
+door(0, room(84, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(84, type_inner_hallway, 1, 0), type_classroom, left).
+door(0, room(84, type_inner_hallway, 1, 0), type_inner_hallway, down).
+empty_wall(84, type_inner_hallway, right).
+
+room(85, type_inner_hallway, 0..1, 0).
+door(0, room(85, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(85, type_inner_hallway, 0, 0), type_classroom, right).
+door(0, room(85, type_inner_hallway, 1, 0), type_inner_hallway, down).
+empty_wall(85, type_inner_hallway, left).
+
+room(86, type_inner_hallway, 0..1, 0).
+door(0, room(86, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(86, type_inner_hallway, 1, 0), type_classroom, left).
+door(0, room(86, type_inner_hallway, 1, 0), type_inner_hallway, down).
+empty_wall(86, type_inner_hallway, left).
+
+room(87, type_inner_hallway, 0..1, 0).
+door(0, room(87, type_inner_hallway, 0, 0), type_hallway, up).
+door(0, room(87, type_inner_hallway, 0, 0), type_classroom, right).
+door(0, room(87, type_inner_hallway, 1, 0), type_inner_hallway, down).
+
+room(88, type_inner_hallway, 0..1, 0).
+door(0, room(88, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(88, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(88, type_inner_hallway, 1, 0), type_office, left).
+empty_wall(88, type_inner_hallway, right).
+
+room(89, type_inner_hallway, 0..1, 0).
+door(0, room(89, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(89, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(89, type_inner_hallway, 1, 0), type_office, right).
+empty_wall(89, type_inner_hallway, left).
+
+room(90, type_inner_hallway, 0..1, 0).
+door(0, room(90, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(90, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(90, type_inner_hallway, 1, 0), type_office, left).
+empty_wall(90, type_inner_hallway, left).
+
+room(91, type_inner_hallway, 0..1, 0).
+door(0, room(91, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(91, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(91, type_inner_hallway, 0, 0), type_office, left).
+empty_wall(91, type_inner_hallway, right).
+
+room(92, type_inner_hallway, 0..1, 0).
+door(0, room(92, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(92, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(92, type_inner_hallway, 1, 0), type_classroom, right).
+empty_wall(92, type_inner_hallway, right).
+
+room(93, type_inner_hallway, 0..1, 0).
+door(0, room(93, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(93, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(93, type_inner_hallway, 0, 0), type_classroom, right).
+empty_wall(93, type_inner_hallway, left).
+
+room(94, type_inner_hallway, 0..1, 0).
+door(0, room(94, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(94, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(94, type_inner_hallway, 1, 0), type_classroom, right).
+empty_wall(94, type_inner_hallway, left).
+
+room(95, type_inner_hallway, 0..1, 0).
+door(0, room(95, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(95, type_inner_hallway, 1, 0), type_inner_hallway, down).
+door(0, room(95, type_inner_hallway, 0, 0), type_classroom, left).
+empty_wall(95, type_inner_hallway, right).
+
+room(96, type_inner_hallway, 0, 0).
+door(0, room(96, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(96, type_inner_hallway, 0, 0), type_inner_hallway, down).
+door(0, room(96, type_inner_hallway, 0, 0), type_classroom, left).
+door(1, room(96, type_inner_hallway, 0, 0), type_classroom, right).
+
+room(97, type_inner_hallway, 0, 0).
+door(0, room(97, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(97, type_inner_hallway, 0, 0), type_inner_hallway, down).
+door(0, room(97, type_inner_hallway, 0, 0), type_office, left).
+door(1, room(97, type_inner_hallway, 0, 0), type_office, right).
+
+room(98, type_inner_hallway, 0, 0).
+door(0, room(98, type_inner_hallway, 0, 0), type_inner_hallway, up).
+door(1, room(98, type_inner_hallway, 0, 0), type_inner_hallway, down).
 
 % bathroom
 
@@ -667,79 +868,82 @@ room(3, type_classroom, 0..9, 0..7).
 door(0, room(3, type_classroom, 8, 0), type_inner_hallway, left).
 
 
+
+
+% classroom
 % standard classroom
+
+room(0, type_classroom, 0..1, 0..2).
+door(0, room(0, type_classroom, 0, 1), type_inner_hallway, up).
+
+room(1, type_classroom, 0..1, 0..1).
+door(0, room(1, type_classroom, 0, 0), type_inner_hallway, left).
+
+room(2, type_classroom, 0..1, 0..1).
+door(0, room(2, type_classroom, 0, 1), type_inner_hallway, right).
+
+room(3, type_classroom, 0..2, 0..1).
+door(0, room(3, type_classroom, 1, 1), type_inner_hallway, right).
 
 room(4, type_classroom, 0..1, 0..2).
 door(0, room(4, type_classroom, 0, 1), type_inner_hallway, up).
 
-room(5, type_classroom, 0..1, 0..1).
-door(0, room(5, type_classroom, 0, 0), type_inner_hallway, left).
+room(5, type_classroom, 0..1, 0..2).
+door(0, room(5, type_classroom, 1, 1), type_inner_hallway, down).
 
-room(6, type_classroom, 0..1, 0..1).
-door(0, room(6, type_classroom, 0, 1), type_inner_hallway, right).
+room(6, type_classroom, 0..1, 0..2).
+door(0, room(6, type_classroom, 1, 1), type_inner_hallway, down).
 
-room(7, type_classroom, 0..2, 0..1).
+room(7, type_classroom, 0..1, 0..1).
 door(0, room(7, type_classroom, 1, 1), type_inner_hallway, right).
 
-room(8, type_classroom, 0..1, 0..2).
-door(0, room(8, type_classroom, 0, 1), type_inner_hallway, up).
+room(8, type_classroom, 0..1, 0..1).
+door(0, room(8, type_classroom, 1, 0), type_inner_hallway, left).
 
-room(9, type_classroom, 0..1, 0..2).
-door(0, room(9, type_classroom, 1, 1), type_inner_hallway, down).
+room(9, type_classroom, 0..1, 0..1).
+door(0, room(9, type_classroom, 0, 1), type_inner_hallway, up).
 
-room(10, type_classroom, 0..1, 0..2).
+room(10, type_classroom, 0..1, 0..1).
 door(0, room(10, type_classroom, 1, 1), type_inner_hallway, down).
 
 room(11, type_classroom, 0..1, 0..1).
-door(0, room(11, type_classroom, 1, 1), type_inner_hallway, right).
+door(0, room(11, type_classroom, 0, 0), type_inner_hallway, up).
 
 room(12, type_classroom, 0..1, 0..1).
-door(0, room(12, type_classroom, 1, 0), type_inner_hallway, left).
+door(0, room(12, type_classroom, 1, 0), type_inner_hallway, down).
 
-room(13, type_classroom, 0..1, 0..1).
-door(0, room(13, type_classroom, 0, 1), type_inner_hallway, up).
+room(13, type_classroom, 0..1, 0..2).
+door(0, room(13, type_classroom, 0, 2), type_inner_hallway, up).
 
-room(14, type_classroom, 0..1, 0..1).
-door(0, room(14, type_classroom, 1, 1), type_inner_hallway, down).
+room(14, type_classroom, 0..1, 0..2).
+door(0, room(14, type_classroom, 1, 2), type_inner_hallway, down).
 
-room(15, type_classroom, 0..1, 0..1).
+room(15, type_classroom, 0..1, 0..2).
 door(0, room(15, type_classroom, 0, 0), type_inner_hallway, up).
 
-room(16, type_classroom, 0..1, 0..1).
+room(16, type_classroom, 0..1, 0..2).
 door(0, room(16, type_classroom, 1, 0), type_inner_hallway, down).
 
-room(17, type_classroom, 0..1, 0..2).
-door(0, room(17, type_classroom, 0, 2), type_inner_hallway, up).
+room(17, type_classroom, 0..2, 0..1).
+door(0, room(17, type_classroom, 0, 1), type_inner_hallway, left).
 
-room(18, type_classroom, 0..1, 0..2).
-door(0, room(18, type_classroom, 1, 2), type_inner_hallway, down).
+room(18, type_classroom, 0..2, 0..1).
+door(0, room(18, type_classroom, 0, 0), type_inner_hallway, left).
 
-room(19, type_classroom, 0..1, 0..2).
-door(0, room(19, type_classroom, 0, 0), type_inner_hallway, up).
+room(19, type_classroom, 0..2, 0..1).
+door(0, room(19, type_classroom, 0, 1), type_inner_hallway, right).
 
-room(20, type_classroom, 0..1, 0..2).
-door(0, room(20, type_classroom, 1, 0), type_inner_hallway, down).
+room(20, type_classroom, 0..2, 0..1).
+door(0, room(20, type_classroom, 1, 0), type_inner_hallway, left).
 
 room(21, type_classroom, 0..2, 0..1).
-door(0, room(21, type_classroom, 0, 1), type_inner_hallway, left).
+door(0, room(21, type_classroom, 1, 1), type_inner_hallway, right).
 
 room(22, type_classroom, 0..2, 0..1).
-door(0, room(22, type_classroom, 0, 0), type_inner_hallway, left).
+door(0, room(22, type_classroom, 2, 0), type_inner_hallway, left).
 
 room(23, type_classroom, 0..2, 0..1).
-door(0, room(23, type_classroom, 0, 1), type_inner_hallway, right).
-
-room(24, type_classroom, 0..2, 0..1).
-door(0, room(24, type_classroom, 1, 0), type_inner_hallway, left).
-
-room(25, type_classroom, 0..2, 0..1).
-door(0, room(25, type_classroom, 1, 1), type_inner_hallway, right).
-
-room(26, type_classroom, 0..2, 0..1).
-door(0, room(26, type_classroom, 2, 0), type_inner_hallway, left).
-
-room(27, type_classroom, 0..2, 0..1).
-door(0, room(27, type_classroom, 2, 1), type_inner_hallway, right).
+door(0, room(23, type_classroom, 2, 1), type_inner_hallway, right).
 % ----------------------------------------------------------------------------------
 
 
@@ -769,10 +973,17 @@ n_old_rooms(N) :- N = #count { ROOM_ID, ROOM_TYPE : placed_old(ROOM_ID, ROOM_TYP
 % Count the number of new placed rooms
 n_new_rooms(N) :- N = #count { ROOM_ID, ROOM_TYPE : placed_new(ROOM_ID, ROOM_TYPE, _, _, _, _) }.
 
+% Count the doors of each placed room
+n_doors_placed(ROOM_ID, ROOM_TYPE, N) :- N = #count { DOOR_ID, DOOR_TYPE, DIRECTION : door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, _, _), DOOR_TYPE, DIRECTION) }, placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _).
+
+% Count the number of connections for each room
+n_connections_old(ROOM_ID1, ROOM_TYPE1, N) :- N = #count { ROOM_ID2, ROOM_TYPE2, DOOR_ID2, DOOR_TYPE2 : connected_old(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) }, placed_old(ROOM_ID1, ROOM_TYPE1, _, _, _, _).
+
 % Randomly choose hallway room if no other room is already placed
 placed_new(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr) :-
     n_old_rooms(0),
     ROOM_ID = @delta(randint(0, hallway_configurations)),
+    %ROOM_ID = 26,
     ROOM_TYPE = type_hallway,
     X = 0,
     Y = 0,
@@ -829,7 +1040,7 @@ y_placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr):-
     placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, _, Yr).
 
 % Guess one connection from an already placed door to a possible room
-{ connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) :
+{ connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) :
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
     y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
     x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, Xr2),
@@ -837,25 +1048,20 @@ y_placed_door_old(DOOR_ID, ROOM_ID, ROOM_TYPE, DOOR_TYPE, DIRECTION, Yr):-
     opposite(DIRECTION1, DIRECTION2),
     DOOR_TYPE1 = ROOM_TYPE2,
     DOOR_TYPE2 = ROOM_TYPE1
-}1.
+} 1.
 
-connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DOOR_ID2, DOOR_TYPE2) :-
-    connected(ROOM_ID2, ROOM_TYPE2, ROOM_ID1, ROOM_TYPE1, DOOR_ID2, DOOR_TYPE2, DIRECTION2, DOOR_ID1, DOOR_TYPE1, DIRECTION1).
+:- n_new_rooms(0), n_doors_placed(ROOM_ID, ROOM_TYPE, N), n_connections_old(ROOM_ID, ROOM_TYPE, M), N != M.
 
-% The last iteration has no new connections, to be able to get a valid answer set a fake connection is generated,
-%   so the program know when to stop
-connected(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1) :- n_old_rooms(N), N >= min_rooms, n_new_rooms(0).
-
-% The first iteration is a special case, the first room is placed, so i don't need a connection
-:- not connected(_, _, _, _, _, _, _, _, _, _), n_old_rooms(N), N != 0.
-
-:- connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+:- connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, _),
     x_placed_door_old(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, _).
 
+connected_old(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2) :-
+    connected_old(ROOM_ID2, ROOM_TYPE2, ROOM_ID1, ROOM_TYPE1, DOOR_ID2, DOOR_TYPE2, DIRECTION2, DOOR_ID1, DOOR_TYPE1, DIRECTION1).
+
 % Place a new room if exist a valid connection based on door direction
 placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
-    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
     y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
     x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
@@ -867,7 +1073,7 @@ placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
     Yr2 = Yr1.
 
 placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
-    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
     y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
     x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
@@ -879,7 +1085,7 @@ placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
     Yr2 = Yr1.
 
 placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
-    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
     y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
     x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
@@ -891,7 +1097,7 @@ placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
     Yr2 = Yr1 - 1.
 
 placed_new(ROOM_ID2, ROOM_TYPE2, X2, Y2, Xr2, Yr2) :-
-    connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+    connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     x_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Xr1),
     y_placed_door_old(DOOR_ID1, ROOM_ID1, ROOM_TYPE1, DOOR_TYPE1, DIRECTION1, Yr1),
     x_pos_room_door(DOOR_ID2, ROOM_ID2, ROOM_TYPE2, DOOR_TYPE2, DIRECTION2, X2),
@@ -923,15 +1129,16 @@ parallel_inner_hallways(DOOR_ID1, DOOR_ID2) :-
     Xr1 == Xr2.
 
 % If there are two doors in the same x-coordinate in an hallway, then the inner_hallways must have two empty walls facing each other
-:- connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+:- connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, type_inner_hallway, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     parallel_inner_hallways(DOOR_ID1, _),
     not empty_wall(ROOM_ID2, type_inner_hallway, right).
 
-:- connected(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
+:- connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, type_inner_hallway, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     parallel_inner_hallways(_, DOOR_ID1),
     not empty_wall(ROOM_ID2, type_inner_hallway, left).
 
+#show n_new_rooms/1.
 #show placed_old/6.
 #show placed_new/6.
-#show n_new_rooms/1.
-#show connected/8.
+#show connected_new/10.
+#show connected_old/10.
