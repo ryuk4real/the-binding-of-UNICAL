@@ -19,10 +19,13 @@ rotation = 3.14159
 
 [node name="ClassroomDoor0" parent="Doors" index="1" instance=ExtResource("4_dssxo")]
 position = Vector2(48, 17)
+type = 2
 
 [node name="ClassroomDoor1" parent="Doors" index="2" instance=ExtResource("4_dssxo")]
 position = Vector2(79, 145)
 rotation = 1.5708
+id = 1
+type = 2
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(48, 96)

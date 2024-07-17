@@ -32,6 +32,17 @@ window/stretch/mode="viewport"
 
 project/assembly_name="The Binding Of Unical"
 
+[file_customization]
+
+folder_colors={
+"res://asp/": "red",
+"res://collectables/": "yellow",
+"res://entities/": "orange",
+"res://floor/": "green",
+"res://gdatalog/": "blue",
+"res://ui/": "pink"
+}
+
 [importer_defaults]
 
 texture={

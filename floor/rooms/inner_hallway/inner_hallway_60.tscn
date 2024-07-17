@@ -19,6 +19,7 @@ position = Vector2(48, 16)
 [node name="ClassroomDoor0" parent="Doors" index="1" instance=ExtResource("4_ojq8l")]
 position = Vector2(17.995, 144)
 rotation = -1.5708
+type = 2
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(48, 144)

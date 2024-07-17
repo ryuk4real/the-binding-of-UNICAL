@@ -20,3 +20,4 @@ layer_0/tile_data = PackedInt32Array(458754, 262144, 1610612742, 393218, 262144,
 [node name="Door" parent="Doors" index="0" instance=ExtResource("4_ktlr7")]
 position = Vector2(240, 178)
 rotation = 3.14159
+type = 2

@@ -20,3 +20,4 @@ layer_0/tile_data = PackedInt32Array(262155, 196608, 1342177288, 327691, 196608,
 [node name="ClassroomDoorInside0" parent="Doors" index="0" instance=ExtResource("4_yham6")]
 position = Vector2(48, 178)
 rotation = 3.14159
+type = 2

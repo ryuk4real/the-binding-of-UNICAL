@@ -32,6 +32,7 @@ rotation = 3.14159
 [node name="ClassroomDoorInside" parent="Doors" index="2" instance=ExtResource("5_jvmmt")]
 position = Vector2(242, 305)
 rotation = 1.5708
+type = 2
 
 [node name="Shadows" type="TileMap" parent="." index="4"]
 position = Vector2(288, 384)

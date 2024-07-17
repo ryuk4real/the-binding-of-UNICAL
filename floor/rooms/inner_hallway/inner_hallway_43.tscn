@@ -19,14 +19,19 @@ position = Vector2(48, 16)
 [node name="ClassroomDoor0" parent="Doors" index="1" instance=ExtResource("5_2acro")]
 position = Vector2(17, 48)
 rotation = -1.5708
+type = 2
 
 [node name="ClassroomDoor1" parent="Doors" index="2" instance=ExtResource("5_2acro")]
 position = Vector2(17, 240)
 rotation = -1.5708
+id = 1
+type = 2
 
 [node name="ClassroomDoor2" parent="Doors" index="3" instance=ExtResource("5_2acro")]
 position = Vector2(79, 240)
 rotation = 1.5708
+id = 2
+type = 2
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(48, 144)

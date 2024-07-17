@@ -17,10 +17,13 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 65537, 6
 [node name="OfficeDoor0" parent="Doors" index="0" instance=ExtResource("3_t1y3i")]
 position = Vector2(17, 144)
 rotation = -1.5708
+type = 3
 
 [node name="OfficeDoor1" parent="Doors" index="1" instance=ExtResource("3_t1y3i")]
 position = Vector2(79, 48)
 rotation = 1.5708
+id = 1
+type = 3
 
 [node name="HallwayDoor0" parent="Doors" index="2" instance=ExtResource("4_x0we8")]
 position = Vector2(48, 16)
@@ -28,6 +31,7 @@ position = Vector2(48, 16)
 [node name="InnerHallwayDoor0" parent="Doors" index="3" instance=ExtResource("5_j6wbn")]
 position = Vector2(48, 175)
 rotation = 3.14159
+type = 1
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(48, 96)

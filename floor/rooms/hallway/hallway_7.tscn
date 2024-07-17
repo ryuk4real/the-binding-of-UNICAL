@@ -19,9 +19,12 @@ position = Vector2(0, 96)
 [node name="InnerHallwayDoor0" parent="Doors" index="0" instance=ExtResource("4_wx0jw")]
 position = Vector2(240, 79)
 rotation = 3.14159
+type = 1
 
 [node name="InnerHallwayDoor1" parent="Doors" index="1" instance=ExtResource("4_wx0jw")]
 position = Vector2(240, -79)
+id = 1
+type = 1
 
 [node name="VendingMachine" parent="." index="3" instance=ExtResource("5_je5ie")]
 position = Vector2(48, 26)

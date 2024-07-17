@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://2p8pukkhxk7y"]
 
-[ext_resource type="Texture2D" uid="uid://ten4j3kcmhu" path="res://floor/rooms/inner_hallway/inner_hallway.png" id="1_hnm5x"]
+[ext_resource type="Texture2D" uid="uid://ten4j3kcmhu" path="res://floor/rooms/inner_hallway/inner_hallway.png" id="1_hnhrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e13s0"]
-texture = ExtResource("1_hnm5x")
+texture = ExtResource("1_hnhrp")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0

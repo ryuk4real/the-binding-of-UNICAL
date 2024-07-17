@@ -12,3 +12,6 @@ region = Rect2(0, 96, 64, 32)
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_3lutf")
 hframes = 2
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 3.125)
