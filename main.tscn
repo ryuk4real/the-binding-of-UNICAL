@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
-[ext_resource type="Script" path="res://floor_generator/floor_generator.gd" id="2_bcxe2"]
+[ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="2_bcxe2"]
 [ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="3_5bsul"]
 [ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_76djf"]
-[ext_resource type="Script" path="res://floor_generator/worker.gd" id="3_sfckc"]
+[ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
 [ext_resource type="Script" path="res://ui_manager.gd" id="3_yyapg"]
 [ext_resource type="Texture2D" uid="uid://dr2xl8fauv6jg" path="res://ui/loading_screen/loading_sheet.png" id="6_o03x6"]
 
@@ -98,11 +98,6 @@ process_thread_group_order = 0
 process_thread_messages = 0
 
 [node name="BathroomsPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-
-[node name="LabsPreloader" type="ResourcePreloader" parent="Resources"]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
