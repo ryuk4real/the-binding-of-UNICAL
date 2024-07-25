@@ -11,8 +11,16 @@ func _ready() -> void:
 
 func start_server() -> void:
 	print("Server starting")
-	# Global.PID = OS.create_process("poetry", ["-C", Global.SERVER_ROOT, "run", "python", Global.SERVER_PATH, "server"], true)
-	Global.PID = OS.create_process("python", [Global.SERVER_PATH, "server"], true)
+	
+	match OS.get_name():
+		"Windows":
+			print("OS: Windows")
+			# Global.PID = OS.create_process("poetry", ["-C", Global.SERVER_ROOT, "run", "python", Global.SERVER_PATH, "server"], true)
+			Global.PID = OS.create_process("python", [Global.SERVER_PATH, "server"], true)
+			
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			print("OS: Linux/BSD")
+	
 	
 	post("")
 	await SignalBus.response_ready
@@ -30,7 +38,6 @@ func _on_request_completed(_result, _response_code, _headers, body) -> void:
 
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]
-	
 	content = {
 		"program": _data,
 		"max_stable_models": Global.ALL_MODELS}
