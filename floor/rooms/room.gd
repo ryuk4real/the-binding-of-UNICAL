@@ -5,6 +5,5 @@ extends Node2D
 @export var type: int
 var connections: Dictionary = {}
 
-
 func _ready():
 	pass
