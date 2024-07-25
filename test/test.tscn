@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvsi47s0sqn7p"]
+
+[ext_resource type="Script" path="res://test/map.gd" id="1_tlcw4"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("1_tlcw4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(63, 50)
+zoom = Vector2(20.585, 20.585)
