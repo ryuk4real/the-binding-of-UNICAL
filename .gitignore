@@ -2,3 +2,7 @@
 .godot/
 
 *.tmp
+
+asp/.answer_set.json
+
+asp/.room_generator_temp.asp
