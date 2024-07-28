@@ -8,7 +8,7 @@ extends Node2D
 @onready var offices_preloader = $"../Resources/OfficesPreloader"
 @onready var bathrooms_preloader = $"../Resources/BathroomsPreloader"
 
-func generate_floor():
+func generate_floor() -> Variant:
 	
 	var done: bool = false
 	var redo: bool = false
@@ -19,6 +19,7 @@ func generate_floor():
 	var regex: RegEx = RegEx.new()
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	var iteration: int = 0
+	var attempts: int = 0
 	
 	Utils.copy(Global.ROOM_GENERATOR_PROGRAM_PATH, Global.FIRST_ROOM_GENERATOR_TEMP_PATH)
 	var room_generator_temp: String = Utils.read_file(Global.FIRST_ROOM_GENERATOR_TEMP_PATH)
@@ -66,12 +67,20 @@ func generate_floor():
 				room_generator_temp = Utils.read_file(temp_path)
 			
 			print("Iteration: " + str(iteration))
+		
+		attempts += 1
+		
+		if attempts >= 200:
+			return null
 			
 		if done:
 			Utils.write_file("res://asp/.answer_set.json", str(last_answer_set))
 			break
 	
+	var floor: Floor = Floor.new()
 	print("Floor generated")
+	return floor
+	
 		
 	
 func _get_answerset_from_worker(_program: String):

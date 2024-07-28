@@ -3,11 +3,12 @@ extends Node2D
 
 var rooms: Array = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func add_room(_room: Room) -> void:
+	rooms.push_back(_room)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func find_room(_id: int, _type: int) -> Room:
+	for room: Room in rooms:
+		if room.id == _id and room.type == _type:
+			return room
+	
+	return null

@@ -58,7 +58,11 @@ func load_game() -> void:
 
 func _on_new_game_pressed() -> void:
 	ui.show_loading_screen()
-	floor_generator.generate_floor()
+	
+	var floor: Floor = null
+	
+	while floor == null:
+		floor = await floor_generator.generate_floor()
 	
 	# TODO: setup start
 	ui.show_gui()
