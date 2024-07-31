@@ -53,7 +53,7 @@ door(0, room(4, type_hallway, 0, 2), type_bathroom, up).
 
 room(5, type_hallway, 0, 0..2).
 door(0, room(5, type_hallway, 0, 2), type_inner_hallway, down).
-door(1, room(5, type_hallway, 0, 2), type_bathroom, up).
+door(0, room(5, type_hallway, 0, 2), type_bathroom, up).
 
 room(6, type_hallway, 0, 0..2).
 door(0, room(6, type_hallway, 0, 1), type_inner_hallway, down).
@@ -1097,9 +1097,10 @@ n_new_rooms(N) :- N = #count { ROOM_ID, ROOM_TYPE : placed_new(ROOM_ID, ROOM_TYP
 % Count the doors of each placed room
 n_doors_placed(ROOM_ID, ROOM_TYPE, N) :- N = #count { DOOR_ID, DOOR_TYPE, DIRECTION : door(DOOR_ID, room(ROOM_ID, ROOM_TYPE, _, _), DOOR_TYPE, DIRECTION) }, placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _).
 
-n_hallways(N) :-
-    N = #count { ROOM_ID, ROOM_TYPE : placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _), ROOM_TYPE = type_hallway }.
+% Count the number of already placed hallways
+n_hallways(N) :- N = #count { ROOM_ID, ROOM_TYPE : placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _), ROOM_TYPE = type_hallway }.
 
+% The number of hallways can't exceed the maximum number of hallways
 :- n_hallways(N), N > max_hallways.
 
 % Count the number of connections for each room
@@ -1109,16 +1110,16 @@ n_connections_old(ROOM_ID1, ROOM_TYPE1, N) :- N = #count { ROOM_ID2, ROOM_TYPE2,
 n_continuous_inner_hallways(N) :-
     N = #count { ROOM_ID, ROOM_TYPE : continuous(ROOM_ID, ROOM_TYPE), placed_old(ROOM_ID, ROOM_TYPE, _, _, _, _) }.
 
+% The number of continuous inner_hallways can't exceed the maximum number of continuous inner_hallways, if a new one is going to be placed
 :- n_continuous_inner_hallways(N), N > max_continuous_inner_hallways,
     connected_new(ROOM_ID1, ROOM_TYPE1, ROOM_ID2, ROOM_TYPE2, DOOR_ID1, DOOR_TYPE1, DIRECTION1, DOOR_ID2, DOOR_TYPE2, DIRECTION2),
     not continuous(ROOM_ID1, ROOM_TYPE1),
     continuous(ROOM_ID2, ROOM_TYPE2).
 
-% Randomly choose hallway room if no other room is already placed
+% Randomly choose an hallway room if no other room is already placed
 placed_new(ROOM_ID, ROOM_TYPE, X, Y, Xr, Yr) :-
     n_old_rooms(0),
     ROOM_ID = @delta(randint(0, hallway_configurations)),
-    %ROOM_ID = 26,
     ROOM_TYPE = type_hallway,
     X = 0,
     Y = 0,
