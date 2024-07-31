@@ -9,7 +9,7 @@ extends CanvasLayer
 func _ready():
 	new_game_button.grab_focus()
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func show_main_menu():

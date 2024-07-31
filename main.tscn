@@ -117,10 +117,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -830.0
+offset_top = -594.0
+offset_right = 322.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.48226, 2.82308)
 color = Color(0.104294, 0.0897874, 0.0747913, 1)
 
 [node name="FloorGenerator" type="Node2D" parent="."]
