@@ -20,6 +20,7 @@ layer_0/tile_data = PackedInt32Array(3, 524289, 2, 65539, 524289, 3, 4, 524289, 
 [node name="OfficeDoor" parent="Doors" index="0" instance=ExtResource("4_805gx")]
 position = Vector2(17, 144)
 rotation = -1.5708
+type = 1
 
 [node name="Decorations" type="TileMap" parent="." index="4"]
 tile_set = ExtResource("3_d1ou8")
