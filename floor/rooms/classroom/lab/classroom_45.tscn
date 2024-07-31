@@ -30,7 +30,7 @@ position = Vector2(0, 46)
 
 [node name="LabDoor0" parent="Doors" index="0" instance=ExtResource("4_qchen")]
 position = Vector2(-240, -32)
-type = 2
+type = 1
 
 [node name="Pickups" parent="." index="3"]
 position = Vector2(0, 46)

@@ -28,7 +28,7 @@ rotation = 3.14159
 [node name="ClassroomDoorInside" parent="Doors" index="2" instance=ExtResource("5_deygn")]
 position = Vector2(46, 303)
 rotation = -1.5708
-type = 2
+type = 1
 
 [node name="Shadows" type="TileMap" parent="." index="4"]
 tile_set = ExtResource("2_aalx5")

@@ -8,7 +8,7 @@
 
 [node name="Room" instance=ExtResource("1_5a7jm")]
 id = 48
-type = 2
+type = 1
 
 [node name="Walls" parent="." index="0"]
 position = Vector2(0, 192)
