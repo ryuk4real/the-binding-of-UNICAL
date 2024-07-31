@@ -14,4 +14,3 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 262144, 4, 131072, 0, 2, 1,
 
 [node name="BathroomDoor" parent="Doors" index="0" instance=ExtResource("3_jpi8j")]
 position = Vector2(144, 17)
-type = 4
