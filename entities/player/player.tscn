@@ -1,19 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://d11u8i53hnylk"]
+[gd_scene load_steps=6 format=3 uid="uid://d11u8i53hnylk"]
 
 [ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_8ymie"]
 [ext_resource type="SpriteFrames" uid="uid://dqyhkwn758kok" path="res://entities/player/player.tres" id="2_gmudp"]
-[ext_resource type="Texture2D" uid="uid://4puof65bhyrl" path="res://icon.svg" id="2_gog65"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_lc6wu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_flml4"]
+radius = 3.24489
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr0ds"]
+radius = 3.95618
+height = 15.0079
+
 [node name="Player" instance=ExtResource("1_8ymie")]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.7, 0.7)
+collision_mask = 62
+motion_mode = 0
+slide_on_ceiling = true
 script = ExtResource("2_lc6wu")
-speed = 300.0
+speed = 50.0
+friction = 300.0
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_gmudp")
+animation = &"IDLE"
+frame_progress = 0.732174
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
-texture = ExtResource("2_gog65")
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(-0.273635, 5.76928)
+scale = Vector2(1, 0.839999)
+shape = SubResource("CircleShape2D_flml4")
 
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+zoom = Vector2(5, 5)
+
+[node name="InteractionArea" type="Area2D" parent="." index="3"]
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(-0.0581133, 4.79422)
+scale = Vector2(1.28786, 0.644592)
+shape = SubResource("CapsuleShape2D_sr0ds")

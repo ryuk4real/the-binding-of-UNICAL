@@ -41,3 +41,10 @@ var PID: int = -1
 const SATISFIABLE = "SAT"
 const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
+
+const PLAYER_LAYER: int = 1
+const ENEMIES_LAYER: int = 2
+const PICKUPS_LAYER: int = 3
+const OBSTACLES_LAYER: int = 4
+const WALLS_LAYER: int = 5
+const DOOR_LAYER: int = 6
