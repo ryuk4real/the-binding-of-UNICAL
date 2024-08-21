@@ -1,106 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=5 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
 [ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="2_bcxe2"]
-[ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="3_5bsul"]
-[ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_76djf"]
 [ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
-[ext_resource type="Script" path="res://ui_manager.gd" id="3_yyapg"]
-[ext_resource type="Texture2D" uid="uid://dr2xl8fauv6jg" path="res://ui/loading_screen/loading_sheet.png" id="6_o03x6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsp0m"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xk3ku"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_afk8e"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdpdl"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk2e4"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3lo7"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bd21"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1q2e"]
-atlas = ExtResource("6_o03x6")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7lfbc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xsp0m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xk3ku")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_afk8e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bdpdl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bk2e4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f3lo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bd21")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o1q2e")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
+[ext_resource type="PackedScene" uid="uid://b26dcuqwanu2x" path="res://ui/ui.tscn" id="4_33lin"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
 
 [node name="Resources" type="Node2D" parent="."]
-
-[node name="HallwaysPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-
-[node name="InnerHallwaysPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-
-[node name="ClassroomsPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-
-[node name="OfficesPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
-
-[node name="BathroomsPreloader" type="ResourcePreloader" parent="Resources"]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -117,10 +25,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -830.0
-offset_top = -594.0
-offset_right = 322.0
-offset_bottom = 54.0
+offset_left = -53.0
+offset_top = -52.0
+offset_right = 457.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.48226, 2.82308)
@@ -134,155 +42,4 @@ script = ExtResource("3_sfckc")
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("3_yyapg")
-
-[node name="MainMenu" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu"]
-layout_direction = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -166.0
-offset_top = -28.76
-offset_right = 432.0
-offset_bottom = 166.24
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.86, 0.86)
-theme_override_constants/margin_left = 400
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 400
-theme_override_constants/margin_bottom = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 115
-
-[node name="Title" type="Label" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_5bsul")
-theme_override_font_sizes/font_size = 81
-text = "THE BINDING of UNICAL"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/MarginContainer/VBoxContainer"]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="New Game" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Settings")
-theme = ExtResource("3_76djf")
-text = "NEW GAME"
-language = "en"
-
-[node name="Continue" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Settings")
-theme = ExtResource("3_76djf")
-disabled = true
-text = "CONTiNUE"
-language = "en"
-
-[node name="Settings" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_top = NodePath("../New Game")
-focus_neighbor_bottom = NodePath("../Quit")
-theme = ExtResource("3_76djf")
-text = "SETTINGS"
-language = "en"
-
-[node name="Quit" type="Button" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../New Game")
-theme = ExtResource("3_76djf")
-text = "Quit"
-language = "en"
-
-[node name="GUI" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/GUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 400
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 400
-theme_override_constants/margin_bottom = 100
-
-[node name="LoadingScreen" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/LoadingScreen"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -199.5
-offset_bottom = 199.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 400
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 400
-theme_override_constants/margin_bottom = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/LoadingScreen/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 115
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/LoadingScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/LoadingScreen/MarginContainer/VBoxContainer/MarginContainer"]
-position = Vector2(170, 70.5)
-sprite_frames = SubResource("SpriteFrames_7lfbc")
-autoplay = "default"
-
-[node name="Label3" type="Label" parent="UI/LoadingScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_5bsul")
-theme_override_font_sizes/font_size = 46
-text = "Loading..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
-[connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="UI" parent="." instance=ExtResource("4_33lin")]
