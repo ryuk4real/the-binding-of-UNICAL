@@ -39,3 +39,10 @@ placed_new(ROOM_ID1, X, Y, Xr, Yr, SHAPE_ID) :-
 
 
 
+
+placed_old(0,0,0,7,7,5).
+placed_old(0,0,1,7,8,5).
+placed_old(0,0,2,7,9,5).
+placed_old(0,0,3,7,10,5).
+placed_old(0,0,4,7,11,5).
+#const xr = 9. #const yr = 4.

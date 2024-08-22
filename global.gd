@@ -13,7 +13,7 @@ const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
 const PLACE_STARTING_ROOM_PROGRAM_PATH = "res://asp/place_starting_room.asp"
-const PLACE_STARTING_ROOM_GENERATOR_PATH_TEMP = "res://asp/place_starting_room_temp.asp"
+const PLACE_STARTING_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_starting_room_temp.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH = "res://asp/place_generic_room.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_generic_room_temp.asp"
 
@@ -30,6 +30,8 @@ const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
 const MAP_SIZE = 15
+const CENTER_COORDINATES: Vector2i = Vector2i(MAP_SIZE / 2, MAP_SIZE / 2)
+const SPAWN_RADIUS: int = (MAP_SIZE / 2) - 2 
 
 const PLAYER_LAYER: int = 1
 const ENEMIES_LAYER: int = 2

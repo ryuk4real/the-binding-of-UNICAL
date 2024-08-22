@@ -46,24 +46,25 @@ func write_atoms(_path: String, _atoms: Array, _file_path: String = "") -> void:
 		file.store_line(a)
 	file.close()
 
-func get_atoms(_answerset: Array) -> Array:
+func get_atoms(_answerset: Array, _search_new_atoms: bool = false) -> Array:
 	var atoms: Array = []
 	
-	for atom in _answerset:
-		atoms.append(atom.get("str"))
-		
+	if _search_new_atoms == false:
+		for atom: Dictionary in _answerset:
+			atoms.append(atom.get("str"))
+	else:
+		for atom: Dictionary in _answerset:
+			if atom.get("str").contains("new"):
+				atoms.append(atom.get("str"))
+	
 	return atoms
 
 func change_atoms_to_old(_atoms: Array) -> Array:
 	
 	var result: Array = []
 	
-	for atom in _atoms:
+	for atom: String in _atoms:
 		result.append(regex.sub(atom, "old"))
 	
 	return result
-		
-
-func get_random_coordinates(_radious: int):
-	pass
 	
