@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 SignalBus="*res://signal_bus.gd"
+Utils="*res://utils.gd"
 
 [debug]
 
