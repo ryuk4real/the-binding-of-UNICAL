@@ -19,10 +19,10 @@ func start_server() -> void:
 			Global.PID = OS.create_process("python", [Global.SERVER_PATH, "server"], true)
 			
 		"Linux":
-			print("Linux")
+			print("OS: Linux")
 			Global.PID = OS.create_process("python3", [Global.SERVER_PATH, "server"], true)
 	
-	post("...")
+	post("a.")
 	
 	await SignalBus.response_ready
 	SignalBus.server_started.emit()

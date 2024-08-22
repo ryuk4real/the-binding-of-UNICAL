@@ -5,9 +5,11 @@ extends Node2D
 @export var id: int
 @export var type: int
 
-var x_relative_position: int
-var y_relative_position: int
+var coordinates: Vector2i
 var is_clear: bool = true
+
+func _init(room_data: Array) -> void:
+	pass
 
 func _ready() -> void:
 	
@@ -32,10 +34,6 @@ func get_door(_door_id: int, _door_type: int) -> Door:
 			return door
 	return null
 
-func set_relative_position(_x_relative_position: int, _y_relative_position: int) -> void:
-	x_relative_position = _x_relative_position
-	y_relative_position = _y_relative_position
-
 func open_all_doors():
 	for door: Door in doors:
 		door.open()
@@ -43,3 +41,4 @@ func open_all_doors():
 func close_all_doors():
 	for door: Door in doors:
 		door.close()
+	
