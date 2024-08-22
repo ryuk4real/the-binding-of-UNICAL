@@ -44,3 +44,9 @@ asp/.room_generator_temp_16.asp
 asp/.room_generator_temp_17.asp
 
 gdatalog/examples/test.asp
+
+asp/spawn_room_generator_temp.asp
+
+asp/place_room_temp.asp
+
+asp/test.asp
