@@ -1,4 +1,4 @@
-#const map_size = 15.
+#const map_size = 50.
 #const hallway_size_distribution = (4,3,3,3,2,2).
 
 %shape(ID,X,Y)
