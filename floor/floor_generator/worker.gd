@@ -26,7 +26,6 @@ func start_server() -> void:
 	
 	await SignalBus.response_ready
 	SignalBus.server_started.emit()
-	
 	print("Server started")
 	
 func shutdown_server() -> void:
@@ -35,7 +34,7 @@ func shutdown_server() -> void:
 	SignalBus.server_shut.emit()
 	
 func _on_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	response = JSON.parse_string(body.get_string_from_utf8())
+	response = await JSON.parse_string(body.get_string_from_utf8())
 	SignalBus.response_ready.emit()
 
 func post(_data: String) -> void:

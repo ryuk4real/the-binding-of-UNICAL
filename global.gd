@@ -29,7 +29,7 @@ const SATISFIABLE = "SAT"
 const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
-const MAP_SIZE = 15
+const MAP_SIZE = 50
 const CENTER_COORDINATES: Vector2i = Vector2i(MAP_SIZE / 2, MAP_SIZE / 2)
 const SPAWN_RADIUS: int = (MAP_SIZE / 2) - 2 
 

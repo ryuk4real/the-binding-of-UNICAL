@@ -45,7 +45,7 @@ func _notification(what: int) -> void:
 func _on_quit_pressed() -> void:
 	_quit()
 
-func _set_seed():
+func _set_seed() -> void:
 	var new_seed: int = Time.get_datetime_string_from_system().hash()
 	seed(new_seed)
 	print("seed:" + str(new_seed))

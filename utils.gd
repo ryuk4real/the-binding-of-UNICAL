@@ -46,16 +46,15 @@ func write_atoms(_path: String, _atoms: Array, _file_path: String = "") -> void:
 		file.store_line(a)
 	file.close()
 
-func get_atoms(_answerset: Array, _search_new_atoms: bool = false) -> Array:
+func get_atoms(_answerset: Array) -> Array:
+	
+	if _answerset.is_empty():
+		return []
+	
 	var atoms: Array = []
 	
-	if _search_new_atoms == false:
-		for atom: Dictionary in _answerset:
-			atoms.append(atom.get("str"))
-	else:
-		for atom: Dictionary in _answerset:
-			if atom.get("str").contains("new"):
-				atoms.append(atom.get("str"))
+	for atom: Dictionary in _answerset:
+		atoms.append(atom.get("str"))
 	
 	return atoms
 
