@@ -50,3 +50,7 @@ asp/spawn_room_generator_temp.asp
 asp/place_room_temp.asp
 
 asp/test.asp
+
+asp/place_generic_room_temp.asp
+
+asp/place_starting_room_temp.asp

@@ -1,6 +1,6 @@
 #const map_size = 50.
-#const shape_id_offset = 6.
-#const generic_room_size_distribution = (1,1,3,3,3,1,1). 
+#const offset = 6.
+#const generic_room_size_distribution = (2,2,3,3,3,1,1). 
 
 shape(6, 0..1, 0).
 shape(7, 0, 0..1).
@@ -16,17 +16,9 @@ cols(0..map_size).
 map(X,Y) :- rows(X), cols(Y).
 
 
-% xr and xr are the coordinates of the top left corner of the room
-%   they are calculated by the engine and added to the file as constants
-%   -> #const xr = {x}.
-%   -> #const xr = {y}.
-%
-% also the id of the room is calculated based on the maximum id
-%   of the placed_old rooms so to place a new room the program needs to know
-%   the atoms of the old rooms
 placed_new(ROOM_ID1, X, Y, Xr, Yr, SHAPE_ID) :-
     ROOM_ID1 = #max{N : placed_old(ID, _, _, _, _, _), N = ID + 1},
-    SHAPE_ID = @delta((generic_room_size_distribution)) + shape_id_offset,
+    SHAPE_ID = @delta((generic_room_size_distribution)) + offset,
     X = 0,
     Y = 0,
     Xr = xr,

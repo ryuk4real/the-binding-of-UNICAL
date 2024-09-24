@@ -5,6 +5,8 @@ var response: Variant
 var headers: Array
 var content: Dictionary
 
+var is_server_started: bool = false
+
 func _ready() -> void:
 	start_server()
 	request_completed.connect(_on_request_completed)
@@ -22,9 +24,8 @@ func start_server() -> void:
 			print("OS: Linux")
 			Global.PID = OS.create_process("python3", [Global.SERVER_PATH, "server"], true)
 	
-	post("a.")
-	
-	await SignalBus.response_ready
+	print("Server is starting...")
+	await test_first_call()
 	SignalBus.server_started.emit()
 	print("Server started")
 	
@@ -33,9 +34,14 @@ func shutdown_server() -> void:
 	print("Server has been shut down")
 	SignalBus.server_shut.emit()
 	
-func _on_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	response = await JSON.parse_string(body.get_string_from_utf8())
 	SignalBus.response_ready.emit()
+
+func test_first_call():
+	post("")
+	await SignalBus.response_ready
+	is_server_started = true
 
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]

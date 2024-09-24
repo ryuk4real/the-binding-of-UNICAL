@@ -16,6 +16,9 @@ const PLACE_STARTING_ROOM_PROGRAM_PATH = "res://asp/place_starting_room.asp"
 const PLACE_STARTING_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_starting_room_temp.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH = "res://asp/place_generic_room.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_generic_room_temp.asp"
+const PLACE_INNER_HALLWAY_PROGRAM_PATH = "res://asp/place_inner_hallway.asp"
+const PLACE_INNER_HALLWAY_PROGRAM_PATH_TEMP = "res://asp/place_inner_hallway_temp.asp"
+
 
 
 const ASP_PATH = "res://asp/"
