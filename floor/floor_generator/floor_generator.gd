@@ -18,8 +18,6 @@ func generate_floor():
 	var current_floor: Floor = Floor.new()
 	_generate_starting_room()
 	
-	
-			
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
 	await SignalBus.response_ready

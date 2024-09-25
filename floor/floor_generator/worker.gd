@@ -5,11 +5,11 @@ var response: Variant
 var headers: Array
 var content: Dictionary
 
-var is_server_started: bool = false
-
 func _ready() -> void:
 	start_server()
-	request_completed.connect(_on_request_completed)
+
+func _process(delta) -> void:
+	pass
 
 func start_server() -> void:
 	print("Server starting")
@@ -25,7 +25,8 @@ func start_server() -> void:
 			Global.PID = OS.create_process("python3", [Global.SERVER_PATH, "server"], true)
 	
 	print("Server is starting...")
-	await test_first_call()
+	post("a.")
+	await SignalBus.response_ready
 	SignalBus.server_started.emit()
 	print("Server started")
 	
@@ -35,14 +36,13 @@ func shutdown_server() -> void:
 	SignalBus.server_shut.emit()
 	
 func _on_request_completed(_result, _response_code, _headers, body) -> void:
-	response = await JSON.parse_string(body.get_string_from_utf8())
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	response = json.get_data()
 	SignalBus.response_ready.emit()
-
-func test_first_call():
-	post("")
-	await SignalBus.response_ready
-	is_server_started = true
-
+	print(_response_code)
+	
+	
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]
 	content = {
@@ -50,3 +50,4 @@ func post(_data: String) -> void:
 		"max_stable_models": Global.ALL_MODELS}
 	var json: String = JSON.stringify(content)
 	request(Global.SERVER_URL, headers, HTTPClient.METHOD_POST, json)
+	await SignalBus.response_ready
