@@ -2,9 +2,11 @@ extends Node
 
 const ROOM_TYPE_HALLWAY = 0
 const ROOM_TYPE_INNER_HALLWAY = 1
-const ROOM_TYPE_CLASSROOM = 2
-const ROOM_TYPE_OFFICE = 3
-const ROOM_TYPE_BATHROOM = 4
+const ROOM_TYPE_BATHROOM = 2
+const ROOM_TYPE_CLASSROOM = 3
+const ROOM_TYPE_OFFICE = 4
+const ROOM_TYPE_STORAGE = 5
+const ROOM_TYPE_LIBRARY = 6
 
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
@@ -16,8 +18,10 @@ const PLACE_STARTING_ROOM_PROGRAM_PATH = "res://asp/place_starting_room.asp"
 const PLACE_STARTING_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_starting_room_temp.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH = "res://asp/place_generic_room.asp"
 const PLACE_GENERIC_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_generic_room_temp.asp"
-const PLACE_INNER_HALLWAY_PROGRAM_PATH = "res://asp/place_inner_hallway.asp"
-const PLACE_INNER_HALLWAY_PROGRAM_PATH_TEMP = "res://asp/place_inner_hallway_temp.asp"
+const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/hallway_neighbour_type_guesser.asp"
+const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neighbour_type_guesser.asp"
+const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/classroom_neighbour_type_guesser.asp"
+const LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/library_neighbour_type_guesser.asp"
 
 
 

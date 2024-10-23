@@ -5,7 +5,11 @@ extends Node2D
 
 var place_starting_room_program: String = Utils.read_file(Global.PLACE_STARTING_ROOM_PROGRAM_PATH)
 var place_generic_room_program: String = Utils.read_file(Global.PLACE_GENERIC_ROOM_PROGRAM_PATH)
-var place_inner_hallway_program: String = Utils.read_file(Global.PLACE_INNER_HALLWAY_PROGRAM_PATH)
+var hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH)
+var inner_hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH)
+var classroom_neighbour_type_guesser_program: String = Utils.read_file(Global.CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH)
+var library_neighbour_type_guesser_program: String = Utils.read_file(Global.LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH)
+
 
 var room_counter: int = 0
 var current_answer_set: Array
@@ -16,12 +20,17 @@ func _ready() -> void:
 
 func generate_floor():
 	var current_floor: Floor = Floor.new()
-	_generate_starting_room()
+	await _get_room_neighbour_type(0)
+	await _get_room_neighbour_type(1)
+	await _get_room_neighbour_type(3)
+	await _get_room_neighbour_type(6)
 	
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
 	await SignalBus.response_ready
-	return await worker.response.get("models")
+	var response = await worker.response.get("models")
+	worker.cancel_request()
+	return response
 
 func _copy_programs_to_temp() -> void:
 	Utils.copy(Global.PLACE_GENERIC_ROOM_PROGRAM_PATH, Global.PLACE_GENERIC_ROOM_PROGRAM_PATH_TEMP)
@@ -44,14 +53,25 @@ func _generate_starting_room():
 	_update_room_counter(current_answer_set[0])
 	atoms = Utils.change_atoms_to_old(Utils.get_atoms(current_answer_set[0]))
 	print(atoms)
-	
-	# TODO: Add room to floor object
 
-func _generate_room():
-	pass
+func _get_room_neighbour_type(room_type: int) -> int:
+	var type_answer_set: Array
 	
-func _generate_doors():
-	pass
-
-func _check_if_done():
-	done = true
+	match(room_type):
+		Global.ROOM_TYPE_HALLWAY:
+			type_answer_set = await _get_answerset_from_worker(hallway_neighbour_type_guesser_program)
+		
+		Global.ROOM_TYPE_INNER_HALLWAY:
+			type_answer_set = await _get_answerset_from_worker(inner_hallway_neighbour_type_guesser_program)
+		
+		Global.ROOM_TYPE_CLASSROOM:
+			type_answer_set = await _get_answerset_from_worker(classroom_neighbour_type_guesser_program)
+		
+		Global.ROOM_TYPE_LIBRARY:
+			type_answer_set = await _get_answerset_from_worker(library_neighbour_type_guesser_program)
+	
+	print(type_answer_set[0][0].get("arguments")[0].get("number"))
+	return type_answer_set[0][0].get("arguments")[0].get("number")
+	
+	
+	

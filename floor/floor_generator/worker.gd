@@ -7,6 +7,7 @@ var content: Dictionary
 
 func _ready() -> void:
 	start_server()
+	set_use_threads(true)
 
 func _process(delta) -> void:
 	pass
@@ -40,8 +41,7 @@ func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	json.parse(body.get_string_from_utf8())
 	response = json.get_data()
 	SignalBus.response_ready.emit()
-	print(_response_code)
-	
+	response = 0
 	
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]
@@ -49,5 +49,5 @@ func post(_data: String) -> void:
 		"program": _data,
 		"max_stable_models": Global.ALL_MODELS}
 	var json: String = JSON.stringify(content)
-	request(Global.SERVER_URL, headers, HTTPClient.METHOD_POST, json)
+	await request(Global.SERVER_URL, headers, HTTPClient.METHOD_POST, json)
 	await SignalBus.response_ready
