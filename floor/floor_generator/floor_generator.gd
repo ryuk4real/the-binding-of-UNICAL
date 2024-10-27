@@ -22,6 +22,8 @@ func generate_floor():
 	var current_floor: Floor = Floor.new()
 	_generate_starting_room()
 	
+	_generate_starting_room()
+	
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
 	await SignalBus.response_ready
@@ -54,6 +56,8 @@ func _generate_starting_room():
 	
 	var atoms = Utils.change_atoms_to_old(Utils.get_atoms(current_answer_set[0]))
 	print(atoms)
+	
+	return atoms
 
 func _get_room_neighbour_type(room_type: int) -> int:
 	var type_answer_set: Array

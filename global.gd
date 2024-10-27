@@ -7,6 +7,7 @@ const ROOM_TYPE_CLASSROOM = 3
 const ROOM_TYPE_OFFICE = 4
 const ROOM_TYPE_STORAGE = 5
 const ROOM_TYPE_LIBRARY = 6
+const ROOM_TYPE_NONE = 999
 
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
@@ -22,8 +23,6 @@ const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/hallway_neighbour_type_gu
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neighbour_type_guesser.asp"
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/classroom_neighbour_type_guesser.asp"
 const LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/library_neighbour_type_guesser.asp"
-
-
 
 const ASP_PATH = "res://asp/"
 
