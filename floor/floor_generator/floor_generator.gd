@@ -20,10 +20,7 @@ func _ready() -> void:
 
 func generate_floor():
 	var current_floor: Floor = Floor.new()
-	await _get_room_neighbour_type(0)
-	await _get_room_neighbour_type(1)
-	await _get_room_neighbour_type(3)
-	await _get_room_neighbour_type(6)
+	_generate_starting_room()
 	
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
@@ -46,12 +43,16 @@ func _update_room_counter(_answer_set: Array) -> void:
 			_answer_set.erase(atom)
 			break
 	
+func _generate_doors(_answer_set: Array):
+	pass
+	
 func _generate_starting_room():
 	current_answer_set = await _get_answerset_from_worker(place_starting_room_program)
-	var atoms: Array
-
+	
 	_update_room_counter(current_answer_set[0])
-	atoms = Utils.change_atoms_to_old(Utils.get_atoms(current_answer_set[0]))
+	_generate_doors(current_answer_set[0])
+	
+	var atoms = Utils.change_atoms_to_old(Utils.get_atoms(current_answer_set[0]))
 	print(atoms)
 
 func _get_room_neighbour_type(room_type: int) -> int:
@@ -72,6 +73,3 @@ func _get_room_neighbour_type(room_type: int) -> int:
 	
 	print(type_answer_set[0][0].get("arguments")[0].get("number"))
 	return type_answer_set[0][0].get("arguments")[0].get("number")
-	
-	
-	

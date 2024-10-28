@@ -7,7 +7,6 @@ var content: Dictionary
 
 func _ready() -> void:
 	start_server()
-	set_use_threads(true)
 
 func _process(delta) -> void:
 	pass
