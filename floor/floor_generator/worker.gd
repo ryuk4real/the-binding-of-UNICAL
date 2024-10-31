@@ -38,7 +38,7 @@ func shutdown_server() -> void:
 func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
-	response = json.get_data()
+	response = await json.get_data()
 	SignalBus.response_ready.emit()
 	response = 0
 	
