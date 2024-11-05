@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=4 uid="uid://wdtjahmbra6v"]
+[gd_scene load_steps=11 format=4 uid="uid://wdtjahmbra6v"]
 
 [ext_resource type="Script" path="res://floor/rooms/room.gd" id="1_ck6m5"]
 [ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_vn42s"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_0qa3v"]
+[ext_resource type="Texture2D" uid="uid://bkuy50xvn5wek" path="res://floor/rooms/bathroom/bathroom.png" id="4_pewu7"]
+[ext_resource type="Texture2D" uid="uid://ojk3s4n7tpnm" path="res://floor/rooms/classroom/standard_classroom/standard_classroom.png" id="5_85s60"]
+[ext_resource type="Texture2D" uid="uid://ten4j3kcmhu" path="res://floor/rooms/inner_hallway/inner_hallway.png" id="6_q4ews"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yxk5"]
+atlas = ExtResource("4_pewu7")
+region = Rect2(128, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2c1h"]
+atlas = ExtResource("5_85s60")
+region = Rect2(0, 96, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbkhx"]
+atlas = ExtResource("6_q4ews")
+region = Rect2(32, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o8dp"]
+atlas = ExtResource("6_q4ews")
+region = Rect2(96, 96, 64, 32)
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_ck6m5")
@@ -42,6 +61,10 @@ is_placeholder = true
 [node name="Door5" parent="Doors" instance=ExtResource("3_0qa3v")]
 position = Vector2(240, 79)
 rotation = 3.14159
+bathroom_door_texture = SubResource("AtlasTexture_6yxk5")
+classroom_inside_door_texture = SubResource("AtlasTexture_a2c1h")
+classroom_outside_door_texture = SubResource("AtlasTexture_xbkhx")
+office_door_texture = SubResource("AtlasTexture_1o8dp")
 id = 4
 is_placeholder = true
 

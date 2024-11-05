@@ -9,8 +9,7 @@ extends Node2D
 @export var bathroom_door_texture: Texture
 @export var classroom_inside_door_texture: Texture
 @export var classroom_outside_door_texture: Texture
-@export var office_inside_door_texture: Texture
-@export var office_outside_door_texture: Texture
+@export var office_door_texture: Texture
 @export var library_door_texture: Texture
 @export var storage_door_texture: Texture
 @export var placeholder_door_texture: Texture
@@ -68,10 +67,7 @@ func setup_door_sprite() -> void:
 				$Sprite2D.texture = classroom_outside_door_texture
 				
 		Global.ROOM_TYPE_OFFICE:
-			if type == current_room_type:
-				$Sprite2D.texture = office_inside_door_texture
-			else:
-				$Sprite2D.texture = office_outside_door_texture
+			$Sprite2D.texture = office_door_texture
 				
 		Global.ROOM_TYPE_BATHROOM:
 			$Sprite2D.texture = bathroom_door_texture
