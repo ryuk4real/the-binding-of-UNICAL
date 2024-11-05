@@ -22,8 +22,11 @@ extends Node2D
 var direction: int
 
 func _ready() -> void:
-	setup_door_sprite()
-	set_door_direction(transform.get_rotation())
+	if is_placeholder:
+		visible = false
+	else:
+		setup_door_sprite()
+		set_door_direction(round(rotation * (180 / PI)))
 
 func _enter_tree():
 	$Sprite2D.texture = placeholder_door_texture	
@@ -40,7 +43,7 @@ func close() -> void:
 	opened_collider.disabled = true
 	opened = false
 
-func set_door_direction(door_rotation: float) -> void:
+func set_door_direction(door_rotation: int) -> void:
 	match door_rotation:
 		0: direction = Global.DIRECTION_UP
 		90: direction = Global.DIRECTION_RIGHT
@@ -77,6 +80,6 @@ func setup_door_sprite() -> void:
 			
 		Global.ROOM_TYPE_LIBRARY:
 			$Sprite2D.texture = library_door_texture
-			
+	
 		_:
 			visible = false
