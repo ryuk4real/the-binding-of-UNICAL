@@ -30,6 +30,10 @@ func initialize_doors() -> void:
 
 
 func generate_coordinates_from_tilemaplayer() -> void:
+	# Uses the tilemap to retrive the logical coordinates of the room.
+	# For example a rectangular 9x3 tile room it is broken down in an array of
+	# 	coordinates like [(0,0),(0,1),(0,2)]
+	
 	coordinates.clear()
 	var used_cells: Array[Vector2i] = walls.get_used_cells()
 	
@@ -52,6 +56,16 @@ func generate_coordinates_from_tilemaplayer() -> void:
 		coordinates.append(logical_coord)
 
 func map_door_coordinates() -> void:
+	# Maps each door's position in relation to the tilemap and the room's logical grid system.
+	# Each room appears to be made up of 3x3 tile sections (logical coordinates)
+	# For each door in the room, the method:
+	# 
+	#  - Gets the door's global position
+	#  - Converts it to tilemap coordinates
+	#  - Calculates two important positions:
+	# 
+	# The logical room section the door is in, stored in door_room_positions
+	# The specific tile position within that 3x3 section, stored in door_tile_positions
 	for door in doors:
 		var door_position = door.global_position
 		var tile_coords = walls.local_to_map(door_position)
