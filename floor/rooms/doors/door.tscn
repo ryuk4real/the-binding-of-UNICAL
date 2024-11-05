@@ -1,6 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6kmyiqwxj71h"]
+[gd_scene load_steps=9 format=3 uid="uid://c6kmyiqwxj71h"]
 
 [ext_resource type="Script" path="res://floor/rooms/doors/door.gd" id="1_vqh05"]
+[ext_resource type="Texture2D" uid="uid://ten4j3kcmhu" path="res://floor/rooms/inner_hallway/inner_hallway.png" id="2_niey0"]
+[ext_resource type="Texture2D" uid="uid://c4anr1pycg5s4" path="res://floor/rooms/hallway/hallway.png" id="2_qmuj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igjfj"]
+atlas = ExtResource("2_niey0")
+region = Rect2(32, 96, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt0px"]
+atlas = ExtResource("2_qmuj4")
+region = Rect2(32, 96, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6a4n"]
+atlas = ExtResource("2_qmuj4")
+region = Rect2(96, 128, 64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gded3"]
 size = Vector2(8, 9)
@@ -10,8 +24,12 @@ size = Vector2(8, 12.9766)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_vqh05")
+inner_hallway_inside_door_texture = SubResource("AtlasTexture_igjfj")
+inner_hallway_outside_door_texture = SubResource("AtlasTexture_gt0px")
+placeholder_door_texture = SubResource("AtlasTexture_b6a4n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 2
 
 [node name="OpenedArea2D" type="Area2D" parent="."]
 collision_layer = 32
@@ -28,5 +46,6 @@ collision_mask = 7
 [node name="ClosedCollider" type="CollisionShape2D" parent="ClosedArea2D"]
 position = Vector2(0, 0.988281)
 shape = SubResource("RectangleShape2D_yvmi7")
+disabled = true
 
 [connection signal="area_entered" from="OpenedArea2D" to="." method="_on_opened_area_2d_area_entered"]

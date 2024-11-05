@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=4 uid="uid://wdtjahmbra6v"]
+
+[ext_resource type="Script" path="res://floor/rooms/room.gd" id="1_ck6m5"]
+[ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_vn42s"]
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_0qa3v"]
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_ck6m5")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAAAAAMAAAAFAAAAAAABAAAAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAABAAEAAAAFAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAIAAIAAAACAAIAAAABAAEAAAABAAEAAAA=")
+tile_set = ExtResource("2_vn42s")
+rendering_quadrant_size = 32
+
+[node name="Obstacles" type="TileMapLayer" parent="."]
+
+[node name="Decorations" type="TileMapLayer" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(48, 17)
+type = 1
+
+[node name="Door2" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(17, 48)
+rotation = -1.5708
+id = 1
+
+[node name="Door3" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(48, 79)
+rotation = 3.14159
+id = 2
+is_placeholder = true
+
+[node name="Door4" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(144, 79)
+rotation = 3.14159
+id = 3
+is_placeholder = true
+
+[node name="Door5" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(240, 79)
+rotation = 3.14159
+id = 4
+is_placeholder = true
+
+[node name="Door7" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(240, 17)
+id = 6
+is_placeholder = true
+
+[node name="Door6" parent="Doors" instance=ExtResource("3_0qa3v")]
+position = Vector2(271, 48)
+rotation = 1.5708
+id = 5
+is_placeholder = true
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="CleanedRoomPickupSpawner" type="Marker2D" parent="Pickups"]
+position = Vector2(144, 50)
+gizmo_extents = 18.4

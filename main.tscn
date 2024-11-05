@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=6 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
 [ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="2_bcxe2"]
 [ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
 [ext_resource type="PackedScene" uid="uid://b26dcuqwanu2x" path="res://ui/ui.tscn" id="4_33lin"]
+[ext_resource type="PackedScene" uid="uid://wdtjahmbra6v" path="res://floor/rooms/hallway/up/0_up_1x3.tscn" id="4_owu3o"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
@@ -41,6 +42,8 @@ script = ExtResource("2_bcxe2")
 script = ExtResource("3_sfckc")
 
 [node name="Game" type="Node2D" parent="."]
+
+[node name="Room" parent="Game" instance=ExtResource("4_owu3o")]
 
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
 

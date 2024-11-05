@@ -36,8 +36,7 @@ const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
 const MAP_SIZE = 50
-const CENTER_COORDINATES: Vector2i = Vector2i(MAP_SIZE / 2, MAP_SIZE / 2)
-const SPAWN_RADIUS: int = (MAP_SIZE / 2) - 2 
+var current_room_type = 0
 
 const PLAYER_LAYER: int = 1
 const ENEMIES_LAYER: int = 2
