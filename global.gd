@@ -24,6 +24,30 @@ const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neigh
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/classroom_neighbour_type_guesser.asp"
 const LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/library_neighbour_type_guesser.asp"
 
+const HALLWAY_ROOM_UP_COUNTER = 1
+const HALLWAY_UP_FOLDER_PATH = "res://floor/rooms/hallway/up/"
+
+const HALLWAY_ROOM_DOWN_COUNTER = 1
+const HALLWAY_DOWN_FOLDER_PATH = "res://floor/rooms/hallway/down/"
+
+const HALLWAY_ROOM_LEFT_COUNTER = 1
+const HALLWAY_LEFT_FOLDER_PATH = "res://floor/rooms/hallway/left/"
+
+const HALLWAY_ROOM_RIGHT_COUNTER = 1
+const HALLWAY_RIGHT_FOLDER_PATH = "res://floor/rooms/hallway/right/"
+
+const INNER_HALLWAY_ROOM_DOWN_COUNTER = 1
+const INNER_HALLWAY_DOWN_FOLDER_PATH = "res://floor/rooms/inner_hallway/down/"
+
+const INNER_HALLWAY_ROOM_UP_COUNTER = 1
+const INNER_HALLWAY_UP_FOLDER_PATH = "res://floor/rooms/inner_hallway/up/"
+
+const INNER_HALLWAY_ROOM_LEFT_COUNTER = 1
+const INNER_HALLWAY_LEFT_FOLDER_PATH = "res://floor/rooms/inner_hallway/left/"
+
+const INNER_HALLWAY_ROOM_RIGHT_COUNTER = 1
+const INNER_HALLWAY_RIGHT_FOLDER_PATH = "res://floor/rooms/inner_hallway/right/"
+
 const ASP_PATH = "res://asp/"
 
 const SERVER_ROOT = "./gdatalog"

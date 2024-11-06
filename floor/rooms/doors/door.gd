@@ -26,7 +26,10 @@ func _ready() -> void:
 		visible = false
 	else:
 		setup_door_sprite()
-		set_door_direction(round(rotation * (180 / PI)))
+		init_direction()
+
+func init_direction() -> void:
+	set_door_direction(round(rotation * (180 / PI)))
 
 func _enter_tree():
 	$Sprite2D.texture = placeholder_door_texture	

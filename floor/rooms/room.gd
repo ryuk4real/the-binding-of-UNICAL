@@ -15,6 +15,7 @@ var door_room_positions: Dictionary = {}
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
 	type = _room_type
+	initialize_doors()
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
