@@ -88,6 +88,46 @@ const STANDARD_CLASSROOM_LEFT_FOLDER_PATH = "res://floor/rooms/classroom/standar
 const STANDARD_CLASSROOM_ROOM_RIGHT_COUNTER = 1
 const STANDARD_CLASSROOM_RIGHT_FOLDER_PATH = "res://floor/rooms/classroom/standard_classroom/right/"
 
+
+const OFFICE_ROOM_DOWN_COUNTER = 1
+const OFFICE_DOWN_FOLDER_PATH = "res://floor/rooms/office/down/"
+
+const OFFICE_ROOM_UP_COUNTER = 1
+const OFFICE_UP_FOLDER_PATH = "res://floor/rooms/office/up/"
+
+const OFFICE_ROOM_LEFT_COUNTER = 1
+const OFFICE_LEFT_FOLDER_PATH = "res://floor/rooms/office/left/"
+
+const OFFICE_ROOM_RIGHT_COUNTER = 1
+const OFFICE_RIGHT_FOLDER_PATH = "res://floor/rooms/office/right/"
+
+
+const LIBRARY_ROOM_DOWN_COUNTER = 1
+const LIBRARY_DOWN_FOLDER_PATH = "res://floor/rooms/library/down/"
+
+const LIBRARY_ROOM_UP_COUNTER = 1
+const LIBRARY_UP_FOLDER_PATH = "res://floor/rooms/library/up/"
+
+const LIBRARY_ROOM_LEFT_COUNTER = 1
+const LIBRARY_LEFT_FOLDER_PATH = "res://floor/rooms/library/left/"
+
+const LIBRARY_ROOM_RIGHT_COUNTER = 1
+const LIBRARY_RIGHT_FOLDER_PATH = "res://floor/rooms/library/right/"
+
+
+const STORAGE_ROOM_DOWN_COUNTER = 1
+const STORAGE_DOWN_FOLDER_PATH = "res://floor/rooms/storage/down/"
+
+const STORAGE_ROOM_UP_COUNTER = 1
+const STORAGE_UP_FOLDER_PATH = "res://floor/rooms/storage/up/"
+
+const STORAGE_ROOM_LEFT_COUNTER = 1
+const STORAGE_LEFT_FOLDER_PATH = "res://floor/rooms/storage/left/"
+
+const STORAGE_ROOM_RIGHT_COUNTER = 1
+const STORAGE_RIGHT_FOLDER_PATH = "res://floor/rooms/storage/right/"
+
+
 const ASP_PATH = "res://asp/"
 
 
