@@ -58,4 +58,37 @@ func load_resources() -> void:
 	print(inner_hallway_left_loader.name + " " + str(inner_hallway_left_loader.get_resource_list().size()))
 
 func get_random_room(type: int, direction: int) -> Room:
-	return null
+	# Determine the appropriate resource loader based on the room type and direction
+	var loader: ResourcePreloader
+	match type:
+		Global.ROOM_TYPE_HALLWAY:
+			match direction:
+				Global.DIRECTION_UP:
+					loader = hallway_up_loader
+				Global.DIRECTION_DOWN:
+					loader = hallway_down_loader
+				Global.DIRECTION_LEFT:
+					loader = hallway_left_loader
+				Global.DIRECTION_RIGHT:
+					loader = hallway_right_loader
+		Global.ROOM_TYPE_INNER_HALLWAY:
+			match direction:
+				Global.DIRECTION_UP:
+					loader = inner_hallway_up_loader
+				Global.DIRECTION_DOWN:
+					loader = inner_hallway_down_loader
+				Global.DIRECTION_LEFT:
+					loader = inner_hallway_left_loader
+				Global.DIRECTION_RIGHT:
+					loader = inner_hallway_right_loader
+		_:
+			pass
+
+	# Get a random resource from the appropriate loader
+	var resource_list = loader.get_resource_list()
+	if not resource_list.is_empty():
+		var random_index = randi() % resource_list.size()
+		var random_resource = loader.get_resource(resource_list[random_index])
+		return random_resource.instantiate()
+	else:
+		return null
