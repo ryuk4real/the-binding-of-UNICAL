@@ -12,4 +12,4 @@ tile_set = ExtResource("2_7ucn4")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_ahi7i")]
 position = Vector2(48, 17)
-type = 4
+type = 3

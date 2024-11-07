@@ -13,4 +13,4 @@ tile_set = ExtResource("2_n31my")
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_23hof")]
 position = Vector2(175, 48)
 rotation = 1.5708
-type = 4
+type = 3

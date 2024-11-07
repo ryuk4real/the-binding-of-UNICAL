@@ -1,0 +1,31 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bbueovfhx1m5f"]
+
+[ext_resource type="Texture2D" uid="uid://sbl2bu1qasoh" path="res://floor/rooms/storage/storage.png" id="1_bbr6h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnq4w"]
+texture = ExtResource("1_bbr6h")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 17
+physics_layer_0/collision_mask = 7
+sources/1 = SubResource("TileSetAtlasSource_dnq4w")
