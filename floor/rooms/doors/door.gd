@@ -19,6 +19,8 @@ extends Node2D
 @export var opened: bool = false
 @export var is_placeholder: bool = false
 
+var map_position: Vector2i
+
 var direction: int
 
 func _ready() -> void:
