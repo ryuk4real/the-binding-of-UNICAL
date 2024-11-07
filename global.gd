@@ -36,6 +36,7 @@ const HALLWAY_LEFT_FOLDER_PATH = "res://floor/rooms/hallway/left/"
 const HALLWAY_ROOM_RIGHT_COUNTER = 1
 const HALLWAY_RIGHT_FOLDER_PATH = "res://floor/rooms/hallway/right/"
 
+
 const INNER_HALLWAY_ROOM_DOWN_COUNTER = 1
 const INNER_HALLWAY_DOWN_FOLDER_PATH = "res://floor/rooms/inner_hallway/down/"
 
@@ -48,7 +49,47 @@ const INNER_HALLWAY_LEFT_FOLDER_PATH = "res://floor/rooms/inner_hallway/left/"
 const INNER_HALLWAY_ROOM_RIGHT_COUNTER = 1
 const INNER_HALLWAY_RIGHT_FOLDER_PATH = "res://floor/rooms/inner_hallway/right/"
 
+
+const BATHROOM_ROOM_DOWN_COUNTER = 1
+const BATHROOM_DOWN_FOLDER_PATH = "res://floor/rooms/bathroom/down/"
+
+const BATHROOM_ROOM_UP_COUNTER = 1
+const BATHROOM_UP_FOLDER_PATH = "res://floor/rooms/bathroom/up/"
+
+const BATHROOM_ROOM_LEFT_COUNTER = 1
+const BATHROOM_LEFT_FOLDER_PATH = "res://floor/rooms/bathroom/left/"
+
+const BATHROOM_ROOM_RIGHT_COUNTER = 1
+const BATHROOM_RIGHT_FOLDER_PATH = "res://floor/rooms/bathroom/right/"
+
+
+const LAB_ROOM_DOWN_COUNTER = 1
+const LAB_DOWN_FOLDER_PATH = "res://floor/rooms/classroom/lab/down/"
+
+const LAB_ROOM_UP_COUNTER = 1
+const LAB_UP_FOLDER_PATH = "res://floor/rooms/classroom/lab/up/"
+
+const LAB_ROOM_LEFT_COUNTER = 1
+const LAB_LEFT_FOLDER_PATH = "res://floor/rooms/classroom/lab/left/"
+
+const LAB_ROOM_RIGHT_COUNTER = 1
+const LAB_RIGHT_FOLDER_PATH = "res://floor/rooms/classroom/lab/right/"
+
+
+const STANDARD_CLASSROOM_ROOM_DOWN_COUNTER = 1
+const STANDARD_CLASSROOM_DOWN_FOLDER_PATH = "res://floor/rooms/classroom/standard_classroom/down/"
+
+const STANDARD_CLASSROOM_ROOM_UP_COUNTER = 1
+const STANDARD_CLASSROOM_UP_FOLDER_PATH = "res://floor/rooms/classroom/standard_classroom/up/"
+
+const STANDARD_CLASSROOM_ROOM_LEFT_COUNTER = 1
+const STANDARD_CLASSROOM_LEFT_FOLDER_PATH = "res://floor/rooms/classroom/standard_classroom/left/"
+
+const STANDARD_CLASSROOM_ROOM_RIGHT_COUNTER = 1
+const STANDARD_CLASSROOM_RIGHT_FOLDER_PATH = "res://floor/rooms/classroom/standard_classroom/right/"
+
 const ASP_PATH = "res://asp/"
+
 
 const SERVER_ROOT = "./gdatalog"
 const SERVER_PATH = "./gdatalog/gdatalog_cli.py"
@@ -59,7 +100,7 @@ const SATISFIABLE = "SAT"
 const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
-const MAP_SIZE = 50
+const MAP_SIZE = 10
 var current_room_type = 0
 
 const PLAYER_LAYER: int = 1
