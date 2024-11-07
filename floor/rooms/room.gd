@@ -20,15 +20,19 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
 	initialize_doors()
-	generate_coordinates_from_tilemaplayer()
 	map_door_coordinates()
 	#print(str(get_door_room_position(doors[5])) + " " + str(doors[5].type) + " " + str(doors[5].direction))
 
 func initialize_doors() -> void:
-	for child in doors_node.get_children():
-		if child is Node2D and child.name.begins_with("Door"):
-			doors.append(child as Door)
+	if doors.is_empty():
+		for child in doors_node.get_children():
+			if child is Node2D and child.name.begins_with("Door"):
+				doors.append(child as Door)
 
+func set_door_visible() -> void:
+	for door: Door in doors:
+		if (door.type != Global.ROOM_TYPE_HALLWAY and door.type != Global.ROOM_TYPE_NONE):
+			door.visible = true
 
 func generate_coordinates_from_tilemaplayer() -> void:
 	# Uses the tilemap to retrive the logical coordinates of the room.
@@ -85,3 +89,17 @@ func get_door_tile_position(door: Door) -> Vector2i:
 
 func get_door_room_position(door: Door) -> Vector2i:
 	return door_room_positions.get(door, Vector2i.ZERO)
+
+func from_position_get_door(_position: Vector2i) -> Door:
+	for key in door_room_positions.keys():
+		if door_room_positions[key] == _position:
+			print("key of door found: " +  str(_position))
+			return key
+	return null
+
+func find_door(_id: int) -> Door:
+	for door: Door in doors:
+		if door.id == 0:
+			return door
+			
+	return null
