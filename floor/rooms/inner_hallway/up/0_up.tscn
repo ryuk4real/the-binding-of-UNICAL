@@ -13,28 +13,33 @@ tile_set = ExtResource("2_l2q3w")
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_j5or7")]
 position = Vector2(48, 175)
 rotation = 3.14159
-id = 4
+id = 3
+is_placeholder = true
 
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("3_j5or7")]
 position = Vector2(17, 144)
 rotation = -1.5708
-id = 5
+id = 4
+is_placeholder = true
 
 [node name="Door3" parent="Doors" index="2" instance=ExtResource("3_j5or7")]
 position = Vector2(17, 48)
 rotation = -1.5708
-type = 1
+id = 5
+is_placeholder = true
 
 [node name="Door4" parent="Doors" index="3" instance=ExtResource("3_j5or7")]
 position = Vector2(48, 17)
-id = 1
-is_placeholder = true
+type = 1
 
 [node name="Door5" parent="Doors" index="4" instance=ExtResource("3_j5or7")]
 position = Vector2(79, 48)
 rotation = 1.5708
+id = 1
+is_placeholder = true
 
 [node name="Door6" parent="Doors" index="5" instance=ExtResource("3_j5or7")]
 position = Vector2(79, 144)
 rotation = 1.5708
-id = 3
+id = 2
+is_placeholder = true

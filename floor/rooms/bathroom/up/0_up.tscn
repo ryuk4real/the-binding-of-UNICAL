@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=4 uid="uid://cptua41e68yta"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_o0jgw"]
+[ext_resource type="TileSet" uid="uid://di8s75ct03blo" path="res://floor/rooms/bathroom/b_walls.tres" id="2_j1cjk"]
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_hrmvk"]
+
+[node name="Room" instance=ExtResource("1_o0jgw")]
+type = 2
+
+[node name="Walls" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAACAAMAAAAFAAAAAAADAAMAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAACAAQAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAADAAQAAAAFAAIAAAACAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAACAAUAAAA=")
+tile_set = ExtResource("2_j1cjk")
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("3_hrmvk")]
+position = Vector2(48, 17)
+type = 2
