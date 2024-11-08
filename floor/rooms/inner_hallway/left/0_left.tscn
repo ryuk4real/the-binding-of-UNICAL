@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_k8gc0"]
 
 [node name="Room" instance=ExtResource("1_2s82b")]
+type = 1
 
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAABAAEAAAACAAIAAAACAAEAAAAAAAMAAAAAAAEAAAABAAMAAAABAAEAAAACAAMAAAACAAEAAAAAAAQAAAAAAAEAAAABAAQAAAABAAEAAAACAAQAAAACAAEAAAAAAAUAAAAAAAIAAAABAAUAAAABAAIAAAACAAUAAAACAAIAAAA=")
@@ -13,33 +14,32 @@ tile_set = ExtResource("2_6ky4b")
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_k8gc0")]
 position = Vector2(48, 175)
 rotation = 3.14159
-id = 2
+id = 5
 is_placeholder = true
 
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("3_k8gc0")]
 position = Vector2(17, 144)
 rotation = -1.5708
-id = 3
+id = 6
 is_placeholder = true
 
 [node name="Door3" parent="Doors" index="2" instance=ExtResource("3_k8gc0")]
 position = Vector2(17, 48)
 rotation = -1.5708
-id = 4
-is_placeholder = true
+type = 1
 
 [node name="Door4" parent="Doors" index="3" instance=ExtResource("3_k8gc0")]
 position = Vector2(48, 17)
-id = 5
+id = 2
 is_placeholder = true
 
 [node name="Door5" parent="Doors" index="4" instance=ExtResource("3_k8gc0")]
 position = Vector2(79, 48)
 rotation = 1.5708
-type = 1
+id = 3
 
 [node name="Door6" parent="Doors" index="5" instance=ExtResource("3_k8gc0")]
 position = Vector2(79, 144)
 rotation = 1.5708
-id = 1
+id = 4
 is_placeholder = true

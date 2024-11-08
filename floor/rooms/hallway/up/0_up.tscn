@@ -26,7 +26,6 @@ type = 1
 position = Vector2(17, 48)
 rotation = -1.5708
 id = 1
-type = 1
 is_placeholder = true
 
 [node name="Door3" parent="Doors" instance=ExtResource("3_0qa3v")]
