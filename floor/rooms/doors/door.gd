@@ -24,17 +24,14 @@ var map_position: Vector2i
 var direction: int
 
 func _ready() -> void:
-	if is_placeholder:
-		visible = false
-	else:
-		setup_door_sprite()
-		init_direction()
+	init_direction()
+	setup_door_sprite(0)
 
 func init_direction() -> void:
 	set_door_direction(round(rotation * (180 / PI)))
 
 func _enter_tree():
-	$Sprite2D.texture = placeholder_door_texture	
+	$Sprite2D.texture = placeholder_door_texture
 
 func open() -> void:
 	$Sprite2D.frame = 0
@@ -58,18 +55,17 @@ func set_door_direction(door_rotation: int) -> void:
 func _on_opened_area_2d_area_entered(_area: Area2D):
 	SignalBus.door_entered.emit(self)
 		
-func setup_door_sprite() -> void:
-	var current_room_type = Global.current_room_type
+func setup_door_sprite(_current_room_type: int) -> void:
 
 	match type:
 		Global.ROOM_TYPE_INNER_HALLWAY:
-			if type == current_room_type:
+			if type == _current_room_type:
 				$Sprite2D.texture = inner_hallway_inside_door_texture
 			else:
 				$Sprite2D.texture = inner_hallway_outside_door_texture
 				
 		Global.ROOM_TYPE_CLASSROOM:
-			if type == current_room_type:
+			if type == _current_room_type:
 				$Sprite2D.texture = classroom_inside_door_texture
 			else:
 				$Sprite2D.texture = classroom_outside_door_texture
@@ -85,6 +81,6 @@ func setup_door_sprite() -> void:
 			
 		Global.ROOM_TYPE_LIBRARY:
 			$Sprite2D.texture = library_door_texture
-	
 		_:
 			visible = false
+			
