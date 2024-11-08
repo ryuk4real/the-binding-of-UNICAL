@@ -15,7 +15,7 @@ var door_room_positions: Dictionary = {}
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
 	type = _room_type
-	initialize_doors()
+	
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
@@ -85,10 +85,10 @@ func map_door_coordinates() -> void:
 		door_room_positions[door] = logical_coord
 
 func get_door_tile_position(door: Door) -> Vector2i:
-	return door_tile_positions.get(door, Vector2i.ZERO)
+	return door_tile_positions.get(door)
 
 func get_door_room_position(door: Door) -> Vector2i:
-	return door_room_positions.get(door, Vector2i.ZERO)
+	return door_room_positions.get(door)
 
 func from_position_get_door(_position: Vector2i) -> Door:
 	for key in door_room_positions.keys():
@@ -103,3 +103,9 @@ func find_door(_id: int) -> Door:
 			return door
 			
 	return null
+
+func remove_doors_by_types(_door_type: int) -> void:
+	# Loop through the doors and remove the ones with the given types
+	for door: Door in doors:
+		if door.type ==  _door_type:
+			doors.erase(door)

@@ -140,7 +140,7 @@ const SATISFIABLE = "SAT"
 const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
-const MAP_SIZE = 10
+const MAP_SIZE = 15
 var current_room_type = 0
 
 const PLAYER_LAYER: int = 1
