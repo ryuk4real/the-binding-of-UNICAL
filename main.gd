@@ -4,7 +4,7 @@ extends Node2D
 @onready var ui: UIManager = $UI
 @onready var floor_generator = $FloorGenerator
 @onready var room_loader = $Resources/RoomLoader
-var current_floor: Floor
+var current_floor: Floor = null
 
 func _ready() -> void:
 	_set_seed()
@@ -30,12 +30,12 @@ func load_game() -> void:
 	
 func _load_resources_from_loaders() -> void:
 	room_loader.load_resources()
-	pass
 
 func _on_new_game_pressed() -> void:
 	ui.show_loading_screen()
 	
-	current_floor = await floor_generator.generate_floor()
+	while current_floor == null:
+		current_floor = await floor_generator.generate_floor()
 	
 	ui.show_gui()
 
@@ -49,7 +49,8 @@ func _get_room_matrix_position(room: Room) -> Vector2:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("RESTART"):
-		floor_generator.generate_floor()
+		current_floor.free()
+		current_floor = floor_generator.generate_floor()
 
 func _notification(what: int) -> void:
 	match what:
