@@ -12,8 +12,6 @@ func _process(delta) -> void:
 	pass
 
 func start_server() -> void:
-	print("Server starting")
-	
 	match OS.get_name():
 		"Windows":
 			print("OS: Windows")
