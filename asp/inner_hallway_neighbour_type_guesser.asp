@@ -13,7 +13,7 @@
 % x3 = office
 % x4 = storage
 % x5 = library
-#const inner_hallway_neighbour_distribution = (1,1,1,1,1,1).
+#const inner_hallway_neighbour_distribution = (1,1,3,3,2,2).
 
 inner_hallway_neighbour_type_not_mapped(X) :- X = @delta(inner_hallway_neighbour_distribution).
 inner_hallway_neighbour_type_mapped(999) :- inner_hallway_neighbour_type_not_mapped(0).

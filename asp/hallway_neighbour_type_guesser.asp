@@ -10,7 +10,7 @@
 % x0 = none
 % x1 = inner_hallway
 % x2 = bathroom
-#const hallway_neighbour_distribution = (1,1,1).
+#const hallway_neighbour_distribution = (2,2,1).
 
 hallway_neighbour_type_not_mapped(X) :- X = @delta(hallway_neighbour_distribution).
 hallway_neighbour_type_mapped(999) :- hallway_neighbour_type_not_mapped(0).
