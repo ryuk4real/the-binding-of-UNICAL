@@ -1,17 +1,16 @@
-[gd_scene load_steps=4 format=4 uid="uid://cpcw7ov81re31"]
+[gd_scene load_steps=4 format=4 uid="uid://28egpwau3rvr"]
 
-[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_gsy8h"]
-[ext_resource type="TileSet" uid="uid://dypyn7uabsntj" path="res://floor/rooms/library/lb_wall.tres" id="2_ehf1p"]
-[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_sxwh2"]
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_vysvm"]
+[ext_resource type="TileSet" uid="uid://dypyn7uabsntj" path="res://floor/rooms/library/lb_wall.tres" id="2_gruf8"]
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_g4sqj"]
 
-[node name="Room" instance=ExtResource("1_gsy8h")]
+[node name="Room" instance=ExtResource("1_vysvm")]
 type = 6
 
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAFAAEAAQABAAEAAAAFAAIAAQABAAEAAAABAAIAAQABAAEAAAACAAIAAQABAAEAAAADAAIAAQABAAEAAAAEAAIAAQABAAEAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAGAAEAAQABAAEAAAAHAAEAAQABAAEAAAAGAAIAAQABAAEAAAAHAAIAAQABAAEAAAAIAAAAAQACAAAAAAAIAAEAAQACAAEAAAAIAAIAAQACAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAIAAAABAAQAAQABAAEAAAABAAUAAQABAAIAAAAHAAQAAQABAAEAAAAHAAUAAQABAAIAAAAIAAQAAQACAAEAAAAIAAUAAQACAAIAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAACAAQAAQABAAEAAAADAAQAAQABAAEAAAAEAAQAAQABAAEAAAAFAAQAAQABAAEAAAAGAAQAAQABAAEAAAAHAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAIAAMAAQACAAEAAAAGAAUAAQABAAIAAAAFAAUAAQABAAIAAAAEAAUAAQABAAIAAAADAAUAAQABAAIAAAACAAUAAQABAAIAAAAAAAMAAQAAAAEAAAA=")
-tile_set = ExtResource("2_ehf1p")
+tile_set = ExtResource("2_gruf8")
 
-[node name="Door" parent="Doors" index="0" instance=ExtResource("3_sxwh2")]
-position = Vector2(48, 175)
-rotation = 3.14159
+[node name="Door" parent="Doors" index="0" instance=ExtResource("3_g4sqj")]
+position = Vector2(48, 17)
 type = 6

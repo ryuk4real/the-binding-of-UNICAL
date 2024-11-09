@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cm1vlb8u6ex01"]
+[gd_scene load_steps=4 format=4 uid="uid://cesek83ypgegv"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_myixx"]
 [ext_resource type="TileSet" uid="uid://bbueovfhx1m5f" path="res://floor/rooms/storage/st.tres" id="2_4f6q7"]
@@ -12,5 +12,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAA
 tile_set = ExtResource("2_4f6q7")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_e0hf7")]
-position = Vector2(48, 17)
+position = Vector2(48, 79)
+rotation = 3.14159
 type = 5
