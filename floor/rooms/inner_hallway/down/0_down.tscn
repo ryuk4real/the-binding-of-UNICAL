@@ -8,7 +8,7 @@
 type = 1
 
 [node name="Walls" parent="." index="0"]
-tile_map_data = PackedByteArray("AAAAAP3/AAAAAAAAAAAAAP7/AAAAAAEAAAABAP3/AAABAAAAAAABAP7/AAABAAEAAAACAP3/AAACAAAAAAACAP7/AAACAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAAAAP//AAAAAAEAAAABAP//AAABAAEAAAACAP//AAACAAEAAAAAAAAAAAAAAAEAAAABAAAAAAABAAEAAAACAAAAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAABAAEAAAACAAAAAAACAAEAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAABAAIAAAABAAIAAAACAAIAAAACAAIAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAEAAAABAP3/AAABAAAAAAABAP7/AAABAAEAAAACAP3/AAACAAAAAAACAP7/AAACAAEAAAAAAP//AAAAAAEAAAABAP//AAABAAEAAAACAP//AAACAAEAAAA=")
 tile_set = ExtResource("2_k4ou2")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_vvfjb")]
@@ -20,27 +20,32 @@ type = 1
 position = Vector2(17, 48)
 rotation = -1.5708
 id = 1
+type = 999
 is_placeholder = true
 
 [node name="Door3" parent="Doors" index="2" instance=ExtResource("3_vvfjb")]
 position = Vector2(17, -48)
 rotation = -1.5708
 id = 2
+type = 999
 is_placeholder = true
 
-[node name="Door4" parent="Doors" index="3" instance=ExtResource("3_vvfjb")]
-position = Vector2(48, -79)
-id = 3
-is_placeholder = true
-
-[node name="Door5" parent="Doors" index="4" instance=ExtResource("3_vvfjb")]
-position = Vector2(79, -48)
-rotation = 1.5708
-id = 4
-is_placeholder = true
-
-[node name="Door6" parent="Doors" index="5" instance=ExtResource("3_vvfjb")]
+[node name="Door6" parent="Doors" index="3" instance=ExtResource("3_vvfjb")]
 position = Vector2(79, 48)
 rotation = 1.5708
 id = 5
+type = 999
+is_placeholder = true
+
+[node name="Door4" parent="Doors" index="4" instance=ExtResource("3_vvfjb")]
+position = Vector2(48, -79)
+id = 3
+type = 999
+is_placeholder = true
+
+[node name="Door5" parent="Doors" index="5" instance=ExtResource("3_vvfjb")]
+position = Vector2(79, -48)
+rotation = 1.5708
+id = 4
+type = 999
 is_placeholder = true

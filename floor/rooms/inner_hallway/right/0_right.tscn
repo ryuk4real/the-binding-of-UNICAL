@@ -15,23 +15,27 @@ tile_set = ExtResource("2_cgxmi")
 position = Vector2(48, 175)
 rotation = 3.14159
 id = 2
+type = 999
 is_placeholder = true
 
 [node name="Door2" parent="Doors" index="1" instance=ExtResource("3_3xdaj")]
 position = Vector2(17, 144)
 rotation = -1.5708
 id = 3
+type = 999
 is_placeholder = true
 
 [node name="Door3" parent="Doors" index="2" instance=ExtResource("3_3xdaj")]
 position = Vector2(17, 48)
 rotation = -1.5708
 id = 4
+type = 999
 is_placeholder = true
 
 [node name="Door4" parent="Doors" index="3" instance=ExtResource("3_3xdaj")]
 position = Vector2(48, 17)
 id = 5
+type = 999
 is_placeholder = true
 
 [node name="Door5" parent="Doors" index="4" instance=ExtResource("3_3xdaj")]
@@ -43,4 +47,5 @@ type = 1
 position = Vector2(79, 144)
 rotation = 1.5708
 id = 1
+type = 999
 is_placeholder = true
