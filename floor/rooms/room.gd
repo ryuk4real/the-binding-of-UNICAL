@@ -11,6 +11,7 @@ var is_clear: bool = true
 var coordinates: Array[Vector2i] = []
 var door_tile_positions: Dictionary = {}
 var door_room_positions: Dictionary = {}
+var connections: Dictionary = {}
 
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
@@ -129,3 +130,6 @@ func remove_doors_by_types(_door_type: int) -> void:
 	for door: Door in doors:
 		if door.type ==  _door_type:
 			doors.erase(door)
+
+func add_connection(_door1: Door, _door2: Door) -> void:
+	connections[_door1] = _door2

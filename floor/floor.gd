@@ -2,7 +2,6 @@ class_name Floor
 extends Node2D
 
 var rooms: Array[Room] = []
-var connections: Dictionary = {}
 var rooms_to_process: Array[Room] = []
 var current_room: Room
 @onready var room_scene: Node2D = $Rooms
@@ -143,6 +142,3 @@ func print_floor() -> void:
 			var value = floor_matrix[x][y]
 			row += "%3d " % value  # %3d means right-align number in 3 spaces
 		print(row)
-
-func add_connection(_door_from: Door, _door_to: Door) -> void:
-	connections[_door_from] = _door_to

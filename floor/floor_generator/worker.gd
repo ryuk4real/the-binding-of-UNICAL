@@ -38,7 +38,7 @@ func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	json.parse(body.get_string_from_utf8())
 	response = await json.get_data()
 	SignalBus.response_ready.emit()
-	response = 0
+	#response = 0
 	
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]

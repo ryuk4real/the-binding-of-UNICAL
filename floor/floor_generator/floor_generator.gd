@@ -37,22 +37,13 @@ func generate_floor():
 		current_floor.place_room(first_room, map_center)
 		room_counter += 1
 	
-	#print(">>Rooms to process size: %s" % current_floor.rooms_to_process.size())
-	
-	# Add room limit check
 	while not current_floor.rooms_to_process.is_empty() and room_counter < Global.ROOM_LIMIT:
 		var room_to_process: Room = current_floor.rooms_to_process.pop_front()
-		
-		#print("\nChoosing room %s door types and availability" % [room_to_process.id])
-		
 		var unplaceable_doors: Array[Door] = []
 		
 		for door: Door in room_to_process.doors:
 			if door.type == Global.ROOM_TYPE_NONE:
 				door.type = await _get_room_neighbour_type(room_to_process.type)
-			#print("> Door %s has type %s" % [door.id, door.type])
-			#
-			#print("Choosing position where to place the new room")
 			
 			if door.type != Global.ROOM_TYPE_NONE:
 				door.is_placeholder = false
@@ -61,7 +52,6 @@ func generate_floor():
 				
 				print("Door %s of type %s from %s to %s" % [door.id, door.type, door.map_position, new_position])
 				
-				# Check room limit before attempting placement
 				if room_counter >= Global.ROOM_LIMIT:
 					unplaceable_doors.append(door)
 					continue
@@ -74,14 +64,22 @@ func generate_floor():
 				
 				if current_floor.can_place_room(new_room, new_position):
 					current_floor.place_room(new_room, new_position)
+					
+					# Find the connecting door in the new room (door with id 0)
+					var connecting_door = new_room.find_door(0)
+					if connecting_door:
+						# Add the connection between the doors
+						room_to_process.add_connection(door, connecting_door)
+						print("Connected door %s from room %s to door %s from room %s" % 
+							  [door.id, room_to_process.id, connecting_door.id, new_room.id])
+					
 					room_counter += 1
 				else:
 					current_floor.room_scene.remove_child(new_room)
 					current_floor.rooms_to_process.erase(new_room)
 					unplaceable_doors.append(door)
 				
-				#print(">>Rooms to process size: %s" % current_floor.rooms_to_process.size())
-			print()
+				print()
 		
 		# Handle unplaceable doors
 		for door in unplaceable_doors:
@@ -98,11 +96,15 @@ func generate_floor():
 					if door.is_placeholder:
 						door.visible = false
 	
-	for room: Room in current_floor.rooms:
-		print("Room %s of type %s" % [room.id, room.type])
-		
-		for door: Door in room.doors:
-			print("> has door %s of type %s" % [door.id, door.type])
+	# Print all room connections
+	print("\nRoom Connections:")
+	for room in current_floor.rooms:
+		if not room.connections.is_empty():
+			print("\nRoom %s connections:" % room.id)
+			for door1 in room.connections:
+				var door2 = room.connections[door1]
+				print("- Door %s connects to Door %s in Room %s" % 
+					  [door1.id, door2.id, door2.get_parent().get_parent().id])
 	
 	current_floor.print_floor()
 	return current_floor
