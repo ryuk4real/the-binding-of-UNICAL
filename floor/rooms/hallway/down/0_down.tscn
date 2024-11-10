@@ -66,5 +66,5 @@ is_placeholder = true
 [node name="Pickups" type="Node2D" parent="."]
 
 [node name="CleanedRoomPickupSpawner" type="Marker2D" parent="Pickups"]
-position = Vector2(144, 50)
+position = Vector2(144, 48)
 gizmo_extents = 18.4

@@ -28,20 +28,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -53.0
-offset_top = -52.0
-offset_right = 457.0
-offset_bottom = 219.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.48226, 2.82308)
-color = Color(0.104294, 0.0897874, 0.0747913, 1)
-
 [node name="FloorGenerator" type="Node2D" parent="."]
 script = ExtResource("3_fahxx")
 

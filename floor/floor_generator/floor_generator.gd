@@ -24,7 +24,8 @@ func generate_floor():
 	# All generation starts with a room of type HALLWAY with a random direction
 	var available_directions = [Global.DIRECTION_UP, Global.DIRECTION_DOWN, Global.DIRECTION_LEFT, Global.DIRECTION_RIGHT]
 	var random_direction: int = available_directions.pick_random()
-	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY, Global.DIRECTION_DOWN)
+	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY,  Global.DIRECTION_RIGHT)
+	first_room.hide()
 	
 	current_floor.visible = false
 	game_scene.add_child(current_floor)
@@ -65,6 +66,8 @@ func generate_floor():
 				if current_floor.can_place_room(new_room, new_position):
 					current_floor.place_room(new_room, new_position)
 					
+					door.setup_door_sprite(room_to_process.id)
+					door.show()
 					# Find the connecting door in the new room (door with id 0)
 					var connecting_door = new_room.find_door(0)
 					if connecting_door:
@@ -152,5 +155,5 @@ func _get_room_neighbour_type(room_type: int) -> int:
 
 	return type_answer_set[0][0].get("arguments")[0].get("number")
 
-func reset():
+func reset() -> void:
 	room_counter = 0

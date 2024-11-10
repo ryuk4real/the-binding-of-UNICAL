@@ -1,11 +1,13 @@
 extends Node2D
 
+var player_loader: ResourcePreloader
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _ready() -> void:
+	player_loader = ResourcePreloader.new()
 
+func load_resources() -> void:
+	player_loader.add_resource(str(0), load(Global.PLAYER_RESOURCE_PATH))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func get_player() -> Player:
+	var player_scene = player_loader.get_resource(str(0))
+	return player_scene.instantiate()

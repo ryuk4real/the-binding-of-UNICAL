@@ -15,6 +15,8 @@ const DIRECTION_DOWN: int = -1
 const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
+const PLAYER_RESOURCE_PATH = "res://entities/player/player.tscn"
+
 const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/hallway_neighbour_type_guesser.asp"
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neighbour_type_guesser.asp"
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/classroom_neighbour_type_guesser.asp"

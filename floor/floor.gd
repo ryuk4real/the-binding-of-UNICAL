@@ -3,8 +3,8 @@ extends Node2D
 
 var rooms: Array[Room] = []
 var rooms_to_process: Array[Room] = []
-var current_room: Room
 @onready var room_scene: Node2D = $Rooms
+var current_room: Room
 
 # Matrix to store room positions. Each cell contains 0 (empty) or room id
 var floor_matrix: Array = []
@@ -142,3 +142,22 @@ func print_floor() -> void:
 			var value = floor_matrix[x][y]
 			row += "%3d " % value  # %3d means right-align number in 3 spaces
 		print(row)
+
+func find_room(_id: int):
+	for room: Room in rooms:
+		if room.id == 0:
+			return room
+	return null
+
+func set_active_room(room_id: int) -> void:
+	for room in rooms:
+		if room.id == room_id:
+			room.set_room_active(true)
+			current_room = room
+		else:
+			room.set_room_active(false)
+
+func set_just_first_room_visible() -> void:
+	var first_room = find_room(0)
+	if first_room:
+		set_active_room(0)

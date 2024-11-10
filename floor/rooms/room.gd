@@ -4,10 +4,11 @@ extends Node2D
 @onready var doors: Array[Door]
 @onready var walls: TileMapLayer = $Walls
 @onready var doors_node: Node2D = $Doors
+@onready var cleaned_room_pickup_spawner = $Pickups/CleanedRoomPickupSpawner
 @export var id: int = 0
 @export var type: int = 0
 var configuration: int
-var is_clear: bool = true
+var is_clear: bool = false
 var coordinates: Array[Vector2i] = []
 var door_tile_positions: Dictionary = {}
 var door_room_positions: Dictionary = {}
@@ -19,6 +20,10 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	generate_coordinates_from_tilemaplayer()
 	initialize_doors()
 	map_door_coordinates()
+	
+	if type == Global.ROOM_TYPE_HALLWAY:
+		is_clear = true
+		open_all_doors()
 	print("ROOM %s -> %s" % [id, coordinates])
 
 func _ready() -> void:
@@ -133,3 +138,38 @@ func remove_doors_by_types(_door_type: int) -> void:
 
 func add_connection(_door1: Door, _door2: Door) -> void:
 	connections[_door1] = _door2
+
+func set_room_active(active: bool) -> void:
+	# Handle visibility
+	visible = active
+	
+	# Handle collision layers
+	if walls:
+		# Disable/enable collision layer
+		if active:
+			walls.collision_enabled = true
+		else:
+			walls.collision_enabled = false
+	
+	# Handle doors collision
+	for door in doors:
+		if door:
+			var opened_collider = door.get_node("OpenedArea2D/OpenedCollider")
+			var closed_collider = door.get_node("ClosedArea2D/ClosedCollider")
+			
+			if opened_collider:
+				opened_collider.disabled = !active
+			if closed_collider:
+				closed_collider.disabled = !active
+				
+func get_pickup_spawner_position() -> Vector2i:
+	return cleaned_room_pickup_spawner.position
+
+func close_all_doors():
+	for door: Door in doors:
+		door.close()
+	is_clear = false
+func open_all_doors():
+	for door: Door in doors:
+		door.open()
+	is_clear = true
