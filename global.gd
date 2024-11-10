@@ -15,10 +15,6 @@ const DIRECTION_DOWN: int = -1
 const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
-const PLACE_STARTING_ROOM_PROGRAM_PATH = "res://asp/place_starting_room.asp"
-const PLACE_STARTING_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_starting_room_temp.asp"
-const PLACE_GENERIC_ROOM_PROGRAM_PATH = "res://asp/place_generic_room.asp"
-const PLACE_GENERIC_ROOM_PROGRAM_PATH_TEMP = "res://asp/place_generic_room_temp.asp"
 const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/hallway_neighbour_type_guesser.asp"
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neighbour_type_guesser.asp"
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/classroom_neighbour_type_guesser.asp"
@@ -140,6 +136,7 @@ const SATISFIABLE = "SAT"
 const UNSATISFIABLE = "UNSAT"
 const ALL_MODELS = 0
 
+const ROOM_LIMIT = 15
 const MAP_SIZE = 15
 var current_room_type = 0
 

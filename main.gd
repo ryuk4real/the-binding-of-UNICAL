@@ -36,21 +36,13 @@ func _on_new_game_pressed() -> void:
 	
 	while current_floor == null:
 		current_floor = await floor_generator.generate_floor()
-	
 	ui.show_gui()
-
-# Helper function to find room position in matrix
-func _get_room_matrix_position(room: Room) -> Vector2:
-	for y in range(current_floor.matrix_size):
-		for x in range(current_floor.matrix_size):
-			if current_floor.floor_matrix[y][x] == room.id:
-				return Vector2(x, y)
-	return Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("RESTART"):
+		floor_generator.reset()
 		current_floor.free()
-		current_floor = floor_generator.generate_floor()
+		current_floor = await floor_generator.generate_floor()
 
 func _notification(what: int) -> void:
 	match what:

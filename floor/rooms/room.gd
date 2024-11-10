@@ -18,13 +18,13 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	generate_coordinates_from_tilemaplayer()
 	initialize_doors()
 	map_door_coordinates()
+	print("ROOM %s -> %s" % [id, coordinates])
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
 	initialize_doors()
 	map_door_coordinates()
 	
-	print("ROOM %s -> %s" % [id, coordinates])
 	#print("door room positions: %s\n" % door_room_positions)
 	#print(str(get_door_room_position(doors[5])) + " " + str(doors[5].type) + " " + str(doors[5].direction))
 
