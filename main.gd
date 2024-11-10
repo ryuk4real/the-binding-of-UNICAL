@@ -40,9 +40,10 @@ func _on_new_game_pressed() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("RESTART"):
-		floor_generator.reset()
-		current_floor.free()
-		current_floor = await floor_generator.generate_floor()
+		if ui.main_menu.visible == false and ui.loading_screen.visible == false:
+			floor_generator.reset()
+			current_floor.free()
+			current_floor = await floor_generator.generate_floor()
 
 func _notification(what: int) -> void:
 	match what:

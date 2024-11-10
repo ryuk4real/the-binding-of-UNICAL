@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=7 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
-[ext_resource type="Script" path="res://floor/floor_generator/resource_loaders/room_loader.gd" id="3_60n1x"]
+[ext_resource type="Script" path="res://resource_loaders/room_loader.gd" id="3_60n1x"]
+[ext_resource type="Script" path="res://resource_loaders/entity_loader.gd" id="3_70wk3"]
 [ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="3_fahxx"]
 [ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
 [ext_resource type="PackedScene" uid="uid://b26dcuqwanu2x" path="res://ui/ui.tscn" id="4_33lin"]
@@ -13,6 +14,9 @@ script = ExtResource("1_a0qgy")
 
 [node name="RoomLoader" type="Node2D" parent="Resources"]
 script = ExtResource("3_60n1x")
+
+[node name="EntityLoader" type="Node2D" parent="Resources"]
+script = ExtResource("3_70wk3")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
