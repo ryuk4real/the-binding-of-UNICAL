@@ -31,6 +31,7 @@ scale = Vector2(1, 0.839999)
 shape = SubResource("CircleShape2D_flml4")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
+scale = Vector2(2, 1.2)
 zoom = Vector2(5, 5)
 
 [node name="InteractionArea" type="Area2D" parent="." index="3"]

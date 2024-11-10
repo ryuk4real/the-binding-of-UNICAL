@@ -2,139 +2,158 @@ class_name FloorGenerator
 extends Node2D
 
 @onready var worker: Worker = $Worker
-@onready var hallways_preloader = $"../Resources/HallwaysPreloader"
-@onready var inner_hallways_preloader = $"../Resources/InnerHallwaysPreloader"
-@onready var classrooms_preloader = $"../Resources/ClassroomsPreloader"
-@onready var offices_preloader = $"../Resources/OfficesPreloader"
-@onready var bathrooms_preloader = $"../Resources/BathroomsPreloader"
-@onready var current_floor: Floor = preload("res://floor/floor.tscn").instantiate()
+@onready var room_loader = $"../Resources/RoomLoader"
+@onready var game_scene = $"../Game"
 
-func generate_floor() -> Floor:
-	
-	var done: bool = false
-	var answer_sets: Dictionary = {}
-	var last_answer_set: Array
-	
-	var room_generator_program: String = Utils.read_file(Global.ROOM_GENERATOR_PROGRAM_PATH)
-	var regex: RegEx = RegEx.new()
-	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-	var iteration: int = 0
-	var attempt: int = 0
-	
-	Utils.copy(Global.ROOM_GENERATOR_PROGRAM_PATH, Global.FIRST_ROOM_GENERATOR_TEMP_PATH)
-	var room_generator_temp: String = Utils.read_file(Global.FIRST_ROOM_GENERATOR_TEMP_PATH)
-	regex.compile("new")
-	
-	while not done:
-		
-		var current_room_atoms: Array[String] = []
-		
-		if not answer_sets.has(iteration):
-			var temp_path: String = Global.ASP_PATH + ".room_generator_temp_" + str(iteration) + ".asp" 
-			room_generator_temp = Utils.read_file(temp_path)
-			answer_sets[iteration] = await _get_answerset_from_worker(room_generator_temp)
-		else:
-			
-			if not answer_sets[iteration].is_empty():
-				
-				var answer_set_size: int = answer_sets[iteration].size()
-				var random_position: int = rng.randi_range(0, (answer_set_size - 1))
-				
-				for atom: Dictionary in answer_sets[iteration][random_position]:
-					if atom.get("predicate").get("name") == "n_new_rooms":
-						if atom.get("arguments")[0].get("number") == 0:
-							done = true
-							break
-					else:
-						var s = atom.get("str")
-						s = regex.sub(s, "old")
-						current_room_atoms.append(s)
-				
-					last_answer_set = answer_sets[iteration][random_position]
-					
-				if not done:
-					var temp_path: String = Global.ASP_PATH + ".room_generator_temp_" + str(iteration + 1) + ".asp" 
-					Utils.write_atoms(temp_path, current_room_atoms, room_generator_program)
-					
-					
-					if iteration != 0:
-						answer_sets[iteration].pop_at(random_position)
-					
-					iteration += 1
-			else:
-				answer_sets.erase(iteration)
-				iteration -= 1
-				var temp_path: String = Global.ASP_PATH + ".room_generator_temp_" + str(iteration) + ".asp" 
-				room_generator_temp = Utils.read_file(temp_path)
-			
-			print("Iteration: " + str(iteration))
-		
-		attempt += 1
-		
-		
-		if attempt >= 200:
-			print("REDO -> Floor generator ATTEMPT: " + str(attempt))
-			return null
-			
-		if done:
-			print("Got valid answer set")
-			print("Floor generator ATTEMPT: " + str(attempt))
-			Utils.write_file("res://asp/.answer_set.json", str(last_answer_set))
-			break
-	
-	return _get_floor_from_answer_set(last_answer_set)
+var hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH)
+var inner_hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH)
+var classroom_neighbour_type_guesser_program: String = Utils.read_file(Global.CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH)
+var library_neighbour_type_guesser_program: String = Utils.read_file(Global.LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH)
 
-func _get_floor_from_answer_set(_answer_set: Array = []) -> Floor:
+var room_counter: int = 0
+var done: bool = false
+var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
+
+func _ready() -> void:
+	pass
+
+func generate_floor():
+	var current_floor_packed_scene = preload("res://floor/floor.tscn")
+	var current_floor: Floor = current_floor_packed_scene.instantiate()
 	
-	current_floor.reset()
+	# All generation starts with a room of type HALLWAY with a random direction
+	var available_directions = [Global.DIRECTION_UP, Global.DIRECTION_DOWN, Global.DIRECTION_LEFT, Global.DIRECTION_RIGHT]
+	var random_direction: int = available_directions.pick_random()
+	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY,  Global.DIRECTION_RIGHT)
+	first_room.hide()
 	
-	for atom: Dictionary in _answer_set:
-		if atom.get("predicate").get("name") == "connected_old":
-			var room_id1: int = atom.get("arguments")[0].get("number")
-			var room_type1: int = atom.get("arguments")[1].get("number")
-			var room_id2: int = atom.get("arguments")[2].get("number")
-			var room_type2: int = atom.get("arguments")[3].get("number")
-			var door_id1: int = atom.get("arguments")[4].get("number")
-			var door_type1: int = atom.get("arguments")[5].get("number")
-			var door_id2: int = atom.get("arguments")[7].get("number")
-			var door_type2: int = atom.get("arguments")[8].get("number")
-			
-			var room1: Room = _get_room_from_preloader(room_id1, room_type1)
-			var room2: Room = _get_room_from_preloader(room_id2, room_type2)
-			
-			room1.load_doors()
-			room2.load_doors()
-			
-			var door1: Door = room1.get_door(door_id1, door_type1)
-			var door2: Door = room2.get_door(door_id2, door_type2)
-			
-			current_floor.add_room(room1)
-			current_floor.add_connection(room1, door1, room2, door2)
-			
+	current_floor.visible = false
+	game_scene.add_child(current_floor)
 	
-	#print(current_floor.connections)
+	current_floor.room_scene.add_child(first_room)
+	current_floor.rooms_to_process.append(first_room)
+	first_room.init(room_counter, Global.ROOM_TYPE_HALLWAY)
+	
+	if current_floor.can_place_room(first_room, map_center):
+		current_floor.place_room(first_room, map_center)
+		room_counter += 1
+	
+	while not current_floor.rooms_to_process.is_empty() and room_counter < Global.ROOM_LIMIT:
+		var room_to_process: Room = current_floor.rooms_to_process.pop_front()
+		var unplaceable_doors: Array[Door] = []
 		
+		for door: Door in room_to_process.doors:
+			if door.type == Global.ROOM_TYPE_NONE:
+				door.type = await _get_room_neighbour_type(room_to_process.type)
+			
+			if door.type != Global.ROOM_TYPE_NONE:
+				door.is_placeholder = false
+				var new_room: Room = room_loader.get_random_room(door.type, -door.direction)
+				var new_position: Vector2i = _calculate_new_room_position(door.map_position, door.direction)
+				
+				print("Door %s of type %s from %s to %s" % [door.id, door.type, door.map_position, new_position])
+				
+				if room_counter >= Global.ROOM_LIMIT:
+					unplaceable_doors.append(door)
+					continue
+					
+				current_floor.room_scene.add_child(new_room)
+				current_floor.rooms_to_process.append(new_room)
+				
+				print("Assigning type %s to room %s" % [door.type, room_counter])
+				new_room.init(room_counter, door.type)
+				
+				if current_floor.can_place_room(new_room, new_position):
+					current_floor.place_room(new_room, new_position)
+					
+					door.setup_door_sprite(room_to_process.id)
+					door.show()
+					# Find the connecting door in the new room (door with id 0)
+					var connecting_door = new_room.find_door(0)
+					if connecting_door:
+						# Add the connection between the doors
+						room_to_process.add_connection(door, connecting_door)
+						print("Connected door %s from room %s to door %s from room %s" % 
+							  [door.id, room_to_process.id, connecting_door.id, new_room.id])
+					
+					room_counter += 1
+				else:
+					current_floor.room_scene.remove_child(new_room)
+					current_floor.rooms_to_process.erase(new_room)
+					unplaceable_doors.append(door)
+				
+				print()
+		
+		# Handle unplaceable doors
+		for door in unplaceable_doors:
+			door.is_placeholder = true
+			door.visible = false
+		
+		# If we've hit the room limit, clear the processing queue
+		if room_counter >= Global.ROOM_LIMIT:
+			current_floor.rooms_to_process.clear()
+			
+			# Make all remaining doors invisible
+			for room in current_floor.rooms:
+				for door in room.doors:
+					if door.is_placeholder:
+						door.visible = false
+	
+	# Print all room connections
+	print("\nRoom Connections:")
+	for room in current_floor.rooms:
+		if not room.connections.is_empty():
+			print("\nRoom %s connections:" % room.id)
+			for door1 in room.connections:
+				var door2 = room.connections[door1]
+				print("- Door %s connects to Door %s in Room %s" % 
+					  [door1.id, door2.id, door2.get_parent().get_parent().id])
+	
+	current_floor.print_floor()
 	return current_floor
 
-func _get_answerset_from_worker(_program: String):
+func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2i:
+	var new_pos = door_pos
+	
+	match direction:
+		Global.DIRECTION_UP:
+			new_pos.x -= 1
+		Global.DIRECTION_DOWN:
+			new_pos.x += 1
+		Global.DIRECTION_LEFT:
+			new_pos.y -= 1
+		Global.DIRECTION_RIGHT:
+			new_pos.y += 1
+			
+	return new_pos
+
+func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
 	await SignalBus.response_ready
-	return worker.response["models"]
+	var response = await worker.response.get("models")
+	worker.cancel_request()
+	return response
 
-func _get_room_from_preloader(_room_id: int, _room_type: int) -> Room:
+func _get_room_neighbour_type(room_type: int) -> int:
+	var type_answer_set: Array
 	
-	var room: Room
-	
-	match _room_type:
+	match(room_type):
 		Global.ROOM_TYPE_HALLWAY:
-			room = hallways_preloader.get_resource(str(_room_id)).instantiate()
+			type_answer_set = await _get_answerset_from_worker(hallway_neighbour_type_guesser_program)
+		
 		Global.ROOM_TYPE_INNER_HALLWAY:
-			room = inner_hallways_preloader.get_resource(str(_room_id)).instantiate()
+			type_answer_set = await _get_answerset_from_worker(inner_hallway_neighbour_type_guesser_program)
+		
 		Global.ROOM_TYPE_CLASSROOM:
-			room = classrooms_preloader.get_resource(str(_room_id)).instantiate()
-		Global.ROOM_TYPE_OFFICE:
-			room = offices_preloader.get_resource(str(_room_id)).instantiate()
-		Global.ROOM_TYPE_BATHROOM:
-			room = bathrooms_preloader.get_resource(str(_room_id)).instantiate()
-			
-	return room
+			type_answer_set = await _get_answerset_from_worker(classroom_neighbour_type_guesser_program)
+		
+		Global.ROOM_TYPE_LIBRARY:
+			type_answer_set = await _get_answerset_from_worker(library_neighbour_type_guesser_program)
+		
+		_:
+			return Global.ROOM_TYPE_NONE
+
+	return type_answer_set[0][0].get("arguments")[0].get("number")
+
+func reset() -> void:
+	room_counter = 0

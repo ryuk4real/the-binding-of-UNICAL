@@ -1,15 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0byigdmk0yra"]
+[gd_scene load_steps=2 format=4 uid="uid://b0byigdmk0yra"]
 
 [ext_resource type="Script" path="res://floor/rooms/room.gd" id="1_8788s"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_8788s")
 
-[node name="Walls" type="TileMap" parent="."]
-format = 2
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAABAAEAAAAFAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAIAAIAAAACAAIAAAA=")
+rendering_quadrant_size = 32
 
-[node name="Obstacles" type="TileMap" parent="."]
-format = 2
+[node name="Obstacles" type="TileMapLayer" parent="."]
+
+[node name="Decorations" type="TileMapLayer" parent="."]
 
 [node name="Doors" type="Node2D" parent="."]
 

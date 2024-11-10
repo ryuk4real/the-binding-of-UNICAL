@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=4 uid="uid://bjhf6dp1ymk7k"]
+
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_i8abt"]
+[ext_resource type="TileSet" uid="uid://boxb8fij78k12" path="res://floor/rooms/classroom/lab/lab_wall.tres" id="2_fsrk4"]
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_u56s8"]
+
+[node name="Room" instance=ExtResource("1_i8abt")]
+type = 3
+
+[node name="Walls" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAACAAEAAAABAAEAAAACAAIAAAABAAIAAAADAAEAAAABAAEAAAADAAIAAAABAAIAAAAEAAEAAAABAAEAAAAEAAIAAAABAAIAAAAFAAEAAAACAAEAAAAFAAIAAAACAAIAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAAAAAAAAAAAAAEAAAAAAP//AAAAAAEAAAAAAP7/AAAAAAEAAAABAP7/AAABAAEAAAACAP7/AAABAAEAAAADAP7/AAABAAEAAAAEAP7/AAABAAEAAAAFAP//AAACAAEAAAAFAAAAAAACAAEAAAAFAP7/AAACAAEAAAAAAP3/AAAAAAAAAAABAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAACAAAAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAA=")
+tile_set = ExtResource("2_fsrk4")
+
+[node name="Door" parent="Doors" index="0" instance=ExtResource("3_u56s8")]
+position = Vector2(48, 79)
+rotation = 3.14159
+type = 3

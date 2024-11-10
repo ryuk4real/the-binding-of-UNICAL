@@ -1,79 +1,104 @@
 extends Node2D
 
-@onready var game_scene = $Game
+@onready var game_scene: Node2D = $Game
 @onready var ui: UIManager = $UI
-@onready var floor_generator: FloorGenerator = $FloorGenerator
+@onready var floor_generator = $FloorGenerator
+@onready var room_loader = $Resources/RoomLoader
+@onready var entity_loader = $Resources/EntityLoader
 
-@onready var hallways_preloader: ResourcePreloader = $Resources/HallwaysPreloader
-@onready var inner_hallways_preloader: ResourcePreloader = $Resources/InnerHallwaysPreloader
-@onready var classrooms_preloader: ResourcePreloader = $Resources/ClassroomsPreloader
-@onready var offices_preloader: ResourcePreloader = $Resources/OfficesPreloader
-@onready var bathrooms_preloader: ResourcePreloader = $Resources/BathroomsPreloader
+var player: Player = null
+var current_floor: Floor = null
 
 func _ready() -> void:
+	_set_seed()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	ui.show_loading_screen()
-	_load_data()
+	_load_resources_from_loaders()
 	await SignalBus.server_started
+	
 	ui.show_main_menu()
 	
-func _process(_delta) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func _save_data() -> void:
 	pass
-
-func _load_data() -> void:
-	
-	for i: int in range(0, Global.TOTAL_HALLWAYS):
-		hallways_preloader.add_resource(str(i), load(Global.HALLWAYS_PATH + "hallway_" + str(i) + ".tscn"))
-
-	for i: int in range(0, Global.TOTAL_INNER_HALLWAYS - 1):
-		inner_hallways_preloader.add_resource(str(i), load(Global.INNER_HALLWAYS_PATH + "inner_hallway_" + str(i) + ".tscn"))
-	
-	for i: int in range(0, Global.TOTAL_LECTURE_HALLS):
-		classrooms_preloader.add_resource(str(i), load(Global.LECTURE_HALLS_PATH + "classroom_" + str(i) + ".tscn"))
-	
-	for i: int in range(Global.TOTAL_LECTURE_HALLS, Global.TOTAL_LECTURE_HALLS + Global.TOTAL_STANDARD_CLASSROOMS):
-		classrooms_preloader.add_resource(str(i), load(Global.STANDARD_CLASSROOMS_PATH + "classroom_"+ str(i) +".tscn"))
-	
-	for i: int in range(Global.TOTAL_LECTURE_HALLS + Global.TOTAL_STANDARD_CLASSROOMS, Global.TOTAL_CLASSROOMS):
-		classrooms_preloader.add_resource(str(i), load(Global.LABS_PATH + "classroom_" + str(i) + ".tscn"))
-
-	for i: int in range(0, Global.TOTAL_OFFICES):
-		offices_preloader.add_resource(str(i), load(Global.OFFICES_PATH + "office_" + str(i) + ".tscn"))
-	
-	for i: int in range(0, Global.TOTAL_BATHROOMS):
-		bathrooms_preloader.add_resource(str(i), load(Global.BATHROOMS_PATH + "bathroom_" + str(i) + ".tscn"))
-	
-	for preloader: ResourcePreloader in $Resources.get_children():
-		print(preloader.name + " " + str(preloader.get_resource_list().size()))
 
 func _save_game() -> void:
 	pass
 	
 func load_game() -> void:
 	pass
+	
+func _load_resources_from_loaders() -> void:
+	room_loader.load_resources()
+	entity_loader.load_resources()
 
 func _on_new_game_pressed() -> void:
 	ui.show_loading_screen()
 	
-	var current_floor: Floor = null
+	current_floor = await get_floor()
+	current_floor.set_active_room(0)
+	current_floor.show()
 	
-	while current_floor == null:
-		current_floor = await floor_generator.generate_floor()
-	
-	#current_floor.instantiate()
-	game_scene.add_child(current_floor, true, INTERNAL_MODE_FRONT)
-	
-	# TODO: setup start
+	setup_player()
+	set_player_on_scene()
 	ui.show_gui()
 
-func _quit() -> void:
-	_save_data()
-	get_tree().quit()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("RESTART"):
+		if ui.main_menu.visible == false and ui.loading_screen.visible == false:
+			player.hide()
+			ui.show_loading_screen()
+			current_floor = await get_floor()
+			current_floor.set_active_room(0)
+			current_floor.show()
+			setup_player()
+			set_player_on_scene()
+			player.show()
+			ui.show_gui()
+	
+	if event.is_action_pressed("OPEN_CLOSE_DOORS"):
+		if current_floor.current_room.is_clear:
+			current_floor.current_room.close_all_doors()
+		else:
+			current_floor.current_room.open_all_doors()
+
+func setup_player() -> void:
+	player = entity_loader.get_player()
+
+func get_floor() -> Floor:
+	floor_generator.reset()
+	
+	if current_floor != null:
+		current_floor.free()
+	
+	var new_floor: Floor
+	while new_floor == null:
+		new_floor = await floor_generator.generate_floor()
+	
+	return new_floor
+
+func set_player_on_scene() -> void:
+	game_scene.add_child(player)
+	player.position = current_floor.current_room.get_pickup_spawner_position()
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_WM_CLOSE_REQUEST:
+			_quit()
 
 func _on_quit_pressed() -> void:
-	floor_generator.worker.shutdown_server()
 	_quit()
+
+func _set_seed() -> void:
+	var new_seed: int = Time.get_datetime_string_from_system().hash()
+	seed(new_seed)
+	print("seed:" + str(new_seed))
+
+func _quit() -> void:
+	floor_generator.worker.shutdown_server()
+	_save_data()
+	print("Game closed")
+	get_tree().quit()

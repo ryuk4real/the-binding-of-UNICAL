@@ -1,7 +1,11 @@
-class_name Utils
 extends Node
 
-static func read_file(_path: String, _read_as_string: bool = false) -> String:
+var regex: RegEx = RegEx.new()
+
+func _ready() -> void:
+	regex.compile("new")
+
+func read_file(_path: String, _read_as_string: bool = false) -> String:
 	var file_content: String
 	
 	if _read_as_string:
@@ -14,7 +18,7 @@ static func read_file(_path: String, _read_as_string: bool = false) -> String:
 		file.close()
 	return file_content
 
-static func write_file(_path: String, _data: String) -> void:
+func write_file(_path: String, _data: String) -> void:
 	var file: FileAccess = null
 	
 	while file == null:
@@ -22,11 +26,11 @@ static func write_file(_path: String, _data: String) -> void:
 	file.store_line(_data)
 	file.close()
 
-static func copy(_file_path: String, _destination_path: String):
-	var data = read_file(_file_path)
+func copy(_file_path: String, _destination_path: String) -> void:
+	var data: String = read_file(_file_path)
 	write_file(_destination_path, data)
 
-static func write_atoms(_path: String, _atoms: Array, _file_path: String = ""):
+func write_atoms(_path: String, _atoms: Array, _file_path: String = "") -> void:
 	var file: FileAccess = null
 	
 	while file == null:
@@ -41,3 +45,37 @@ static func write_atoms(_path: String, _atoms: Array, _file_path: String = ""):
 		a += "."
 		file.store_line(a)
 	file.close()
+
+func get_atoms(_answerset: Array) -> Array:
+	
+	if _answerset.is_empty():
+		return []
+	
+	var atoms: Array = []
+	
+	for atom: Dictionary in _answerset:
+		atoms.append(atom.get("str"))
+	
+	return atoms
+
+func change_atoms_to_old(_atoms: Array) -> Array:
+	
+	var result: Array = []
+	
+	for atom: String in _atoms:
+		result.append(regex.sub(atom, "old"))
+	
+	return result
+
+func build_atom(_predicate_name: String, _arguments: Array) -> String:
+	var atom: String = _predicate_name
+	
+	atom += "("
+	
+	for _argument in _arguments:
+		atom += _argument
+	
+	atom += ")"
+	
+	return atom
+	

@@ -4,4 +4,4 @@ signal server_started
 signal server_shut
 signal response_ready
 
-signal door_entered(door)
+signal door_entered
