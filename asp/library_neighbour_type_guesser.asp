@@ -9,9 +9,10 @@
 
 % x0 = none
 % x1 = inner_hallway
-#const library_neighbour_distribution = (1,1).
-library_neighbour_type_not_mapped(X) :- X = @delta(library_neighbour_distribution).
-library_neighbour_type_mapped(999) :- library_neighbour_type_not_mapped(0).
-library_neighbour_type_mapped(1) :- library_neighbour_type_not_mapped(1).
+#const library_neighbour_distribution = (
+    (999, 1),
+    (1, 1)).
 
-#show library_neighbour_type_mapped/1.
+library_neighbour_type(X) :- X = @delta(library_neighbour_distribution).
+
+#show library_neighbour_type/1.
