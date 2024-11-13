@@ -3,8 +3,9 @@ extends Entity
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox = $Hitbox
+@onready var camera_2d = $Camera2D
 
-@export var speed: float = 60.0
+@export var speed: float = 90.0
 @export var friction: float = 300.0
 
 var movement_direction: Vector2
@@ -22,6 +23,8 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	pass
+
+
 	
 func _physics_process(_delta: float) -> void:
 	move(_delta)

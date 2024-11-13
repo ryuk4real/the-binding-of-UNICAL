@@ -1,8 +1,9 @@
 class_name Door
 extends Node2D
 
-@onready var opened_collider = $OpenedArea2D/OpenedCollider
-@onready var closed_collider = $ClosedArea2D/ClosedCollider
+@onready var opened_collider: CollisionShape2D = $OpenedArea2D/OpenedCollider
+@onready var closed_collider: CollisionShape2D = $ClosedArea2D/ClosedCollider
+@onready var opened_area_2d: Area2D = $OpenedArea2D
 
 @export var inner_hallway_inside_door_texture: Texture
 @export var inner_hallway_outside_door_texture: Texture
@@ -20,7 +21,6 @@ extends Node2D
 @export var is_placeholder: bool = false
 
 var map_position: Vector2i
-
 var direction: int
 
 func _ready() -> void:
@@ -54,6 +54,7 @@ func set_door_direction(door_rotation: int) -> void:
 
 func _on_opened_area_2d_area_entered(_area: Area2D):
 	SignalBus.door_entered.emit(self)
+	print("Player entered in door %s " % id)
 		
 func setup_door_sprite(_current_room_type: int) -> void:
 
@@ -74,6 +75,7 @@ func setup_door_sprite(_current_room_type: int) -> void:
 			$Sprite2D.texture = office_door_texture
 				
 		Global.ROOM_TYPE_BATHROOM:
+			
 			$Sprite2D.texture = bathroom_door_texture
 			
 		Global.ROOM_TYPE_STORAGE:
@@ -81,6 +83,11 @@ func setup_door_sprite(_current_room_type: int) -> void:
 			
 		Global.ROOM_TYPE_LIBRARY:
 			$Sprite2D.texture = library_door_texture
-		_:
-			visible = false
-			
+
+func disable_colliders(_state: bool = true) -> void:
+	pass
+
+
+func _on_opened_area_2d_area_exited(area):
+	print("Exited from door %s" % id)
+	disable_colliders(false)

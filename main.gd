@@ -6,9 +6,6 @@ extends Node2D
 @onready var room_loader = $Resources/RoomLoader
 @onready var entity_loader = $Resources/EntityLoader
 
-var player: Player = null
-var current_floor: Floor = null
-
 func _ready() -> void:
 	_set_seed()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,9 +35,9 @@ func _load_resources_from_loaders() -> void:
 func _on_new_game_pressed() -> void:
 	ui.show_loading_screen()
 	
-	current_floor = await get_floor()
-	current_floor.set_active_room(0)
-	current_floor.show()
+	Global.current_floor = await get_floor()
+	Global.current_floor.set_active_room(0)
+	Global.current_floor.show()
 	
 	setup_player()
 	set_player_on_scene()
@@ -49,30 +46,30 @@ func _on_new_game_pressed() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("RESTART"):
 		if ui.main_menu.visible == false and ui.loading_screen.visible == false:
-			player.hide()
+			Global.player.hide()
 			ui.show_loading_screen()
-			current_floor = await get_floor()
-			current_floor.set_active_room(0)
-			current_floor.show()
+			Global.current_floor = await get_floor()
+			Global.current_floor.set_active_room(0)
+			Global.current_floor.show()
 			setup_player()
 			set_player_on_scene()
-			player.show()
+			Global.player.show()
 			ui.show_gui()
 	
 	if event.is_action_pressed("OPEN_CLOSE_DOORS"):
-		if current_floor.current_room.is_clear:
-			current_floor.current_room.close_all_doors()
+		if Global.current_floor.current_room.is_clear:
+			Global.current_floor.current_room.close_all_doors()
 		else:
-			current_floor.current_room.open_all_doors()
+			Global.current_floor.current_room.open_all_doors()
 
 func setup_player() -> void:
-	player = entity_loader.get_player()
+	Global.player = entity_loader.get_player()
 
 func get_floor() -> Floor:
 	floor_generator.reset()
 	
-	if current_floor != null:
-		current_floor.free()
+	if Global.current_floor != null:
+		Global.current_floor.free()
 	
 	var new_floor: Floor
 	while new_floor == null:
@@ -81,8 +78,9 @@ func get_floor() -> Floor:
 	return new_floor
 
 func set_player_on_scene() -> void:
-	game_scene.add_child(player)
-	player.position = current_floor.current_room.get_pickup_spawner_position()
+	game_scene.add_child(Global.player)
+	Global.player.position = Global.current_floor.current_room.get_pickup_spawner_position()
+	Global.player.camera_2d.align()
 
 func _notification(what: int) -> void:
 	match what:

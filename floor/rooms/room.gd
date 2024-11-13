@@ -12,7 +12,9 @@ var is_clear: bool = false
 var coordinates: Array[Vector2i] = []
 var door_tile_positions: Dictionary = {}
 var door_room_positions: Dictionary = {}
-var connections: Dictionary = {}
+
+var door_connections: Dictionary = {} # door1: door2
+var room_connections: Dictionary = {} # door: connected_room
 
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
@@ -42,10 +44,14 @@ func initialize_doors() -> void:
 
 func set_door_visible() -> void:
 	for door: Door in doors:
-		if (door.type != Global.ROOM_TYPE_HALLWAY and door.type != Global.ROOM_TYPE_NONE):
-			door.visible = true
-
-
+		if door:
+			if door.id != 0:
+				if door.is_placeholder == true or door.type == Global.ROOM_TYPE_NONE:
+					door.opened_area_2d.monitoring = false
+					door.hide()
+				else:
+					door.show()
+				
 func generate_coordinates_from_tilemaplayer() -> void:
 	coordinates.clear()
 	var used_cells: Array[Vector2i] = walls.get_used_cells()
@@ -136,8 +142,35 @@ func remove_doors_by_types(_door_type: int) -> void:
 		if door.type ==  _door_type:
 			doors.erase(door)
 
-func add_connection(_door1: Door, _door2: Door) -> void:
-	connections[_door1] = _door2
+func add_connection(_door1: Door, _door2: Door, _connected_room: Room) -> void:
+	# Store door-to-door connection
+	door_connections[_door1] = _door2
+	
+	# Store door-to-room connection
+	room_connections[_door1] = _connected_room
+
+# New helper functions for connection management
+func get_connected_door(_door: Door) -> Door:
+	return door_connections.get(_door)
+
+func get_connected_room(_door: Door) -> Room:
+	return room_connections.get(_door)
+
+func get_all_connected_rooms() -> Array[Room]:
+	var connected_rooms: Array[Room] = []
+	for room in room_connections.values():
+		if room not in connected_rooms:
+			connected_rooms.append(room)
+	return connected_rooms
+
+func is_connected_to_room(_room: Room) -> bool:
+	return _room in room_connections.values()
+
+func get_connecting_door_to_room(_room: Room) -> Door:
+	for door in room_connections.keys():
+		if room_connections[door] == _room:
+			return door
+	return null
 
 func set_room_active(active: bool) -> void:
 	# Handle visibility
@@ -169,6 +202,7 @@ func close_all_doors():
 	for door: Door in doors:
 		door.close()
 	is_clear = false
+
 func open_all_doors():
 	for door: Door in doors:
 		door.open()

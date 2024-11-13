@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=8 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
 [ext_resource type="Script" path="res://resource_loaders/room_loader.gd" id="3_60n1x"]
 [ext_resource type="Script" path="res://resource_loaders/entity_loader.gd" id="3_70wk3"]
 [ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="3_fahxx"]
 [ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
+[ext_resource type="PackedScene" uid="uid://byg1dm86oqdpm" path="res://ui/transitions/transitioner.tscn" id="4_2jnp8"]
 [ext_resource type="PackedScene" uid="uid://b26dcuqwanu2x" path="res://ui/ui.tscn" id="4_33lin"]
 
 [node name="Main" type="Node2D"]
@@ -18,16 +19,6 @@ script = ExtResource("3_60n1x")
 [node name="EntityLoader" type="Node2D" parent="Resources"]
 script = ExtResource("3_70wk3")
 
-[node name="Background" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="FloorGenerator" type="Node2D" parent="."]
 script = ExtResource("3_fahxx")
 
@@ -37,6 +28,8 @@ script = ExtResource("3_sfckc")
 [node name="Game" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
+
+[node name="Transitioner" parent="UI" instance=ExtResource("4_2jnp8")]
 
 [connection signal="request_completed" from="FloorGenerator/Worker" to="FloorGenerator/Worker" method="_on_request_completed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
