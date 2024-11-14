@@ -9,7 +9,9 @@ script = ExtResource("1_8788s")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAABAAEAAAAFAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAIAAIAAAACAAIAAAA=")
 rendering_quadrant_size = 32
 
-[node name="Obstacles" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="Obstacles" type="TileMapLayer" parent="NavigationRegion2D"]
 
 [node name="Decorations" type="TileMapLayer" parent="."]
 
@@ -19,3 +21,5 @@ rendering_quadrant_size = 32
 
 [node name="CleanedRoomPickupSpawner" type="Marker2D" parent="Pickups"]
 gizmo_extents = 18.4
+
+[node name="EnemySpawners" type="Node2D" parent="."]

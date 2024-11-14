@@ -26,11 +26,12 @@ func start_server() -> void:
 			Global.PID = OS.create_process("python3", [Global.SERVER_PATH, "server"], true)
 	
 	print("Server is starting...")
-	
+
 	post("a.")
+	response = null
 	await SignalBus.response_ready
-	SignalBus.server_started.emit()
 	cancel_request()
+	SignalBus.server_started.emit()
 	print("Server started")
 	
 func shutdown_server() -> void:
@@ -42,9 +43,8 @@ func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	response = await json.get_data()
-
+	
 	SignalBus.response_ready.emit()
-	#response = 0
 	
 func post(_data: String) -> void:
 	headers = ["Content-Type: application/json"]

@@ -30,7 +30,7 @@ func _ready() -> void:
 func init_direction() -> void:
 	set_door_direction(round(rotation * (180 / PI)))
 
-func _enter_tree():
+func _enter_tree() -> void:
 	$Sprite2D.texture = placeholder_door_texture
 
 func open() -> void:
@@ -52,7 +52,7 @@ func set_door_direction(door_rotation: int) -> void:
 		-90: direction = Global.DIRECTION_LEFT
 		180: direction = Global.DIRECTION_DOWN
 
-func _on_opened_area_2d_area_entered(_area: Area2D):
+func _on_opened_area_2d_area_entered(_area: Area2D) -> void:
 	SignalBus.door_entered.emit(self)
 	print("Player entered in door %s " % id)
 		
@@ -83,11 +83,3 @@ func setup_door_sprite(_current_room_type: int) -> void:
 			
 		Global.ROOM_TYPE_LIBRARY:
 			$Sprite2D.texture = library_door_texture
-
-func disable_colliders(_state: bool = true) -> void:
-	pass
-
-
-func _on_opened_area_2d_area_exited(area):
-	print("Exited from door %s" % id)
-	disable_colliders(false)

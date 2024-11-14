@@ -14,7 +14,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_ovnjs"]
 resource_name = "FADE_IN"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,7 +22,7 @@ tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(30, 30), Vector2(0, 0)]
@@ -34,7 +34,7 @@ tracks/1/path = NodePath("TextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 2),
 "update": 1,
 "values": [true, false]
@@ -42,7 +42,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8wiih"]
 resource_name = "FADE_OUT"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,7 +50,7 @@ tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(30, 30)]
@@ -62,7 +62,7 @@ tracks/1/path = NodePath("TextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 2),
 "update": 1,
 "values": [true, true]

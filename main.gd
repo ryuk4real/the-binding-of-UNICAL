@@ -44,18 +44,6 @@ func _on_new_game_pressed() -> void:
 	ui.show_gui()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("RESTART"):
-		if ui.main_menu.visible == false and ui.loading_screen.visible == false:
-			Global.player.hide()
-			ui.show_loading_screen()
-			Global.current_floor = await get_floor()
-			Global.current_floor.set_active_room(0)
-			Global.current_floor.show()
-			setup_player()
-			set_player_on_scene()
-			Global.player.show()
-			ui.show_gui()
-	
 	if event.is_action_pressed("OPEN_CLOSE_DOORS"):
 		if Global.current_floor.current_room.is_clear:
 			Global.current_floor.current_room.close_all_doors()

@@ -91,7 +91,7 @@ func generate_floor():
 				print()
 
 		# Handle unplaceable doors
-		for door in unplaceable_doors:
+		for door: Door in unplaceable_doors:
 			if door != null:
 				#print("Unplaceable door id: %s type %s placeholder %s" % [door.id, door.type, door.is_placeholder])
 				if door.id != 0:
@@ -103,15 +103,22 @@ func generate_floor():
 			current_floor.rooms_to_process.clear()
 			
 			# Make all remaining doors invisible
-			for room in current_floor.rooms:
+			for room: Room in current_floor.rooms:
 				for door in room.doors:
 					if door != null:
 						if door.is_placeholder:
 							door.hide()
+		
+		# Avoid collision handling by scattering room globally
+		
+		var count: int = 0
+		for room: Room in current_floor.rooms:
+			room.global_position = Vector2(200.0 * count, 0)
+			count += 1
 	
 	Global.current_room.set_door_visible()
 	current_floor.print_room_connections()
-	current_floor.print_floor()
+	#current_floor.print_floor()
 	return current_floor
 
 func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2i:
@@ -132,7 +139,8 @@ func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
 	await SignalBus.response_ready
-	var response = await worker.response.get("models")
+	await worker.response
+	var response = worker.response.get("models")
 	worker.cancel_request()
 	return response
 

@@ -1,70 +1,60 @@
-[gd_scene load_steps=4 format=4 uid="uid://cad1l6ebb2sfq"]
+[gd_scene load_steps=5 format=4 uid="uid://d3hkoh32llpcx"]
 
-[ext_resource type="Script" path="res://floor/rooms/room.gd" id="1_5r54h"]
-[ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_t05ne"]
-[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_p4nev"]
+[ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_fk1qi"]
+[ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_hp7ny"]
+[ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ffcdk"]
+[ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="4_uoc83"]
 
-[node name="Room" type="Node2D"]
-script = ExtResource("1_5r54h")
+[node name="Room" instance=ExtResource("1_fk1qi")]
 
-[node name="Walls" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAAAAAMAAAAFAAAAAAABAAAAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAABAAEAAAAFAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAIAAIAAAACAAIAAAABAAEAAAABAAEAAAA=")
-tile_set = ExtResource("2_t05ne")
-rendering_quadrant_size = 32
+[node name="Walls" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAAAAAMAAAAFAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAABAAEAAAAFAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAIAAIAAAACAAIAAAA=")
+tile_set = ExtResource("2_hp7ny")
 
-[node name="Obstacles" type="TileMapLayer" parent="."]
+[node name="Obstacles" parent="NavigationRegion2D" index="0"]
+tile_set = ExtResource("2_hp7ny")
 
-[node name="Decorations" type="TileMapLayer" parent="."]
-
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="Door" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(48, 17)
+[node name="Door" parent="Doors" index="0" instance=ExtResource("3_ffcdk")]
+position = Vector2(208, 17)
 id = 1
 type = 999
 is_placeholder = true
 
-[node name="Door2" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(17, 48)
-rotation = -1.5708
-type = 1
-
-[node name="Door3" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(48, 79)
-rotation = 3.14159
-id = 6
+[node name="Door2" parent="Doors" index="1" instance=ExtResource("3_ffcdk")]
+position = Vector2(271, 48)
+rotation = 1.5708
+id = 2
 type = 999
 is_placeholder = true
 
-[node name="Door4" parent="Doors" instance=ExtResource("3_p4nev")]
+[node name="Door3" parent="Doors" index="2" instance=ExtResource("3_ffcdk")]
+position = Vector2(208, 79)
+rotation = 3.14159
+id = 3
+type = 999
+is_placeholder = true
+
+[node name="Door4" parent="Doors" index="3" instance=ExtResource("3_ffcdk")]
 position = Vector2(144, 79)
-rotation = 3.14159
-id = 5
-type = 999
-is_placeholder = true
-
-[node name="Door5" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(240, 79)
 rotation = 3.14159
 id = 4
 type = 999
 is_placeholder = true
 
-[node name="Door6" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(271, 48)
-rotation = 1.5708
-id = 3
+[node name="Door5" parent="Doors" index="4" instance=ExtResource("3_ffcdk")]
+position = Vector2(80, 79)
+rotation = 3.14159
+id = 5
 type = 999
 is_placeholder = true
 
-[node name="Door7" parent="Doors" instance=ExtResource("3_p4nev")]
-position = Vector2(240, 17)
-id = 2
-type = 999
-is_placeholder = true
+[node name="Door6" parent="Doors" index="5" instance=ExtResource("3_ffcdk")]
+position = Vector2(17, 47)
+rotation = -1.5708
+type = 1
 
-[node name="Pickups" type="Node2D" parent="."]
-
-[node name="CleanedRoomPickupSpawner" type="Marker2D" parent="Pickups"]
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(144, 48)
-gizmo_extents = 18.4
+
+[node name="VendingMachine" parent="." index="6" instance=ExtResource("4_uoc83")]
+position = Vector2(61, 26)

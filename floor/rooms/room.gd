@@ -5,6 +5,8 @@ extends Node2D
 @onready var walls: TileMapLayer = $Walls
 @onready var doors_node: Node2D = $Doors
 @onready var cleaned_room_pickup_spawner = $Pickups/CleanedRoomPickupSpawner
+@onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+@onready var obstacles: TileMapLayer = $NavigationRegion2D/Obstacles
 @export var id: int = 0
 @export var type: int = 0
 var configuration: int
@@ -12,6 +14,7 @@ var is_clear: bool = false
 var coordinates: Array[Vector2i] = []
 var door_tile_positions: Dictionary = {}
 var door_room_positions: Dictionary = {}
+var vending_machine_collision_shape: CollisionShape2D
 
 var door_connections: Dictionary = {} # door1: door2
 var room_connections: Dictionary = {} # door: connected_room
@@ -26,6 +29,7 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	if type == Global.ROOM_TYPE_HALLWAY:
 		is_clear = true
 		open_all_doors()
+		vending_machine_collision_shape = $VendingMachine/CollisionShape2D
 	print("ROOM %s -> %s" % [id, coordinates])
 
 func _ready() -> void:
@@ -41,6 +45,8 @@ func initialize_doors() -> void:
 		for child in doors_node.get_children():
 			if child is Node2D and child.name.begins_with("Door"):
 				doors.append(child as Door)
+		
+		doors.sort_custom(func(a: Door, b: Door) -> bool: return a.id < b.id)
 
 func set_door_visible() -> void:
 	for door: Door in doors:
@@ -173,27 +179,35 @@ func get_connecting_door_to_room(_room: Room) -> Door:
 	return null
 
 func set_room_active(active: bool) -> void:
-	# Handle visibility
 	visible = active
 	
-	# Handle collision layers
-	if walls:
-		# Disable/enable collision layer
-		if active:
-			walls.collision_enabled = true
-		else:
-			walls.collision_enabled = false
+	if active:
+		set_physics_process(active)
+		set_physics_process_internal(active)
+		set_process(active)
+	else:
+		set_physics_process(active)
+		set_physics_process_internal(active)
+		set_process(active)
 	
-	# Handle doors collision
+	if walls:
+		walls.collision_enabled = active
+	
+	if navigation_region_2d:
+		navigation_region_2d.enabled = active
+	
+	if obstacles:
+		obstacles.collision_enabled = active
+		
+	if vending_machine_collision_shape:
+		vending_machine_collision_shape.disabled = active
+
+	# Disable the opened and closed area colliders for the doors
 	for door in doors:
 		if door:
-			var opened_collider = door.get_node("OpenedArea2D/OpenedCollider")
-			var closed_collider = door.get_node("ClosedArea2D/ClosedCollider")
-			
-			if opened_collider:
-				opened_collider.disabled = !active
-			if closed_collider:
-				closed_collider.disabled = !active
+			door.get_node("OpenedArea2D/OpenedCollider").disabled = !active
+			door.get_node("ClosedArea2D/ClosedCollider").disabled = !active
+	
 				
 func get_pickup_spawner_position() -> Vector2i:
 	return cleaned_room_pickup_spawner.position
