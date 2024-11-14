@@ -85,12 +85,15 @@ func shoot(_delta: float) -> void:
 		current_delay -= _delta
 	
 	if fire_direction != Vector2.ZERO and current_delay <= 0:
-
 		var projectile: Projectile = projectile_resource.instantiate()
 		projectile.global_position = global_position
-		#projectile.rotation = fire_direction.angle()  # Use fire_direction angle instead of global_rotation
-		projectile.rotation = rotation
-		projectile.direction = fire_direction
+		
+		# Set rotation based on fire_direction angle
+		projectile.rotation = fire_direction.angle()
+		
+		# Ensure direction is normalized
+		projectile.direction = fire_direction.normalized()
+		
 		Global.projectiles_scene.add_child(projectile)
 		
 		# Increase delay for next shot
