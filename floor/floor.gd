@@ -39,6 +39,9 @@ func init(_starting_room: Room) -> void:
 func _on_door_entered(_door: Door):
 	if Global.current_room.room_connections.has(_door):
 		
+		for projectile in Global.projectiles_scene.get_children():
+			projectile.queue_free()
+		
 		Global.transitioner.set_next_animation(true)
 		
 		var room_to_visit: Room = Global.current_room.room_connections[_door]

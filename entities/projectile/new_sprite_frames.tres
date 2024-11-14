@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dm4j7baclusg3"]
+
+[ext_resource type="Texture2D" uid="uid://dcgvefms5w70e" path="res://floor/rooms/classroom/lab/lab.png" id="1_luqsy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmi6a"]
+atlas = ExtResource("1_luqsy")
+region = Rect2(60, 45, 5, 5)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmi6a")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}]

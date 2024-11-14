@@ -27,6 +27,8 @@ script = ExtResource("3_sfckc")
 
 [node name="Game" type="Node2D" parent="."]
 
+[node name="Projectiles" type="Node2D" parent="Game"]
+
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
 
 [node name="Transitioner" parent="UI" instance=ExtResource("4_2jnp8")]

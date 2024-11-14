@@ -5,10 +5,13 @@ extends Node2D
 @onready var floor_generator = $FloorGenerator
 @onready var room_loader = $Resources/RoomLoader
 @onready var entity_loader = $Resources/EntityLoader
+@onready var projectiles_scene: Node2D = $Game/Projectiles
 
 func _ready() -> void:
 	_set_seed()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Global.game_scene = game_scene
+	Global.projectiles_scene = projectiles_scene
 	
 	ui.show_loading_screen()
 	_load_resources_from_loaders()
@@ -41,6 +44,7 @@ func _on_new_game_pressed() -> void:
 	
 	setup_player()
 	set_player_on_scene()
+	Global.projectiles_scene.move_to_front()
 	ui.show_gui()
 
 func _input(event: InputEvent) -> void:

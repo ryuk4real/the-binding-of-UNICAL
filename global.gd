@@ -21,6 +21,8 @@ var player: Player = null
 var current_room: Room = null
 var current_floor: Floor = null
 var transitioner: Transitioner = null
+var game_scene: Node2D = null
+var projectiles_scene: Node2D = null
 
 const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/hallway_neighbour_type_guesser.asp"
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH = "res://asp/inner_hallway_neighbour_type_guesser.asp"
