@@ -38,7 +38,6 @@ func init(_starting_room: Room) -> void:
 
 func _on_door_entered(_door: Door):
 	if Global.current_room.room_connections.has(_door):
-		
 		for projectile in Global.projectiles_scene.get_children():
 			projectile.queue_free()
 		
@@ -46,7 +45,7 @@ func _on_door_entered(_door: Door):
 		
 		var room_to_visit: Room = Global.current_room.room_connections[_door]
 
-		room_to_visit.set_door_visible()
+		#room_to_visit.set_door_visible()
 		
 		# TODO: Set doors closed if room is not clear
 		
@@ -71,8 +70,6 @@ func _on_door_entered(_door: Door):
 			await Global.transitioner.animation_player.animation_finished
 			# Set player position relative to the connected door
 			Global.transitioner.set_next_animation(false)
-			
-			# TODO: Set door colliders disabled if door is opened
 			
 			Global.player.position = connected_door.global_position as Vector2 + spawn_offset
 			call_deferred("set_active_room", current_room.id)

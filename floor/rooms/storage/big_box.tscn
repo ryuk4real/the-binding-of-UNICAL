@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8qcc0ohj122j"]
+
+[ext_resource type="Texture2D" uid="uid://sbl2bu1qasoh" path="res://floor/rooms/storage/storage.png" id="1_crp47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlmm6"]
+atlas = ExtResource("1_crp47")
+region = Rect2(96, 96, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgpa5"]
+size = Vector2(14, 14)
+
+[node name="BigBox" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 71
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_mlmm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qgpa5")

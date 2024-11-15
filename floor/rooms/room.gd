@@ -181,14 +181,9 @@ func get_connecting_door_to_room(_room: Room) -> Door:
 func set_room_active(active: bool) -> void:
 	visible = active
 	
-	if active:
-		set_physics_process(active)
-		set_physics_process_internal(active)
-		set_process(active)
-	else:
-		set_physics_process(active)
-		set_physics_process_internal(active)
-		set_process(active)
+	set_physics_process(active)
+	set_physics_process_internal(active)
+	set_process(active)
 	
 	if walls:
 		walls.collision_enabled = active
@@ -200,7 +195,7 @@ func set_room_active(active: bool) -> void:
 		obstacles.collision_enabled = active
 		
 	if vending_machine_collision_shape:
-		vending_machine_collision_shape.disabled = active
+		vending_machine_collision_shape.disabled = !active
 
 	# Disable the opened and closed area colliders for the doors
 	for door in doors:

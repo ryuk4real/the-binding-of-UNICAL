@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=4 uid="uid://c7nesb17abye6"]
+[gd_scene load_steps=6 format=4 uid="uid://c7nesb17abye6"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_yls6m"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_yccy2"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ide0g"]
+[ext_resource type="TileSet" uid="uid://dwi22rldp5jyj" path="res://floor/rooms/office/o_obstacles.tres" id="3_vygt0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1dvo1"]
+vertices = PackedVector2Array(109, 157, 168, 169, 24, 169, 99, 157, 157, 80, 169, 24, 112, 141, 128, 141, 109, 144, 156, 77, 159, 29, 96, 141, 99, 144, 128, 129, 147, 80, 112, 29, 112, 24, 145, 24, 145, 28, 159, 24, 24, 24, 80, 24, 80, 29, 148, 77, 80, 141, 64, 141, 112, 129, 96, 29, 64, 129, 96, 129, 80, 129)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 1), PackedInt32Array(6, 7, 1, 0, 8), PackedInt32Array(5, 4, 9, 10), PackedInt32Array(11, 6, 8, 12), PackedInt32Array(4, 1, 7, 13, 14), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(10, 19, 5), PackedInt32Array(2, 20, 21, 22), PackedInt32Array(18, 10, 9, 23, 15), PackedInt32Array(11, 12, 3, 2, 24), PackedInt32Array(25, 24, 2), PackedInt32Array(14, 13, 26, 15, 23), PackedInt32Array(2, 22, 27), PackedInt32Array(2, 27, 15, 28), PackedInt32Array(15, 26, 29), PackedInt32Array(15, 29, 30), PackedInt32Array(15, 30, 28), PackedInt32Array(2, 28, 25)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 169, 168, 169, 169, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_yls6m")]
 type = 4
@@ -10,6 +17,13 @@ type = 4
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAIAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAADAAUAAAABAAIAAAACAAUAAAABAAIAAAAAAAMAAAAAAAEAAAAEAAUAAAABAAIAAAAFAAUAAAACAAIAAAAFAAQAAAACAAEAAAAFAAMAAAACAAEAAAA=")
 tile_set = ExtResource("2_yccy2")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_1dvo1")
+
+[node name="Obstacles" parent="NavigationRegion2D" index="0"]
+tile_map_data = PackedByteArray("AAAEAAgAAAAGAAYAAAAHAAgAAAAGAAYAABAFAAgAAAAGAAcAAAAGAAgAAAAGAAcAAAAGAAkAAAAJAAgAAAAFAAAAAAAGAAQAAAAFAAEAAAAGAAUAAAAGAAAAAAAHAAQAAAAGAAEAAAAHAAUAAAAJAAAAAAAIAAIAAAAJAAEAAAAIAAMAAAAJAAQAAAAAAAgAAAAJAAgAAAAEAAYAAAA=")
+tile_set = ExtResource("3_vygt0")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_ide0g")]
 position = Vector2(48, 17)

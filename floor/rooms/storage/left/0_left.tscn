@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=4 uid="uid://bi3nowm0313nb"]
+[gd_scene load_steps=7 format=4 uid="uid://bi3nowm0313nb"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_1pr62"]
 [ext_resource type="TileSet" uid="uid://bbueovfhx1m5f" path="res://floor/rooms/storage/st.tres" id="2_idtqi"]
+[ext_resource type="PackedScene" uid="uid://b8qcc0ohj122j" path="res://floor/rooms/storage/big_box.tscn" id="3_hcupt"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_kw2ej"]
+[ext_resource type="PackedScene" uid="uid://we0rge667tth" path="res://floor/rooms/storage/small_box.tscn" id="4_ieyt2"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vcpb5"]
+vertices = PackedVector2Array(62, 45, 129, 44, 135, 44, 110, 50, 98, 50, 110, 62, 168, 72, 24, 72, 98, 62, 94, 62, 82, 62, 135, 38, 168, 24, 135, 36, 135, 30, 62, 33, 129, 38, 62, 30, 62, 24, 129, 24, 129, 28, 135, 28, 135, 24, 129, 30, 129, 36, 50, 30, 50, 33, 94, 50, 82, 50, 24, 24, 50, 24, 50, 45)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 8, 7), PackedInt32Array(10, 9, 7), PackedInt32Array(2, 11, 12, 6), PackedInt32Array(13, 12, 11), PackedInt32Array(2, 6, 5, 3), PackedInt32Array(12, 13, 14), PackedInt32Array(1, 0, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 22, 12), PackedInt32Array(21, 12, 14), PackedInt32Array(20, 21, 14, 23), PackedInt32Array(17, 20, 23), PackedInt32Array(17, 23, 24, 15), PackedInt32Array(24, 13, 11, 16), PackedInt32Array(24, 16, 15), PackedInt32Array(25, 17, 15, 26), PackedInt32Array(4, 8, 9, 27), PackedInt32Array(0, 4, 27), PackedInt32Array(0, 27, 28), PackedInt32Array(7, 29, 30, 25), PackedInt32Array(7, 25, 26), PackedInt32Array(7, 26, 31), PackedInt32Array(10, 7, 31, 0, 28)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 72, 168, 72, 168, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_1pr62")]
 type = 5
@@ -10,6 +18,30 @@ type = 5
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAAFAAEAAQACAAEAAAAFAAIAAQACAAIAAAABAAIAAQABAAIAAAACAAIAAQABAAIAAAADAAIAAQABAAIAAAAEAAIAAQABAAIAAAA=")
 tile_set = ExtResource("2_idtqi")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_vcpb5")
+
+[node name="BigBox" parent="NavigationRegion2D" index="1" instance=ExtResource("3_hcupt")]
+position = Vector2(56, 24)
+
+[node name="BigBox2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_hcupt")]
+position = Vector2(56, 39)
+
+[node name="BigBox3" parent="NavigationRegion2D" index="3" instance=ExtResource("3_hcupt")]
+position = Vector2(88, 56)
+
+[node name="BigBox4" parent="NavigationRegion2D" index="4" instance=ExtResource("3_hcupt")]
+position = Vector2(104, 56)
+
+[node name="BigBox5" parent="NavigationRegion2D" index="5" instance=ExtResource("4_ieyt2")]
+position = Vector2(132, 25)
+
+[node name="BigBox6" parent="NavigationRegion2D" index="6" instance=ExtResource("4_ieyt2")]
+position = Vector2(132, 33)
+
+[node name="BigBox7" parent="NavigationRegion2D" index="7" instance=ExtResource("4_ieyt2")]
+position = Vector2(132, 41)
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_kw2ej")]
 position = Vector2(17, 48)

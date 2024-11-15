@@ -24,7 +24,7 @@ func generate_floor():
 	# All generation starts with a room of type HALLWAY with a random direction
 	var available_directions = [Global.DIRECTION_UP, Global.DIRECTION_DOWN, Global.DIRECTION_LEFT, Global.DIRECTION_RIGHT]
 	var random_direction: int = available_directions.pick_random()
-	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY,  Global.DIRECTION_RIGHT)
+	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY,  Global.DIRECTION_DOWN)
 	
 	Global.current_room = first_room
 	first_room.hide()
@@ -138,10 +138,11 @@ func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2
 
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
+	print("Response before wait %s" % worker.response)
 	await SignalBus.response_ready
 	await worker.response
+	print("Response after wait %s" % worker.response)
 	var response = worker.response.get("models")
-	worker.cancel_request()
 	return response
 
 func _get_room_neighbour_type(room_type: int) -> int:

@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=4 uid="uid://cjoq6vpms1blr"]
+[gd_scene load_steps=9 format=4 uid="uid://cjoq6vpms1blr"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_o3ynk"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_dfb4o"]
+[ext_resource type="TileSet" uid="uid://dwi22rldp5jyj" path="res://floor/rooms/office/o_obstacles.tres" id="3_paaol"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_vu2by"]
+[ext_resource type="TileSet" uid="uid://k7fqmommmwow" path="res://floor/rooms/office/o_decorations.tres" id="4_gp1h1"]
+[ext_resource type="Texture2D" uid="uid://ydw3cagrv3on" path="res://floor/rooms/office/office.png" id="5_2ji6y"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pi0dj"]
+vertices = PackedVector2Array(160, 93, 160, 83, 168, 24, 168, 168, 143, 128, 147, 108, 143, 112, 144, 109, 143, 96, 144, 99, 147, 100, 147, 93, 131, 128, 24, 168, 30, 159, 143, 80, 147, 83, 139, 26, 139, 24, 143, 64, 63, 29, 63, 24, 80, 24, 80, 29, 112, 29, 112, 24, 133, 24, 133, 26, 131, 64, 24, 159, 30, 145, 24, 145, 24, 127, 30, 127, 131, 112, 30, 113, 24, 113, 24, 111, 30, 111, 131, 96, 30, 97, 49, 29, 24, 97, 24, 24, 49, 24, 131, 80, 96, 29)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(0, 5, 10), PackedInt32Array(11, 0, 10, 9, 8), PackedInt32Array(12, 4, 3, 13, 14), PackedInt32Array(11, 8, 15, 16), PackedInt32Array(17, 18, 2, 1, 16, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(13, 29, 14), PackedInt32Array(12, 14, 30), PackedInt32Array(30, 31, 32, 33, 12), PackedInt32Array(34, 12, 33, 35), PackedInt32Array(35, 36, 37, 38, 34), PackedInt32Array(39, 34, 38, 40, 41, 20), PackedInt32Array(40, 42, 43, 44, 41), PackedInt32Array(39, 20, 23, 45), PackedInt32Array(45, 23, 46, 28), PackedInt32Array(28, 46, 24), PackedInt32Array(19, 28, 27, 17), PackedInt32Array(19, 16, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 168, 168, 168, 168, 24)])
+agent_radius = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqkjf"]
+atlas = ExtResource("5_2ji6y")
+region = Rect2(82, 98, 12, 12)
 
 [node name="Room" instance=ExtResource("1_o3ynk")]
 type = 4
@@ -10,6 +23,22 @@ type = 4
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAIAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAADAAUAAAABAAIAAAACAAUAAAABAAIAAAAAAAMAAAAAAAEAAAAEAAUAAAABAAIAAAAFAAUAAAACAAIAAAAFAAQAAAACAAEAAAAFAAMAAAACAAEAAAA=")
 tile_set = ExtResource("2_dfb4o")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_pi0dj")
+
+[node name="Obstacles" parent="NavigationRegion2D" index="0"]
+tile_map_data = PackedByteArray("AAAIAAQAAAAGAAYAAFAIAAUAAAAGAAcAAFAIAAYAAAAGAAcAAFAIAAcAAAAHAAYAAFAJAAYAAAAIAAcAAFAJAAUAAAAJAAcAAFABAAcAAAABAAkAAGABAAYAAAABAAkAAGABAAkAAAABAAkAAGAIAAEAAAAEAAYAAAAFAAEAAAAGAAUAAAAFAAAAAAAGAAQAAAAGAAAAAAAHAAQAAAAGAAEAAAAHAAUAAAADAAAAAAAIAAIAAAADAAEAAAAIAAMAAAA=")
+tile_set = ExtResource("3_paaol")
+
+[node name="Decorations" parent="." index="2"]
+tile_map_data = PackedByteArray("AAAIAAQAAAAIAAYAAAA=")
+tile_set = ExtResource("4_gp1h1")
+
+[node name="certification" type="Sprite2D" parent="Decorations" index="0"]
+position = Vector2(175, 126)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_iqkjf")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_vu2by")]
 position = Vector2(17, 48)

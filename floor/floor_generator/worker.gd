@@ -13,8 +13,6 @@ func _process(delta) -> void:
 
 func start_server() -> void:
 	
-	response = {"response": 0}
-	
 	match OS.get_name():
 		"Windows":
 			print("OS: Windows")
@@ -43,7 +41,7 @@ func _on_request_completed(_result, _response_code, _headers, body) -> void:
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	response = await json.get_data()
-	
+	await response
 	SignalBus.response_ready.emit()
 	
 func post(_data: String) -> void:

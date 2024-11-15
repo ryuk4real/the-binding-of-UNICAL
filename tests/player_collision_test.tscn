@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3mwyyyqxxp2"]
+
+[ext_resource type="PackedScene" uid="uid://d11u8i53hnylk" path="res://entities/player/player.tscn" id="1_x8ni3"]
+[ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="2_7ooiv"]
+[ext_resource type="PackedScene" uid="uid://by36ogg2wnmua" path="res://floor/rooms/hallway/seats.tscn" id="3_hb7di"]
+
+[node name="PlayerCollisionTest" type="Node2D"]
+
+[node name="VendingMachine" parent="." instance=ExtResource("2_7ooiv")]
+position = Vector2(38, -3)
+
+[node name="Player" parent="." instance=ExtResource("1_x8ni3")]
+position = Vector2(0, -1)
+
+[node name="Seats" parent="." instance=ExtResource("3_hb7di")]
+position = Vector2(0, 19)

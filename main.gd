@@ -45,6 +45,7 @@ func _on_new_game_pressed() -> void:
 	setup_player()
 	set_player_on_scene()
 	Global.projectiles_scene.move_to_front()
+	
 	ui.show_gui()
 
 func _input(event: InputEvent) -> void:

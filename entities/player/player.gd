@@ -62,9 +62,15 @@ func _update_animation():
 		animated_sprite_2d.play("IDLE")
 	else:
 		var direction = "DOWN"
+		
 		if velocity.x < 0: direction = "LEFT"
 		elif velocity.x > 0: direction = "RIGHT"
 		elif velocity.y < 0: direction = "UP"
+		
+		if fire_direction.x > 0: direction = "RIGHT"
+		elif fire_direction.x < 0: direction = "LEFT"
+		elif fire_direction.y > 0: direction = "DOWN"
+		elif fire_direction.y < 0: direction = "UP"
 		
 		animated_sprite_2d.play("WALK_" + direction)
 
@@ -98,3 +104,4 @@ func shoot(_delta: float) -> void:
 		
 		# Increase delay for next shot
 		current_delay = min(current_delay + shoot_delay, max_delay)
+	# TODO: Change sprite direction while shooting

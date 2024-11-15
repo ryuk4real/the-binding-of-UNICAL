@@ -1,15 +1,34 @@
-[gd_scene load_steps=4 format=4 uid="uid://ci265wp17ylpi"]
+[gd_scene load_steps=7 format=4 uid="uid://ci265wp17ylpi"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_s30u5"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_60w25"]
+[ext_resource type="TileSet" uid="uid://dwi22rldp5jyj" path="res://floor/rooms/office/o_obstacles.tres" id="3_qcq36"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_v5ris"]
+[ext_resource type="TileSet" uid="uid://k7fqmommmwow" path="res://floor/rooms/office/o_decorations.tres" id="4_voeg6"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xhld0"]
+vertices = PackedVector2Array(-72, 168, -37, 154, 51, 144, 61, 144, 72, 168, 47, 24, 72, 24, 63, 136, 61, 128, 47, 29, -47, 80, -47, 96, -51, 93, -51, 83, -43, 154, -35, 128, 51, 128, 49, 136, -37, 148, -47, 128, -43, 148, -35, 112, -35, 96, 33, 29, -35, 80, -35, 64, 15, 30, 33, 24, -33, 29, -33, 24, -15, 24, -15, 30, -1, 30, -1, 24, 1, 24, 1, 30, 15, 24, -47, 29, -47, 64, -72, 24, -47, 24, -64, 83, -64, 93, -47, 112)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 4, 7, 8, 9), PackedInt32Array(3, 7, 4), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 1, 0), PackedInt32Array(15, 9, 16, 17, 1, 18), PackedInt32Array(17, 2, 1), PackedInt32Array(9, 8, 16), PackedInt32Array(19, 15, 18, 20), PackedInt32Array(9, 15, 21), PackedInt32Array(9, 21, 22, 23), PackedInt32Array(23, 22, 24), PackedInt32Array(23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(32, 33, 34, 35), PackedInt32Array(26, 36, 27), PackedInt32Array(35, 26, 25), PackedInt32Array(32, 35, 25), PackedInt32Array(31, 32, 25), PackedInt32Array(37, 28, 31, 25, 38), PackedInt32Array(39, 40, 37), PackedInt32Array(41, 39, 37, 38, 13), PackedInt32Array(19, 20, 14, 0, 42), PackedInt32Array(38, 10, 13), PackedInt32Array(0, 39, 41, 42), PackedInt32Array(43, 19, 42), PackedInt32Array(11, 43, 42, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-72, 24, -72, 168, 72, 168, 72, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_s30u5")]
 type = 4
 
 [node name="Walls" parent="." index="0"]
-tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAIAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAEAAAACAAQAAAACAAEAAAACAAUAAAACAAIAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAIAAAD+/wAAAAABAAAAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD+/wUAAAABAAIAAAD//wAAAAABAAAAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAACAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAIAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAACAAMAAAACAAEAAAACAAQAAAACAAEAAAACAAUAAAACAAIAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAIAAAD+/wAAAAABAAAAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD+/wUAAAABAAIAAAD//wAAAAABAAAAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAIAAAA=")
 tile_set = ExtResource("2_60w25")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_xhld0")
+
+[node name="Obstacles" parent="NavigationRegion2D" index="0"]
+tile_map_data = PackedByteArray("AAD9/wcAAAAGAAYAAGD9/wYAAAAGAAcAAGD9/wUAAAAGAAcAAGD9/wQAAAAHAAYAAGD8/wUAAAAFAAcAAGD9/wAAAAAIAAIAAAD9/wEAAAAIAAMAAAACAAAAAAAIAAIAAAACAAEAAAAIAAMAAAD//wEAAAABAAkAAAAAAAEAAAACAAgAAAADAAgAAAAAAAgAAAD9/wkAAAAEAAYAAAA=")
+tile_set = ExtResource("3_qcq36")
+
+[node name="Decorations" parent="." index="2"]
+tile_map_data = PackedByteArray("AAD9/wYAAAAJAAUAAAA=")
+tile_set = ExtResource("4_voeg6")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_v5ris")]
 position = Vector2(79, 48)
