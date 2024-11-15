@@ -48,11 +48,11 @@ region = Rect2(96, 128, 64, 32)
 atlas = ExtResource("2_qmuj4")
 region = Rect2(96, 128, 64, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gded3"]
-size = Vector2(8, 9)
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4hkf"]
+radius = 4.03113
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvmi7"]
-size = Vector2(8, 12.9766)
+size = Vector2(8, 11.5)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_vqh05")
@@ -71,20 +71,22 @@ texture = SubResource("AtlasTexture_wxy1h")
 hframes = 2
 
 [node name="OpenedArea2D" type="Area2D" parent="."]
+position = Vector2(0, 5)
 collision_layer = 32
 collision_mask = 7
 
 [node name="OpenedCollider" type="CollisionShape2D" parent="OpenedArea2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_gded3")
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_k4hkf")
 
 [node name="ClosedArea2D" type="StaticBody2D" parent="."]
 collision_layer = 33
 collision_mask = 7
 
 [node name="ClosedCollider" type="CollisionShape2D" parent="ClosedArea2D"]
-position = Vector2(0, 0.988281)
+position = Vector2(0, 0.24999)
 shape = SubResource("RectangleShape2D_yvmi7")
 disabled = true
 
 [connection signal="area_entered" from="OpenedArea2D" to="." method="_on_opened_area_2d_area_entered"]
+[connection signal="area_exited" from="OpenedArea2D" to="." method="_on_opened_area_2d_area_exited"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxys1au66ciun"]
+
+[ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_vdy48"]
+[ext_resource type="Script" path="res://entities/projectile/projectile.gd" id="1_vnlqm"]
+[ext_resource type="SpriteFrames" uid="uid://dm4j7baclusg3" path="res://entities/projectile/new_sprite_frames.tres" id="2_6ttl8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62p7s"]
+
+[node name="Entity" instance=ExtResource("1_vdy48")]
+collision_layer = 64
+collision_mask = 56
+script = ExtResource("1_vnlqm")
+speed = 100.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_6ttl8")
+animation = &"IDLE"
+
+[node name="Hitbox" parent="." index="1"]
+scale = Vector2(0.200002, 0.200002)
+shape = SubResource("CircleShape2D_62p7s")

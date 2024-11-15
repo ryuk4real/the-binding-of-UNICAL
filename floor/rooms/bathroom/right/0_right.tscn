@@ -1,15 +1,50 @@
-[gd_scene load_steps=4 format=4 uid="uid://bcnaro2v307sd"]
+[gd_scene load_steps=9 format=4 uid="uid://bcnaro2v307sd"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_5svem"]
 [ext_resource type="TileSet" uid="uid://di8s75ct03blo" path="res://floor/rooms/bathroom/b_walls.tres" id="2_pwqxv"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_8t1hx"]
+[ext_resource type="PackedScene" uid="uid://dtd2il377sdw3" path="res://floor/rooms/bathroom/obstacles/wc.tscn" id="3_jbwgv"]
+[ext_resource type="PackedScene" uid="uid://ermslwwhhyhg" path="res://floor/rooms/bathroom/obstacles/mirror.tscn" id="4_jpbtk"]
+[ext_resource type="PackedScene" uid="uid://bkh7f7lt7lg1j" path="res://floor/rooms/bathroom/obstacles/sink.tscn" id="5_dy7qq"]
+[ext_resource type="PackedScene" uid="uid://brkuu84uiwwwj" path="res://floor/rooms/bathroom/obstacles/disposable.tscn" id="6_2h372"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x2e8t"]
+vertices = PackedVector2Array(91, 28, 91, 24, 135, 24, 135, 72, 89, 30, 86, 31.9922, 24, 72, 24, 24, 82, 30, 80, 24, 80, 28)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(5, 3, 6, 7, 8), PackedInt32Array(7, 9, 10), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 10, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 72, 135, 72, 135, 24)])
+parsed_collision_mask = 4294967294
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_5svem")]
 type = 2
 
 [node name="Walls" parent="." index="0"]
-tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAD9/wEAAAAEAAQAAAD+/wAAAAAFAAMAAAD+/wEAAAAFAAQAAAD+/wIAAAAFAAUAAAD9/wAAAAAAAAAAAAD9/wIAAAAAAAIAAAD//wAAAAABAAAAAAD//wEAAAABAAEAAAD//wIAAAABAAIAAAAAAAAAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAACAAIAAAD9/wEAAAAEAAQAAAD+/wAAAAAFAAMAAAD+/wEAAAAFAAQAAAD+/wIAAAAFAAUAAAD9/wAAAAAAAAAAAAD9/wIAAAAAAAIAAAD//wAAAAABAAAAAAD//wEAAAABAAEAAAD//wIAAAABAAIAAAA=")
 tile_set = ExtResource("2_pwqxv")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+position = Vector2(-63, 0)
+navigation_polygon = SubResource("NavigationPolygon_x2e8t")
+
+[node name="wc" parent="NavigationRegion2D" index="1" instance=ExtResource("3_jbwgv")]
+position = Vector2(-5, 34)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="wc2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_jbwgv")]
+position = Vector2(-5, 60)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Mirror" parent="NavigationRegion2D" index="3" instance=ExtResource("4_jpbtk")]
+position = Vector2(86, 17)
+
+[node name="Sink" parent="NavigationRegion2D" index="4" instance=ExtResource("5_dy7qq")]
+position = Vector2(86, 25)
+
+[node name="Disposable" parent="NavigationRegion2D" index="5" instance=ExtResource("6_2h372")]
+position = Vector2(63, 79)
+rotation = 3.14159
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_8t1hx")]
 position = Vector2(79, 47)

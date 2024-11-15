@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ermslwwhhyhg"]
+
+[ext_resource type="Texture2D" uid="uid://bkuy50xvn5wek" path="res://floor/rooms/bathroom/bathroom.png" id="1_7rrah"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g60sf"]
+atlas = ExtResource("1_7rrah")
+region = Rect2(160, 40, 32, 16)
+
+[node name="Mirror" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_g60sf")

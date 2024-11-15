@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkh7f7lt7lg1j"]
+
+[ext_resource type="Texture2D" uid="uid://bkuy50xvn5wek" path="res://floor/rooms/bathroom/bathroom.png" id="1_jfgl6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctcwb"]
+atlas = ExtResource("1_jfgl6")
+region = Rect2(96, 16, 16, 16)
+
+[node name="Sink" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ctcwb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-6, -1, 5, -1, 5, 3, 3, 5, 0, 6.995, -4, 5, -6, 3)

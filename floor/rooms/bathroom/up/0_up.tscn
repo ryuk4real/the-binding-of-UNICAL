@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=4 uid="uid://cptua41e68yta"]
+[gd_scene load_steps=9 format=4 uid="uid://cptua41e68yta"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_o0jgw"]
 [ext_resource type="TileSet" uid="uid://di8s75ct03blo" path="res://floor/rooms/bathroom/b_walls.tres" id="2_j1cjk"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_hrmvk"]
+[ext_resource type="PackedScene" uid="uid://dtd2il377sdw3" path="res://floor/rooms/bathroom/obstacles/wc.tscn" id="3_mhwtk"]
+[ext_resource type="PackedScene" uid="uid://ermslwwhhyhg" path="res://floor/rooms/bathroom/obstacles/mirror.tscn" id="4_br0lq"]
+[ext_resource type="PackedScene" uid="uid://bkh7f7lt7lg1j" path="res://floor/rooms/bathroom/obstacles/sink.tscn" id="5_mhped"]
+[ext_resource type="PackedScene" uid="uid://brkuu84uiwwwj" path="res://floor/rooms/bathroom/obstacles/disposable.tscn" id="6_4qtn0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_t7ryf"]
+vertices = PackedVector2Array(135, 24, 135, 72, 56, 72, 56, 68, 24, 24, 54, 66, 50, 64.0078, 24, 72, 47, 66, 45, 68, 45, 72)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 4, 6, 8), PackedInt32Array(7, 8, 9), PackedInt32Array(7, 9, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 72, 135, 72, 135, 24)])
+parsed_collision_mask = 4294967294
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_o0jgw")]
 type = 2
@@ -10,6 +21,25 @@ type = 2
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAACAAMAAAAFAAAAAAADAAMAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAACAAQAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAFAAEAAAADAAQAAAAFAAIAAAACAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAACAAUAAAA=")
 tile_set = ExtResource("2_j1cjk")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_t7ryf")
+
+[node name="wc" parent="NavigationRegion2D" index="1" instance=ExtResource("3_mhwtk")]
+position = Vector2(163, 34)
+
+[node name="wc2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_mhwtk")]
+position = Vector2(163, 60)
+
+[node name="Mirror" parent="NavigationRegion2D" index="3" instance=ExtResource("4_br0lq")]
+position = Vector2(51, 80)
+
+[node name="Sink" parent="NavigationRegion2D" index="4" instance=ExtResource("5_mhped")]
+position = Vector2(50, 71)
+rotation = 3.14159
+
+[node name="Disposable" parent="NavigationRegion2D" index="5" instance=ExtResource("6_4qtn0")]
+position = Vector2(98, 17)
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_hrmvk")]
 position = Vector2(48, 17)
