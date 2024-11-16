@@ -1,0 +1,157 @@
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://dih6v4kgvub8u"]
+
+[ext_resource type="Texture2D" uid="uid://06o66i5k26px" path="res://entities/enemies/mouse/mouse.png" id="1_ijmik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boyro"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31g05"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rglva"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0606p"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs8bi"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwy0r"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ay7m"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8nor"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8fd7"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gfui"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1abdv"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7u8d"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mysg2"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vn1d"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tbgn"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekymq"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hthmj"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x3ij"]
+atlas = ExtResource("1_ijmik")
+region = Rect2(16, 48, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boyro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31g05")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rglva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0606p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs8bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwy0r")
+}],
+"loop": true,
+"name": &"MOVE_DOWN",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ay7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8nor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8fd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gfui")
+}],
+"loop": true,
+"name": &"MOVE_LEFT",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1abdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7u8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mysg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vn1d")
+}],
+"loop": true,
+"name": &"MOVE_RIGHT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tbgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekymq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hthmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x3ij")
+}],
+"loop": true,
+"name": &"MOVE_UP",
+"speed": 5.0
+}]

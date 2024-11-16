@@ -104,4 +104,3 @@ func shoot(_delta: float) -> void:
 		
 		# Increase delay for next shot
 		current_delay = min(current_delay + shoot_delay, max_delay)
-	# TODO: Change sprite direction while shooting

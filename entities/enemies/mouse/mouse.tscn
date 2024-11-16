@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://sdjbh3fe1se7"]
+
+[ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_agd61"]
+[ext_resource type="Script" path="res://entities/enemies/mouse/mouse.gd" id="2_01fpo"]
+[ext_resource type="SpriteFrames" uid="uid://dih6v4kgvub8u" path="res://entities/enemies/mouse/mouse.tres" id="2_ogcn8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iljbr"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqefq"]
+radius = 43.1045
+
+[node name="Mouse" instance=ExtResource("1_agd61")]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("2_01fpo")
+movement_speed = 4.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_ogcn8")
+animation = &"IDLE"
+frame_progress = 0.210837
+
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(-2, 3)
+shape = SubResource("CircleShape2D_iljbr")
+
+[node name="AggroArea" type="Area2D" parent="." index="2"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
+shape = SubResource("CircleShape2D_aqefq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
