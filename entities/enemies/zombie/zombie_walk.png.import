@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://06o66i5k26px"
-path="res://.godot/imported/mouse.png-11b74760590b9f3be2048c75a390c99d.ctex"
+uid="uid://f4vwgmn7ay3i"
+path="res://.godot/imported/zombie_walk.png-f501670b6fdec3fd1b50cbbd7c3f9410.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/mouse/mouse.png"
-dest_files=["res://.godot/imported/mouse.png-11b74760590b9f3be2048c75a390c99d.ctex"]
+source_file="res://entities/enemies/zombie/zombie_walk.png"
+dest_files=["res://.godot/imported/zombie_walk.png-f501670b6fdec3fd1b50cbbd7c3f9410.ctex"]
 
 [params]
 

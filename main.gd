@@ -10,8 +10,10 @@ extends Node2D
 func _ready() -> void:
 	_set_seed()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	Global.game_scene = game_scene
 	Global.projectiles_scene = projectiles_scene
+	Global.entity_loader = entity_loader
 	
 	ui.show_loading_screen()
 	_load_resources_from_loaders()
@@ -56,7 +58,8 @@ func _input(event: InputEvent) -> void:
 			Global.current_floor.current_room.open_all_doors()
 
 func setup_player() -> void:
-	Global.player = entity_loader.get_player()
+	if Global.player == null:
+		Global.player = entity_loader.get_player()
 
 func get_floor() -> Floor:
 	floor_generator.reset()

@@ -1,2 +1,0 @@
-class_name EnemySpawners
-extends Node2D

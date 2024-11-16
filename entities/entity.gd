@@ -2,6 +2,7 @@ class_name Entity
 extends CharacterBody2D
 
 var collision: KinematicCollision2D
+var enabled: bool = true
 
 func move(_delta: float) -> void:
 	pass

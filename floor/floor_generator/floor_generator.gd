@@ -87,7 +87,7 @@ func generate_floor():
 						
 						if new_room.id != 0:
 							door.is_placeholder = true
-							door.type == Global.ROOM_TYPE_NONE
+							door.type = Global.ROOM_TYPE_NONE
 				print()
 
 		# Handle unplaceable doors
@@ -113,7 +113,7 @@ func generate_floor():
 		
 		var count: int = 0
 		for room: Room in current_floor.rooms:
-			room.global_position = Vector2(200.0 * count, 0)
+			room.global_position = Vector2(500.0 * count, 0)
 			count += 1
 	
 	Global.current_room.set_door_visible()
@@ -138,10 +138,8 @@ func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2
 
 func _get_answerset_from_worker(_program: String) -> Array:
 	worker.post(_program)
-	print("Response before wait %s" % worker.response)
 	await SignalBus.response_ready
 	await worker.response
-	print("Response after wait %s" % worker.response)
 	var response = worker.response.get("models")
 	return response
 

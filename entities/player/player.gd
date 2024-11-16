@@ -6,7 +6,7 @@ extends Entity
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interaction_area_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 
-@export var speed: float = 90.0
+@export var speed: float = 80.0
 @export var friction: float = 300.0
 
 var movement_direction: Vector2
@@ -18,6 +18,7 @@ var current_delay: float = 0.0
 var max_delay: float = 0.5
 var delay_recovery: float = 0.3
 var can_shoot: bool = true
+var hp: int = 100
 
 func _set_velocity_from_input() -> void:
 	movement_direction = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")

@@ -7,8 +7,11 @@ extends Node2D
 @onready var cleaned_room_pickup_spawner = $Pickups/CleanedRoomPickupSpawner
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
 @onready var obstacles: TileMapLayer = $NavigationRegion2D/Obstacles
+@onready var enemy_spawners: Node2D = $EnemySpawners
+
 @export var id: int = 0
 @export var type: int = 0
+
 var configuration: int
 var is_clear: bool = false
 var coordinates: Array[Vector2i] = []
@@ -202,8 +205,16 @@ func set_room_active(active: bool) -> void:
 		if door:
 			door.get_node("OpenedArea2D/OpenedCollider").disabled = !active
 			door.get_node("ClosedArea2D/ClosedCollider").disabled = !active
+			
+			if door.type != Global.ROOM_TYPE_NONE and door.is_placeholder:
+				door.is_placeholder = false
 	
+	for spawner in enemy_spawners.get_children():
+		for enemy in spawner.get_children():
+			if enemy is Entity:
+				enemy.enabled = active
 				
+
 func get_pickup_spawner_position() -> Vector2i:
 	return cleaned_room_pickup_spawner.position
 
