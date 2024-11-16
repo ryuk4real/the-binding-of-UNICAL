@@ -44,3 +44,6 @@ position = Vector2(162, 61)
 position = Vector2(17, 47)
 rotation = -1.5708
 type = 2
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(88, 47)

@@ -60,6 +60,9 @@ id = 2
 type = 999
 is_placeholder = true
 
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(47, 96)
+
 [node name="EnemySpawners" parent="." index="5"]
 position = Vector2(58, 95)
 

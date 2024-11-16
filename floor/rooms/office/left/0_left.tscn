@@ -44,3 +44,6 @@ texture = SubResource("AtlasTexture_iqkjf")
 position = Vector2(17, 48)
 rotation = -1.5708
 type = 4
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(96, 96)

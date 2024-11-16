@@ -17,8 +17,9 @@ collision_mask = 62
 motion_mode = 0
 slide_on_ceiling = true
 script = ExtResource("2_lc6wu")
-speed = 80.0
+speed = 75.0
 friction = 300.0
+shoot_delay = 0.4
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_gmudp")

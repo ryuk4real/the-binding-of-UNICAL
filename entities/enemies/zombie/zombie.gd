@@ -1,17 +1,12 @@
 class_name Zombie
-extends Entity
-
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+extends Enemy
 
 @export var movement_speed: float = 200.0
 @export var wander_range: float = 50.0
 @export var idle_time: float = 3.0
 @export var wander_time: float = 4.0
 
-enum ZombieState { IDLE, WANDERING, CHASING }
-
-var current_state: ZombieState = ZombieState.IDLE
+var current_state: EnemyState = EnemyState.IDLE
 var state_timer: float = 0.0
 var is_chasing: bool = false
 var rng = RandomNumberGenerator.new()
@@ -30,21 +25,21 @@ func _physics_process(delta: float) -> void:
 			return
 			
 		if is_chasing:
-			current_state = ZombieState.CHASING
+			current_state = EnemyState.CHASING
 		
 		match current_state:
-			ZombieState.IDLE:
+			EnemyState.IDLE:
 				velocity = Vector2.ZERO
 				state_timer += delta
 				if state_timer >= idle_time:
 					choose_random_target()
-					current_state = ZombieState.WANDERING
+					current_state = EnemyState.WANDERING
 					state_timer = 0.0
 					
-			ZombieState.WANDERING:
+			EnemyState.WANDERING:
 				state_timer += delta
 				if state_timer >= wander_time:
-					current_state = ZombieState.IDLE
+					current_state = EnemyState.IDLE
 					state_timer = 0.0
 					velocity = Vector2.ZERO
 					animated_sprite_2d.play("IDLE")
@@ -53,7 +48,7 @@ func _physics_process(delta: float) -> void:
 					if navigation_agent.is_navigation_finished():
 						choose_random_target()
 					
-			ZombieState.CHASING:
+			EnemyState.CHASING:
 				if Global.player:
 					set_movement_target(Global.player.global_position)
 					move_to_target()
@@ -65,7 +60,7 @@ func _physics_process(delta: float) -> void:
 # Helper function to reset zombie state
 func reset_to_idle() -> void:
 	is_chasing = false
-	current_state = ZombieState.IDLE
+	current_state = EnemyState.IDLE
 	state_timer = 0.0
 	velocity = Vector2.ZERO
 	animated_sprite_2d.play("IDLE")
@@ -121,11 +116,11 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_aggro_area_body_entered(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player entered area")
+		print("player entered zombie area")
 		is_chasing = true
-		current_state = ZombieState.CHASING
+		current_state = EnemyState.CHASING
 
 func _on_aggro_area_body_exited(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player exited area")
+		print("player exited zombie area")
 		reset_to_idle()

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcfcf7vcxv5wi"]
+
+[ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_3m0ho"]
+[ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="2_4jfln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m65pb"]
+radius = 92.0217
+
+[node name="Enemy" instance=ExtResource("1_3m0ho")]
+script = ExtResource("2_4jfln")
+
+[node name="AggroArea" type="Area2D" parent="." index="2"]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
+shape = SubResource("CircleShape2D_m65pb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]

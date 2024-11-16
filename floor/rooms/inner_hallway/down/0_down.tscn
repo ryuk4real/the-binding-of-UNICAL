@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://lulamst27osn"]
+[gd_scene load_steps=5 format=4 uid="uid://lulamst27osn"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_6vhvp"]
 [ext_resource type="TileSet" uid="uid://2p8pukkhxk7y" path="res://floor/rooms/inner_hallway/ih_walls.tres" id="2_k4ou2"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_vvfjb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1xl0g"]
+vertices = PackedVector2Array(72, 168, 24, 168, 24, 24, 72, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 168, 72, 168, 72, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_6vhvp")]
 type = 1
@@ -10,6 +16,10 @@ type = 1
 [node name="Walls" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAABAAEAAAACAAAAAAACAAEAAAABAAEAAAABAAEAAAACAAEAAAACAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAABAAIAAAABAAIAAAACAAIAAAACAAIAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAEAAAABAP3/AAABAAAAAAABAP7/AAABAAEAAAACAP3/AAACAAAAAAACAP7/AAACAAEAAAAAAP//AAAAAAEAAAABAP//AAABAAEAAAACAP//AAACAAEAAAA=")
 tile_set = ExtResource("2_k4ou2")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+position = Vector2(0, -96)
+navigation_polygon = SubResource("NavigationPolygon_1xl0g")
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_vvfjb")]
 position = Vector2(48, 79)
@@ -49,3 +59,6 @@ rotation = 1.5708
 id = 4
 type = 999
 is_placeholder = true
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(48, 0)

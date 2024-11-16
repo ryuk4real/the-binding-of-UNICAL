@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=4 uid="uid://28egpwau3rvr"]
+[gd_scene load_steps=6 format=4 uid="uid://28egpwau3rvr"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_vysvm"]
 [ext_resource type="TileSet" uid="uid://dypyn7uabsntj" path="res://floor/rooms/library/lb_wall.tres" id="2_gruf8"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_g4sqj"]
+[ext_resource type="TileSet" uid="uid://uhqycado2gn" path="res://floor/rooms/library/lb_obstacles.tres" id="3_xudli"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0tcgp"]
+vertices = PackedVector2Array(223, 49, 209, 49, 109, 48, 115, 48, 192, 81, 176, 81, 109, 80, 163, 80, 160, 81, 188, 77, 180, 77, 125, 76, 125, 66, 128, 61, 189, 80, 209, 79, 223, 79, 173, 96, 163, 96, 128, 93, 160, 93, 192, 93, 223, 113, 209, 113, 173, 109, 176, 93, 264, 168, 24, 168, 63, 143, 113, 143, 49, 143, 223, 64, 264, 24, 24, 24, 49, 128, 49, 113, 256, 28, 209, 64, 192, 61, 192, 49, 176, 49, 160, 49, 77, 29, 77, 24, 224, 24, 224, 28, 188, 45, 256, 24, 240, 28, 209, 128, 209, 143, 175, 143, 175, 128, 175, 113, 161, 113, 163, 109, 49, 49, 67, 24, 67, 29, 63, 49, 99, 80, 96, 81, 63, 79, 63, 64, 100, 77, 160, 61, 112, 61, 115, 66, 63, 113, 49, 79, 180, 45, 179, 48, 173, 48, 172, 45, 179, 80, 173, 80, 172, 77, 164, 77, 115, 76, 108, 77, 96, 61, 189, 48, 164, 45, 163, 48, 124, 45, 161, 128, 112, 93, 223, 143, 223, 128, 161, 143, 127, 113, 128, 81, 112, 81, 96, 93, 127, 143, 127, 128, 113, 113, 113, 128, 63, 128, 49, 64, 176, 61, 128, 49, 112, 49, 96, 49, 99, 48, 100, 45, 108, 45, 125, 48, 116, 45)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 5, 8), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 4), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24, 17, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 28, 27), PackedInt32Array(16, 31, 32, 26), PackedInt32Array(30, 27, 33, 34), PackedInt32Array(35, 34, 33), PackedInt32Array(32, 31, 0, 36), PackedInt32Array(21, 4, 16, 22), PackedInt32Array(1, 37, 38, 39), PackedInt32Array(2, 1, 39), PackedInt32Array(2, 39, 40), PackedInt32Array(2, 40, 41), PackedInt32Array(42, 43, 44, 45, 0, 46), PackedInt32Array(36, 47, 32), PackedInt32Array(48, 36, 0), PackedInt32Array(45, 48, 0), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(23, 49, 52, 53), PackedInt32Array(24, 23, 53), PackedInt32Array(24, 53, 54, 55), PackedInt32Array(56, 33, 57, 58, 59), PackedInt32Array(60, 61, 62, 63, 64), PackedInt32Array(13, 65, 37, 15, 9), PackedInt32Array(19, 18, 55, 54), PackedInt32Array(15, 14, 9), PackedInt32Array(66, 13, 12, 67), PackedInt32Array(68, 35, 33, 69), PackedInt32Array(70, 71, 72, 73), PackedInt32Array(10, 74, 75, 76), PackedInt32Array(11, 10, 76), PackedInt32Array(11, 76, 77), PackedInt32Array(78, 11, 77, 7, 6, 79), PackedInt32Array(79, 64, 63, 59, 58, 80), PackedInt32Array(0, 81, 46), PackedInt32Array(42, 46, 70), PackedInt32Array(42, 70, 73), PackedInt32Array(42, 73, 82), PackedInt32Array(58, 42, 82, 83, 84), PackedInt32Array(80, 66, 67, 78, 79), PackedInt32Array(19, 54, 85, 86), PackedInt32Array(26, 87, 88), PackedInt32Array(86, 85, 89, 90), PackedInt32Array(26, 88, 22), PackedInt32Array(16, 26, 22), PackedInt32Array(20, 25, 17), PackedInt32Array(8, 20, 19, 91), PackedInt32Array(6, 8, 91), PackedInt32Array(6, 91, 92), PackedInt32Array(6, 92, 61, 60), PackedInt32Array(62, 61, 93, 69), PackedInt32Array(50, 87, 26), PackedInt32Array(51, 50, 26), PackedInt32Array(74, 14, 4), PackedInt32Array(89, 51, 26), PackedInt32Array(89, 26, 94), PackedInt32Array(89, 94, 95), PackedInt32Array(89, 95, 90), PackedInt32Array(86, 90, 96, 93), PackedInt32Array(93, 96, 97, 69), PackedInt32Array(69, 97, 29, 68), PackedInt32Array(29, 94, 26), PackedInt32Array(29, 28, 98), PackedInt32Array(29, 98, 68), PackedInt32Array(99, 69, 33), PackedInt32Array(56, 99, 33), PackedInt32Array(100, 38, 37), PackedInt32Array(65, 100, 37), PackedInt32Array(41, 65, 13, 101), PackedInt32Array(2, 41, 101), PackedInt32Array(2, 101, 102), PackedInt32Array(2, 102, 103, 104), PackedInt32Array(105, 104, 103, 58), PackedInt32Array(75, 74, 4), PackedInt32Array(7, 75, 4), PackedInt32Array(103, 80, 58), PackedInt32Array(106, 105, 58), PackedInt32Array(71, 81, 0), PackedInt32Array(72, 71, 0), PackedInt32Array(83, 72, 0), PackedInt32Array(83, 0, 107), PackedInt32Array(83, 107, 84), PackedInt32Array(58, 84, 108), PackedInt32Array(106, 58, 108), PackedInt32Array(106, 108, 3, 2), PackedInt32Array(0, 3, 107)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 168, 264, 168, 264, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_vysvm")]
 type = 6
@@ -11,6 +18,16 @@ type = 6
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAFAAEAAQABAAEAAAAFAAIAAQABAAEAAAABAAIAAQABAAEAAAACAAIAAQABAAEAAAADAAIAAQABAAEAAAAEAAIAAQABAAEAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAGAAEAAQABAAEAAAAHAAEAAQABAAEAAAAGAAIAAQABAAEAAAAHAAIAAQABAAEAAAAIAAAAAQACAAAAAAAIAAEAAQACAAEAAAAIAAIAAQACAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAIAAAABAAQAAQABAAEAAAABAAUAAQABAAIAAAAHAAQAAQABAAEAAAAHAAUAAQABAAIAAAAIAAQAAQACAAEAAAAIAAUAAQACAAIAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAACAAQAAQABAAEAAAADAAQAAQABAAEAAAAEAAQAAQABAAEAAAAFAAQAAQABAAEAAAAGAAQAAQABAAEAAAAHAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAIAAMAAQACAAEAAAAGAAUAAQABAAIAAAAFAAUAAQABAAIAAAAEAAUAAQABAAIAAAADAAUAAQABAAIAAAACAAUAAQABAAIAAAAAAAMAAQAAAAEAAAA=")
 tile_set = ExtResource("2_gruf8")
 
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_0tcgp")
+
+[node name="Obstacles" parent="NavigationRegion2D" index="0"]
+tile_map_data = PackedByteArray("AAANAAMAAAAIAAQAAAANAAQAAAAIAAUAAAANAAcAAAAIAAQAAAANAAgAAAAIAAUAAAAKAAcAAAAIAAQAAAAKAAgAAAAIAAUAAAAHAAcAAAAIAAQAAAAHAAgAAAAIAAUAAAADAAcAAAAIAAQAAAADAAgAAAAIAAUAAAADAAMAAAAIAAQAAAADAAQAAAAIAAUAAAAGAAMAAAAGAAYAAAAHAAMAAAAHAAYAAAAKAAMAAAAGAAYAAAALAAMAAAAHAAYAAAAGAAUAAAAGAAYAAAAHAAUAAAAHAAYAAAAKAAUAAAAGAAYAAAALAAUAAAAHAAYAAAAHAAQAAAAFAAcAAAAGAAQAAAAEAAcAAAALAAIAAAAEAAcAAAAKAAQAAAAIAAcAAAALAAQAAAAIAAcAAAAKAAIAAAAIAAcAAAAGAAIAAAAIAAcAAAAHAAIAAAAIAAcAAAAOAAEAAAACAAgAAAAPAAEAAAACAAgAAAAEAAEAAAAAAAYAAAAKAAYAAAAAAAYAAAA=")
+tile_set = ExtResource("3_xudli")
+
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_g4sqj")]
 position = Vector2(48, 17)
 type = 6
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(88, 112)

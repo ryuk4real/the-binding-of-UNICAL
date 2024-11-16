@@ -44,3 +44,6 @@ position = Vector2(98, 17)
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_hrmvk")]
 position = Vector2(48, 17)
 type = 2
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(84, 48)

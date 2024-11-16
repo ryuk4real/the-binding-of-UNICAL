@@ -34,3 +34,6 @@ tile_set = ExtResource("4_voeg6")
 position = Vector2(79, 48)
 rotation = 1.5708
 type = 4
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(0, 96)

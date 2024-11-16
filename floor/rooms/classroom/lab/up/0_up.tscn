@@ -34,3 +34,6 @@ tile_set = ExtResource("4_guhkf")
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_280cq")]
 position = Vector2(48, 17)
 type = 3
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(97, 96)
