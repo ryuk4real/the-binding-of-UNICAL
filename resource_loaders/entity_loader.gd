@@ -11,6 +11,7 @@ func _ready() -> void:
 func load_resources() -> void:
 	player_loader.add_resource(str(0), load(Global.PLAYER_RESOURCE_PATH))
 	enemy_loader.add_resource(str(Global.ENEMY_TYPE_ZOMBIE), load(Global.ZOMBIE_RESOURCE_PATH))
+	enemy_loader.add_resource(str(Global.ENEMY_TYPE_STUDENT), load(Global.STUDENT_RESOURCE_PATH))
 
 func get_player() -> Player:
 	var player_scene: Resource = player_loader.get_resource(str(0))

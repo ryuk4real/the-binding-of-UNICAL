@@ -31,7 +31,7 @@ var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
 
 func _ready() -> void:
-	projectile_resource = load("res://entities/projectile/projectile.tscn")
+	projectile_resource = load("res://entities/player_projectile/player_projectile.tscn")
 	_set_player_active(true)
 	
 	current_hp = max_hp
@@ -129,7 +129,7 @@ func shoot(_delta: float) -> void:
 		current_shot_delay -= _delta
 	
 	if fire_direction != Vector2.ZERO and current_shot_delay <= 0:
-		var projectile: Projectile = projectile_resource.instantiate()
+		var projectile: PlayerProjectile = projectile_resource.instantiate()
 		projectile.global_position = global_position
 		
 		# Set rotation based on fire_direction angle

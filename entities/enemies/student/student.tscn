@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ky5028lrvror"]
+
+[ext_resource type="PackedScene" uid="uid://bcfcf7vcxv5wi" path="res://entities/enemies/enemy.tscn" id="1_5dniv"]
+[ext_resource type="Script" path="res://entities/enemies/student/student.gd" id="2_gjvux"]
+[ext_resource type="SpriteFrames" uid="uid://cqthu7hxos3mk" path="res://entities/enemies/student/student.tres" id="3_ggbsm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tghgr"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqph6"]
+radius = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s3ih"]
+radius = 8.0
+
+[node name="Student" instance=ExtResource("1_5dniv")]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("2_gjvux")
+movement_speed = 10.0
+wander_range = 50.0
+idle_time = 3.0
+wander_time = 4.0
+shooting_cooldown = 3.0
+shooting_pause_time = 0.8
+shooting_range = 100.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("3_ggbsm")
+animation = &"WALK_UP"
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_tghgr")
+
+[node name="AggroArea" parent="." index="2"]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" parent="AggroArea" index="0"]
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_bqph6")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7s3ih")
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]

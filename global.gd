@@ -10,6 +10,7 @@ const ROOM_TYPE_LIBRARY: int = 6
 const ROOM_TYPE_NONE: int = 999
 
 const ENEMY_TYPE_ZOMBIE: int = 0
+const ENEMY_TYPE_STUDENT: int = 1
 
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
@@ -19,6 +20,7 @@ const DIRECTION_RIGHT: int = -2
 
 const PLAYER_RESOURCE_PATH: String = "res://entities/player/player.tscn"
 const ZOMBIE_RESOURCE_PATH: String = "res://entities/enemies/zombie/zombie.tscn"
+const STUDENT_RESOURCE_PATH: String = "res://entities/enemies/student/student.tscn"
 
 var player: Player = null
 var current_room: Room = null

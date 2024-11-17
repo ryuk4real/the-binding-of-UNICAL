@@ -5,7 +5,7 @@ extends Entity
 @onready var collision_shape: CollisionShape2D = $AggroArea/CollisionShape2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
-enum EnemyState { IDLE, WANDERING, CHASING, DEAD }
+enum EnemyState { IDLE, WANDERING, CHASING, DEAD, SHOOTING }
 
 @export var max_hp: int = 100
 @export var current_hp: int = 100
@@ -36,6 +36,6 @@ func die() -> void:
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	# Check if the area belongs to a projectile
 	var projectile = area.get_parent()
-	if projectile is Projectile:
+	if projectile is PlayerProjectile:
 		take_damage(projectile.damage)
 		projectile.queue_free()

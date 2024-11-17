@@ -1,15 +1,15 @@
-class_name Projectile
+class_name EnemyProjectile
 extends Entity
 
 @export var speed: float = 100
-@export var damage: int = 10
+@export var damage: int = 15
 var direction: Vector2
 var range: float = 3
 
-const RANGE_PENALTY: int = 2
+const RANGE_PENALTY: int = 3
 
 func _ready() -> void:
-	SignalBus.player_damage_changed.connect(_on_player_damage_changed)
+	SignalBus.student_damage_changed.connect(_on_student_damage_changed)
 	animated_sprite_2d.play("BASIC")
 
 func _process(_delta: float) -> void:
@@ -20,14 +20,14 @@ func _process(_delta: float) -> void:
 	
 	if collision:
 		_death_animation_start()
-		velocity = velocity.slide(collision.get_normal())
+		velocity = velocity.slide(collision.get_normal()) / 2
 	
 	if range <= 0:
 		_death_animation_start()
 		queue_free()
 
-func _on_player_damage_changed() -> void:
-	damage = Global.player.damage
+func _on_student_damage_changed(amount: int) -> void:
+	damage = amount
 
 func _death_animation_start() -> void:
 	animated_sprite_2d.play("DEATH")
