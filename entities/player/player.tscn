@@ -4,11 +4,11 @@
 [ext_resource type="SpriteFrames" uid="uid://dqyhkwn758kok" path="res://entities/player/player.tres" id="2_gmudp"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_lc6wu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_flml4"]
-radius = 3.24489
+[sub_resource type="CircleShape2D" id="CircleShape2D_urm12"]
+radius = 6.25
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr0ds"]
-radius = 3.95618
+radius = 7.5
 height = 15.0079
 
 [node name="Player" instance=ExtResource("1_8ymie")]
@@ -18,26 +18,30 @@ motion_mode = 0
 slide_on_ceiling = true
 script = ExtResource("2_lc6wu")
 speed = 75.0
-friction = 300.0
+max_hp = 100
 shoot_delay = 0.4
+damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_gmudp")
 animation = &"IDLE"
 
-[node name="Hitbox" parent="." index="1"]
-position = Vector2(-0.273635, 5.76928)
-scale = Vector2(1, 0.839999)
-shape = SubResource("CircleShape2D_flml4")
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 1.25)
+scale = Vector2(0.803584, 0.803584)
+shape = SubResource("CircleShape2D_urm12")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 scale = Vector2(2, 1.2)
 zoom = Vector2(6, 6)
 
-[node name="InteractionArea" type="Area2D" parent="." index="3"]
-collision_mask = 44
+[node name="InteractionArea" parent="." index="3"]
+scale = Vector2(0.957951, 0.910048)
+collision_mask = 38
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
-position = Vector2(-0.0581133, 4.79422)
-scale = Vector2(1.28786, 0.644592)
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 1.25)
 shape = SubResource("CapsuleShape2D_sr0ds")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

@@ -5,51 +5,86 @@ extends Entity
 @onready var interaction_area_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 
 @export var speed: float = 75.0
-@export var friction: float = 300.0
+@export var max_hp: int
+@export var shoot_delay: float = 0.4
+@export var damage: int = 10
 
+var friction: float = 300.0
 var movement_direction: Vector2
+
 var fire_direction: Vector2
 var projectile_resource: Resource
 
-@export var shoot_delay: float = 0.4
-var current_delay: float = 0.0
-var max_delay: float = 1.0
-var delay_recovery: float = 0.3
+var current_hp: int
+var is_hurt: bool
+
+var current_shot_delay: float = 0.0
+var max_shot_delay: float = 1.0
+var shot_delay_recovery: float = 0.3
 var can_shoot: bool = true
+
+var damage_cooldown_duration: float = 1.0
+var flash_frequency: float = 0.1
+var damage_cooldown_timer: float = 0.0
+var is_invulnerable: bool = false
+
+var enemy_in_area: Enemy = null
+
+func _ready() -> void:
+	projectile_resource = load("res://entities/projectile/projectile.tscn")
+	
+	current_hp = max_hp
+	SignalBus.player_health_changed.emit()
+	SignalBus.player_damage_changed.emit()
+
+func _process(delta) -> void:
+	# Handle shot delay recovery
+	if current_shot_delay > shoot_delay:
+		current_shot_delay = max(shoot_delay, current_shot_delay - shot_delay_recovery * delta)
+	
+	can_shoot = current_shot_delay <= 0
+	
+	if is_invulnerable:
+		damage_cooldown_timer -= delta
+		
+		# Visual flash effect after hit
+		var alpha = 1.0 if fmod(damage_cooldown_timer, flash_frequency * 2) < flash_frequency else 0.5
+		animated_sprite_2d.modulate.a = alpha
+		
+		if damage_cooldown_timer <= 0:
+			is_invulnerable = false
+			animated_sprite_2d.modulate.a = 1.0
+	
+	if enemy_in_area and not is_invulnerable:
+		take_damage(enemy_in_area.damage)
+
+func take_damage(amount: int) -> void:
+	current_hp = max(0, current_hp - amount)
+	SignalBus.player_health_changed.emit()
+	
+	# Start invulnerability period
+	is_invulnerable = true
+	damage_cooldown_timer = damage_cooldown_duration
 
 func _set_velocity_from_input() -> void:
 	movement_direction = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	velocity = movement_direction * speed
 
 func _set_fire_direction_from_input() -> void:
-	# Check for opposing directions
 	var shooting_left = Input.is_action_pressed("SHOOT_LEFT")
 	var shooting_right = Input.is_action_pressed("SHOOT_RIGHT")
 	var shooting_up = Input.is_action_pressed("SHOOT_UP")
 	var shooting_down = Input.is_action_pressed("SHOOT_DOWN")
 	
-	# If opposing directions are pressed, set fire_direction to zero
 	if (shooting_left and shooting_right) or (shooting_up and shooting_down):
 		fire_direction = Vector2.ZERO
 		return
 	
-	# Otherwise, use get_vector for smooth diagonal movement
 	fire_direction = Input.get_vector("SHOOT_LEFT", "SHOOT_RIGHT", "SHOOT_UP", "SHOOT_DOWN")
 	
-	# Normalize the vector if it's not zero
 	if fire_direction != Vector2.ZERO:
 		fire_direction = fire_direction.normalized()
 
-func _ready() -> void:
-	projectile_resource = load("res://entities/projectile/projectile.tscn")
-
-func _process(delta) -> void:
-	# Handle delay recovery
-	if current_delay > shoot_delay:
-		current_delay = max(shoot_delay, current_delay - delay_recovery * delta)
-	
-	# Update can_shoot status
-	can_shoot = current_delay <= 0
 
 func _physics_process(_delta: float) -> void:
 	move(_delta)
@@ -85,10 +120,10 @@ func shoot(_delta: float) -> void:
 	_set_fire_direction_from_input()
 	
 	# Update delay timer
-	if current_delay > 0:
-		current_delay -= _delta
+	if current_shot_delay > 0:
+		current_shot_delay -= _delta
 	
-	if fire_direction != Vector2.ZERO and current_delay <= 0:
+	if fire_direction != Vector2.ZERO and current_shot_delay <= 0:
 		var projectile: Projectile = projectile_resource.instantiate()
 		projectile.global_position = global_position
 		
@@ -101,4 +136,14 @@ func shoot(_delta: float) -> void:
 		Global.projectiles_scene.add_child(projectile)
 		
 		# Increase delay for next shot
-		current_delay = min(current_delay + shoot_delay, max_delay)
+		current_shot_delay = min(current_shot_delay + shoot_delay, max_shot_delay)
+
+func _on_interaction_area_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_in_area = body
+
+
+func _on_interaction_area_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		if body == enemy_in_area:
+			enemy_in_area = null

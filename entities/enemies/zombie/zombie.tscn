@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://sdjbh3fe1se7"]
+[gd_scene load_steps=7 format=3 uid="uid://sdjbh3fe1se7"]
 
 [ext_resource type="PackedScene" uid="uid://bcfcf7vcxv5wi" path="res://entities/enemies/enemy.tscn" id="1_agd61"]
 [ext_resource type="Script" path="res://entities/enemies/zombie/zombie.gd" id="2_01fpo"]
 [ext_resource type="SpriteFrames" uid="uid://dih6v4kgvub8u" path="res://entities/enemies/zombie/zombie.tres" id="2_ogcn8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_iljbr"]
-radius = 5.09902
+[sub_resource type="CircleShape2D" id="CircleShape2D_tghgr"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqph6"]
+radius = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s3ih"]
+radius = 8.0
 
 [node name="Zombie" instance=ExtResource("1_agd61")]
 collision_layer = 2
@@ -15,15 +21,27 @@ movement_speed = 4.0
 wander_range = 50.0
 idle_time = 3.0
 wander_time = 4.0
+damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_ogcn8")
 animation = &"WALK_DOWN"
 frame_progress = 0.368445
 
-[node name="Hitbox" parent="." index="1"]
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_tghgr")
+
+[node name="AggroArea" parent="." index="2"]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_iljbr")
+
+[node name="CollisionShape2D" parent="AggroArea" index="0"]
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_bqph6")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7s3ih")
 
 [connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
 [connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]

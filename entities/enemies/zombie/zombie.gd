@@ -11,6 +11,7 @@ var state_timer: float = 0.0
 var is_chasing: bool = false
 var rng = RandomNumberGenerator.new()
 
+
 func _ready() -> void:
 	rng.randomize()
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -86,7 +87,7 @@ func move_to_target() -> void:
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var direction: Vector2 = global_position.direction_to(next_path_position)
 	
-	velocity = direction * movement_speed * 4
+	velocity = direction * movement_speed * 5.2
 	
 	update_animation(direction)
 

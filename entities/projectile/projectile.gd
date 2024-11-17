@@ -2,24 +2,22 @@ class_name Projectile
 extends Entity
 
 @export var speed: float = 100
+@export var damage: int = 10
 var direction: Vector2
-var damage_on_hit: int
 var range: float = 3
 
 const RANGE_PENALTY: int = 2
 
+func _ready() -> void:
+	SignalBus.player_damage_changed.connect(_on_player_damage_changed)
+
 func _process(_delta: float) -> void:
 	position += direction * speed * _delta
 	range -= _delta * RANGE_PENALTY
-	collision = move_and_collide(velocity * _delta)
 	
-	if collision:
-		queue_free()
-		
 	if range <= 0:
-		#TODO: Instead of queue_free righe away make it collapse
+		#TODO: Instead of queue_free right away make it collapse
 		queue_free()
-	
-	if collision:
-	
-		velocity = velocity.slide(collision.get_normal())
+
+func _on_player_damage_changed() -> void:
+	damage = Global.player.damage

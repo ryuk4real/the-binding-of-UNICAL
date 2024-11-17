@@ -86,8 +86,9 @@ func generate_floor():
 						current_floor.rooms_to_process.erase(new_room)
 						
 						if new_room.id != 0:
-							door.is_placeholder = true
-							door.type = Global.ROOM_TYPE_NONE
+							if door.id != 0:
+								door.is_placeholder = true
+								door.type = Global.ROOM_TYPE_NONE
 				print()
 
 		# Handle unplaceable doors
@@ -113,7 +114,7 @@ func generate_floor():
 		
 		var count: int = 0
 		for room: Room in current_floor.rooms:
-			room.global_position = Vector2(500.0 * count, 0)
+			room.global_position = Vector2(800.0 * count, 0)
 			count += 1
 	
 	Global.current_room.set_door_visible()

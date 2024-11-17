@@ -9,4 +9,10 @@ script = ExtResource("1_de5lx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]

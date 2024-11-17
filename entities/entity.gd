@@ -2,11 +2,11 @@ class_name Entity
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox = $Hitbox
+@onready var collider: CollisionShape2D = $Collider
+@onready var interaction_area: Area2D = $InteractionArea
 
 var collision: KinematicCollision2D
 var enabled: bool = true
-var hp: int = 100
 
 func move(_delta: float) -> void:
 	pass
