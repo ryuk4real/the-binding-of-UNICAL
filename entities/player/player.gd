@@ -32,6 +32,7 @@ var enemy_in_area: Enemy = null
 
 func _ready() -> void:
 	projectile_resource = load("res://entities/projectile/projectile.tscn")
+	_set_player_active(true)
 	
 	current_hp = max_hp
 	SignalBus.player_health_changed.emit()
@@ -57,6 +58,10 @@ func _process(delta) -> void:
 	
 	if enemy_in_area and not is_invulnerable:
 		take_damage(enemy_in_area.damage)
+	
+	if current_hp <= 0:
+		SignalBus.player_health_reached_zero.emit()
+		_set_player_active(false)
 
 func take_damage(amount: int) -> void:
 	current_hp = max(0, current_hp - amount)
@@ -147,3 +152,8 @@ func _on_interaction_area_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		if body == enemy_in_area:
 			enemy_in_area = null
+
+func _set_player_active(active: bool) -> void:
+	set_process_input(active)
+	set_physics_process(active)
+	set_process(active)

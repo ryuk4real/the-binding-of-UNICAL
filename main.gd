@@ -14,6 +14,7 @@ func _ready() -> void:
 	Global.game_scene = game_scene
 	Global.projectiles_scene = projectiles_scene
 	Global.entity_loader = entity_loader
+	SignalBus.player_health_reached_zero.connect(_on_player_health_reached_zero)
 	
 	ui.show_loading_screen()
 	_load_resources_from_loaders()
@@ -58,8 +59,11 @@ func _input(event: InputEvent) -> void:
 			Global.current_floor.current_room.open_all_doors()
 
 func setup_player() -> void:
-	if Global.player == null:
-		Global.player = entity_loader.get_player()
+	if Global.player != null:
+		Global.player.free()
+		
+	Global.player = entity_loader.get_player()
+	print(Global.player)
 
 func get_floor() -> Floor:
 	floor_generator.reset()
@@ -96,3 +100,12 @@ func _quit() -> void:
 	_save_data()
 	print("Game closed")
 	get_tree().quit()
+
+func _on_player_health_reached_zero() -> void:
+	ui.show_game_over_screen()
+
+
+func _on_main_menu_pressed() -> void:
+	Global.current_floor.free()
+	Global.player.free()
+	ui.show_main_menu()

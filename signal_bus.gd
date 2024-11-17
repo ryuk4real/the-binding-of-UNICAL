@@ -9,3 +9,4 @@ signal door_entered(_door: Door)
 signal player_health_changed
 signal player_damage_changed
 signal player_damaged(damage_amount: int)
+signal player_health_reached_zero

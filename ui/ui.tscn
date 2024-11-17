@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b26dcuqwanu2x"]
+[gd_scene load_steps=15 format=3 uid="uid://b26dcuqwanu2x"]
 
 [ext_resource type="Script" path="res://ui/ui_manager.gd" id="1_jxb55"]
 [ext_resource type="FontFile" uid="uid://cnapsguro6jhr" path="res://ui/font/upheavtt.ttf" id="2_tawsg"]
 [ext_resource type="Theme" uid="uid://x80ndnxvvpsj" path="res://ui/main_menu/menu_button.tres" id="3_khr84"]
 [ext_resource type="Texture2D" uid="uid://dr2xl8fauv6jg" path="res://ui/loading_screen/loading_sheet.png" id="4_kwxym"]
+[ext_resource type="PackedScene" uid="uid://byg1dm86oqdpm" path="res://ui/transitions/transitioner.tscn" id="5_n50nj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsp0m"]
 atlas = ExtResource("4_kwxym")
@@ -217,5 +218,76 @@ theme_override_font_sizes/font_size = 46
 text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -28.76
+offset_right = 432.0
+offset_bottom = 166.24
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.86, 0.86)
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 115
+
+[node name="Title" type="Label" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tawsg")
+theme_override_font_sizes/font_size = 171
+text = "game over"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="New Game" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+theme = ExtResource("3_khr84")
+text = "NEW GAME"
+language = "en"
+
+[node name="Main Menu" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../New Game")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("3_khr84")
+text = "MAIN MENU"
+language = "en"
+
+[node name="Quit" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../New Game")
+theme = ExtResource("3_khr84")
+text = "Quit"
+language = "en"
+
+[node name="Transitioner" parent="." instance=ExtResource("5_n50nj")]
 
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
