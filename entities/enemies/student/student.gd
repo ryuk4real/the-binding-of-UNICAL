@@ -1,7 +1,7 @@
 class_name Student
 extends Enemy
 
-@export var movement_speed: float = 10.0
+@export var movement_speed: float = 15.0
 @export var wander_range: float = 50.0
 @export var idle_time: float = 3.0
 @export var wander_time: float = 4.0

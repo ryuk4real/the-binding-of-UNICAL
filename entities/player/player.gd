@@ -147,7 +147,6 @@ func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_in_area = body
 
-
 func _on_interaction_area_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		if body == enemy_in_area:
