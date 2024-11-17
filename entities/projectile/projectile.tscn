@@ -5,12 +5,13 @@
 [ext_resource type="SpriteFrames" uid="uid://dm4j7baclusg3" path="res://entities/projectile/new_sprite_frames.tres" id="2_6ttl8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8p74"]
-radius = 2.0
+radius = 1.66667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tw76e"]
 radius = 3.0
 
-[node name="Entity" instance=ExtResource("1_vdy48")]
+[node name="Projectile" instance=ExtResource("1_vdy48")]
+scale = Vector2(0.6, 0.6)
 collision_layer = 64
 collision_mask = 56
 script = ExtResource("1_vnlqm")
@@ -19,14 +20,14 @@ damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_6ttl8")
-animation = &"IDLE"
+animation = &"BASIC"
 
 [node name="Collider" parent="." index="1"]
 shape = SubResource("CircleShape2D_c8p74")
 
 [node name="InteractionArea" parent="." index="2"]
 collision_layer = 64
-collision_mask = 2
+collision_mask = 58
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("CircleShape2D_tw76e")
