@@ -24,7 +24,7 @@ damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_gmudp")
-animation = &"IDLE"
+animation = &"WALK_UP"
 
 [node name="Collider" parent="." index="1"]
 position = Vector2(0, 1.25)
