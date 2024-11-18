@@ -22,6 +22,8 @@ var vending_machine_collision_shape: CollisionShape2D
 var door_connections: Dictionary = {} # door1: door2
 var room_connections: Dictionary = {} # door: connected_room
 
+var active_enemies: int = 0
+
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
 	type = _room_type
@@ -35,8 +37,6 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 		vending_machine_collision_shape = $VendingMachine/CollisionShape2D
 	else:
 		is_clear = false
-	
-	SignalBus.enemy_died.connect(_on_enemy_died)
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
@@ -45,6 +45,20 @@ func _ready() -> void:
 	
 	#print("door room positions: %s\n" % door_room_positions)
 	#print(str(get_door_room_position(doors[5])) + " " + str(doors[5].type) + " " + str(doors[5].direction))
+	
+	# Count initial enemies
+	for spawner in enemy_spawners.get_children():
+		active_enemies += spawner.get_child_count()
+
+	if active_enemies > 0:
+		close_all_doors()
+	else:
+		open_all_doors()
+
+func check_room_clear() -> void:
+	if active_enemies <= 0:
+		open_all_doors()
+		is_clear = true
 
 func initialize_doors() -> void:
 	if doors.is_empty():
@@ -230,19 +244,3 @@ func open_all_doors():
 	for door: Door in doors:
 		door.open()
 	is_clear = true
-
-func check_any_enemy() -> bool:
-	for spawner in enemy_spawners.get_children():
-		for enemy in spawner.get_children():
-			if enemy is Enemy:
-				print("there is an enemy")
-				is_clear = false
-				return true
-	print("no enemy found")
-	is_clear = true
-	return false
-
-func _on_enemy_died():
-	if self == Global.current_room and check_any_enemy():
-		open_all_doors()
-	

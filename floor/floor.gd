@@ -44,32 +44,27 @@ func _on_door_entered(_door: Door):
 		Global.transitioner.set_next_animation(true)
 		
 		var room_to_visit: Room = Global.current_room.room_connections[_door]
-
-		#room_to_visit.set_door_visible()
 		current_room = room_to_visit
 		
-		# Get the connected door in the new room
 		var connected_door = Global.current_room.get_connected_door(_door)
 		
 		if connected_door:
-			# Calculate the spawn position based on door direction
 			var spawn_offset = Vector2i.ZERO
 			match connected_door.direction:
-				Global.DIRECTION_UP:    # Player should appear below the door
+				Global.DIRECTION_UP:
 					spawn_offset = Vector2(0, DOOR_OFFSET)
-				Global.DIRECTION_DOWN:  # Player should appear above the door
+				Global.DIRECTION_DOWN:
 					spawn_offset = Vector2(0, -DOOR_OFFSET)
-				Global.DIRECTION_LEFT:  # Player should appear to the right of the door
+				Global.DIRECTION_LEFT:
 					spawn_offset = Vector2(DOOR_OFFSET, 0)
-				Global.DIRECTION_RIGHT: # Player should appear to the left of the door
+				Global.DIRECTION_RIGHT:
 					spawn_offset = Vector2(-DOOR_OFFSET, 0)
 			
 			await Global.transitioner.animation_player.animation_finished
-			# Set player position relative to the connected door
 			Global.transitioner.set_next_animation(false)
 			
-			# TODO: Set doors closed if room is not clear
-			if room_to_visit.check_any_enemy():
+			# Check if the new room has enemies and manage doors accordingly
+			if room_to_visit.active_enemies > 0:
 				room_to_visit.close_all_doors()
 			else:
 				room_to_visit.open_all_doors()

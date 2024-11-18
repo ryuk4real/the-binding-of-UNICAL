@@ -13,3 +13,4 @@ signal player_health_reached_zero
 
 signal student_damage_changed(amount: int)
 signal enemy_died
+signal enemy_spawned

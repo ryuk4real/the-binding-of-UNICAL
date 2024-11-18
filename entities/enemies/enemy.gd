@@ -32,6 +32,11 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	# TODO: Play death animation
+	
+	var current_room = Global.current_room
+	if current_room:
+		current_room.active_enemies -= 1
+		current_room.check_room_clear()
 	queue_free()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
