@@ -22,6 +22,7 @@ wander_range = 50.0
 idle_time = 3.0
 wander_time = 4.0
 shooting_cooldown = 3.0
+shooting_cooldown_random_range = 0.5
 shooting_pause_time = 0.8
 shooting_range = 100.0
 

@@ -64,10 +64,12 @@ func _process(delta) -> void:
 		_set_player_active(false)
 
 func take_damage(amount: int) -> void:
+	if is_invulnerable:
+		return
+		
 	current_hp = max(0, current_hp - amount)
 	SignalBus.player_health_changed.emit()
 	
-	# Start invulnerability period
 	is_invulnerable = true
 	damage_cooldown_timer = damage_cooldown_duration
 

@@ -32,7 +32,9 @@ func _on_student_damage_changed(amount: int) -> void:
 func _death_animation_start() -> void:
 	animated_sprite_2d.play("DEATH")
 	await animated_sprite_2d.animation_finished
+	queue_free()
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		Global.player.take_damage(damage)
+		body.take_damage(damage)
+		queue_free()

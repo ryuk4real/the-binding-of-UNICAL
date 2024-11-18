@@ -6,6 +6,7 @@ extends Enemy
 @export var idle_time: float = 3.0
 @export var wander_time: float = 4.0
 @export var shooting_cooldown: float = 3.0
+@export var shooting_cooldown_random_range: float = 0.5
 @export var shooting_pause_time: float = 0.8
 @export var shooting_range: float = 100.0
 
@@ -13,6 +14,7 @@ var projectile_resource: Resource = load("res://entities/enemy_projectile/enemy_
 var current_state: EnemyState = EnemyState.IDLE
 var state_timer: float = 0.0
 var shooting_timer: float = 0.0
+var current_cooldown: float = shooting_cooldown
 var is_chasing: bool = false
 var rng = RandomNumberGenerator.new()
 
@@ -23,8 +25,17 @@ func _ready() -> void:
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 	animated_sprite_2d.play("IDLE")
-	shooting_timer = shooting_cooldown
+	
+	shooting_timer = rng.randf_range(0, shooting_cooldown)
+	randomize_shooting_cooldown()
+	
 	SignalBus.student_damage_changed.emit()
+
+func randomize_shooting_cooldown() -> void:
+	var random_variation = rng.randf_range(-shooting_cooldown_random_range, shooting_cooldown_random_range)
+	current_cooldown = shooting_cooldown + random_variation
+	current_cooldown += rng.randf_range(-shooting_cooldown_random_range, shooting_cooldown_random_range)
+	current_cooldown = max(2.0, current_cooldown)
 
 func _physics_process(delta: float) -> void:
 	if enabled:
@@ -65,6 +76,7 @@ func _physics_process(delta: float) -> void:
 						current_state = EnemyState.SHOOTING
 						state_timer = 0.0
 						velocity = Vector2.ZERO
+						
 						shoot_at_player()
 					else:
 						set_movement_target(Global.player.global_position)
@@ -76,6 +88,7 @@ func _physics_process(delta: float) -> void:
 				state_timer += delta
 				if state_timer >= shooting_pause_time:
 					current_state = EnemyState.CHASING
+					shooting_timer = current_cooldown - rng.randf_range(0, 0.2)
 					
 		move_and_slide()
 
@@ -83,12 +96,12 @@ func shoot_at_player() -> void:
 	if Global.player:
 		shooting_timer = 0.0
 		
-		# Create projectile instance
+		randomize_shooting_cooldown()
+		
 		var projectile: EnemyProjectile = projectile_resource.instantiate()
 		Global.projectiles_scene.add_child(projectile)
 		projectile.global_position = global_position
 		
-		# Calculate direction to player
 		var direction = global_position.direction_to(Global.player.global_position)
 		projectile.direction = direction
 		
@@ -98,7 +111,7 @@ func reset_to_idle() -> void:
 	is_chasing = false
 	current_state = EnemyState.IDLE
 	state_timer = 0.0
-	shooting_timer = shooting_cooldown 
+	shooting_timer = current_cooldown
 	velocity = Vector2.ZERO
 	animated_sprite_2d.play("IDLE")
 
