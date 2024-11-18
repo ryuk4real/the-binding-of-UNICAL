@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_fd8lv"]
 [ext_resource type="Script" path="res://entities/enemy_projectile/enemy_projectile.gd" id="2_gkh2g"]
-[ext_resource type="SpriteFrames" uid="uid://dm4j7baclusg3" path="res://entities/player_projectile/new_sprite_frames.tres" id="3_iawb5"]
+[ext_resource type="SpriteFrames" uid="uid://broxrni6vcpo" path="res://entities/enemy_projectile/new_sprite_frames.tres" id="3_kuyoy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8p74"]
 radius = 1.66667
@@ -19,7 +19,7 @@ speed = 100.0
 damage = 15
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = ExtResource("3_iawb5")
+sprite_frames = ExtResource("3_kuyoy")
 animation = &"BASIC"
 
 [node name="Collider" parent="." index="1"]

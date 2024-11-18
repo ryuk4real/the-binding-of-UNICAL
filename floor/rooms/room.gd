@@ -33,7 +33,10 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 		is_clear = true
 		open_all_doors()
 		vending_machine_collision_shape = $VendingMachine/CollisionShape2D
-	print("ROOM %s -> %s" % [id, coordinates])
+	else:
+		is_clear = false
+	
+	SignalBus.enemy_died.connect(_on_enemy_died)
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
@@ -227,3 +230,19 @@ func open_all_doors():
 	for door: Door in doors:
 		door.open()
 	is_clear = true
+
+func check_any_enemy() -> bool:
+	for spawner in enemy_spawners.get_children():
+		for enemy in spawner.get_children():
+			if enemy is Enemy:
+				print("there is an enemy")
+				is_clear = false
+				return true
+	print("no enemy found")
+	is_clear = true
+	return false
+
+func _on_enemy_died():
+	if self == Global.current_room and check_any_enemy():
+		open_all_doors()
+	

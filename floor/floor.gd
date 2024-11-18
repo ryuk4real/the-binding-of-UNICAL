@@ -46,9 +46,6 @@ func _on_door_entered(_door: Door):
 		var room_to_visit: Room = Global.current_room.room_connections[_door]
 
 		#room_to_visit.set_door_visible()
-		
-		# TODO: Set doors closed if room is not clear
-		
 		current_room = room_to_visit
 		
 		# Get the connected door in the new room
@@ -70,6 +67,12 @@ func _on_door_entered(_door: Door):
 			await Global.transitioner.animation_player.animation_finished
 			# Set player position relative to the connected door
 			Global.transitioner.set_next_animation(false)
+			
+			# TODO: Set doors closed if room is not clear
+			if room_to_visit.check_any_enemy():
+				room_to_visit.close_all_doors()
+			else:
+				room_to_visit.open_all_doors()
 			
 			Global.player.position = connected_door.global_position as Vector2 + spawn_offset
 			call_deferred("set_active_room", current_room.id)

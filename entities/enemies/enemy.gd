@@ -27,10 +27,11 @@ func take_damage(amount: int) -> void:
 	print(current_hp)
 	
 	if current_hp <= 0:
+		SignalBus.enemy_died.emit()
 		die()
 
 func die() -> void:
-	# Optional: Play death animation or spawn effects here
+	# TODO: Play death animation
 	queue_free()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
