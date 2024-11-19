@@ -11,6 +11,7 @@ const ROOM_TYPE_NONE: int = 999
 
 const ENEMY_TYPE_ZOMBIE: int = 0
 const ENEMY_TYPE_STUDENT: int = 1
+const ENEMY_TYPE_NONE: int = 999
 
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
@@ -34,6 +35,7 @@ const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/hallway_neighbour
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/inner_hallway_neighbour_type_guesser.asp"
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/classroom_neighbour_type_guesser.asp"
 const LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/library_neighbour_type_guesser.asp"
+const ENEMY_TYPE_GUESSER_PATH: String = "res://asp/enemy_type_guesser.asp"
 
 const HALLWAY_ROOM_UP_COUNTER: int = 1
 const HALLWAY_UP_FOLDER_PATH: String = "res://floor/rooms/hallway/up/"

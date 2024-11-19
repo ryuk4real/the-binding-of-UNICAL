@@ -43,10 +43,7 @@ func _ready() -> void:
 	initialize_doors()
 	map_door_coordinates()
 	
-	#print("door room positions: %s\n" % door_room_positions)
-	#print(str(get_door_room_position(doors[5])) + " " + str(doors[5].type) + " " + str(doors[5].direction))
-	
-	# Count initial enemies
+func set_active_enemies_counter() -> void:
 	for spawner in enemy_spawners.get_children():
 		active_enemies += spawner.get_child_count()
 
@@ -54,6 +51,7 @@ func _ready() -> void:
 		close_all_doors()
 	else:
 		open_all_doors()
+	
 
 func check_room_clear() -> void:
 	if active_enemies <= 0:
@@ -110,7 +108,7 @@ func generate_coordinates_from_tilemaplayer() -> void:
 	
 	for logical_coord in logical_sections:
 		coordinates.append(logical_coord)
-	print("Room coordinates relative to main door: ", coordinates)
+	#print("Room coordinates relative to main door: ", coordinates)
 
 func map_door_coordinates() -> void:
 	# Find the main door position first

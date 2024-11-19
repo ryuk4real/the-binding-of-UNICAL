@@ -4,8 +4,10 @@ extends Node2D
 
 
 func _ready() -> void:
-	var student: Student = Global.entity_loader.get_enemy(Global.ENEMY_TYPE_STUDENT)
-	add_child(student)
-	
-	# TODO: get enemy from worker call
 	pass
+
+func spawn(_enemy_id: int) -> void:
+	if _enemy_id != Global.ENEMY_TYPE_NONE:
+		var _enemy: Enemy = Global.entity_loader.get_enemy(_enemy_id)
+		add_child(_enemy)
+	
