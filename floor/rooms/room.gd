@@ -21,7 +21,6 @@ var vending_machine_collision_shape: CollisionShape2D
 
 var door_connections: Dictionary = {} # door1: door2
 var room_connections: Dictionary = {} # door: connected_room
-
 var active_enemies: int = 0
 
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
@@ -43,6 +42,8 @@ func _ready() -> void:
 	initialize_doors()
 	map_door_coordinates()
 	
+	SignalBus.connect("cleared_room", _on_cleared_room)
+	
 func set_active_enemies_counter() -> void:
 	for spawner in enemy_spawners.get_children():
 		active_enemies += spawner.get_child_count()
@@ -51,11 +52,11 @@ func set_active_enemies_counter() -> void:
 		close_all_doors()
 	else:
 		open_all_doors()
-	
 
 func check_room_clear() -> void:
 	if active_enemies <= 0:
 		open_all_doors()
+		SignalBus.cleared_room.emit(self)
 		is_clear = true
 
 func initialize_doors() -> void:
@@ -242,3 +243,10 @@ func open_all_doors():
 	for door: Door in doors:
 		door.open()
 	is_clear = true
+
+func _on_cleared_room(_room: Room):
+	if _room.id == id:
+		spawn_pickup()
+
+func spawn_pickup() -> void:
+	print("spawned pickup")

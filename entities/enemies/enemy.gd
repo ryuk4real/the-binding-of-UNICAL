@@ -63,6 +63,7 @@ func apply_knockback(source_position: Vector2) -> void:
 func die() -> void:
 	# TODO: Play death animation
 	var current_room = Global.current_room
+	
 	if current_room:
 		current_room.active_enemies -= 1
 		current_room.check_room_clear()
