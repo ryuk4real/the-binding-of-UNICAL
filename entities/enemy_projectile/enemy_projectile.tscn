@@ -16,11 +16,13 @@ collision_layer = 64
 collision_mask = 25
 script = ExtResource("2_gkh2g")
 speed = 100.0
-damage = 15
+damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_kuyoy")
-animation = &"BASIC"
+animation = &"DEATH"
+frame = 2
+frame_progress = 1.0
 
 [node name="Collider" parent="." index="1"]
 shape = SubResource("CircleShape2D_c8p74")

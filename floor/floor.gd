@@ -69,6 +69,8 @@ func _on_door_entered(_door: Door):
 			else:
 				room_to_visit.open_all_doors()
 			
+			print("room active enemies %s" % room_to_visit.active_enemies)
+			
 			Global.player.position = connected_door.global_position as Vector2 + spawn_offset
 			call_deferred("set_active_room", current_room.id)
 			await Global.transitioner.animation_player.animation_finished

@@ -9,6 +9,7 @@ var hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.HALL
 var inner_hallway_neighbour_type_guesser_program: String = Utils.read_file(Global.INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH)
 var classroom_neighbour_type_guesser_program: String = Utils.read_file(Global.CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH)
 var library_neighbour_type_guesser_program: String = Utils.read_file(Global.LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH)
+var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESSER_PATH)
 
 var room_counter: int = 0
 var done: bool = false
@@ -50,7 +51,6 @@ func generate_floor():
 					door.type = await _get_room_neighbour_type(room_to_process.type)
 					
 				if door.type != Global.ROOM_TYPE_NONE:
-					print("Door %s type %s placeholder %s" % [door.id, door.type, door.is_placeholder])
 					door.is_placeholder = false
 					var new_room: Room = room_loader.get_random_room(door.type, -door.direction)
 					var new_position: Vector2i = _calculate_new_room_position(door.map_position, door.direction)
@@ -72,14 +72,26 @@ func generate_floor():
 						
 						door.setup_door_sprite(room_to_process.id)
 						door.show()
+						
 						# Find the connecting door in the new room (door with id 0)
-						var connecting_door = new_room.find_door(0)
+						var connecting_door: Door = new_room.find_door(0)
 						if connecting_door:
 							# Add the connection between the doors
 							room_to_process.add_connection(door, connecting_door, new_room)
 							new_room.add_connection(connecting_door, door, room_to_process)
 							print("Connected door %s from room %s to door %s from room %s" % 
 								  [door.id, room_to_process.id, connecting_door.id, new_room.id])
+						
+						# For each room spawner guess the enemy to spawn (if any) and spawn it
+						#print(await _get_enemy_type())
+						
+						for spawner: Node2D in new_room.enemy_spawners.get_children():
+							var enemy_id = await _get_enemy_type()
+							spawner.spawn(enemy_id)
+						
+						# Setting enemy counter of each room
+						new_room.set_active_enemies_counter()
+						
 						room_counter += 1
 					else:
 						current_floor.room_scene.remove_child(new_room)
@@ -144,7 +156,7 @@ func _get_answerset_from_worker(_program: String) -> Array:
 	var response = worker.response.get("models")
 	return response
 
-func _get_room_neighbour_type(room_type: int) -> int:
+func _get_room_neighbour_type(room_type: int, _room_facts: Array = []) -> int:
 	var type_answer_set: Array
 	
 	match(room_type):
@@ -161,6 +173,11 @@ func _get_room_neighbour_type(room_type: int) -> int:
 			type_answer_set = await _get_answerset_from_worker(library_neighbour_type_guesser_program)
 
 	return type_answer_set[0][0].get("arguments")[0].get("number")
+
+func _get_enemy_type(_room_facts: Array = []) -> int:
+	var enemy_answerset: Array
+	enemy_answerset = await _get_answerset_from_worker(enemy_type_guesser_program)
+	return enemy_answerset[0][0].get("arguments")[0].get("number")
 
 func reset() -> void:
 	room_counter = 0

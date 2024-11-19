@@ -76,6 +76,7 @@ func _physics_process(delta: float) -> void:
 						current_state = EnemyState.SHOOTING
 						state_timer = 0.0
 						velocity = Vector2.ZERO
+						animated_sprite_2d.play("IDLE")
 						
 						shoot_at_player()
 					else:
@@ -166,11 +167,11 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_aggro_area_body_entered(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player entered student area")
+		#print("player entered student area")
 		is_chasing = true
 		current_state = EnemyState.CHASING
 
 func _on_aggro_area_body_exited(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player exited student area")
+		#print("player exited student area")
 		reset_to_idle()

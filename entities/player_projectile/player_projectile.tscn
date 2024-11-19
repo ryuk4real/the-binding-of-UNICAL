@@ -20,7 +20,7 @@ damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_6ttl8")
-animation = &"BASIC"
+animation = &"DEATH"
 
 [node name="Collider" parent="." index="1"]
 shape = SubResource("CircleShape2D_c8p74")
