@@ -63,11 +63,11 @@ is_placeholder = true
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(47, 96)
 
-[node name="EnemySpawners" parent="." index="5"]
-position = Vector2(58, 95)
-
 [node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("4_a4anr")]
-position = Vector2(-24, 5)
+position = Vector2(32, 123)
 
 [node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("4_a4anr")]
-position = Vector2(-4, 9)
+position = Vector2(63, 153)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("4_a4anr")]
+position = Vector2(64, 92)

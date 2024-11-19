@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://bl4b1ssr2nngy"]
+[gd_scene load_steps=8 format=4 uid="uid://bl4b1ssr2nngy"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_niv6b"]
 [ext_resource type="TileSet" uid="uid://bbueovfhx1m5f" path="res://floor/rooms/storage/st.tres" id="2_kq2me"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_41hev"]
 [ext_resource type="PackedScene" uid="uid://b8qcc0ohj122j" path="res://floor/rooms/storage/big_box.tscn" id="3_dfn8m"]
 [ext_resource type="PackedScene" uid="uid://we0rge667tth" path="res://floor/rooms/storage/small_box.tscn" id="4_uvkl4"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_ivikm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_b2871"]
 vertices = PackedVector2Array(30, 70, 72, 72, -72, 72, 18, 70, 14, 70, 2, 70, 30, 58, 18, 58, 8, 55, 8, 49, 2, 49, -18, 45, -18, 33, 72, 24, -18, 30, -18, 24, -33, 30, -33, 24, -30, 24, -30, 30, -30, 33, -30, 45, -33, 45, -33, 33, 14, 58, 2, 58, 2, 55, -72, 24, -45, 24, -45, 30, -45, 45, -45, 33)
@@ -47,3 +48,12 @@ position = Vector2(5, 52)
 position = Vector2(79, 48)
 rotation = 1.5708
 type = 5
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_ivikm")]
+position = Vector2(-61, 37)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("6_ivikm")]
+position = Vector2(-54, 61)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("6_ivikm")]
+position = Vector2(-31, 61)

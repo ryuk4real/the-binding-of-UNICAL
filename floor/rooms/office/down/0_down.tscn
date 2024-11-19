@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dsjafeyrklew5"]
+[gd_scene load_steps=10 format=4 uid="uid://dsjafeyrklew5"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_yls6m"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_58mep"]
 [ext_resource type="Texture2D" uid="uid://ydw3cagrv3on" path="res://floor/rooms/office/office.png" id="3_g86u4"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ide0g"]
 [ext_resource type="TileSet" uid="uid://k7fqmommmwow" path="res://floor/rooms/office/o_decorations.tres" id="4_n8gao"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_6m8lm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6v1tm"]
 vertices = PackedVector2Array(144, -47, 128, -47, 109, -48, 108, -51, 112, -47, 144, -35, 165, -38, 168.234, -38, 168.508, 1, 162, 1, 96, -47, 99, -48, 159, -67, 165, -44, 145, -68, 168.602, 15, 168.617, 17, 162, 17, 162, 15, 159, -71.9375, 168, -72, 168.195, -44, 45, -64, 45, -71.1406, 145, -71.8359, 168.719, 31, 169, 72, 24, 72, 162, 31, 24, 1, 24, -71, 34, -71.0625, 34, -64, 30, 1, 24, 31, 30, 31, 30, 17, 24, 17, 24, 15, 30, 15, 128, -35, 112, -35, 96, -35, 80, -35, 64, -35, 64, -47, 100, -51, 80, -47)
@@ -151,3 +152,27 @@ type = 4
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(104, 0)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_6m8lm")]
+position = Vector2(41, -47)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("6_6m8lm")]
+position = Vector2(65, -60)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("6_6m8lm")]
+position = Vector2(105, -61)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("6_6m8lm")]
+position = Vector2(153, -56)
+
+[node name="EnemySpawner5" parent="EnemySpawners" index="4" instance=ExtResource("6_6m8lm")]
+position = Vector2(153, -16)
+
+[node name="EnemySpawner6" parent="EnemySpawners" index="5" instance=ExtResource("6_6m8lm")]
+position = Vector2(106, -17)
+
+[node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("6_6m8lm")]
+position = Vector2(153, 22)
+
+[node name="EnemySpawner8" parent="EnemySpawners" index="7" instance=ExtResource("6_6m8lm")]
+position = Vector2(105, 20)

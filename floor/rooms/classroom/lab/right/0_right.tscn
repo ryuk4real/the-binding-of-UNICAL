@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://brd1lt2t2ck1b"]
+[gd_scene load_steps=8 format=4 uid="uid://brd1lt2t2ck1b"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_tesju"]
 [ext_resource type="TileSet" uid="uid://boxb8fij78k12" path="res://floor/rooms/classroom/lab/lab_wall.tres" id="2_n31my"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_23hof"]
 [ext_resource type="TileSet" uid="uid://b3ck0gqamlcb7" path="res://floor/rooms/classroom/lab/lab_obstacles.tres" id="3_pkwvb"]
 [ext_resource type="TileSet" uid="uid://dwabg6wx8i6lt" path="res://floor/rooms/classroom/lab/lab_decorations.tres" id="4_5i5th"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_1ta77"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w7v7q"]
 vertices = PackedVector2Array(72, 168, -72, 168, -51, 144, -29, 144, 72, 24, 62, 126, 62, 114, 51, 77, 51, 67, 51, 141, 51, 131, 51, 126, 48, 130, 48, 128, -64, 144, -2, 78, 3, 64, 3, 80, -13, 115, -2, 66, -13, 61, 3, 48, -13, 66, -16, 62, -16, 64, -16, 80, -13, 78, 48, 112, 51, 114, 35, 64, 35, 80, 19, 77, 19, 67, -13, 51, 19, 141, 35, 128, 35, 144, 16, 144, 19, 131, 35, 112, -13, 141, 3, 128, 3, 144, -16, 144, -13, 131, 3, 112, 11, 27, 11, 24, 48, 48, 35, 48, -72, 62, -67, 62, -67, 67, -67, 50, -72, 50, -72, 24, -64, 48, 5, 24, 5, 27, -16, 48, 48, 80, 16, 66, 16, 64, 19, 61, 48, 66, 48, 64, 51, 61, 48, 62, 51, 51, 48, 50, 16, 62, 19, 51, 16, 48, 16, 50, -16, 50, 16, 80, 16, 78, 19, 115, 48, 78, 36, 80, 16, 130, 16, 128, 19, 125, 16, 126, 4, 80, 16, 112, 16, 114, -16, 130, -16, 128, -13, 125, -16, 126, -28, 80, -16, 112, -16, 114, -29, 112, -29, 80, -16, 142, 16, 142, 48, 144, 48, 142, -64, 64, -64, 66, -67, 77, -64, 78, -64, 80, -64, 112, -64, 114, -67, 115, -67, 125, -64, 126, -64, 128, -29, 48, -29, 64, -51, 48, 36, 144, -64, 96, 4, 144, -28, 144, -29, 128, -51, 128, -51, 112, -51, 96, -51, 80, -51, 64)
@@ -38,3 +39,24 @@ type = 3
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(0, 96)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_1ta77")]
+position = Vector2(-64, 34)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("6_1ta77")]
+position = Vector2(-41, 34)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("6_1ta77")]
+position = Vector2(-41, 155)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("6_1ta77")]
+position = Vector2(-62, 155)
+
+[node name="EnemySpawner5" parent="EnemySpawners" index="4" instance=ExtResource("6_1ta77")]
+position = Vector2(-15, 155)
+
+[node name="EnemySpawner6" parent="EnemySpawners" index="5" instance=ExtResource("6_1ta77")]
+position = Vector2(18, 155)
+
+[node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("6_1ta77")]
+position = Vector2(54, 97)

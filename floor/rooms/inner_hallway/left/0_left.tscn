@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://fyyv8nq5l0xy"]
+[gd_scene load_steps=6 format=4 uid="uid://fyyv8nq5l0xy"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_2s82b"]
 [ext_resource type="TileSet" uid="uid://2p8pukkhxk7y" path="res://floor/rooms/inner_hallway/ih_walls.tres" id="2_6ky4b"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_k8gc0"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="4_47nim"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0a66k"]
 vertices = PackedVector2Array(72, 168, 24, 168, 24, 24, 72, 24)
@@ -61,3 +62,15 @@ is_placeholder = true
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(48, 96)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("4_47nim")]
+position = Vector2(64, 30)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("4_47nim")]
+position = Vector2(64, 154)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("4_47nim")]
+position = Vector2(47, 154)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("4_47nim")]
+position = Vector2(30, 154)

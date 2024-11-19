@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://jyf2x3xa4x7p"]
+[gd_scene load_steps=7 format=4 uid="uid://jyf2x3xa4x7p"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_v47t4"]
 [ext_resource type="TileSet" uid="uid://bdes5x0s6xlsw" path="res://floor/rooms/classroom/standard_classroom/sc_walls.tres" id="2_ey5ry"]
 [ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://floor/rooms/classroom/standard_classroom/sc_obstacles.tres" id="3_ipmwy"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_oecr4"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_87y83"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qj8k5"]
 vertices = PackedVector2Array(189, 136, 242, 128, 255, 128, 264, 168, 24, 168, 61, 136, 73, 136, 109, 136, 130, 131, 137, 131, 137, 136, 255, 112, 264, 93, 255, 96, 259, 93, 57, 136, 255, 80, 259, 83, 109, 128, 130, 128, 189, 128, 242, 112, 59, 26, 59, 24, 264, 24, 255, 64, 242, 64, 189, 56, 264, 83, 189, 112, 242, 96, 189, 96, 242, 80, 189, 80, 189, 64, 185, 56, 185, 61, 178, 61, 173, 56, 178, 131, 185, 131, 185, 136, 173, 136, 173, 128, 178, 128, 178, 112, 173, 112, 178, 96, 173, 96, 178, 80, 173, 80, 178, 64, 173, 64, 169, 56, 169, 61, 162, 61, 157, 56, 162, 131, 169, 131, 169, 136, 157, 136, 153, 56, 153, 61, 146, 61, 141, 56, 146, 131, 153, 131, 153, 136, 141, 136, 137, 56, 137, 61, 130, 61, 109, 56, 130, 112, 109, 112, 130, 96, 109, 96, 130, 80, 109, 80, 130, 64, 109, 64, 105, 56, 105, 61, 98, 61, 93, 56, 98, 131, 105, 131, 105, 136, 93, 136, 89, 56, 89, 61, 82, 61, 82, 131, 89, 131, 89, 136, 77, 136, 73, 56, 73, 61, 66, 61, 61, 56, 66, 131, 73, 131, 57, 56, 57, 61, 50, 61, 53, 26, 50, 131, 57, 131, 24, 24, 50, 128, 50, 112, 50, 96, 50, 80, 50, 64, 53, 24, 157, 128, 162, 128, 162, 112, 157, 112, 162, 96, 157, 96, 162, 80, 157, 80, 162, 64, 157, 64, 141, 128, 146, 128, 146, 112, 141, 112, 146, 96, 141, 96, 146, 80, 141, 80, 146, 64, 141, 64, 93, 128, 98, 128, 98, 112, 93, 112, 98, 96, 93, 96, 98, 80, 93, 80, 98, 64, 93, 64, 82, 64, 77, 56, 77, 128, 82, 128, 82, 112, 77, 112, 82, 96, 77, 96, 82, 80, 77, 80, 77, 64, 61, 64, 66, 64, 66, 80, 61, 80, 66, 96, 61, 96, 66, 112, 61, 112, 66, 128, 61, 128)
@@ -30,3 +31,42 @@ tile_set = ExtResource("3_ipmwy")
 position = Vector2(17, 48)
 rotation = -1.5708
 type = 3
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("5_87y83")]
+position = Vector2(224, 32)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("5_87y83")]
+position = Vector2(224, 77)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("5_87y83")]
+position = Vector2(224, 114)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("5_87y83")]
+position = Vector2(224, 150)
+
+[node name="EnemySpawner5" parent="EnemySpawners" index="4" instance=ExtResource("5_87y83")]
+position = Vector2(186, 150)
+
+[node name="EnemySpawner6" parent="EnemySpawners" index="5" instance=ExtResource("5_87y83")]
+position = Vector2(144, 150)
+
+[node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("5_87y83")]
+position = Vector2(104, 150)
+
+[node name="EnemySpawner8" parent="EnemySpawners" index="7" instance=ExtResource("5_87y83")]
+position = Vector2(118, 115)
+
+[node name="EnemySpawner9" parent="EnemySpawners" index="8" instance=ExtResource("5_87y83")]
+position = Vector2(118, 84)
+
+[node name="EnemySpawner10" parent="EnemySpawners" index="9" instance=ExtResource("5_87y83")]
+position = Vector2(39, 155)
+
+[node name="EnemySpawner11" parent="EnemySpawners" index="10" instance=ExtResource("5_87y83")]
+position = Vector2(59, 156)
+
+[node name="EnemySpawner12" parent="EnemySpawners" index="11" instance=ExtResource("5_87y83")]
+position = Vector2(49, 141)
+
+[node name="EnemySpawner13" parent="EnemySpawners" index="12" instance=ExtResource("5_87y83")]
+position = Vector2(247, 45)

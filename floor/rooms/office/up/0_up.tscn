@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://c7nesb17abye6"]
+[gd_scene load_steps=7 format=4 uid="uid://c7nesb17abye6"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_yls6m"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_yccy2"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ide0g"]
 [ext_resource type="TileSet" uid="uid://dwi22rldp5jyj" path="res://floor/rooms/office/o_obstacles.tres" id="3_vygt0"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_ecvbn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1dvo1"]
 vertices = PackedVector2Array(109, 157, 128, 141, 149, 138, 155, 138, 168, 169, 159, 72, 169, 24, 155, 132, 24, 169, 99, 157, 157, 80, 157, 64, 159, 29, 112, 141, 109, 144, 96, 141, 99, 144, 149, 132, 128, 129, 147, 80, 112, 29, 112, 24, 145, 24, 145, 29, 159, 24, 147, 64, 24, 24, 80, 24, 80, 29, 64, 129, 145, 72, 80, 129, 80, 141, 64, 141, 112, 129, 96, 29, 96, 129)
@@ -31,3 +32,33 @@ type = 4
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(96, 96)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("5_ecvbn")]
+position = Vector2(43, 149)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("5_ecvbn")]
+position = Vector2(79, 158)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("5_ecvbn")]
+position = Vector2(129, 159)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("5_ecvbn")]
+position = Vector2(137, 120)
+
+[node name="EnemySpawner5" parent="EnemySpawners" index="4" instance=ExtResource("5_ecvbn")]
+position = Vector2(157, 97)
+
+[node name="EnemySpawner6" parent="EnemySpawners" index="5" instance=ExtResource("5_ecvbn")]
+position = Vector2(162, 40)
+
+[node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("5_ecvbn")]
+position = Vector2(129, 54)
+
+[node name="EnemySpawner8" parent="EnemySpawners" index="7" instance=ExtResource("5_ecvbn")]
+position = Vector2(97, 119)
+
+[node name="EnemySpawner9" parent="EnemySpawners" index="8" instance=ExtResource("5_ecvbn")]
+position = Vector2(45, 122)
+
+[node name="EnemySpawner10" parent="EnemySpawners" index="9" instance=ExtResource("5_ecvbn")]
+position = Vector2(156, 156)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bcnaro2v307sd"]
+[gd_scene load_steps=10 format=4 uid="uid://bcnaro2v307sd"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_5svem"]
 [ext_resource type="TileSet" uid="uid://di8s75ct03blo" path="res://floor/rooms/bathroom/b_walls.tres" id="2_pwqxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ermslwwhhyhg" path="res://floor/rooms/bathroom/obstacles/mirror.tscn" id="4_jpbtk"]
 [ext_resource type="PackedScene" uid="uid://bkh7f7lt7lg1j" path="res://floor/rooms/bathroom/obstacles/sink.tscn" id="5_dy7qq"]
 [ext_resource type="PackedScene" uid="uid://brkuu84uiwwwj" path="res://floor/rooms/bathroom/obstacles/disposable.tscn" id="6_2h372"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="8_vrecf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x2e8t"]
 vertices = PackedVector2Array(91, 28, 91, 24, 135, 24, 135, 72, 89, 30, 86, 31.9922, 24, 72, 24, 24, 82, 30, 80, 24, 80, 28)
@@ -53,3 +54,9 @@ type = 2
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(0, 48)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("8_vrecf")]
+position = Vector2(-21, 31)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("8_vrecf")]
+position = Vector2(-21, 63)

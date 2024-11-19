@@ -16,4 +16,4 @@
 enemy_type(X) :-
     X = @delta(enemy_distribution).
 
-#show enemy_type/1.
+#show enemy_type/1. 

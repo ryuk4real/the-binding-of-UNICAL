@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://dgf5hjtuika6x"]
+[gd_scene load_steps=8 format=4 uid="uid://dgf5hjtuika6x"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_cx88a"]
 [ext_resource type="TileSet" uid="uid://boxb8fij78k12" path="res://floor/rooms/classroom/lab/lab_wall.tres" id="2_fp8ge"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_8a27y"]
 [ext_resource type="TileSet" uid="uid://b3ck0gqamlcb7" path="res://floor/rooms/classroom/lab/lab_obstacles.tres" id="3_ojxya"]
 [ext_resource type="TileSet" uid="uid://dwabg6wx8i6lt" path="res://floor/rooms/classroom/lab/lab_decorations.tres" id="4_7dokk"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_nn7hp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7gdbr"]
 vertices = PackedVector2Array(130, 112, 128, 112, 78, 109, 114, 109, 112, 112, 142, 66, 130, 66, 80, 61, 112, 61, 126, 98, 114, 98, 80, 93, 112, 93, 144, 61, 165, 43, 168, 43, 144, 80, 142, 77, 144, 144, 128, 144, 80, 125, 80, 112, 112, 125, 112, 144, 128, 157, 144, 157, 168, 168, 126, 168, 126, 163, 144, 93, 96, 144, 144, 48, 80, 144, 64, 125, 128, 80, 130, 77, 128, 61, 131, 109, 126, 109, 112, 157, 114, 163, 168, 24, 168, 38, 165, 38, 24, 24, 64, 144, 48, 125, 48, 144, 114, 168, 78, 168, 96, 157, 80, 157, 78, 163, 64, 157, 66, 163, 66, 168, 24, 168, 48, 157, 48, 112, 141, 45, 131, 45, 125, 77, 78, 98, 51, 109, 50, 112, 48, 93, 142, 48, 130, 48, 128, 48, 125, 45, 126, 48, 115, 45, 114, 48, 112, 48, 77, 45, 80, 48, 78, 48, 67, 45, 66, 48, 64, 48, 61, 45, 62, 48, 51, 45, 50, 48, 48, 48, 126, 80, 115, 77, 114, 80, 112, 80, 144, 112, 142, 112, 141, 109, 80, 80, 78, 80, 77, 77, 67, 77, 66, 80, 64, 80, 61, 77, 48, 61, 62, 80, 51, 77, 50, 80, 48, 80, 66, 109, 64, 112, 62, 112, 61, 109, 66, 98, 128, 93, 144, 125, 128, 125, 64, 61, 64, 93)
@@ -38,3 +39,24 @@ type = 3
 
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(96, 96)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_nn7hp")]
+position = Vector2(32, 149)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("6_nn7hp")]
+position = Vector2(156, 149)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("6_nn7hp")]
+position = Vector2(156, 114)
+
+[node name="EnemySpawner4" parent="EnemySpawners" index="3" instance=ExtResource("6_nn7hp")]
+position = Vector2(156, 68)
+
+[node name="EnemySpawner5" parent="EnemySpawners" index="4" instance=ExtResource("6_nn7hp")]
+position = Vector2(156, 33)
+
+[node name="EnemySpawner6" parent="EnemySpawners" index="5" instance=ExtResource("6_nn7hp")]
+position = Vector2(129, 33)
+
+[node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("6_nn7hp")]
+position = Vector2(156, 50)

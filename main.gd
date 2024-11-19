@@ -41,6 +41,9 @@ func _load_resources_from_loaders() -> void:
 func _on_new_game_pressed() -> void:
 	ui.show_loading_screen()
 	
+	if Global.player:
+		Global.player.hide()
+	
 	Global.current_floor = await get_floor()
 	Global.current_floor.set_active_room(0)
 	Global.current_floor.show()
@@ -61,9 +64,8 @@ func _input(event: InputEvent) -> void:
 func setup_player() -> void:
 	if Global.player != null:
 		Global.player.free()
-		
+
 	Global.player = entity_loader.get_player()
-	print(Global.player)
 
 func get_floor() -> Floor:
 	floor_generator.reset()
@@ -81,6 +83,7 @@ func set_player_on_scene() -> void:
 	game_scene.add_child(Global.player)
 	Global.player.position = Global.current_floor.current_room.get_pickup_spawner_position()
 	Global.player.camera_2d.align()
+	Global.player.show()
 
 func _notification(what: int) -> void:
 	match what:
