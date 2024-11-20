@@ -1,11 +1,9 @@
-class_name Medikit
+class_name Bandages
 extends Collectible
-
-@export var heal_amount: float = 100.0
 
 func _ready() -> void:
 	super._ready()
 	collectible_type = CollectibleType.HEALTH
 
 func apply_effect(collector: Player) -> void:
-	collector.heal(heal_amount)
+	collector.heal(collector.max_hp)

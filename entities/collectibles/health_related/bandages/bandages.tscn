@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1co3ymgp1lvm"]
+
+[ext_resource type="PackedScene" uid="uid://gtxqmsumar35" path="res://entities/collectibles/collectible.tscn" id="1_15iuo"]
+[ext_resource type="Script" path="res://entities/collectibles/health_related/bandages/bandages.gd" id="2_m8ge3"]
+
+[node name="Collectible" instance=ExtResource("1_15iuo")]
+script = ExtResource("2_m8ge3")

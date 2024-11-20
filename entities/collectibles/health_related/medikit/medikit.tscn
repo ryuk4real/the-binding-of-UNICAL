@@ -12,7 +12,7 @@ size = Vector2(2, 2)
 
 [node name="Medikit" instance=ExtResource("1_htolb")]
 script = ExtResource("2_s03mc")
-heal_amount = 25.0
+heal_amount = 100.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(2.38419e-07, 5.96046e-08)
