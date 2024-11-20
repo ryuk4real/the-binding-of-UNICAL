@@ -1,8 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1co3ymgp1lvm"]
+[gd_scene load_steps=6 format=3 uid="uid://b1co3ymgp1lvm"]
 
 [ext_resource type="PackedScene" uid="uid://gtxqmsumar35" path="res://entities/collectibles/collectible.tscn" id="1_15iuo"]
 [ext_resource type="Script" path="res://entities/collectibles/health_related/bandages/bandages.gd" id="2_m8ge3"]
+[ext_resource type="SpriteFrames" uid="uid://obnu2dplji3w" path="res://entities/collectibles/health_related/bandages/bandages.tres" id="3_1mkrs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilnnq"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mf7qd"]
+radius = 8.0
 
 [node name="Collectible" instance=ExtResource("1_15iuo")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("2_m8ge3")
 heal_amount = 25.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("3_1mkrs")
+animation = &"IDLE"
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource("CircleShape2D_ilnnq")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("CircleShape2D_mf7qd")
