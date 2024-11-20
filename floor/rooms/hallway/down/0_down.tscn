@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bt8xfa61xi0tw"]
+[gd_scene load_steps=9 format=4 uid="uid://bt8xfa61xi0tw"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_ru02g"]
 [ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_niuxk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_toqim"]
 [ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="4_nqpqs"]
 [ext_resource type="PackedScene" uid="uid://cajlij26ula13" path="res://floor/rooms/hallway/stairs.tscn" id="6_lph2t"]
+[ext_resource type="PackedScene" uid="uid://iib07daw2tx" path="res://entities/collectibles/health_related/medikit/medikit.tscn" id="7_4pad4"]
 
 [sub_resource type="TileSet" id="TileSet_iedgq"]
 
@@ -77,5 +78,8 @@ position = Vector2(61, 26)
 
 [node name="Stairs" parent="." index="7" instance=ExtResource("6_lph2t")]
 position = Vector2(134, 12)
+
+[node name="Medikit" parent="." index="8" instance=ExtResource("7_4pad4")]
+position = Vector2(96, 44)
 
 [editable path="VendingMachine"]

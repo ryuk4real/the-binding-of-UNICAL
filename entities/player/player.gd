@@ -25,6 +25,9 @@ var damage_cooldown_timer: float = 0.0
 var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
 
+var coins: int
+var keys: int
+
 func _ready() -> void:
 	projectile_resource = load("res://entities/player_projectile/player_projectile.tscn")
 	_set_player_active(true)
@@ -57,6 +60,34 @@ func _process(delta) -> void:
 	if current_hp <= 0:
 		SignalBus.player_health_reached_zero.emit()
 		_set_player_active(false)
+
+func can_collect(collectible: Collectible) -> bool:
+	match collectible.collectible_type:
+		Collectible.CollectibleType.HEALTH:
+			return needs_healing()
+		Collectible.CollectibleType.COIN:
+			return true
+		Collectible.CollectibleType.KEY:
+			return true
+		_:
+			print("cannot collect")
+			return false
+
+func needs_healing() -> bool:
+	return current_hp < max_hp
+
+func heal(amount: float) -> void:
+	current_hp = min(current_hp + amount, max_hp)
+	SignalBus.player_health_changed.emit()
+
+func add_coins(amount: int) -> void:
+	coins += amount
+
+func add_key(amount: int) -> void:
+	keys += amount
+
+func has_key(key_id: String) -> bool:
+	return keys
 
 func take_damage(amount: int) -> void:
 	if is_invulnerable:
