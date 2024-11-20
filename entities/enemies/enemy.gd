@@ -70,6 +70,9 @@ func die() -> void:
 	queue_free()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if is_floor_transitioning:
+		return
+		
 	# Check if the area belongs to a projectile
 	var projectile = area.get_parent()
 	if projectile is PlayerProjectile:

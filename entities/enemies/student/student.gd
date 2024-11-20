@@ -9,11 +9,14 @@ extends Enemy
 @export var shooting_cooldown_random_range: float = 0.5
 @export var shooting_pause_time: float = 0.8
 @export var shooting_range: float = 100.0
+@export var shooting_delay: float = 1.5
 
 var projectile_resource: Resource = load("res://entities/enemy_projectile/enemy_projectile.tscn")
 var current_state: EnemyState = EnemyState.IDLE
 var state_timer: float = 0.0
 var shooting_timer: float = 0.0
+var shooting_delay_timer: float = 0.0
+var is_preparing_to_shoot: bool = false
 var current_cooldown: float = shooting_cooldown
 var is_chasing: bool = false
 var rng = RandomNumberGenerator.new()
@@ -73,13 +76,23 @@ func _physics_process(delta: float) -> void:
 					var distance_to_player = global_position.distance_to(Global.player.global_position)
 					
 					if distance_to_player <= shooting_range and shooting_timer >= shooting_cooldown:
-						current_state = EnemyState.SHOOTING
-						state_timer = 0.0
-						velocity = Vector2.ZERO
-						animated_sprite_2d.play("IDLE")
-						
-						shoot_at_player()
+						if not is_preparing_to_shoot:
+							# Start the shooting preparation
+							is_preparing_to_shoot = true
+							shooting_delay_timer = 0.0
+							animated_sprite_2d.play("IDLE")
+							velocity = Vector2.ZERO
+						else:
+							# Count up the delay timer
+							shooting_delay_timer += delta
+							if shooting_delay_timer >= shooting_delay:
+								# Ready to shoot
+								is_preparing_to_shoot = false
+								current_state = EnemyState.SHOOTING
+								state_timer = 0.0
+								shoot_at_player()
 					else:
+						is_preparing_to_shoot = false  # Reset preparation if player moves out of range
 						set_movement_target(Global.player.global_position)
 						move_to_target()
 				else:
@@ -90,7 +103,7 @@ func _physics_process(delta: float) -> void:
 				if state_timer >= shooting_pause_time:
 					current_state = EnemyState.CHASING
 					shooting_timer = current_cooldown - rng.randf_range(0, 0.2)
-					
+		
 		move_and_slide()
 
 func shoot_at_player() -> void:

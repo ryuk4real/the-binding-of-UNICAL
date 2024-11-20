@@ -13,19 +13,27 @@ func _ready() -> void:
 	SignalBus.student_damage_changed.connect(_on_student_damage_changed)
 	animated_sprite_2d.play("BASIC")
 
-func _process(_delta: float) -> void:
-	if is_dying:
+func _process(delta: float) -> void:
+	if is_floor_transitioning or is_dying:
 		return
 		
-	position += direction * speed * _delta
-	range -= _delta * RANGE_PENALTY
+	position += direction * speed * delta
+	range -= delta * RANGE_PENALTY
 	
-	collision = move_and_collide(velocity * _delta)
+	collision = move_and_collide(velocity * delta)
 	
 	if collision:
 		_death_animation_start()
 	
 	if range <= 0:
+		_death_animation_start()
+
+func _on_interaction_area_body_entered(body: Node2D) -> void:
+	if is_floor_transitioning:
+		return
+		
+	if body is Player:
+		body.take_damage(damage)
 		_death_animation_start()
 
 func _on_student_damage_changed(amount: int) -> void:
@@ -39,8 +47,3 @@ func _death_animation_start() -> void:
 	animated_sprite_2d.play("DEATH")
 	await animated_sprite_2d.animation_finished
 	queue_free()
-
-func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.take_damage(damage)
-		_death_animation_start()

@@ -151,7 +151,7 @@ func get_door_local_position(door: Door) -> Vector2i:
 func from_position_get_door(_position: Vector2i) -> Door:
 	for key in door_room_positions.keys():
 		if door_room_positions[key] == _position:
-			print("key of door found: " +  str(_position))
+			#print("key of door found: " +  str(_position))
 			return key
 	return null
 

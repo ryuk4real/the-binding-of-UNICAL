@@ -11,23 +11,18 @@ extends Entity
 
 var friction: float = 300.0
 var movement_direction: Vector2
-
 var fire_direction: Vector2
 var projectile_resource: Resource
-
 var current_hp: int
 var is_hurt: bool
-
 var current_shot_delay: float = 0.0
 var max_shot_delay: float = 1.0
 var shot_delay_recovery: float = 0.3
 var can_shoot: bool = true
-
-var damage_cooldown_duration: float = 1.0
+var damage_cooldown_duration: float = 2.0
 var flash_frequency: float = 0.1
 var damage_cooldown_timer: float = 0.0
 var is_invulnerable: bool = false
-
 var enemy_in_area: Enemy = null
 
 func _ready() -> void:
@@ -39,7 +34,7 @@ func _ready() -> void:
 	SignalBus.player_damage_changed.emit()
 
 func _process(delta) -> void:
-	# Handle shot delay recovery
+	# Shot delay recovery
 	if current_shot_delay > shoot_delay:
 		current_shot_delay = max(shoot_delay, current_shot_delay - shot_delay_recovery * delta)
 	
@@ -148,6 +143,9 @@ func shoot(_delta: float) -> void:
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_in_area = body
+	
+	if body is Stairs:
+		SignalBus.go_to_next_floor.emit()
 
 func _on_interaction_area_body_exited(body: Node2D) -> void:
 	if body is Enemy:

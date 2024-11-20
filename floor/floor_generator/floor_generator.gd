@@ -11,14 +11,13 @@ var classroom_neighbour_type_guesser_program: String = Utils.read_file(Global.CL
 var library_neighbour_type_guesser_program: String = Utils.read_file(Global.LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH)
 var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESSER_PATH)
 
-var room_counter: int = 0
-var done: bool = false
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
 func _ready() -> void:
 	pass
 
 func generate_floor():
+	var room_counter: int = 0
 	var current_floor_packed_scene = preload("res://floor/floor.tscn")
 	var current_floor: Floor = current_floor_packed_scene.instantiate()
 	
@@ -79,8 +78,8 @@ func generate_floor():
 							# Add the connection between the doors
 							room_to_process.add_connection(door, connecting_door, new_room)
 							new_room.add_connection(connecting_door, door, room_to_process)
-							print("Connected door %s from room %s to door %s from room %s" % 
-								  [door.id, room_to_process.id, connecting_door.id, new_room.id])
+							#print("Connected door %s from room %s to door %s from room %s" % 
+							#	  [door.id, room_to_process.id, connecting_door.id, new_room.id])
 						
 						# For each room spawner guess the enemy to spawn (if any) and spawn it
 						#print(await _get_enemy_type())
@@ -101,7 +100,7 @@ func generate_floor():
 							if door.id != 0:
 								door.is_placeholder = true
 								door.type = Global.ROOM_TYPE_NONE
-				print()
+				#print()
 
 		# Handle unplaceable doors
 		for door: Door in unplaceable_doors:
@@ -178,6 +177,3 @@ func _get_enemy_type(_room_facts: Array = []) -> int:
 	var enemy_answerset: Array
 	enemy_answerset = await _get_answerset_from_worker(enemy_type_guesser_program)
 	return enemy_answerset[0][0].get("arguments")[0].get("number")
-
-func reset() -> void:
-	room_counter = 0
