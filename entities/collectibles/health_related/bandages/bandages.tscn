@@ -5,3 +5,4 @@
 
 [node name="Collectible" instance=ExtResource("1_15iuo")]
 script = ExtResource("2_m8ge3")
+heal_amount = 25.0
