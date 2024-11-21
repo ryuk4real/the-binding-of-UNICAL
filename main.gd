@@ -16,6 +16,7 @@ func _ready() -> void:
 	Global.game_scene = game_scene
 	Global.projectiles_scene = projectiles_scene
 	Global.entity_loader = entity_loader
+	Global.collectible_program = Utils.read_file(Global.COLLECTIBLE_TYPE_GUESSER_PATH)
 	SignalBus.player_health_reached_zero.connect(_on_player_health_reached_zero)
 	SignalBus.go_to_next_floor.connect(_on_go_to_next_floor)
 	

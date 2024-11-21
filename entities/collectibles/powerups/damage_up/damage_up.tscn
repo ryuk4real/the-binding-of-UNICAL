@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt1y2l8sfwf7j"]
+
+[ext_resource type="PackedScene" uid="uid://gtxqmsumar35" path="res://entities/collectibles/collectible.tscn" id="1_rsr5u"]
+[ext_resource type="Script" path="res://entities/collectibles/powerups/damage_up/damage_up.gd" id="2_t0s1f"]
+[ext_resource type="SpriteFrames" uid="uid://c7mq2os0fcpl0" path="res://entities/collectibles/powerups/damage_up/damage_up_sprite_frames.tres" id="3_ttnrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n3la"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qdsa"]
+size = Vector2(30, 30)
+
+[node name="DamageUp" instance=ExtResource("1_rsr5u")]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("2_t0s1f")
+damage_increase = 5
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("3_ttnrg")
+animation = &"IDLE"
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource("RectangleShape2D_8n3la")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(-1.63913e-06, -1.63913e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2qdsa")

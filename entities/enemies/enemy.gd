@@ -7,8 +7,8 @@ extends Entity
 
 enum EnemyState { IDLE, WANDERING, CHASING, DEAD, SHOOTING }
 
-@export var max_hp: int = 100
-@export var current_hp: int = 100
+@export var max_hp: int = 40
+@export var current_hp: int = 40
 @export var damage: int = 10
 @export var knockback_force: float = 30.0
 @export var knockback_duration: float = 0.10

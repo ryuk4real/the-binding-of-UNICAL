@@ -13,6 +13,14 @@ const ENEMY_TYPE_ZOMBIE: int = 0
 const ENEMY_TYPE_STUDENT: int = 1
 const ENEMY_TYPE_NONE: int = 999
 
+const COLLECTIBLE_TYPE_MEDIKIT: int = 0
+const COLLECTIBLE_TYPE_BANDAGES: int = 1
+const COLLECTIBLE_TYPE_SPEED_UP: int = 2
+const COLLECTIBLE_TYPE_SHOT_SPEED_UP: int = 3
+const COLLECTIBLE_TYPE_SHOT_RATE_UP: int = 4
+const COLLECTIBLE_TYPE_DAMAGE_UP: int = 5
+const COLLECTIBLE_TYPW_NONE: int = 999
+
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
 const DIRECTION_DOWN: int = -1
@@ -20,8 +28,16 @@ const DIRECTION_LEFT: int = 2
 const DIRECTION_RIGHT: int = -2
 
 const PLAYER_RESOURCE_PATH: String = "res://entities/player/player.tscn"
+
 const ZOMBIE_RESOURCE_PATH: String = "res://entities/enemies/zombie/zombie.tscn"
 const STUDENT_RESOURCE_PATH: String = "res://entities/enemies/student/student.tscn"
+
+const COLLECTIBLE_MEDIKIT_PATH: String = "res://entities/collectibles/health_related/medikit/medikit.tscn"
+const COLLECTIBLE_BANDAGES_PATH: String = "res://entities/collectibles/health_related/bandages/bandages.tscn"
+const COLLECTIBLE_SHOT_SPEED_UP_PATH: String = "res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.tscn"
+const COLLECTIBLE_SHOT_RATE_UP_PATH: String = "res://entities/collectibles/powerups/shot_rate_up/shot_rate_up.tscn"
+const COLLECTIBLE_DAMAGE_UP_PATH: String = "res://entities/collectibles/powerups/damage_up/damage_up.tscn"
+const COLLECTIBLE_SPEED_UP: String = "res://entities/collectibles/powerups/speed_up/speed_up.tscn"
 
 var player: Player = null
 var current_room: Room = null
@@ -29,13 +45,18 @@ var current_floor: Floor = null
 var transitioner: Transitioner = null
 var game_scene: Node2D = null
 var projectiles_scene: Node2D = null
-var entity_loader: Node2D = null
+var entity_loader: EntityLoader = null
+var collectible_loader: Node2D = null
 
 const HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/hallway_neighbour_type_guesser.asp"
 const INNER_HALLWAY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/inner_hallway_neighbour_type_guesser.asp"
 const CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/classroom_neighbour_type_guesser.asp"
 const LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH: String = "res://asp/library_neighbour_type_guesser.asp"
+
 const ENEMY_TYPE_GUESSER_PATH: String = "res://asp/enemy_type_guesser.asp"
+
+const COLLECTIBLE_TYPE_GUESSER_PATH: String = "res://asp/collectible_type_guesser.asp"
+var collectible_program: String
 
 const HALLWAY_ROOM_UP_COUNTER: int = 1
 const HALLWAY_UP_FOLDER_PATH: String = "res://floor/rooms/hallway/up/"
@@ -140,9 +161,9 @@ const STORAGE_LEFT_FOLDER_PATH: String= "res://floor/rooms/storage/left/"
 const STORAGE_ROOM_RIGHT_COUNTER: int = 1
 const STORAGE_RIGHT_FOLDER_PATH: String = "res://floor/rooms/storage/right/"
 
-
 const ASP_PATH: String = "res://asp/"
 
+var worker = null
 
 const SERVER_ROOT: String = "./gdatalog"
 const SERVER_PATH: String = "./gdatalog/gdatalog_cli.py"

@@ -5,6 +5,7 @@ signal collected(collector)
 
 enum CollectibleType {
 	HEALTH,
+	POWER_UP,
 	COIN,
 	KEY,
 	# Add more types as needed

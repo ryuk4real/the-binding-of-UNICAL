@@ -14,7 +14,7 @@ var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESS
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
 func _ready() -> void:
-	pass
+	Global.worker = worker
 
 func generate_floor():
 	var room_counter: int = 0
@@ -155,7 +155,7 @@ func _get_answerset_from_worker(_program: String) -> Array:
 	var response = worker.response.get("models")
 	return response
 
-func _get_room_neighbour_type(room_type: int, _room_facts: Array = []) -> int:
+func _get_room_neighbour_type(room_type: int, _floor_facts: Array = []) -> int:
 	var type_answer_set: Array
 	
 	match(room_type):

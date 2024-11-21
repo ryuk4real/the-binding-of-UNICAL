@@ -7,6 +7,7 @@ extends Entity
 @export var speed: float = 75.0
 @export var max_hp: int
 @export var shoot_delay: float = 0.4
+@export var shot_speed: float = 100.0
 @export var damage: int = 10
 
 var friction: float = 300.0
@@ -18,12 +19,14 @@ var is_hurt: bool
 var current_shot_delay: float = 0.0
 var max_shot_delay: float = 1.0
 var shot_delay_recovery: float = 0.3
+var max_shot_speed: float = 200
 var can_shoot: bool = true
 var damage_cooldown_duration: float = 2.0
 var flash_frequency: float = 0.1
 var damage_cooldown_timer: float = 0.0
 var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
+var max_speed: float = 150
 
 var coins: int
 var keys: int
@@ -68,6 +71,8 @@ func can_collect(collectible: Collectible) -> bool:
 		Collectible.CollectibleType.COIN:
 			return true
 		Collectible.CollectibleType.KEY:
+			return true
+		Collectible.CollectibleType.POWER_UP:
 			return true
 		_:
 			print("cannot collect")
@@ -165,6 +170,9 @@ func shoot(_delta: float) -> void:
 		
 		# Ensure direction is normalized
 		projectile.direction = fire_direction.normalized()
+		
+		# Set the projectile's speed based on the player's shot_speed
+		projectile.speed = shot_speed
 		
 		Global.projectiles_scene.add_child(projectile)
 		
