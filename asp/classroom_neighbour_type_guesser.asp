@@ -9,9 +9,13 @@
 
 % x0 = none
 % x1 = inner_hallway
+
+#const none = 999.
+#const inner_hallway = 1.
+
 #const classroom_neighbour_distribution = (
-    (999,1),
-    (1,1)).
+    (none,1),
+    (inner_hallway,1)).
 
 classroom_neighbour_type(X) :- X = @delta(classroom_neighbour_distribution).
 

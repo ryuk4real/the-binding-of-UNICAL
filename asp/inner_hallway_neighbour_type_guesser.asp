@@ -13,13 +13,21 @@
 % x3 = office
 % x4 = storage
 % x5 = library
+
+#const none = 999.
+#const inner_hallway = 1.
+#const classroom = 3.
+#const office = 4.
+#const storage = 5.
+#const library = 6.
+
 #const inner_hallway_neighbour_distribution = (
-    (999, 1),
-    (1, 1),
-    (3, 3),
-    (4, 3),
-    (5, 2),
-    (6, 2)).
+    (none, 1),
+    (inner_hallway, 1),
+    (classroom, 3),
+    (office, 3),
+    (storage, 2),
+    (library, 2)).
 
 inner_hallway_neighbour_type(X) :- X = @delta(inner_hallway_neighbour_distribution).
 
