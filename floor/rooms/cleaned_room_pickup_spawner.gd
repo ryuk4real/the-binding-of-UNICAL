@@ -1,16 +1,19 @@
 extends Marker2D
 
-@onready var room = $"../.."
+@onready var room: Node2D = $"../.."
 
 var is_room_with_enemy: bool
 var collectible: Collectible
 
 func _ready() -> void:
 	if is_room_with_enemy:
-		choose_collectible()
+		collectible = await get_collectible()
 
-func choose_collectible() -> Collectible:
-	var collectible_type = await _get_collectible_type()
+func spawn() -> void:
+	add_child(collectible)
+
+func get_collectible() -> Collectible:
+	var collectible_type: int = await _get_collectible_type()
 	return Global.entity_loader.get_collectible(collectible_type)
 
 func _get_answerset_from_worker(_program: String) -> Array:
@@ -23,5 +26,3 @@ func _get_answerset_from_worker(_program: String) -> Array:
 func _get_collectible_type(_floor_facts: Array = []) -> int:
 	var answer_set: Array = await _get_answerset_from_worker(Global.collectible_program)
 	return answer_set[0][0].get("arguments")[0].get("number")
-	
-	

@@ -13,6 +13,8 @@ var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESS
 
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
+var floor_atoms: Array[String] = []
+
 func _ready() -> void:
 	Global.worker = worker
 
@@ -130,7 +132,6 @@ func generate_floor():
 	
 	Global.current_room.set_door_visible()
 	current_floor.print_room_connections()
-	#current_floor.print_floor()
 	return current_floor
 
 func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2i:

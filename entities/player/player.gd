@@ -28,6 +28,8 @@ var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
 var max_speed: float = 150
 
+var player_atoms: Array[String] = []
+
 var coins: int
 var keys: int
 

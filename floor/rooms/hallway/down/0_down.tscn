@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_toqim"]
 [ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="4_nqpqs"]
 [ext_resource type="PackedScene" uid="uid://cajlij26ula13" path="res://floor/rooms/hallway/stairs.tscn" id="6_lph2t"]
-[ext_resource type="PackedScene" uid="uid://bq2u514mdtu2n" path="res://floor/rooms/speed_up.tscn" id="7_aj2y1"]
+[ext_resource type="PackedScene" uid="uid://bq2u514mdtu2n" path="res://entities/collectibles/powerups/speed_up/speed_up.tscn" id="7_aj2y1"]
 [ext_resource type="PackedScene" uid="uid://8js6yq7aqbqw" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.tscn" id="8_meqbx"]
 [ext_resource type="PackedScene" uid="uid://1oqxha1xwjkd" path="res://entities/collectibles/powerups/shot_rate_up/shot_rate_up.tscn" id="9_3wuxl"]
 [ext_resource type="PackedScene" uid="uid://dt1y2l8sfwf7j" path="res://entities/collectibles/powerups/damage_up/damage_up.tscn" id="10_7ymb3"]
