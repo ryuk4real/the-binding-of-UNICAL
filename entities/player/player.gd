@@ -4,10 +4,10 @@ extends Entity
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interaction_area_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 
-@export var speed: float = 75.0
+@export var speed: int = 75
 @export var max_hp: int
-@export var shoot_delay: float = 0.4
-@export var shot_speed: float = 100.0
+@export var shot_delay: int = 7
+@export var shot_speed: int = 100
 @export var damage: int = 10
 
 var friction: float = 300.0
@@ -17,16 +17,16 @@ var projectile_resource: Resource
 var current_hp: int
 var is_hurt: bool
 var current_shot_delay: float = 0.0
-var max_shot_delay: float = 1.0
+var max_shot_delay: int = 1
 var shot_delay_recovery: float = 0.3
-var max_shot_speed: float = 200
+var max_shot_speed: int = 200
 var can_shoot: bool = true
 var damage_cooldown_duration: float = 2.0
 var flash_frequency: float = 0.1
 var damage_cooldown_timer: float = 0.0
 var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
-var max_speed: float = 150
+var max_speed: int = 150
 
 var atoms: Array[String] = []
 
@@ -43,8 +43,8 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	# Shot delay recovery
-	if current_shot_delay > shoot_delay:
-		current_shot_delay = max(shoot_delay, current_shot_delay - shot_delay_recovery * delta)
+	if current_shot_delay > shot_delay:
+		current_shot_delay = max(shot_delay, current_shot_delay - shot_delay_recovery * delta)
 	
 	can_shoot = current_shot_delay <= 0
 	
@@ -178,8 +178,8 @@ func shoot(_delta: float) -> void:
 		
 		Global.projectiles_scene.add_child(projectile)
 		
-		# Increase delay for next shot
-		current_shot_delay = min(current_shot_delay + shoot_delay, max_shot_delay)
+		# Increase delay for next shot, converting integer to float
+		current_shot_delay = min(current_shot_delay + (shot_delay / 10.0), max_shot_delay)
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body is Enemy:

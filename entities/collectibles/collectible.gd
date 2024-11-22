@@ -16,7 +16,7 @@ enum CollectibleType {
 @export var auto_collect: bool = true
 @export var destroy_on_collect: bool = true
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d: CollisionShape2D = $InteractionArea/CollisionShape2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 

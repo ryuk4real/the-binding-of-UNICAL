@@ -12,8 +12,8 @@ size = Vector2(30, 30)
 [node name="ShotRateUp" instance=ExtResource("1_dlc4g")]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("2_5xcg0")
-shot_delay_reduction = 0.1
-min_shot_delay = 0.1
+shot_delay_reduction = 1
+min_shot_delay = 1
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_1k3cq")
@@ -24,5 +24,4 @@ shape = SubResource("RectangleShape2D_a3ee6")
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
 position = Vector2(1.63913e-06, -1.63913e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_l0oj2")
