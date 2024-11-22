@@ -13,8 +13,6 @@ var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESS
 
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
-var floor_atoms: Array[String] = []
-
 func _ready() -> void:
 	Global.worker = worker
 
@@ -84,14 +82,17 @@ func generate_floor():
 							#	  [door.id, room_to_process.id, connecting_door.id, new_room.id])
 						
 						# For each room spawner guess the enemy to spawn (if any) and spawn it
-						#print(await _get_enemy_type())
-						
 						for spawner: Node2D in new_room.enemy_spawners.get_children():
 							var enemy_id = await _get_enemy_type()
 							spawner.spawn(enemy_id)
 						
-						# Setting enemy counter of each room
 						new_room.set_active_enemies_counter()
+						
+						# Now that a room is placed I add the atoms of the current room and doors
+						#	to the floor atoms
+						var neighbour_atom: String = Utils.build_atom("neighbours", [room_to_process.id, new_room.id])
+						current_floor.atoms.append(neighbour_atom)
+						
 						
 						room_counter += 1
 					else:
@@ -102,7 +103,10 @@ func generate_floor():
 							if door.id != 0:
 								door.is_placeholder = true
 								door.type = Global.ROOM_TYPE_NONE
-				#print()
+		
+		# Add the current room to floor atoms
+		var room_atom: String = Utils.build_atom("room", [room_to_process.id])
+		current_floor.atoms.append(room_atom)
 
 		# Handle unplaceable doors
 		for door: Door in unplaceable_doors:
@@ -129,6 +133,8 @@ func generate_floor():
 		for room: Room in current_floor.rooms:
 			room.global_position = Vector2(800.0 * count, 0)
 			count += 1
+			
+	print(current_floor.atoms)
 	
 	Global.current_room.set_door_visible()
 	current_floor.print_room_connections()

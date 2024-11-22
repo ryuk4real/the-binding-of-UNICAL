@@ -15,6 +15,8 @@ const EMPTY_CELL: int = -1
 const INVALID_POSITION: int = -1
 const DOOR_OFFSET: int = 15
 
+var atoms: Array[String] = []
+
 
 func _ready() -> void:
 	SignalBus.connect("door_entered", _on_door_entered)
