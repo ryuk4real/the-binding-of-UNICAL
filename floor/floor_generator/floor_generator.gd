@@ -46,7 +46,7 @@ func generate_floor():
 		var room_to_process: Room = current_floor.rooms_to_process.pop_front()
 		var unplaceable_doors: Array[Door] = []
 		
-		current_floor.current_room_atom = Utils.build_atom("current_room", [room_to_process.id])
+		current_floor.current_room_atom = Utils.build_atom("current_room", [room_to_process.id, room_to_process.type])
 		
 		for door: Door in room_to_process.doors:
 			if door:
@@ -98,8 +98,7 @@ func generate_floor():
 							
 						new_room.set_active_enemies_counter()
 						
-						# Now that a room is placed I add the atoms of the current room and doors
-						#	to the floor atoms
+						# Now that a room is placed I add the atoms of the neighbours of the room to process
 						var neighbour_atom: String = Utils.build_atom("neighbours", [room_to_process.id, new_room.id])
 						current_floor.atoms.append(neighbour_atom)
 						
@@ -114,7 +113,7 @@ func generate_floor():
 								door.type = Global.ROOM_TYPE_NONE
 		
 		# Add the current room to floor atoms
-		var room_atom: String = Utils.build_atom("room", [room_to_process.id])
+		var room_atom: String = Utils.build_atom("room", [room_to_process.id, room_to_process.type])
 		current_floor.atoms.append(room_atom)
 
 		# Handle unplaceable doors

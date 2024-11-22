@@ -40,5 +40,4 @@ func _get_collectible_type(_player_atoms: Array[String] = []) -> int:
 		stringified_atoms += string
 	
 	var answer_set: Array = await _get_answerset_from_worker(stringified_atoms)
-	print(answer_set)
 	return answer_set[0][0].get("arguments")[0].get("number")

@@ -27,6 +27,7 @@ var damage_cooldown_timer: float = 0.0
 var is_invulnerable: bool = false
 var enemy_in_area: Enemy = null
 var max_speed: int = 150
+var max_damage: int = 100
 
 var atoms: Array[String] = []
 
@@ -209,4 +210,13 @@ func update_atoms() -> void:
 	atoms.append(Utils.build_atom("player_stat", ["shot_speed", Global.player.shot_speed]))
 	atoms.append(Utils.build_atom("player_stat", ["shot_delay", Global.player.shot_delay]))
 	atoms.append(Utils.build_atom("player_stat", ["speed", Global.player.speed]))
+	
+	atoms.append(Utils.build_atom("player_stat", ["max_damage", Global.player.max_damage]))
+	atoms.append(Utils.build_atom("player_stat", ["max_shot_speed", Global.player.max_shot_speed]))
+	atoms.append(Utils.build_atom("player_stat", ["max_shot_delay", Global.player.max_shot_delay]))
+	atoms.append(Utils.build_atom("player_stat", ["max_speed", Global.player.max_speed]))
+	
+	atoms.append(Utils.build_atom("player_stat", ["current_hp", Global.player.current_hp]))
+	atoms.append(Utils.build_atom("player_stat", ["max_hp", Global.player.max_hp]))
+	
 	
