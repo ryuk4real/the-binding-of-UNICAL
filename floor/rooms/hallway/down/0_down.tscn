@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bt8xfa61xi0tw"]
+[gd_scene load_steps=11 format=4 uid="uid://bt8xfa61xi0tw"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_ru02g"]
 [ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_niuxk"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bq2u514mdtu2n" path="res://entities/collectibles/powerups/speed_up/speed_up.tscn" id="7_aj2y1"]
 [ext_resource type="PackedScene" uid="uid://8js6yq7aqbqw" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.tscn" id="8_meqbx"]
 [ext_resource type="PackedScene" uid="uid://1oqxha1xwjkd" path="res://entities/collectibles/powerups/shot_rate_up/shot_rate_up.tscn" id="9_3wuxl"]
-[ext_resource type="PackedScene" uid="uid://dt1y2l8sfwf7j" path="res://entities/collectibles/powerups/damage_up/damage_up.tscn" id="10_7ymb3"]
 
 [sub_resource type="TileSet" id="TileSet_iedgq"]
 
@@ -83,15 +82,48 @@ position = Vector2(61, 26)
 position = Vector2(134, 12)
 
 [node name="SpeedUp" parent="." index="8" instance=ExtResource("7_aj2y1")]
-position = Vector2(96, 48)
+position = Vector2(47, 49)
 
-[node name="ShotSpeedUp" parent="." index="9" instance=ExtResource("8_meqbx")]
+[node name="SpeedUp2" parent="." index="9" instance=ExtResource("7_aj2y1")]
+position = Vector2(61, 49)
+
+[node name="SpeedUp3" parent="." index="10" instance=ExtResource("7_aj2y1")]
+position = Vector2(75, 49)
+
+[node name="SpeedUp4" parent="." index="11" instance=ExtResource("7_aj2y1")]
+position = Vector2(89, 49)
+
+[node name="SpeedUp5" parent="." index="12" instance=ExtResource("7_aj2y1")]
+position = Vector2(101, 49)
+
+[node name="ShotSpeedUp" parent="." index="13" instance=ExtResource("8_meqbx")]
 position = Vector2(96, 33)
 
-[node name="ShotRateUp" parent="." index="10" instance=ExtResource("9_3wuxl")]
-position = Vector2(76, 48)
+[node name="ShotSpeedUp2" parent="." index="14" instance=ExtResource("8_meqbx")]
+position = Vector2(111, 33)
 
-[node name="DamageUp" parent="." index="11" instance=ExtResource("10_7ymb3")]
-position = Vector2(58, 49)
+[node name="ShotSpeedUp3" parent="." index="15" instance=ExtResource("8_meqbx")]
+position = Vector2(127, 33)
+
+[node name="ShotSpeedUp4" parent="." index="16" instance=ExtResource("8_meqbx")]
+position = Vector2(141, 33)
+
+[node name="ShotSpeedUp5" parent="." index="17" instance=ExtResource("8_meqbx")]
+position = Vector2(154, 33)
+
+[node name="ShotRateUp" parent="." index="18" instance=ExtResource("9_3wuxl")]
+position = Vector2(47, 62)
+
+[node name="ShotRateUp2" parent="." index="19" instance=ExtResource("9_3wuxl")]
+position = Vector2(62, 62)
+
+[node name="ShotRateUp3" parent="." index="20" instance=ExtResource("9_3wuxl")]
+position = Vector2(76, 62)
+
+[node name="ShotRateUp4" parent="." index="21" instance=ExtResource("9_3wuxl")]
+position = Vector2(89, 62)
+
+[node name="ShotRateUp5" parent="." index="22" instance=ExtResource("9_3wuxl")]
+position = Vector2(102, 62)
 
 [editable path="VendingMachine"]

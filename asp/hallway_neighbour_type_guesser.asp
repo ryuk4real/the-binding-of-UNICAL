@@ -23,3 +23,11 @@
 hallway_neighbour_type(X) :- X = @delta(hallway_neighbour_distribution).
 
 #show hallway_neighbour_type/1.
+
+% EXAMPLES OF ATOMS NEEDED:
+%
+% room(ID)
+% current_room(ROOM_ID)
+% neighbours(ROOM_ID1, ROOM_ID2)
+% enemy(ROOM_ID, ENEMY_ID)
+% player_stat(STAT_ID, AMOUNT)

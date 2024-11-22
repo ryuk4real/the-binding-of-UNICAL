@@ -16,6 +16,7 @@ const INVALID_POSITION: int = -1
 const DOOR_OFFSET: int = 15
 
 var atoms: Array[String] = []
+var current_room_atom: String
 
 
 func _ready() -> void:

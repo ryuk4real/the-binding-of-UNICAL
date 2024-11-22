@@ -34,6 +34,7 @@ func collect(collector: Player) -> void:
 
 	collected.emit(collector)
 	apply_effect(collector)
+	collector.update_atoms()
 	
 	if destroy_on_collect:
 		queue_free()

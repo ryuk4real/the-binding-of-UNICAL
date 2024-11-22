@@ -19,7 +19,7 @@ const COLLECTIBLE_TYPE_SPEED_UP: int = 2
 const COLLECTIBLE_TYPE_SHOT_SPEED_UP: int = 3
 const COLLECTIBLE_TYPE_SHOT_RATE_UP: int = 4
 const COLLECTIBLE_TYPE_DAMAGE_UP: int = 5
-const COLLECTIBLE_TYPW_NONE: int = 999
+const COLLECTIBLE_TYPE_NONE: int = 999
 
 # The direction of the room the door is connected with
 const DIRECTION_UP: int = 1
@@ -37,7 +37,7 @@ const COLLECTIBLE_BANDAGES_PATH: String = "res://entities/collectibles/health_re
 const COLLECTIBLE_SHOT_SPEED_UP_PATH: String = "res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.tscn"
 const COLLECTIBLE_SHOT_RATE_UP_PATH: String = "res://entities/collectibles/powerups/shot_rate_up/shot_rate_up.tscn"
 const COLLECTIBLE_DAMAGE_UP_PATH: String = "res://entities/collectibles/powerups/damage_up/damage_up.tscn"
-const COLLECTIBLE_SPEED_UP: String = "res://entities/collectibles/powerups/speed_up/speed_up.tscn"
+const COLLECTIBLE_SPEED_UP_PATH: String = "res://entities/collectibles/powerups/speed_up/speed_up.tscn"
 
 var player: Player = null
 var current_room: Room = null

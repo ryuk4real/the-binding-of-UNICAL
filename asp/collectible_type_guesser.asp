@@ -35,3 +35,5 @@
 collectible_type(X) :- X = @delta(collectible_type_distribution).
 
 #show collectible_type/1.
+
+% player_stat(STAT_ID, AMOUNT)

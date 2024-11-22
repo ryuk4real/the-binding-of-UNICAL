@@ -68,6 +68,6 @@ func build_atom(_predicate_name: String, _arguments: Array) -> String:
 		if i < _arguments.size() - 1:
 			atom += ","
 	
-	atom += ")"
+	atom += ")."
 	
 	return atom

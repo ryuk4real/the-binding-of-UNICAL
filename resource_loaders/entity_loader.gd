@@ -20,8 +20,8 @@ func load_resources() -> void:
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_BANDAGES), load(Global.COLLECTIBLE_BANDAGES_PATH))
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_SHOT_SPEED_UP), load(Global.COLLECTIBLE_SHOT_SPEED_UP_PATH))
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_SHOT_RATE_UP), load(Global.COLLECTIBLE_SHOT_RATE_UP_PATH))
-	collectable_loader.add_resource(str(Global.COLLECTIBLE_DAMAGE_UP_PATH), load(Global.COLLECTIBLE_DAMAGE_UP_PATH))
-	collectable_loader.add_resource(str(Global.COLLECTIBLE_SPEED_UP), load(Global.COLLECTIBLE_SHOT_SPEED_UP_PATH))
+	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_DAMAGE_UP), load(Global.COLLECTIBLE_DAMAGE_UP_PATH))
+	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_SPEED_UP), load(Global.COLLECTIBLE_SPEED_UP_PATH))
 	
 func get_player() -> Player:
 	var player_scene: Resource = player_loader.get_resource(str(0))
@@ -33,5 +33,5 @@ func get_enemy(_enemy_type: int) -> Entity:
 
 func get_collectible(_collectible_type: int) -> Collectible:
 	var collectible_scene: Resource = collectable_loader.get_resource(str(_collectible_type))
-	return collectible_scene.instancitate()
+	return collectible_scene.instantiate()
 	

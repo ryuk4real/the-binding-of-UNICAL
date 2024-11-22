@@ -49,6 +49,9 @@ position = Vector2(17, 48)
 rotation = -1.5708
 type = 5
 
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(96, 36)
+
 [node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_cksut")]
 position = Vector2(132, 62)
 

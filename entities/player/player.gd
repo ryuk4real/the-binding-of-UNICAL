@@ -40,6 +40,9 @@ func _ready() -> void:
 	current_hp = max_hp
 	SignalBus.player_health_changed.emit()
 	SignalBus.player_damage_changed.emit()
+	
+	update_atoms()
+	print(Global.player.atoms)
 
 func _process(delta) -> void:
 	# Shot delay recovery
@@ -197,3 +200,13 @@ func _set_player_active(active: bool) -> void:
 	set_process_input(active)
 	set_physics_process(active)
 	set_process(active)
+
+func update_atoms() -> void:
+	
+	atoms.clear()
+	
+	atoms.append(Utils.build_atom("player_stat", ["damage", Global.player.damage]))
+	atoms.append(Utils.build_atom("player_stat", ["shot_speed", Global.player.shot_speed]))
+	atoms.append(Utils.build_atom("player_stat", ["shot_delay", Global.player.shot_delay]))
+	atoms.append(Utils.build_atom("player_stat", ["speed", Global.player.speed]))
+	

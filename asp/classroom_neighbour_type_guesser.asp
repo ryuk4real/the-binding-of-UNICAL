@@ -7,9 +7,6 @@
 % 5 = storage
 % 6 = library
 
-% x0 = none
-% x1 = inner_hallway
-
 #const none = 999.
 #const inner_hallway = 1.
 
@@ -20,3 +17,11 @@
 classroom_neighbour_type(X) :- X = @delta(classroom_neighbour_distribution).
 
 #show classroom_neighbour_type/1.
+
+% EXAMPLES OF ATOMS NEEDED:
+%
+% room(ID)
+% current_room(ROOM_ID)
+% neighbours(ROOM_ID1, ROOM_ID2)
+% enemy(ROOM_ID, ENEMY_ID)
+% player_stat(STAT_ID, AMOUNT)

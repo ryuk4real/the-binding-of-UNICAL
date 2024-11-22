@@ -50,6 +50,7 @@ func set_active_enemies_counter() -> void:
 
 	if active_enemies > 0:
 		close_all_doors()
+		cleaned_room_pickup_spawner.is_room_with_enemy = true
 	else:
 		open_all_doors()
 
@@ -245,8 +246,6 @@ func open_all_doors():
 	is_clear = true
 
 func _on_cleared_room(_room: Room):
-	if _room.id == id:
-		spawn_pickup()
-
-func spawn_pickup() -> void:
-	print("spawned pickup")
+	if id == Global.current_room.id:
+		print("called")
+		cleaned_room_pickup_spawner.spawn()
