@@ -16,8 +16,8 @@ func load_resources() -> void:
 	enemy_loader.add_resource(str(Global.ENEMY_TYPE_ZOMBIE), load(Global.ZOMBIE_RESOURCE_PATH))
 	enemy_loader.add_resource(str(Global.ENEMY_TYPE_STUDENT), load(Global.STUDENT_RESOURCE_PATH))
 	
-	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_MEDIKIT), load(Global.COLLECTIBLE_TYPE_MEDIKIT_PATH))
-	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_BANDAGES), load(Global.COLLECTIBLE_TYPE_BANDAGES_PATH))
+	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_MEDIKIT), load(Global.COLLECTIBLE_MEDIKIT_PATH))
+	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_BANDAGES), load(Global.COLLECTIBLE_BANDAGES_PATH))
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_SHOT_SPEED_UP), load(Global.COLLECTIBLE_SHOT_SPEED_UP_PATH))
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_TYPE_SHOT_RATE_UP), load(Global.COLLECTIBLE_SHOT_RATE_UP_PATH))
 	collectable_loader.add_resource(str(Global.COLLECTIBLE_DAMAGE_UP_PATH), load(Global.COLLECTIBLE_DAMAGE_UP_PATH))
