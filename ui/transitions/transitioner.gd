@@ -8,6 +8,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.transitioner = self
+	show()
 	texture_rect.visible = false
 
 func set_next_animation(_fading_out: bool):

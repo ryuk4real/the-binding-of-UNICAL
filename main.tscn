@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=14 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
 [ext_resource type="Script" path="res://resource_loaders/room_loader.gd" id="3_60n1x"]
@@ -9,12 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://ci365r3u01gxm" path="res://ui/gui/health_progress_bar/healthbar_under.png" id="7_shirm"]
 [ext_resource type="Texture2D" uid="uid://3c8jf6wa2ae5" path="res://ui/gui/health_progress_bar/healthbar_progress.png" id="8_747i7"]
 [ext_resource type="Script" path="res://ui/gui/health_progress_bar/health_bar.gd" id="9_vq5de"]
+[ext_resource type="Shader" path="res://ui/gui/chromatic_aberration.gdshader" id="10_qe74o"]
 [ext_resource type="Shader" path="res://ui/game_over/gameover_blur.gdshader" id="10_tdmn6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh84t"]
 shader = ExtResource("10_tdmn6")
 shader_parameter/lod = 3.0
 shader_parameter/mix_percentage = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nelo1"]
+shader = ExtResource("10_qe74o")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+shader_parameter/height = 0.7
+shader_parameter/width = 0.5
+shader_parameter/fade = 0.7
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
@@ -39,9 +49,6 @@ script = ExtResource("3_sfckc")
 
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
 
-[node name="MainMenu" parent="UI" index="0"]
-visible = false
-
 [node name="Continue" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="1"]
 visible = false
 
@@ -56,12 +63,27 @@ texture_under = ExtResource("7_shirm")
 texture_progress = ExtResource("8_747i7")
 script = ExtResource("9_vq5de")
 
+[node name="GameOver" parent="UI" index="3"]
+visible = false
+
 [node name="ColorRect" type="ColorRect" parent="UI/GameOver" index="0"]
 material = SubResource("ShaderMaterial_sh84t")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(29.0639, 16.6209)
+
+[node name="Transitioner" parent="UI" index="4"]
+visible = false
+
+[node name="ChromaticAberration" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_nelo1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.313726)
 
 [connection signal="request_completed" from="FloorGenerator/Worker" to="FloorGenerator/Worker" method="_on_request_completed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
