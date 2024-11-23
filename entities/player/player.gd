@@ -43,7 +43,6 @@ func _ready() -> void:
 	SignalBus.player_damage_changed.emit()
 	
 	update_atoms()
-	print(Global.player.atoms)
 
 func _process(delta) -> void:
 	# Shot delay recovery

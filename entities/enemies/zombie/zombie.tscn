@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dih6v4kgvub8u" path="res://entities/enemies/zombie/zombie.tres" id="2_ogcn8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tghgr"]
-radius = 7.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqph6"]
 radius = 90.0
@@ -32,7 +32,7 @@ animation = &"WALK_DOWN"
 frame_progress = 0.368445
 
 [node name="Collider" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_tghgr")
 
 [node name="AggroArea" parent="." index="2"]

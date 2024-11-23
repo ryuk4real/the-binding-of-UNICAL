@@ -10,7 +10,6 @@ var inner_hallway_neighbour_type_guesser_program: String = Utils.read_file(Globa
 var classroom_neighbour_type_guesser_program: String = Utils.read_file(Global.CLASSROOM_NEIGHBOUR_TYPE_GUESSER_PATH)
 var library_neighbour_type_guesser_program: String = Utils.read_file(Global.LIBRARY_NEIGHBOUR_TYPE_GUESSER_PATH)
 var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESSER_PATH)
-var current_room_atom: String
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
 
@@ -22,6 +21,8 @@ func generate_floor():
 	var enemy_counter: int = 0
 	var current_floor_packed_scene = preload("res://floor/floor.tscn")
 	var current_floor: Floor = current_floor_packed_scene.instantiate()
+	Global.current_floor = current_floor
+	
 	
 	# All generation starts with a room of type HALLWAY with a random direction
 	var available_directions = [Global.DIRECTION_UP, Global.DIRECTION_DOWN, Global.DIRECTION_LEFT, Global.DIRECTION_RIGHT]
@@ -38,6 +39,9 @@ func generate_floor():
 	current_floor.rooms_to_process.append(first_room)
 	first_room.init(room_counter, Global.ROOM_TYPE_HALLWAY)
 	
+	var first_room_atom: String = Utils.build_atom("room", [first_room.id, first_room.type])
+	current_floor.atoms.append(first_room_atom)
+	
 	if current_floor.can_place_room(first_room, map_center):
 		current_floor.place_room(first_room, map_center)
 		room_counter += 1
@@ -51,7 +55,7 @@ func generate_floor():
 		for door: Door in room_to_process.doors:
 			if door:
 				if door.id != 0:
-					door.type = await _get_room_neighbour_type(room_to_process.type)
+					door.type = await _get_room_neighbour_type(room_to_process.type, current_floor.atoms)
 					
 				if door.type != Global.ROOM_TYPE_NONE:
 					door.is_placeholder = false
@@ -87,20 +91,21 @@ func generate_floor():
 						
 						# For each room spawner guess the enemy to spawn (if any) and spawn it
 						for spawner: Node2D in new_room.enemy_spawners.get_children():
-							var enemy_id = await _get_enemy_type()
+							var enemy_type = await _get_enemy_type()
 							
-							if enemy_id != Global.ENEMY_TYPE_NONE:
-								var enemy_atom: String = Utils.build_atom("enemy", [new_room.id, enemy_counter])
+							if enemy_type != Global.ENEMY_TYPE_NONE:
+								var enemy_atom: String = Utils.build_atom("enemy", [new_room.id, enemy_counter, enemy_type])
 								current_floor.atoms.append(enemy_atom)
-								spawner.spawn(enemy_id)
+								spawner.spawn(enemy_type)
 								
 								enemy_counter += 1
 							
 						new_room.set_active_enemies_counter()
 						
 						# Now that a room is placed I add the atoms of the neighbours of the room to process
-						var neighbour_atom: String = Utils.build_atom("neighbours", [room_to_process.id, new_room.id])
-						current_floor.atoms.append(neighbour_atom)
+						if door.id != 0:
+							var neighbour_atom: String = Utils.build_atom("neighbours", [room_to_process.id, new_room.id])
+							current_floor.atoms.append(neighbour_atom)
 						
 						room_counter += 1
 					else:
@@ -141,9 +146,6 @@ func generate_floor():
 		for room: Room in current_floor.rooms:
 			room.global_position = Vector2(800.0 * count, 0)
 			count += 1
-			
-	print(current_floor.atoms)
-	print()
 	
 	Global.current_room.set_door_visible()
 	current_floor.print_room_connections()
@@ -178,7 +180,7 @@ func _get_room_neighbour_type(room_type: int, _floor_atoms: Array[String] = []) 
 	for atom: String in _floor_atoms:
 		program += atom
 		
-	program += current_room_atom
+	program += Global.current_floor.current_room_atom
 	
 	match(room_type):
 		Global.ROOM_TYPE_HALLWAY:
@@ -196,15 +198,14 @@ func _get_room_neighbour_type(room_type: int, _floor_atoms: Array[String] = []) 
 		Global.ROOM_TYPE_LIBRARY:
 			program += library_neighbour_type_guesser_program
 			type_answer_set = await _get_answerset_from_worker(program)
-
 	return type_answer_set[0][0].get("arguments")[0].get("number")
 
 func _get_enemy_type(_floor_atoms: Array = []) -> int:
 	var enemy_answerset: Array
 	var program: String = enemy_type_guesser_program
 	
-	program += current_room_atom
-
+	program += Global.current_floor.current_room_atom
+	
 	for atom: String in _floor_atoms:
 		program += atom
 	

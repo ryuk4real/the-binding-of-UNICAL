@@ -24,7 +24,5 @@ library_neighbour_type(X) :- X = @delta(library_neighbour_distribution).
 % EXAMPLES OF ATOMS NEEDED:
 %
 % room(ID)
-% current_room(ROOM_ID)
+% current_room(ROOM_ID, TYPE)
 % neighbours(ROOM_ID1, ROOM_ID2)
-% enemy(ROOM_ID, ENEMY_ID)
-% player_stat(STAT_ID, AMOUNT)

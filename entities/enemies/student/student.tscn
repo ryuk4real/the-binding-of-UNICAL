@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cqthu7hxos3mk" path="res://entities/enemies/student/student.tres" id="3_ggbsm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tghgr"]
-radius = 7.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqph6"]
 radius = 90.0
@@ -36,7 +36,7 @@ sprite_frames = ExtResource("3_ggbsm")
 animation = &"WALK_UP"
 
 [node name="Collider" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_tghgr")
 
 [node name="AggroArea" parent="." index="2"]

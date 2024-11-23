@@ -247,5 +247,4 @@ func open_all_doors():
 
 func _on_cleared_room(_room: Room):
 	if id == Global.current_room.id:
-		print("called")
 		cleaned_room_pickup_spawner.spawn()

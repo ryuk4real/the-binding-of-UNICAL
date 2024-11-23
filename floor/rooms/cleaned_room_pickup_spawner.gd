@@ -19,7 +19,6 @@ func spawn() -> void:
 
 func get_collectible() -> Collectible:
 	var collectible_type: int = await _get_collectible_type(Global.player.atoms)
-	#print("Collectible type %s" % collectible_type)
 	
 	if collectible_type != Global.COLLECTIBLE_TYPE_NONE:
 		return Global.entity_loader.get_collectible(collectible_type)
