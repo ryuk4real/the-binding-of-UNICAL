@@ -40,8 +40,8 @@ room_type_counter(TYPE, COUNT):-
 
 % If room types have been counted weights are calculated
 room_weights(W1, W2) :-
-    room_type_counter(bathroom, W1),
-    room_type_counter(inner_hallway, W2).
+    room_type_counter(inner_hallway, W1),
+    room_type_counter(bathroom, W2).
 
 % If room types have been counted a weighted distribution is applied
 hallway_neighbour_type(X) :-
