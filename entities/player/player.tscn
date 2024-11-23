@@ -17,9 +17,10 @@ collision_mask = 62
 motion_mode = 0
 slide_on_ceiling = true
 script = ExtResource("2_lc6wu")
-speed = 75.0
+speed = 75
 max_hp = 100
-shoot_delay = 0.4
+shot_delay = 7
+shot_speed = 100
 damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -34,6 +35,7 @@ shape = SubResource("CircleShape2D_urm12")
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 scale = Vector2(2, 1.2)
 zoom = Vector2(6, 6)
+limit_smoothed = true
 
 [node name="InteractionArea" parent="." index="3"]
 scale = Vector2(0.957951, 0.910048)

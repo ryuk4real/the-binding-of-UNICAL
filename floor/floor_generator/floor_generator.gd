@@ -27,7 +27,7 @@ func generate_floor():
 	# All generation starts with a room of type HALLWAY with a random direction
 	var available_directions = [Global.DIRECTION_UP, Global.DIRECTION_DOWN, Global.DIRECTION_LEFT, Global.DIRECTION_RIGHT]
 	var random_direction: int = available_directions.pick_random()
-	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY,  Global.DIRECTION_DOWN)
+	var first_room: Room = room_loader.get_random_room(Global.ROOM_TYPE_HALLWAY, random_direction)
 	
 	Global.current_room = first_room
 	first_room.hide()
