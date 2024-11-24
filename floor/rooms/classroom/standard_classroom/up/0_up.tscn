@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dysjlqqdttog"]
+[gd_scene load_steps=8 format=4 uid="uid://dysjlqqdttog"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_oteus"]
 [ext_resource type="TileSet" uid="uid://bdes5x0s6xlsw" path="res://floor/rooms/classroom/standard_classroom/sc_walls.tres" id="2_7ucn4"]
 [ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://floor/rooms/classroom/standard_classroom/sc_obstacles.tres" id="3_85ust"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ahi7i"]
+[ext_resource type="PackedScene" uid="uid://mybmftf4r74r" path="res://floor/rooms/classroom/blackboard.tscn" id="3_yknb7"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_u32sa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4rxux"]
@@ -19,7 +20,11 @@ type = 3
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAADAAQAAGAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAGAAAAAAABAAAAAAAHAAAAAAAGAAAAAAAGAAEAAAABAAEAAAAHAAEAAAAGAAEAAAAGAAIAAAABAAEAAAAHAAIAAAAGAAEAAAAIAAAAAAAHAAAAAAAIAAEAAAAHAAEAAAAIAAIAAAAHAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAIAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAAHAAQAAAAGAAEAAAAHAAUAAAAGAAIAAAAIAAQAAAAHAAEAAAAIAAUAAAAHAAIAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAFAAQAAAABAAEAAAAGAAQAAAABAAEAAAAHAAMAAAAGAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAABAAEAAAAIAAMAAAAHAAEAAAAGAAUAAAABAAIAAAAFAAUAAAABAAIAAAAEAAUAAAABAAIAAAADAAUAAAABAAIAAAACAAUAAAABAAIAAAAAAAMAAAADAAQAAGA=")
 tile_set = ExtResource("2_7ucn4")
 
-[node name="NavigationRegion2D" parent="." index="1"]
+[node name="Blackboard" parent="." index="1" instance=ExtResource("3_yknb7")]
+position = Vector2(280, 64)
+rotation = 1.5708
+
+[node name="NavigationRegion2D" parent="." index="2"]
 navigation_polygon = SubResource("NavigationPolygon_4rxux")
 
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]
@@ -33,41 +38,41 @@ type = 3
 [node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
 position = Vector2(136, 97)
 
-[node name="EnemySpawner" parent="." index="6" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner" parent="." index="7" instance=ExtResource("5_u32sa")]
 position = Vector2(245, 43)
 
-[node name="EnemySpawner2" parent="." index="7" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner2" parent="." index="8" instance=ExtResource("5_u32sa")]
 position = Vector2(220, 43)
 
-[node name="EnemySpawner3" parent="." index="8" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner3" parent="." index="9" instance=ExtResource("5_u32sa")]
 position = Vector2(220, 86)
 
-[node name="EnemySpawner4" parent="." index="9" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner4" parent="." index="10" instance=ExtResource("5_u32sa")]
 position = Vector2(220, 120)
 
-[node name="EnemySpawner5" parent="." index="10" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner5" parent="." index="11" instance=ExtResource("5_u32sa")]
 position = Vector2(247, 151)
 
-[node name="EnemySpawner6" parent="." index="11" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner6" parent="." index="12" instance=ExtResource("5_u32sa")]
 position = Vector2(219, 151)
 
-[node name="EnemySpawner7" parent="." index="12" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner7" parent="." index="13" instance=ExtResource("5_u32sa")]
 position = Vector2(184, 151)
 
-[node name="EnemySpawner8" parent="." index="13" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner8" parent="." index="14" instance=ExtResource("5_u32sa")]
 position = Vector2(151, 151)
 
-[node name="EnemySpawner9" parent="." index="14" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner9" parent="." index="15" instance=ExtResource("5_u32sa")]
 position = Vector2(107, 151)
 
-[node name="EnemySpawner10" parent="." index="15" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner10" parent="." index="16" instance=ExtResource("5_u32sa")]
 position = Vector2(63, 151)
 
-[node name="EnemySpawner11" parent="." index="16" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner11" parent="." index="17" instance=ExtResource("5_u32sa")]
 position = Vector2(42, 129)
 
-[node name="EnemySpawner12" parent="." index="17" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner12" parent="." index="18" instance=ExtResource("5_u32sa")]
 position = Vector2(179, 40)
 
-[node name="EnemySpawner13" parent="." index="18" instance=ExtResource("5_u32sa")]
+[node name="EnemySpawner13" parent="." index="19" instance=ExtResource("5_u32sa")]
 position = Vector2(134, 88)

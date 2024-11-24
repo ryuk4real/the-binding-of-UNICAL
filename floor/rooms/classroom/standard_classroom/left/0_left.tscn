@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://jyf2x3xa4x7p"]
+[gd_scene load_steps=8 format=4 uid="uid://jyf2x3xa4x7p"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_v47t4"]
 [ext_resource type="TileSet" uid="uid://bdes5x0s6xlsw" path="res://floor/rooms/classroom/standard_classroom/sc_walls.tres" id="2_ey5ry"]
+[ext_resource type="PackedScene" uid="uid://mybmftf4r74r" path="res://floor/rooms/classroom/blackboard.tscn" id="3_7p1t0"]
 [ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://floor/rooms/classroom/standard_classroom/sc_obstacles.tres" id="3_ipmwy"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_oecr4"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_87y83"]
@@ -20,7 +21,11 @@ type = 3
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAACAAQAAAAEAAAAAAACAAQAAAAFAAAAAAACAAQAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAADAAQAAGAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAGAAAAAAACAAQAAAAHAAAAAAAGAAAAAAAGAAEAAAABAAEAAAAHAAEAAAAGAAEAAAAGAAIAAAABAAEAAAAHAAIAAAAGAAEAAAAIAAAAAAAHAAAAAAAIAAEAAAAHAAEAAAAIAAIAAAAHAAEAAAAAAAQAAAADAAQAAGAAAAUAAAAAAAIAAAABAAQAAAABAAEAAAABAAUAAAACAAQAADAHAAQAAAAGAAEAAAAHAAUAAAAGAAIAAAAIAAQAAAAHAAEAAAAIAAUAAAAHAAIAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAFAAQAAAABAAEAAAAGAAQAAAABAAEAAAAHAAMAAAAGAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAABAAEAAAAIAAMAAAAHAAEAAAAGAAUAAAACAAQAADAFAAUAAAACAAQAADAEAAUAAAACAAQAADADAAUAAAACAAQAADACAAUAAAACAAQAADAAAAMAAAADAAQAAGA=")
 tile_set = ExtResource("2_ey5ry")
 
-[node name="NavigationRegion2D" parent="." index="1"]
+[node name="Blackboard" parent="." index="1" instance=ExtResource("3_7p1t0")]
+position = Vector2(280, 64)
+rotation = 1.5708
+
+[node name="NavigationRegion2D" parent="." index="2"]
 navigation_polygon = SubResource("NavigationPolygon_qj8k5")
 
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]

@@ -1,16 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://5seu2tdclgub"]
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://5seu2tdclgub"]
 
 [ext_resource type="Texture2D" uid="uid://dpu2tfokonks" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.png" id="1_fsimm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4ej4"]
-atlas = ExtResource("1_fsimm")
-region = Rect2(0, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j4ej4")
+"texture": ExtResource("1_fsimm")
 }],
 "loop": true,
 "name": &"IDLE",

@@ -8,6 +8,8 @@ script = ExtResource("2_4jfln")
 max_hp = 100
 current_hp = 100
 damage = 10
+knockback_force = 30.0
+knockback_duration = 0.1
 
 [node name="AggroArea" type="Area2D" parent="." index="2"]
 collision_layer = 2
@@ -16,6 +18,7 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]
+avoidance_enabled = true
 
 [node name="InteractionArea" parent="." index="4"]
 collision_layer = 2

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_lc6wu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urm12"]
-radius = 6.25
+radius = 4.66659
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr0ds"]
 radius = 7.5
@@ -28,7 +28,7 @@ sprite_frames = ExtResource("2_gmudp")
 animation = &"WALK_UP"
 
 [node name="Collider" parent="." index="1"]
-position = Vector2(0, 1.25)
+position = Vector2(0, 3.75)
 scale = Vector2(0.803584, 0.803584)
 shape = SubResource("CircleShape2D_urm12")
 

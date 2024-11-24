@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cj5bc6pa1nrqk" path="res://entities/collectibles/powerups/shot_rate_up/shot_rate_up.png" id="1_6ejn5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6y2uf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6ma"]
 atlas = ExtResource("1_6ejn5")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6y2uf")
+"texture": SubResource("AtlasTexture_fd6ma")
 }],
 "loop": true,
 "name": &"IDLE",

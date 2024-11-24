@@ -117,11 +117,11 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_aggro_area_body_entered(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player entered zombie area")
+		#print("player entered zombie area")
 		is_chasing = true
 		current_state = EnemyState.CHASING
 
 func _on_aggro_area_body_exited(_body: Node2D) -> void:
 	if _body.name == "Player":
-		print("player exited zombie area")
+		#print("player exited zombie area")
 		reset_to_idle()

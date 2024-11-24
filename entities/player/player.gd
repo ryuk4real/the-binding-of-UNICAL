@@ -80,7 +80,7 @@ func can_collect(collectible: Collectible) -> bool:
 		Collectible.CollectibleType.POWER_UP:
 			return true
 		_:
-			print("cannot collect")
+			#print("cannot collect")
 			return false
 
 func needs_healing() -> bool:

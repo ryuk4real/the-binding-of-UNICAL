@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dsjafeyrklew5"]
+[gd_scene load_steps=11 format=4 uid="uid://dsjafeyrklew5"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_yls6m"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_58mep"]
 [ext_resource type="Texture2D" uid="uid://ydw3cagrv3on" path="res://floor/rooms/office/office.png" id="3_g86u4"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ide0g"]
 [ext_resource type="TileSet" uid="uid://k7fqmommmwow" path="res://floor/rooms/office/o_decorations.tres" id="4_n8gao"]
+[ext_resource type="PackedScene" uid="uid://dvr82sga58a2c" path="res://floor/rooms/office/whiteboard.tscn" id="5_jci5h"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_6m8lm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6v1tm"]
@@ -145,6 +146,9 @@ tile_set = SubResource("TileSet_byp5s")
 tile_map_data = PackedByteArray("AAAHAP3/AAAJAAQAAAA=")
 tile_set = ExtResource("4_n8gao")
 
+[node name="Blackboard" parent="Decorations" index="0" instance=ExtResource("5_jci5h")]
+position = Vector2(72, -88)
+
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_ide0g")]
 position = Vector2(48, 79)
 rotation = 3.14159
@@ -173,6 +177,3 @@ position = Vector2(106, -17)
 
 [node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("6_6m8lm")]
 position = Vector2(153, 22)
-
-[node name="EnemySpawner8" parent="EnemySpawners" index="7" instance=ExtResource("6_6m8lm")]
-position = Vector2(105, 20)

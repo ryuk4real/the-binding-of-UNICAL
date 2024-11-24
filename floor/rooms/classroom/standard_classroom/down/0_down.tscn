@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cc67tgexaigx6"]
+[gd_scene load_steps=8 format=4 uid="uid://cc67tgexaigx6"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_svw1s"]
 [ext_resource type="TileSet" uid="uid://bdes5x0s6xlsw" path="res://floor/rooms/classroom/standard_classroom/sc_walls.tres" id="2_lmm01"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_d20w2"]
 [ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://floor/rooms/classroom/standard_classroom/sc_obstacles.tres" id="3_qpdc2"]
+[ext_resource type="PackedScene" uid="uid://mybmftf4r74r" path="res://floor/rooms/classroom/blackboard.tscn" id="4_tfii8"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_as3t8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v71jw"]
@@ -26,6 +27,10 @@ navigation_polygon = SubResource("NavigationPolygon_v71jw")
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]
 tile_map_data = PackedByteArray("AAAPAP//AAAEAAcAAFAPAP7/AAAEAAYAAFAPAAEAAAAFAAYAAFAPAAAAAAAEAAcAAFAQAP//AAAGAAcAAFAQAAAAAAAGAAcAAFALAP7/AAADAAgAAFALAP3/AAACAAgAAFALAAEAAAADAAgAAHALAAIAAAACAAgAAHALAP//AAADAAgAAFALAAAAAAADAAgAAFAKAP3/AAACAAgAAFAKAP7/AAADAAgAAFAKAP//AAADAAgAAFAKAAAAAAADAAgAAFAKAAEAAAADAAgAAHAKAAIAAAACAAgAAHAJAP3/AAACAAgAAFAJAP7/AAADAAgAAFAJAP//AAADAAgAAFAJAAAAAAADAAgAAFAJAAEAAAADAAgAAHAJAAIAAAACAAgAAHAIAP3/AAACAAgAAFAIAP7/AAADAAgAAFAIAP//AAADAAgAAFAIAAAAAAADAAgAAFAIAAEAAAADAAgAAHAIAAIAAAACAAgAAHAGAP3/AAACAAgAAFAGAP7/AAADAAgAAFAGAP//AAADAAgAAFAGAAAAAAADAAgAAFAGAAEAAAADAAgAAHAGAAIAAAACAAgAAHAFAP3/AAACAAgAAFAFAP7/AAADAAgAAFAFAP//AAADAAgAAFAFAAAAAAADAAgAAFAFAAEAAAADAAgAAHAFAAIAAAACAAgAAHADAP3/AAACAAgAAFADAP7/AAADAAgAAFADAP//AAADAAgAAFADAAAAAAADAAgAAFADAAEAAAADAAgAAHADAAIAAAACAAgAAHAEAP3/AAACAAgAAFAEAP7/AAADAAgAAFAEAP//AAADAAgAAFAEAAAAAAADAAgAAFAEAAEAAAADAAgAAHAEAAIAAAACAAgAAHA=")
 tile_set = ExtResource("3_qpdc2")
+
+[node name="Blackboard" parent="Decorations" index="0" instance=ExtResource("4_tfii8")]
+position = Vector2(280, -31)
+rotation = 1.5708
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_d20w2")]
 position = Vector2(48, 79)

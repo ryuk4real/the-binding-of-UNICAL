@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dgf5hjtuika6x"]
+[gd_scene load_steps=9 format=4 uid="uid://dgf5hjtuika6x"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_cx88a"]
 [ext_resource type="TileSet" uid="uid://boxb8fij78k12" path="res://floor/rooms/classroom/lab/lab_wall.tres" id="2_fp8ge"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_8a27y"]
+[ext_resource type="PackedScene" uid="uid://mybmftf4r74r" path="res://floor/rooms/classroom/blackboard.tscn" id="3_c7y0y"]
 [ext_resource type="TileSet" uid="uid://b3ck0gqamlcb7" path="res://floor/rooms/classroom/lab/lab_obstacles.tres" id="3_ojxya"]
 [ext_resource type="TileSet" uid="uid://dwabg6wx8i6lt" path="res://floor/rooms/classroom/lab/lab_decorations.tres" id="4_7dokk"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_nn7hp"]
@@ -21,14 +22,18 @@ type = 3
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAAJAAAAAAADAAAAAAAJAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAAAAQAAAAGAAAAAEAAAAUAAAADAAQAAAABAAQAAAAHAAIAAGABAAUAAAAEAAQAAAACAAQAAAAHAAIAAGACAAUAAAAEAAQAAAADAAQAAAAHAAIAAGADAAUAAAAEAAQAAAAEAAQAAAAHAAIAAGAEAAUAAAAEAAQAAAAFAAUAAAAFAAQAAAAFAAMAAAACAAEAAAAAAAMAAAAAAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAQAAAAHAAAAAGA=")
 tile_set = ExtResource("2_fp8ge")
 
-[node name="NavigationRegion2D" parent="." index="1"]
+[node name="Blackboard" parent="." index="1" instance=ExtResource("3_c7y0y")]
+position = Vector2(128, 184)
+rotation = 3.14159
+
+[node name="NavigationRegion2D" parent="." index="2"]
 navigation_polygon = SubResource("NavigationPolygon_7gdbr")
 
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]
 tile_map_data = PackedByteArray("AAADAAcAAAAMAAgAAAAEAAcAAAANAAgAAAAHAAcAAAAMAAgAAAAIAAcAAAANAAgAAAAHAAUAAAAMAAgAAAAIAAUAAAANAAgAAAADAAUAAAAMAAgAAAAEAAUAAAANAAgAAAADAAMAAAAMAAgAAAAEAAMAAAANAAgAAAAHAAMAAAAMAAgAAAAIAAMAAAANAAgAAAADAAIAAAAQAAEAAAAEAAIAAAAQAAEAAAAEAAQAAAAQAAEAAAAHAAQAAAAQAAEAAAAIAAYAAAAQAAEAAAAHAAYAAAARAAAAAAAEAAYAAAARAAMAAAAIAAQAAAARAAMAAAADAAYAAAAQAAMAAAADAAQAAAAQAAMAAAAHAAIAAAAQAAMAAAAIAAIAAAAQAAMAAAAKAAIAAAAAAAgAAAADAAkAAAAAAAYAAAAEAAkAAAAAAAcAAAAFAAkAAAAAAAcAAAAGAAkAAAAAAAcAAAAHAAkAAAAAAAcAAAAIAAkAAAABAAYAAAAEAAoAAAABAAkAADAHAAoAAAABAAkAADA=")
 tile_set = ExtResource("3_ojxya")
 
-[node name="Decorations" parent="." index="2"]
+[node name="Decorations" parent="." index="3"]
 tile_map_data = PackedByteArray("AAADAAcAAAAPAAgAAAAEAAcAAAAPAAgAAAADAAUAAAAPAAgAAAAEAAUAAAAPAAgAAAAHAAcAAAAPAAkAAAAIAAUAAAAPAAkAAAAEAAMAAAAPAAkAAAADAAMAAAAPAAgAAAAHAAMAAAAPAAgAAAAIAAMAAAAPAAgAAAAHAAUAAAAPAAgAAAAIAAcAAAAPAAgAAAA=")
 tile_set = ExtResource("4_7dokk")
 

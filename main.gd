@@ -178,8 +178,8 @@ func _on_main_menu_pressed() -> void:
 
 func _on_go_to_next_floor() -> void:
 	if _is_changing_floor:
-		print("Floor change already in progress, please wait")
+		#print("Floor change already in progress, please wait")
 		return
 		
-	print("Going to next floor")
+	#print("Going to next floor")
 	await _setup_new_floor(false)

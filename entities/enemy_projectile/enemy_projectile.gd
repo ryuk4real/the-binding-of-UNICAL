@@ -38,6 +38,7 @@ func _on_interaction_area_body_entered(body: Node2D) -> void:
 
 func _on_student_damage_changed(amount: int) -> void:
 	damage = amount
+	update_projectile_scale()
 
 func _death_animation_start() -> void:
 	if is_dying:
@@ -47,3 +48,11 @@ func _death_animation_start() -> void:
 	animated_sprite_2d.play("DEATH")
 	await animated_sprite_2d.animation_finished
 	queue_free()
+
+func update_projectile_scale() -> void:
+	if damage > 20 and damage <= 50:
+		scale += Vector2(0.1, 0.1)
+	elif damage >= 50 and damage < 75:
+		scale += Vector2(0.2, 0.2)
+	elif damage >= 75:
+		scale += Vector2(0.3, 0.3)

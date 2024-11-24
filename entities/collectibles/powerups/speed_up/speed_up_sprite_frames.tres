@@ -1,24 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dtp63i5n0hav5"]
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dtp63i5n0hav5"]
 
 [ext_resource type="Texture2D" uid="uid://43or1wwibnsc" path="res://entities/collectibles/powerups/speed_up/speed_up.png" id="1_44je7"]
-[ext_resource type="Texture2D" uid="uid://dpu2tfokonks" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.png" id="1_lrns7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_st5af"]
-atlas = ExtResource("1_lrns7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsa13"]
-atlas = ExtResource("1_44je7")
-region = Rect2(0, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_st5af")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsa13")
+"texture": ExtResource("1_44je7")
 }],
 "loop": true,
 "name": &"IDLE",

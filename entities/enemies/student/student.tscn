@@ -15,7 +15,7 @@ radius = 8.0
 
 [node name="Student" instance=ExtResource("1_5dniv")]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 27
 script = ExtResource("2_gjvux")
 movement_speed = 10.0
 wander_range = 50.0

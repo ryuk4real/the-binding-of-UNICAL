@@ -56,7 +56,7 @@ func set_door_direction(door_rotation: int) -> void:
 func _on_opened_area_2d_area_entered(_area: Area2D) -> void:
 	if opened:
 		SignalBus.door_entered.emit(self)
-		print("Player entered in door %s " % id)
+		#print("Player entered in door %s " % id)
 		
 func setup_door_sprite(_current_room_type: int) -> void:
 

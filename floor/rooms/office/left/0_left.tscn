@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cjoq6vpms1blr"]
+[gd_scene load_steps=11 format=4 uid="uid://cjoq6vpms1blr"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_o3ynk"]
 [ext_resource type="TileSet" uid="uid://dfikwbwxuq3j0" path="res://floor/rooms/office/o_wall.tres" id="2_dfb4o"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_vu2by"]
 [ext_resource type="TileSet" uid="uid://k7fqmommmwow" path="res://floor/rooms/office/o_decorations.tres" id="4_gp1h1"]
 [ext_resource type="Texture2D" uid="uid://ydw3cagrv3on" path="res://floor/rooms/office/office.png" id="5_2ji6y"]
+[ext_resource type="PackedScene" uid="uid://dvr82sga58a2c" path="res://floor/rooms/office/whiteboard.tscn" id="6_62xbg"]
 [ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="7_oiu45"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pi0dj"]
@@ -37,9 +38,13 @@ tile_map_data = PackedByteArray("AAAIAAQAAAAIAAYAAAA=")
 tile_set = ExtResource("4_gp1h1")
 
 [node name="certification" type="Sprite2D" parent="Decorations" index="0"]
-position = Vector2(175, 126)
+position = Vector2(175, 145)
 rotation = 1.5708
 texture = SubResource("AtlasTexture_iqkjf")
+
+[node name="Blackboard" parent="Decorations" index="1" instance=ExtResource("6_62xbg")]
+position = Vector2(184, 64)
+rotation = 1.5708
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_vu2by")]
 position = Vector2(17, 48)
@@ -69,18 +74,3 @@ position = Vector2(150, 59)
 
 [node name="EnemySpawner7" parent="EnemySpawners" index="6" instance=ExtResource("7_oiu45")]
 position = Vector2(158, 34)
-
-[node name="EnemySpawner8" parent="EnemySpawners" index="7" instance=ExtResource("7_oiu45")]
-position = Vector2(120, 46)
-
-[node name="EnemySpawner9" parent="EnemySpawners" index="8" instance=ExtResource("7_oiu45")]
-position = Vector2(120, 93)
-
-[node name="EnemySpawner10" parent="EnemySpawners" index="9" instance=ExtResource("7_oiu45")]
-position = Vector2(34, 136)
-
-[node name="EnemySpawner11" parent="EnemySpawners" index="10" instance=ExtResource("7_oiu45")]
-position = Vector2(61, 99)
-
-[node name="EnemySpawner12" parent="EnemySpawners" index="11" instance=ExtResource("7_oiu45")]
-position = Vector2(121, 154)

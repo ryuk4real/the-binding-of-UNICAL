@@ -5,12 +5,13 @@
 [ext_resource type="SpriteFrames" uid="uid://dtp63i5n0hav5" path="res://entities/collectibles/powerups/speed_up/speed_up_sprite_frames.tres" id="3_vtqys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0at1m"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmsff"]
-size = Vector2(30, 30)
+size = Vector2(10, 10)
 
 [node name="SpeedUp" instance=ExtResource("1_705gh")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("2_e13pb")
 speed_increase = 5.0
 
@@ -19,9 +20,11 @@ sprite_frames = ExtResource("3_vtqys")
 animation = &"IDLE"
 
 [node name="Collider" parent="." index="1"]
+position = Vector2(1.78814e-07, -2.98023e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0at1m")
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
-position = Vector2(1.63913e-06, -1.63913e-06)
-scale = Vector2(1, 1)
+position = Vector2(-7.45058e-08, -5.21541e-07)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_qmsff")

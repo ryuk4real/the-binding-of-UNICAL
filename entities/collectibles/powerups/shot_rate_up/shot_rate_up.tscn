@@ -5,12 +5,13 @@
 [ext_resource type="SpriteFrames" uid="uid://crn0yqbfu5sor" path="res://entities/collectibles/powerups/shot_rate_up/shot_rate_up_sprite_frames.tres" id="3_1k3cq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3ee6"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0oj2"]
-size = Vector2(30, 30)
+size = Vector2(10, 10)
 
 [node name="ShotRateUp" instance=ExtResource("1_dlc4g")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("2_5xcg0")
 shot_delay_reduction = 1
 min_shot_delay = 1
@@ -20,8 +21,11 @@ sprite_frames = ExtResource("3_1k3cq")
 animation = &"IDLE"
 
 [node name="Collider" parent="." index="1"]
+position = Vector2(1.49012e-07, -2.98023e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a3ee6")
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0"]
-position = Vector2(1.63913e-06, -1.63913e-06)
+position = Vector2(2.98023e-07, -5.96046e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_l0oj2")

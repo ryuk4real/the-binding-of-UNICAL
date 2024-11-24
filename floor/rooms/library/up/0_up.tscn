@@ -68,15 +68,3 @@ position = Vector2(197, 73)
 
 [node name="EnemySpawner12" parent="." index="17" instance=ExtResource("5_5os6t")]
 position = Vector2(145, 106)
-
-[node name="EnemySpawner13" parent="." index="18" instance=ExtResource("5_5os6t")]
-position = Vector2(145, 69)
-
-[node name="EnemySpawner14" parent="." index="19" instance=ExtResource("5_5os6t")]
-position = Vector2(164, 31)
-
-[node name="EnemySpawner15" parent="." index="20" instance=ExtResource("5_5os6t")]
-position = Vector2(32, 107)
-
-[node name="EnemySpawner16" parent="." index="21" instance=ExtResource("5_5os6t")]
-position = Vector2(32, 107)
