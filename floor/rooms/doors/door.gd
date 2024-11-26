@@ -1,9 +1,10 @@
 class_name Door
 extends Node2D
 
-@onready var opened_collider: CollisionShape2D = $OpenedArea2D/OpenedCollider
-@onready var closed_collider: CollisionShape2D = $ClosedArea2D/ClosedCollider
 @onready var opened_area_2d: Area2D = $OpenedArea2D
+@onready var opened_collider: CollisionShape2D = $OpenedArea2D/OpenedCollider
+@onready var closed_area_2d = $ClosedArea2D
+@onready var closed_collider: CollisionShape2D = $ClosedArea2D/ClosedCollider
 
 @export var inner_hallway_inside_door_texture: Texture
 @export var inner_hallway_outside_door_texture: Texture
@@ -53,8 +54,9 @@ func set_door_direction(door_rotation: int) -> void:
 		180: direction = Global.DIRECTION_DOWN
 
 func _on_opened_area_2d_area_entered(_area: Area2D) -> void:
-	SignalBus.door_entered.emit(self)
-	print("Player entered in door %s " % id)
+	if opened:
+		SignalBus.door_entered.emit(self)
+		#print("Player entered in door %s " % id)
 		
 func setup_door_sprite(_current_room_type: int) -> void:
 

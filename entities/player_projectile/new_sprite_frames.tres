@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dm4j7baclusg3"]
+
+[ext_resource type="Texture2D" uid="uid://dshjtmmr15m21" path="res://entities/player_projectile/player_basic_projectile.png" id="1_f7j2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51xe1"]
+atlas = ExtResource("1_f7j2g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtaib"]
+atlas = ExtResource("1_f7j2g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc8ob"]
+atlas = ExtResource("1_f7j2g")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4b2u"]
+atlas = ExtResource("1_f7j2g")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51xe1")
+}],
+"loop": false,
+"name": &"BASIC",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtaib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc8ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4b2u")
+}],
+"loop": false,
+"name": &"DEATH",
+"speed": 24.0
+}]

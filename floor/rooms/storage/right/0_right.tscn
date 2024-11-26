@@ -1,17 +1,62 @@
-[gd_scene load_steps=4 format=4 uid="uid://bl4b1ssr2nngy"]
+[gd_scene load_steps=8 format=4 uid="uid://bl4b1ssr2nngy"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_niv6b"]
 [ext_resource type="TileSet" uid="uid://bbueovfhx1m5f" path="res://floor/rooms/storage/st.tres" id="2_kq2me"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_41hev"]
+[ext_resource type="PackedScene" uid="uid://b8qcc0ohj122j" path="res://floor/rooms/storage/big_box.tscn" id="3_dfn8m"]
+[ext_resource type="PackedScene" uid="uid://we0rge667tth" path="res://floor/rooms/storage/small_box.tscn" id="4_uvkl4"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="6_ivikm"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_b2871"]
+vertices = PackedVector2Array(30, 70, 72, 72, -72, 72, 18, 70, 14, 70, 2, 70, 30, 58, 18, 58, 8, 55, 8, 49, 2, 49, -18, 45, -18, 33, 72, 24, -18, 30, -18, 24, -33, 30, -33, 24, -30, 24, -30, 30, -30, 33, -30, 45, -33, 45, -33, 33, 14, 58, 2, 58, 2, 55, -72, 24, -45, 24, -45, 30, -45, 45, -45, 33)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 1, 0, 6), PackedInt32Array(14, 15, 13, 6, 9), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(7, 3, 4, 24), PackedInt32Array(8, 7, 24), PackedInt32Array(8, 24, 25, 26), PackedInt32Array(2, 27, 28, 29), PackedInt32Array(25, 5, 2, 30, 22), PackedInt32Array(14, 9, 12), PackedInt32Array(19, 14, 12, 20), PackedInt32Array(16, 19, 20, 23), PackedInt32Array(29, 16, 23, 31), PackedInt32Array(2, 29, 31), PackedInt32Array(2, 31, 30), PackedInt32Array(25, 22, 21), PackedInt32Array(25, 21, 11, 26), PackedInt32Array(26, 11, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-72, 24, -72, 72, 72, 72, 72, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_niv6b")]
 type = 5
 
 [node name="Walls" parent="." index="0"]
-tile_map_data = PackedByteArray("AAAAAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQABAAIAAAABAAAAAQABAAAAAAABAAEAAQABAAEAAAABAAIAAQABAAIAAAACAAAAAQACAAAAAAACAAEAAQACAAEAAAACAAIAAQACAAIAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAEAAAD9/wIAAQAAAAIAAAD+/wAAAQABAAAAAAD+/wEAAQABAAEAAAD+/wIAAQABAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAQABAAAAAAABAAAAAQABAAAAAAACAAAAAQACAAAAAAABAAEAAQABAAEAAAACAAEAAQACAAEAAAAAAAEAAQABAAEAAAAAAAIAAQABAAIAAAABAAIAAQABAAIAAAACAAIAAQACAAIAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAEAAAD9/wIAAQAAAAIAAAD+/wAAAQABAAAAAAD+/wEAAQABAAEAAAD+/wIAAQABAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAA=")
 tile_set = ExtResource("2_kq2me")
+
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_b2871")
+
+[node name="BigBox" parent="NavigationRegion2D" index="1" instance=ExtResource("3_dfn8m")]
+position = Vector2(-24, 24)
+
+[node name="BigBox2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_dfn8m")]
+position = Vector2(-24, 39)
+
+[node name="BigBox3" parent="NavigationRegion2D" index="3" instance=ExtResource("3_dfn8m")]
+position = Vector2(-39, 24)
+
+[node name="BigBox4" parent="NavigationRegion2D" index="4" instance=ExtResource("3_dfn8m")]
+position = Vector2(-39, 39)
+
+[node name="BigBox5" parent="NavigationRegion2D" index="5" instance=ExtResource("3_dfn8m")]
+position = Vector2(8, 64)
+
+[node name="BigBox6" parent="NavigationRegion2D" index="6" instance=ExtResource("3_dfn8m")]
+position = Vector2(24, 64)
+
+[node name="BigBox7" parent="NavigationRegion2D" index="7" instance=ExtResource("4_uvkl4")]
+position = Vector2(5, 52)
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_41hev")]
 position = Vector2(79, 48)
 rotation = 1.5708
 type = 5
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(0, 37)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("6_ivikm")]
+position = Vector2(-61, 37)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("6_ivikm")]
+position = Vector2(-54, 61)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("6_ivikm")]
+position = Vector2(-31, 61)

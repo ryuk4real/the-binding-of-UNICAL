@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://b0byigdmk0yra"]
+[gd_scene load_steps=3 format=4 uid="uid://b0byigdmk0yra"]
 
 [ext_resource type="Script" path="res://floor/rooms/room.gd" id="1_8788s"]
+[ext_resource type="Script" path="res://floor/rooms/cleaned_room_pickup_spawner.gd" id="2_2rb3a"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_8788s")
@@ -21,5 +22,6 @@ rendering_quadrant_size = 32
 
 [node name="CleanedRoomPickupSpawner" type="Marker2D" parent="Pickups"]
 gizmo_extents = 18.4
+script = ExtResource("2_2rb3a")
 
 [node name="EnemySpawners" type="Node2D" parent="."]

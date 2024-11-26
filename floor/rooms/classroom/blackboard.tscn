@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mybmftf4r74r"]
+
+[ext_resource type="TileSet" uid="uid://4liad2sl5i3n" path="res://floor/rooms/classroom/standard_classroom/sc_obstacles.tres" id="1_42q1b"]
+
+[node name="Blackboard" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 6, 0, 0, 0, 1, 0, 0, 0, 0, 0, 8, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 7, 0, 0, 0, 3, 0, 0, 0, 0, 0, 9, 0, 6, 0, 0, 0)
+tile_set = ExtResource("1_42q1b")

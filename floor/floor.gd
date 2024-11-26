@@ -1,18 +1,22 @@
 class_name Floor
 extends Node2D
 
+@onready var room_scene: Node2D = $Rooms
+
 var rooms: Array[Room] = []
 var rooms_to_process: Array[Room] = []
-@onready var room_scene: Node2D = $Rooms
 var current_room: Room
 
-# Matrix to store room positions. Each cell contains 0 (empty) or room id
+# Matrix to store room positions. Each cell contains -1 (empty) or room id
 var floor_matrix: Array = []
 var matrix_size: int = Global.MAP_SIZE
 
 const EMPTY_CELL: int = -1
 const INVALID_POSITION: int = -1
 const DOOR_OFFSET: int = 15
+
+var atoms: Array[String] = []
+var current_room_atom: String
 
 
 func _ready() -> void:
@@ -38,41 +42,38 @@ func init(_starting_room: Room) -> void:
 
 func _on_door_entered(_door: Door):
 	if Global.current_room.room_connections.has(_door):
-		
 		for projectile in Global.projectiles_scene.get_children():
 			projectile.queue_free()
 		
 		Global.transitioner.set_next_animation(true)
 		
 		var room_to_visit: Room = Global.current_room.room_connections[_door]
-
-		room_to_visit.set_door_visible()
-		
-		# TODO: Set doors closed if room is not clear
-		
 		current_room = room_to_visit
 		
-		# Get the connected door in the new room
 		var connected_door = Global.current_room.get_connected_door(_door)
 		
 		if connected_door:
-			# Calculate the spawn position based on door direction
 			var spawn_offset = Vector2i.ZERO
 			match connected_door.direction:
-				Global.DIRECTION_UP:    # Player should appear below the door
+				Global.DIRECTION_UP:
 					spawn_offset = Vector2(0, DOOR_OFFSET)
-				Global.DIRECTION_DOWN:  # Player should appear above the door
+				Global.DIRECTION_DOWN:
 					spawn_offset = Vector2(0, -DOOR_OFFSET)
-				Global.DIRECTION_LEFT:  # Player should appear to the right of the door
+				Global.DIRECTION_LEFT:
 					spawn_offset = Vector2(DOOR_OFFSET, 0)
-				Global.DIRECTION_RIGHT: # Player should appear to the left of the door
+				Global.DIRECTION_RIGHT:
 					spawn_offset = Vector2(-DOOR_OFFSET, 0)
 			
 			await Global.transitioner.animation_player.animation_finished
-			# Set player position relative to the connected door
 			Global.transitioner.set_next_animation(false)
 			
-			# TODO: Set door colliders disabled if door is opened
+			# Check if the new room has enemies and manage doors accordingly
+			if room_to_visit.active_enemies > 0:
+				room_to_visit.close_all_doors()
+			else:
+				room_to_visit.open_all_doors()
+			
+			#print("room active enemies %s" % room_to_visit.active_enemies)
 			
 			Global.player.position = connected_door.global_position as Vector2 + spawn_offset
 			call_deferred("set_active_room", current_room.id)
@@ -80,7 +81,7 @@ func _on_door_entered(_door: Door):
 
 func place_room(room: Room, target_pos: Vector2i) -> bool:
 	#print("\nPlacing room %d at target position %s" % [room.id, target_pos])
-	print("Room coordinates: %s" % [room.coordinates])
+	#print("Room coordinates: %s" % [room.coordinates])
 	
 	# Find the connecting door local position to use as offset
 	var door_local_pos = Vector2i.ZERO
@@ -89,14 +90,14 @@ func place_room(room: Room, target_pos: Vector2i) -> bool:
 			door_local_pos = room.get_door_local_position(door)
 			break
 	
-	print("Door local position: %s" % door_local_pos)
+	#print("Door local position: %s" % door_local_pos)
 	
 	# Calculate offset from door position to room coordinates
 	for coord in room.coordinates:
 		# Adjust the position by the difference between room coordinate and door position
 		var adjusted_x = target_pos.x + (coord.x - door_local_pos.x)
 		var adjusted_y = target_pos.y + (coord.y - door_local_pos.y)
-		print("Placing room %d at position %s" % [room.id, Vector2i(adjusted_x, adjusted_y)])
+		#print("Placing room %d at position %s" % [room.id, Vector2i(adjusted_x, adjusted_y)])
 		
 		floor_matrix[adjusted_x][adjusted_y] = room.id
 		
@@ -236,7 +237,7 @@ func _get_room_type_name(type: int) -> String:
 		_: return "UNKNOWN"
 
 func print_floor() -> void:
-	print("\nFloor Matrix:")
+	#print("\nFloor Matrix:")
 	for x in range(matrix_size):
 		var row = ""
 		for y in range(matrix_size):
@@ -245,7 +246,7 @@ func print_floor() -> void:
 			var value = floor_matrix[x][y]
 			
 			row += "%3d " % value  # %3d means right-align number in 3 spaces
-		print(row)
+		#print(row)
 
 func find_room(_id: int):
 	for room: Room in rooms:

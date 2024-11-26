@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://iib07daw2tx"]
+
+[ext_resource type="PackedScene" uid="uid://gtxqmsumar35" path="res://entities/collectibles/collectible.tscn" id="1_htolb"]
+[ext_resource type="Script" path="res://entities/collectibles/health_related/medikit/medikit.gd" id="2_s03mc"]
+[ext_resource type="SpriteFrames" uid="uid://gokchcou64c5" path="res://entities/collectibles/health_related/medikit/medikit_sprite_frame.tres" id="3_j3wdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uww6"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrk2k"]
+size = Vector2(2, 2)
+
+[node name="Medikit" instance=ExtResource("1_htolb")]
+script = ExtResource("2_s03mc")
+heal_amount = 100.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(2.38419e-07, 5.96046e-08)
+scale = Vector2(0.8, 0.8)
+sprite_frames = ExtResource("3_j3wdr")
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource("RectangleShape2D_1uww6")
+
+[node name="InteractionArea" parent="." index="2"]
+collision_mask = 21
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("RectangleShape2D_nrk2k")

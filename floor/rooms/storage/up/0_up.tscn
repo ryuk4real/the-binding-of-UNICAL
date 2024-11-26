@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=4 uid="uid://cm1vlb8u6ex01"]
+[gd_scene load_steps=7 format=4 uid="uid://cm1vlb8u6ex01"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_myixx"]
 [ext_resource type="TileSet" uid="uid://bbueovfhx1m5f" path="res://floor/rooms/storage/st.tres" id="2_4f6q7"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_e0hf7"]
+[ext_resource type="PackedScene" uid="uid://b8qcc0ohj122j" path="res://floor/rooms/storage/big_box.tscn" id="3_nyum8"]
+[ext_resource type="PackedScene" uid="uid://cvh6ot6ccsj18" path="res://floor/rooms/enemy_spawner/enemy_spawner.tscn" id="5_c5qok"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bf66c"]
+vertices = PackedVector2Array(100, 70, 168, 72, 24, 72, 37, 71, 88, 70, 25, 71, 24, 24, 25, 59, 168, 31, 100, 58, 100, 55, 156, 31, 100, 43, 37, 59, 88, 24, 88, 31, 88, 58, 100, 31, 100, 24, 156, 24, 88, 43, 88, 55)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 3, 2), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 1, 9, 10, 11), PackedInt32Array(11, 10, 12), PackedInt32Array(13, 7, 6, 14, 15), PackedInt32Array(4, 3, 13, 16), PackedInt32Array(17, 18, 19, 11), PackedInt32Array(17, 11, 12), PackedInt32Array(15, 17, 12, 20), PackedInt32Array(13, 15, 20), PackedInt32Array(13, 20, 21), PackedInt32Array(16, 13, 21, 10), PackedInt32Array(9, 16, 10), PackedInt32Array(9, 1, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 72, 168, 72, 168, 24)])
+agent_radius = 0.0
 
 [node name="Room" instance=ExtResource("1_myixx")]
 type = 5
@@ -11,6 +19,36 @@ type = 5
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQACAAAAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAAFAAEAAQACAAEAAAAFAAIAAQACAAIAAAABAAIAAQABAAIAAAACAAIAAQABAAIAAAADAAIAAQABAAIAAAAEAAIAAQABAAIAAAA=")
 tile_set = ExtResource("2_4f6q7")
 
+[node name="NavigationRegion2D" parent="." index="1"]
+navigation_polygon = SubResource("NavigationPolygon_bf66c")
+
+[node name="BigBox" parent="NavigationRegion2D" index="0" instance=ExtResource("3_nyum8")]
+position = Vector2(94, 25)
+
+[node name="BigBox2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_nyum8")]
+position = Vector2(31, 65)
+
+[node name="BigBox3" parent="NavigationRegion2D" index="3" instance=ExtResource("3_nyum8")]
+position = Vector2(94, 64)
+
+[node name="BigBox4" parent="NavigationRegion2D" index="4" instance=ExtResource("3_nyum8")]
+position = Vector2(94, 49)
+
+[node name="BigBox5" parent="NavigationRegion2D" index="5" instance=ExtResource("3_nyum8")]
+position = Vector2(162, 25)
+
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_e0hf7")]
 position = Vector2(48, 17)
 type = 5
+
+[node name="CleanedRoomPickupSpawner" parent="Pickups" index="0"]
+position = Vector2(69, 41)
+
+[node name="EnemySpawner" parent="EnemySpawners" index="0" instance=ExtResource("5_c5qok")]
+position = Vector2(156, 52)
+
+[node name="EnemySpawner2" parent="EnemySpawners" index="1" instance=ExtResource("5_c5qok")]
+position = Vector2(140, 33)
+
+[node name="EnemySpawner3" parent="EnemySpawners" index="2" instance=ExtResource("5_c5qok")]
+position = Vector2(120, 62)

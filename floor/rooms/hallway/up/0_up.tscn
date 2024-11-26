@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://dg32jfg58hdow"]
+[gd_scene load_steps=7 format=4 uid="uid://dg32jfg58hdow"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_u7k3p"]
 [ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_3ffhd"]
+[ext_resource type="PackedScene" uid="uid://by36ogg2wnmua" path="res://floor/rooms/hallway/seats.tscn" id="3_0xfpu"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_ud2ee"]
 [ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="4_a64q4"]
+[ext_resource type="PackedScene" uid="uid://cajlij26ula13" path="res://floor/rooms/hallway/stairs.tscn" id="6_cawiy"]
 
 [node name="Room" instance=ExtResource("1_u7k3p")]
 
@@ -13,6 +15,15 @@ tile_set = ExtResource("2_3ffhd")
 
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]
 tile_set = ExtResource("2_3ffhd")
+
+[node name="Seats" parent="NavigationRegion2D" index="1" instance=ExtResource("3_0xfpu")]
+position = Vector2(40, 23)
+
+[node name="Seats2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_0xfpu")]
+position = Vector2(51, 23)
+
+[node name="Seats3" parent="NavigationRegion2D" index="3" instance=ExtResource("3_0xfpu")]
+position = Vector2(62, 23)
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_ud2ee")]
 position = Vector2(81, 17)
@@ -58,5 +69,8 @@ position = Vector2(144, 48)
 
 [node name="VendingMachine" parent="." index="6" instance=ExtResource("4_a64q4")]
 position = Vector2(207, 26)
+
+[node name="Stairs" parent="." index="7" instance=ExtResource("6_cawiy")]
+position = Vector2(134, 12)
 
 [editable path="VendingMachine"]

@@ -58,24 +58,16 @@ func get_atoms(_answerset: Array) -> Array:
 	
 	return atoms
 
-func change_atoms_to_old(_atoms: Array) -> Array:
-	
-	var result: Array = []
-	
-	for atom: String in _atoms:
-		result.append(regex.sub(atom, "old"))
-	
-	return result
-
 func build_atom(_predicate_name: String, _arguments: Array) -> String:
 	var atom: String = _predicate_name
 	
 	atom += "("
 	
-	for _argument in _arguments:
-		atom += _argument
+	for i in range(_arguments.size()):
+		atom += str(_arguments[i])
+		if i < _arguments.size() - 1:
+			atom += ","
 	
-	atom += ")"
+	atom += ")."
 	
 	return atom
-	

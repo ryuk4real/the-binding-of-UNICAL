@@ -73,10 +73,9 @@ hframes = 2
 [node name="OpenedArea2D" type="Area2D" parent="."]
 position = Vector2(0, 5)
 collision_layer = 32
-collision_mask = 7
 
 [node name="OpenedCollider" type="CollisionShape2D" parent="OpenedArea2D"]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_k4hkf")
 
 [node name="ClosedArea2D" type="StaticBody2D" parent="."]

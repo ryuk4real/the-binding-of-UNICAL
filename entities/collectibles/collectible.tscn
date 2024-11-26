@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gtxqmsumar35"]
+
+[ext_resource type="PackedScene" uid="uid://dnolpb1kjpiy" path="res://entities/entity.tscn" id="1_m44rl"]
+[ext_resource type="Script" path="res://entities/collectibles/collectible.gd" id="2_b35ac"]
+
+[node name="Collectible" instance=ExtResource("1_m44rl")]
+script = ExtResource("2_b35ac")
+collectible_type = 0
+value = 1.0
+auto_collect = true
+destroy_on_collect = true
+
+[node name="InteractionArea" parent="." index="2"]
+collision_layer = 4
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

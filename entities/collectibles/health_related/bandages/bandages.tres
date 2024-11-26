@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://obnu2dplji3w"]
+
+[ext_resource type="Texture2D" uid="uid://cn2vdxhwigvun" path="res://entities/collectibles/health_related/bandages/bandages.png" id="1_8q7tu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1o31"]
+atlas = ExtResource("1_8q7tu")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1o31")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}]

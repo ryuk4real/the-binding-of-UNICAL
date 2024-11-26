@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://bt8xfa61xi0tw"]
+[gd_scene load_steps=8 format=4 uid="uid://bt8xfa61xi0tw"]
 
 [ext_resource type="PackedScene" uid="uid://b0byigdmk0yra" path="res://floor/rooms/room.tscn" id="1_ru02g"]
 [ext_resource type="TileSet" uid="uid://dhy06gr4be123" path="res://floor/rooms/hallway/h_walls.tres" id="2_niuxk"]
+[ext_resource type="PackedScene" uid="uid://by36ogg2wnmua" path="res://floor/rooms/hallway/seats.tscn" id="3_ibih6"]
 [ext_resource type="PackedScene" uid="uid://c6kmyiqwxj71h" path="res://floor/rooms/doors/door.tscn" id="3_toqim"]
 [ext_resource type="PackedScene" uid="uid://b2ia6yn72u77n" path="res://floor/rooms/hallway/vending_machine.tscn" id="4_nqpqs"]
-[ext_resource type="Script" path="res://floor/rooms/hallway/vending_machine.gd" id="5_um5nh"]
+[ext_resource type="PackedScene" uid="uid://cajlij26ula13" path="res://floor/rooms/hallway/stairs.tscn" id="6_lph2t"]
+
+[sub_resource type="TileSet" id="TileSet_iedgq"]
 
 [node name="Room" instance=ExtResource("1_ru02g")]
 
@@ -13,7 +16,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAA
 tile_set = ExtResource("2_niuxk")
 
 [node name="Obstacles" parent="NavigationRegion2D" index="0"]
-tile_set = ExtResource("2_niuxk")
+tile_set = SubResource("TileSet_iedgq")
+
+[node name="Seats" parent="NavigationRegion2D" index="1" instance=ExtResource("3_ibih6")]
+position = Vector2(163, 73)
+rotation = 3.14159
+
+[node name="Seats2" parent="NavigationRegion2D" index="2" instance=ExtResource("3_ibih6")]
+position = Vector2(174, 73)
+rotation = 3.14159
+
+[node name="Seats3" parent="NavigationRegion2D" index="3" instance=ExtResource("3_ibih6")]
+position = Vector2(185, 73)
+rotation = 3.14159
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource("3_toqim")]
 position = Vector2(208, 17)
@@ -59,6 +74,8 @@ position = Vector2(144, 48)
 
 [node name="VendingMachine" parent="." index="6" instance=ExtResource("4_nqpqs")]
 position = Vector2(61, 26)
-script = ExtResource("5_um5nh")
+
+[node name="Stairs" parent="." index="7" instance=ExtResource("6_lph2t")]
+position = Vector2(134, 12)
 
 [editable path="VendingMachine"]

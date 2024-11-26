@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2ia6yn72u77n"]
+[gd_scene load_steps=5 format=3 uid="uid://b2ia6yn72u77n"]
 
 [ext_resource type="Texture2D" uid="uid://c4anr1pycg5s4" path="res://floor/rooms/hallway/hallway.png" id="1_r2068"]
+[ext_resource type="Script" path="res://floor/rooms/hallway/vending_machine.gd" id="1_umrsw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jciuw"]
 atlas = ExtResource("1_r2068")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bau7e"]
+size = Vector2(28.5714, 22.8571)
 
-[node name="VendingMachine" type="Area2D"]
+[node name="VendingMachine" type="StaticBody2D"]
+scale = Vector2(0.7, 0.7)
+collision_layer = 16
+collision_mask = 71
+script = ExtResource("1_umrsw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_jciuw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.36644e-07, 1.42857)
 shape = SubResource("RectangleShape2D_bau7e")

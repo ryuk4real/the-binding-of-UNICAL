@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://c7mq2os0fcpl0"]
+
+[ext_resource type="Texture2D" uid="uid://lajkv3efq5rf" path="res://entities/collectibles/powerups/damage_up/damage_up.png" id="1_c3syp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c3syp")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}]

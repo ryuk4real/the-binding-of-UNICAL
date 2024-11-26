@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3jcy08vumpi8"]
+
+[ext_resource type="PackedScene" uid="uid://sdjbh3fe1se7" path="res://entities/enemies/zombie/zombie.tscn" id="1_nn7lx"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dkyf7"]
+vertices = PackedVector2Array(668.43, -26.1875, 571.656, 221.312, -112.852, 365.219, -49.4688, -35.8828)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-58, -46, -125, 378, 579, 230, 683, -36)])
+parsed_collision_mask = 4294967040
+
+[node name="MouseMovementTest" type="Node2D"]
+
+[node name="Mouse" parent="." instance=ExtResource("1_nn7lx")]
+position = Vector2(254, 165)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(155, 58)
+navigation_polygon = SubResource("NavigationPolygon_dkyf7")

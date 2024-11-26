@@ -7,8 +7,11 @@ extends Node2D
 @onready var cleaned_room_pickup_spawner = $Pickups/CleanedRoomPickupSpawner
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
 @onready var obstacles: TileMapLayer = $NavigationRegion2D/Obstacles
+@onready var enemy_spawners: Node2D = $EnemySpawners
+
 @export var id: int = 0
 @export var type: int = 0
+
 var configuration: int
 var is_clear: bool = false
 var coordinates: Array[Vector2i] = []
@@ -18,6 +21,7 @@ var vending_machine_collision_shape: CollisionShape2D
 
 var door_connections: Dictionary = {} # door1: door2
 var room_connections: Dictionary = {} # door: connected_room
+var active_enemies: int = 0
 
 func init(_room_id: int = 0, _room_type: int = 0) -> void:
 	id = _room_id
@@ -30,15 +34,31 @@ func init(_room_id: int = 0, _room_type: int = 0) -> void:
 		is_clear = true
 		open_all_doors()
 		vending_machine_collision_shape = $VendingMachine/CollisionShape2D
-	print("ROOM %s -> %s" % [id, coordinates])
+	else:
+		is_clear = false
 
 func _ready() -> void:
 	generate_coordinates_from_tilemaplayer()
 	initialize_doors()
 	map_door_coordinates()
 	
-	#print("door room positions: %s\n" % door_room_positions)
-	#print(str(get_door_room_position(doors[5])) + " " + str(doors[5].type) + " " + str(doors[5].direction))
+	SignalBus.connect("cleared_room", _on_cleared_room)
+	
+func set_active_enemies_counter() -> void:
+	for spawner in enemy_spawners.get_children():
+		active_enemies += spawner.get_child_count()
+
+	if active_enemies > 0:
+		close_all_doors()
+		cleaned_room_pickup_spawner.is_room_with_enemy = true
+	else:
+		open_all_doors()
+
+func check_room_clear() -> void:
+	if active_enemies <= 0:
+		open_all_doors()
+		SignalBus.cleared_room.emit(self)
+		is_clear = true
 
 func initialize_doors() -> void:
 	if doors.is_empty():
@@ -90,7 +110,7 @@ func generate_coordinates_from_tilemaplayer() -> void:
 	
 	for logical_coord in logical_sections:
 		coordinates.append(logical_coord)
-	print("Room coordinates relative to main door: ", coordinates)
+	#print("Room coordinates relative to main door: ", coordinates)
 
 func map_door_coordinates() -> void:
 	# Find the main door position first
@@ -132,7 +152,7 @@ func get_door_local_position(door: Door) -> Vector2i:
 func from_position_get_door(_position: Vector2i) -> Door:
 	for key in door_room_positions.keys():
 		if door_room_positions[key] == _position:
-			print("key of door found: " +  str(_position))
+			#print("key of door found: " +  str(_position))
 			return key
 	return null
 
@@ -181,14 +201,9 @@ func get_connecting_door_to_room(_room: Room) -> Door:
 func set_room_active(active: bool) -> void:
 	visible = active
 	
-	if active:
-		set_physics_process(active)
-		set_physics_process_internal(active)
-		set_process(active)
-	else:
-		set_physics_process(active)
-		set_physics_process_internal(active)
-		set_process(active)
+	set_physics_process(active)
+	set_physics_process_internal(active)
+	set_process(active)
 	
 	if walls:
 		walls.collision_enabled = active
@@ -200,15 +215,23 @@ func set_room_active(active: bool) -> void:
 		obstacles.collision_enabled = active
 		
 	if vending_machine_collision_shape:
-		vending_machine_collision_shape.disabled = active
+		vending_machine_collision_shape.disabled = !active
 
 	# Disable the opened and closed area colliders for the doors
 	for door in doors:
 		if door:
 			door.get_node("OpenedArea2D/OpenedCollider").disabled = !active
 			door.get_node("ClosedArea2D/ClosedCollider").disabled = !active
+			
+			if door.type != Global.ROOM_TYPE_NONE and door.is_placeholder:
+				door.is_placeholder = false
 	
+	for spawner in enemy_spawners.get_children():
+		for enemy in spawner.get_children():
+			if enemy is Entity:
+				enemy.enabled = active
 				
+
 func get_pickup_spawner_position() -> Vector2i:
 	return cleaned_room_pickup_spawner.position
 
@@ -221,3 +244,7 @@ func open_all_doors():
 	for door: Door in doors:
 		door.open()
 	is_clear = true
+
+func _on_cleared_room(_room: Room):
+	if id == Global.current_room.id:
+		cleaned_room_pickup_spawner.spawn()

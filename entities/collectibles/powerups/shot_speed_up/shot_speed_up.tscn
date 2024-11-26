@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://8js6yq7aqbqw"]
+
+[ext_resource type="PackedScene" uid="uid://gtxqmsumar35" path="res://entities/collectibles/collectible.tscn" id="1_scs57"]
+[ext_resource type="Script" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up.gd" id="2_yxav0"]
+[ext_resource type="SpriteFrames" uid="uid://5seu2tdclgub" path="res://entities/collectibles/powerups/shot_speed_up/shot_speed_up_sprite_frames.tres" id="3_33185"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70qo4"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htgtk"]
+size = Vector2(10, 10)
+
+[node name="ShotSpeedUp" instance=ExtResource("1_scs57")]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("2_yxav0")
+speed_increase = 5.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("3_33185")
+animation = &"IDLE"
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(2.98023e-07, 1.49012e-07)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_70qo4")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_htgtk")

@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dtp63i5n0hav5"]
+
+[ext_resource type="Texture2D" uid="uid://43or1wwibnsc" path="res://entities/collectibles/powerups/speed_up/speed_up.png" id="1_44je7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_44je7")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}]

@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://be4pejwt01gf2"]
+[gd_scene load_steps=12 format=3 uid="uid://be4pejwt01gf2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a0qgy"]
 [ext_resource type="Script" path="res://resource_loaders/room_loader.gd" id="3_60n1x"]
 [ext_resource type="Script" path="res://resource_loaders/entity_loader.gd" id="3_70wk3"]
 [ext_resource type="Script" path="res://floor/floor_generator/floor_generator.gd" id="3_fahxx"]
 [ext_resource type="Script" path="res://floor/floor_generator/worker.gd" id="3_sfckc"]
-[ext_resource type="PackedScene" uid="uid://byg1dm86oqdpm" path="res://ui/transitions/transitioner.tscn" id="4_2jnp8"]
 [ext_resource type="PackedScene" uid="uid://b26dcuqwanu2x" path="res://ui/ui.tscn" id="4_33lin"]
+[ext_resource type="Texture2D" uid="uid://ci365r3u01gxm" path="res://ui/gui/health_progress_bar/healthbar_under.png" id="7_shirm"]
+[ext_resource type="Texture2D" uid="uid://3c8jf6wa2ae5" path="res://ui/gui/health_progress_bar/healthbar_progress.png" id="8_747i7"]
+[ext_resource type="Script" path="res://ui/gui/health_progress_bar/health_bar.gd" id="9_vq5de"]
+[ext_resource type="Shader" path="res://ui/game_over/gameover_blur.gdshader" id="10_tdmn6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh84t"]
+shader = ExtResource("10_tdmn6")
+shader_parameter/lod = 3.0
+shader_parameter/mix_percentage = 0.1
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0qgy")
@@ -31,10 +39,38 @@ script = ExtResource("3_sfckc")
 
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
 
-[node name="Transitioner" parent="UI" instance=ExtResource("4_2jnp8")]
+[node name="Continue" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/GUI" index="1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 50.0
+scale = Vector2(5.52, 5.52)
+texture_under = ExtResource("7_shirm")
+texture_progress = ExtResource("8_747i7")
+script = ExtResource("9_vq5de")
+
+[node name="GameOver" parent="UI" index="3"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="UI/GameOver" index="0"]
+material = SubResource("ShaderMaterial_sh84t")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.0639, 16.6209)
+
+[node name="Transitioner" parent="UI" index="4"]
+visible = false
 
 [connection signal="request_completed" from="FloorGenerator/Worker" to="FloorGenerator/Worker" method="_on_request_completed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="UI"]
