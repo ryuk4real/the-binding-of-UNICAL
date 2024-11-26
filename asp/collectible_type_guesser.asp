@@ -18,73 +18,73 @@
 #const multiplier = 3.
 
 % Calculate health percentage for healing collectibles and powerups
-stat_percentage(hp, Percentage) :-
-    player_stat(current_hp, CurrentHP),
-    player_stat(max_hp, MaxHP),
-    Percentage = (CurrentHP * 100) / MaxHP.
+stat_percentage(hp, PERCENTAGE) :-
+    player_stat(current_hp, CURRENT_HP),
+    player_stat(max_hp, MAX_HP),
+    PERCENTAGE = (CURRENT_HP * 100) / MAX_HP.
 
-stat_percentage(speed, Percentage) :-
-    player_stat(speed, Speed),
-    player_stat(max_speed, MaxSpeed),
-    Percentage = (Speed * 100) / MaxSpeed.
+stat_percentage(speed, PERCENTAGE) :-
+    player_stat(speed, SPEED),
+    player_stat(max_speed, MAX_SPEED),
+    PERCENTAGE = (SPEED * 100) / MAX_SPEED.
 
-stat_percentage(shot_speed, Percentage) :-
-    player_stat(shot_speed, ShotSpeed),
-    player_stat(max_shot_speed, MaxShotSpeed),
-    Percentage = (ShotSpeed * 100) / MaxShotSpeed.
+stat_percentage(shot_speed, PERCENTAGE) :-
+    player_stat(shot_speed, SHOT_SPEED),
+    player_stat(max_shot_speed, MAX_SHOT_SPEED),
+    PERCENTAGE = (SHOT_SPEED * 100) / MAX_SHOT_SPEED.
 
-stat_percentage(shot_rate, Percentage) :-
-    player_stat(shot_rate, ShotRate),
-    player_stat(min_shot_rate, MinShotRate),
-    Percentage = 100 - ((ShotRate - MinShotRate) * 100) / (10 - MinShotRate).
+stat_percentage(shot_rate, PERCENTAGE) :-
+    player_stat(shot_rate, SHOT_RATE),
+    player_stat(min_shot_rate, MIN_SHOT_RATE),
+    PERCENTAGE = 100 - ((SHOT_RATE - MIN_SHOT_RATE) * 100) / (10 - MIN_SHOT_RATE).
 
-stat_percentage(damage, Percentage) :-
-    player_stat(damage, Damage),
-    player_stat(max_damage, MaxDamage),
-    Percentage = (Damage * 100) / MaxDamage.
+stat_percentage(damage, PERCENTAGE) :-
+    player_stat(damage, DAMAGE),
+    player_stat(max_damage, MAX_DAMAGE),
+    PERCENTAGE = (DAMAGE * 100) / MAX_DAMAGE.
 
 % Stat-based weights (higher stat = higher chance for others)
-item_weights(MedikitBonus, BandagesBonus, SpeedBonus * multiplier, ShotSpeedBonus * multiplier, ShotRateBonus * multiplier, DamageBonus * multiplier) :-
-    stat_percentage(hp, HealthPerc),
-    stat_percentage(speed, SpeedPerc),
-    stat_percentage(shot_speed, ShotSpeedPerc),
-    stat_percentage(shot_rate, ShotRatePerc),
-    stat_percentage(damage, DamagePerc),
+item_weights(MEDIKIT_BONUS, BANDAGES_BONUS, SPEED_BONUS * multiplier, SHOT_SPEED_BONUS * multiplier, SHOT_RATE_BONUS * multiplier, DAMAGE_BONUS * multiplier) :-
+    stat_percentage(hp, HEALTH_PERCENTAGE),
+    stat_percentage(speed, SPEED_PERCENTAGE),
+    stat_percentage(shot_speed, SHOT_SPEED_PERCENTAGE),
+    stat_percentage(shot_rate, SHOT_RATE_PERCENTAGE),
+    stat_percentage(damage, DAMAGE_PERCENTAGE),
 
-    MedikitBonus = #count { 1 :
-        HealthPerc <= 25
+    MEDIKIT_BONUS = #count { 1 :
+        HEALTH_PERCENTAGE <= 25
     },
 
-    BandagesBonus = #count { 1 :
-        HealthPerc <= 50
+    BANDAGES_BONUS = #count { 1 :
+        HEALTH_PERCENTAGE <= 50
     },
     
-    SpeedBonus = #count { 1 : 
-        ShotSpeedPerc > 75, 
-        ShotRatePerc > 75,
-        DamagePerc > 75,
-        HealthPerc > 50
+    SPEED_BONUS = #count { 1 : 
+        SHOT_SPEED_PERCENTAGE > 50, 
+        SHOT_RATE_PERCENTAGE > 50,
+        DAMAGE_PERCENTAGE > 50,
+        HEALTH_PERCENTAGE > 50
     },
     
-    ShotSpeedBonus = #count { 1 : 
-        SpeedPerc > 75,
-        ShotRatePerc > 75,
-        DamagePerc > 75,
-        HealthPerc > 50
+    SHOT_SPEED_BONUS = #count { 1 : 
+        SPEED_PERCENTAGE > 50,
+        SHOT_RATE_PERCENTAGE > 50,
+        DAMAGE_PERCENTAGE > 50,
+        HEALTH_PERCENTAGE > 50
     },
     
-    ShotRateBonus = #count { 1 :
-        SpeedPerc > 75,
-        ShotSpeedPerc > 75,
-        DamagePerc > 75,
-        HealthPerc > 50
+    SHOT_RATE_BONUS = #count { 1 :
+        SPEED_PERCENTAGE > 50,
+        SHOT_SPEED_PERCENTAGE > 50,
+        DAMAGE_PERCENTAGE > 50,
+        HEALTH_PERCENTAGE > 50
     },
     
-    DamageBonus = #count { 1 : 
-        SpeedPerc > 75,
-        ShotSpeedPerc > 75,
-        ShotRatePerc > 75,
-        HealthPerc > 50
+    DAMAGE_BONUS = #count { 1 : 
+        SPEED_PERCENTAGE > 50,
+        SHOT_SPEED_PERCENTAGE > 50,
+        SHOT_RATE_PERCENTAGE > 50,
+        HEALTH_PERCENTAGE > 50
     }.
 
 % Default distribution if collectible types have not been counted yet
