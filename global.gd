@@ -175,8 +175,9 @@ const UNSATISFIABLE: String = "UNSAT"
 const ALL_MODELS = 0
 
 const ROOM_LIMIT: int = 15
-const MAP_SIZE: int = 15
+const MAP_SIZE: int = 24
 var current_room_type: int = 0
+var floor_probability: float = 1
 
 const PLAYER_LAYER: int = 1
 const ENEMIES_LAYER: int = 2

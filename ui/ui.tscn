@@ -267,22 +267,15 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
-theme = ExtResource("3_khr84")
-text = "NEW GAME"
-language = "en"
-
-[node name="Main Menu" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_top = NodePath("../New Game")
 focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("3_khr84")
-text = "MAIN MENU"
+text = "NEW GAME"
 language = "en"
 
 [node name="Quit" type="Button" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+focus_neighbor_top = NodePath("../New Game")
 focus_neighbor_bottom = NodePath("../New Game")
 theme = ExtResource("3_khr84")
 text = "Quit"

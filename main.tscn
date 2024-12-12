@@ -39,8 +39,38 @@ script = ExtResource("3_sfckc")
 
 [node name="UI" parent="." instance=ExtResource("4_33lin")]
 
+[node name="ColorRect" type="ColorRect" parent="UI/MainMenu" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.187722, 0.342513, 0.457547, 1)
+
+[node name="VBoxContainer" parent="UI/MainMenu/MarginContainer" index="0"]
+alignment = 1
+
+[node name="VBoxContainer" parent="UI/MainMenu/MarginContainer/VBoxContainer" index="1"]
+alignment = 1
+
+[node name="New Game" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+mouse_filter = 2
+button_mask = 0
+
 [node name="Continue" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="1"]
 visible = false
+mouse_filter = 2
+button_mask = 0
+
+[node name="Settings" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+visible = false
+mouse_filter = 2
+button_mask = 0
+
+[node name="Quit" parent="UI/MainMenu/MarginContainer/VBoxContainer/VBoxContainer" index="3"]
+mouse_filter = 2
+button_mask = 0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UI/GUI" index="1"]
 layout_mode = 0
@@ -53,6 +83,14 @@ texture_under = ExtResource("7_shirm")
 texture_progress = ExtResource("8_747i7")
 script = ExtResource("9_vq5de")
 
+[node name="ColorRect" type="ColorRect" parent="UI/LoadingScreen" index="0"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.187722, 0.342513, 0.457547, 1)
+
 [node name="GameOver" parent="UI" index="3"]
 visible = false
 
@@ -62,6 +100,16 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(29.0639, 16.6209)
+
+[node name="New Game" parent="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+mouse_filter = 2
+
+[node name="Main Menu" parent="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+visible = false
+mouse_filter = 2
+
+[node name="Quit" parent="UI/GameOver/MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+mouse_filter = 2
 
 [node name="Transitioner" parent="UI" index="4"]
 visible = false

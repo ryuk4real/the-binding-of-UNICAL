@@ -13,10 +13,18 @@ var enemy_type_guesser_program: String = Utils.read_file(Global.ENEMY_TYPE_GUESS
 var map_center: Vector2i = Vector2i(Global.MAP_SIZE / 2, Global.MAP_SIZE / 2)
 
 
+var answer_set_counter = 0
+var regex = RegEx.new()
+var results: Array = []
+
 func _ready() -> void:
 	Global.worker = worker
+	regex.compile("~(.*)\\)")
 
 func generate_floor():
+	#print("---------------------------------------------------------")
+	var start_time = Time.get_ticks_usec()
+	answer_set_counter = 0
 	var room_counter: int = 0
 	var enemy_counter: int = 0
 	var current_floor_packed_scene = preload("res://floor/floor.tscn")
@@ -149,6 +157,24 @@ func generate_floor():
 	
 	Global.current_room.set_door_visible()
 	current_floor.print_room_connections()
+	
+	var end_time = Time.get_ticks_usec()
+	var time_s = (end_time - start_time) / 1000
+	
+	
+	
+	#print(answer_set_counter)
+	#print(time_s)
+	#print(current_floor.rooms.size())
+	
+	for result in results:
+		print(result)
+	
+	results.clear()
+	#print("---------------------------------------------------------")
+	#print()
+	
+	
 	return current_floor
 
 func _calculate_new_room_position(door_pos: Vector2i, direction: int) -> Vector2i:
@@ -171,6 +197,12 @@ func _get_answerset_from_worker(_program: String) -> Array:
 	await SignalBus.response_ready
 	await worker.response
 	var response = worker.response.get("models")
+	answer_set_counter += 1
+	#var probability_outcome: String = worker.response.get("delta_terms")[0]
+	#var result: float = float(regex.search(probability_outcome).get_string(1))
+	#if result:
+	#	Global.floor_probability *= result
+	#	results.append(result)
 	return response
 
 func _get_room_neighbour_type(room_type: int, _floor_atoms: Array[String] = []) -> int:
