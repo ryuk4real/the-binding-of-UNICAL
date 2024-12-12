@@ -4,11 +4,11 @@ extends Entity
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interaction_area_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 
-@export var speed: int = 75
+@export var speed: int = 100
 @export var max_hp: int
-@export var shot_delay: int = 7
+@export var shot_delay: int = 6
 @export var shot_speed: int = 100
-@export var damage: int = 10
+@export var damage: int = 15
 
 var friction: float = 300.0
 var movement_direction: Vector2

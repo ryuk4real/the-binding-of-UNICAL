@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var gui: Control = $GUI
 @onready var loading_screen: Control = $LoadingScreen
 @onready var game_over: Control = $GameOver
+@onready var new_game: Button = $"GameOver/MarginContainer/VBoxContainer/VBoxContainer/New Game"
 
 func _ready() -> void:
 	new_game_button_main_menu.grab_focus()
@@ -39,4 +40,4 @@ func show_game_over_screen() -> void:
 	gui.hide()
 	loading_screen.hide()
 	game_over.show()
-	main_menu_button.grab_focus()
+	new_game.grab_focus()
