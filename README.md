@@ -65,7 +65,7 @@ $ poetry install
 ```
 
 > **Note**
-> The game was implemented in Ubuntu 22.04, Godot 4.3 is totally supported by the main OS but it has been tesdted only on Linux, if you experience a bug, please, feel free to open an issue.
+> The game was implemented in Ubuntu 22.04, Godot 4.3 is totally supported by the main OS but it has been tested only on Linux, if you experience a bug, please, feel free to open an issue.
 
 ## License
 
